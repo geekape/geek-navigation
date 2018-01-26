@@ -3,7 +3,7 @@
 
 <h2>项目模仿</h2>
 <a href="http://www.alloyteam.com/nav/">腾讯AlloyTeam前端团队导航</a>
-
+写码不易，如果些项目对你有用，请帮忙点颗星（star)
 <h2>极客猿梦导航站特色</h2>
 <ul>
   <li>简洁好看的风格</li>
