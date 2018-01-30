@@ -423,37 +423,51 @@
                         </div>
                     </div>
                 </footer>
+                <div id="fixedBar"><svg class="Zi Zi--BackToTop" title="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path></svg></div>
         </section>
+        <script src="js/jquery.js"></script>
         <script>
-        var oMenu = document.getElementById('menu');
-        var oBtn = oMenu.getElementsByTagName('a')[0];
-        var oLeftBar = document.getElementById('leftBar');
-        oBtn.onclick = function() {
-            if (oLeftBar.offsetLeft == 0) {
-                oLeftBar.style.left = -249 + 'px';
-            } else {
-                oLeftBar.style.left = 0 + 'px';
-            }
-            if (document.documentElement.clientWidth <= 481) {
-                document.onclick = function() {
-                    if (oLeftBar.offsetLeft == 0) {
-                        console.log(123);
-                        oLeftBar.style.left = -249 + 'px';
+            var oMenu = document.getElementById('menu');
+            var oBtn = oMenu.getElementsByTagName('a')[0];
+            var oLeftBar = document.getElementById('leftBar');
+            oBtn.onclick = function() {
+                if (oLeftBar.offsetLeft == 0) {
+                    oLeftBar.style.left = -249 + 'px';
+                } else {
+                    oLeftBar.style.left = 0 + 'px';
+                }
+                if (document.documentElement.clientWidth <= 481) {
+                    document.onclick = function() {
+                        if (oLeftBar.offsetLeft == 0) {
+                            console.log(123);
+                            oLeftBar.style.left = -249 + 'px';
+                        }
                     }
                 }
             }
-        }
 
-        var oNavItem = document.getElementById('navItem');
-        var aA = oNavItem.getElementsByTagName('a');
-        for(var i=0; i<aA.length; i++) {
-        	aA[i].onclick = function() {
-        		for(var j=0; j<aA.length; j++) {
-        			aA[j].className = '';
-        		}
-        		this.className = 'active';
-        	}
-        }
+            var oNavItem = document.getElementById('navItem');
+            var aA = oNavItem.getElementsByTagName('a');
+            for(var i=0; i<aA.length; i++) {
+            	aA[i].onclick = function() {
+            		for(var j=0; j<aA.length; j++) {
+            			aA[j].className = '';
+            		}
+            		this.className = 'active';
+            	}
+            }
+
+            $(window).scroll(function() {
+                if($(window).scrollTop() >= 200){
+                    $('#fixedBar').fadeIn(300);
+                }else{
+                    $('#fixedBar').fadeOut(300);
+                }
+            });
+            $('#fixedBar').click(function() {
+                $('html,body').animate({scrollTop:'0px'},800);
+            })
+
         </script>
 </body>
 
