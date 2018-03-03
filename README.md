@@ -1,4 +1,6 @@
-<h2>极客猿梦导航站图片演示</h2>
+## 效果预览
+[效果预览](https://htmlpreview.github.io/?https://github.com/geekape/geek-navigation/blob/master/index.html)
+## 极客猿梦导航站图片演示
 <img src="http://www.zcbboke.com/wp-content/uploads/2018/01/geeknav.gif"/>
 
 <h2>项目模仿</h2>
