@@ -271,7 +271,12 @@ body, .main, .container{
 	}
 	#menu{display: block;}
 }
-@media screen and (max-width: 482px) {
+@media screen and (min-width: 481px) {
+	.container .left-bar {
+		left: 0;
+	}
+}
+@media screen and (min-width: 482px) and (max-width: 789px) {
 	.container .box .item{
 		width: 90%;
 	}
@@ -280,22 +285,22 @@ body, .main, .container{
 	}
 }
 
-@media screen and (min-width: 790px) {
+@media screen and (min-width: 790px) and (max-width: 1039px)  {
 	.container .box .item{
 		width: 43%;
 	}
 }
 
-@media screen and (min-width: 1040px){
-	.container .box .item{
-		width: 28%;
-	}
-}
-
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1040px) and (max-width: 1920px) {
 	.container .box .item{
 		width: 20%;
 	}
 }
+
+// @media screen and (min-width: 1200px) {
+// 	.container .box .item{
+// 		width: 20%;
+// 	}
+// }
 
 
