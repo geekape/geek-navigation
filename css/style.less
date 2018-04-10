@@ -240,13 +240,38 @@ body, .main, .container{
 #menu {
 	display: none;
 	width: 100%;
-	background: #fff;
-	padding: 10px 0;
-	text-align: center;
+    background: #ffffff;
+    padding: 20px 0;
+    text-align: right;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: 1px 1px 8px #e0dfdf;
 	a{
-		color: #3a85ff;
 		font-size: 18px;
+		width: 30px;
+		height: 4px;
+		background: #9E9E9E;
+		display: block;
+		position: relative;
+		left: 90%;
+		&::before,&::after {
+			content: '';
+			width: 30px;
+			height: 4px;
+			background: #9E9E9E;
+			position: absolute;
+			left: 0;
+		}
+		&::before {
+			top: 10px;
+		}
+		&::after {
+			bottom: 10px;
+		}
 	}
+
+
 }
 // 导航源码下载
 .download {

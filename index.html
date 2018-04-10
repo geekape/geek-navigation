@@ -34,7 +34,9 @@
         <section class="main">
             <div id="mainContent">
                 <!-- 手机端菜单 -->
-                <div id="menu"><a href="#">菜单</a></div>
+                <div id="menu">
+                    <a></a>
+                </div>
                 <!-- 开发社区 -->
                 <div class="box">
                     <a href="#" name="bbs"></a>
@@ -427,19 +429,14 @@
         var oLeftBar = document.getElementById('leftBar');
 
         oBtn.onclick = function() {
-            oLeftBar.style.left = 0;
-
-        }
-
-
-        document.onclick = function() {
             if (oLeftBar.offsetLeft == 0) {
-                if (document.documentElement.clientWidth <= 481) {
-                    oLeftBar.style.left = -249 + 'px';
-                }
+                oLeftBar.style.left = -249 + 'px';
             }
-
+            else {
+                oLeftBar.style.left = 0;
+            }
         }
+
 
         // 监听页面宽度变化
         window.onresize = function() {
@@ -464,6 +461,12 @@
                     aA[j].className = '';
                 }
                 this.className = 'active';
+                if (oLeftBar.offsetLeft == 0) {
+                    if (document.documentElement.clientWidth <= 481) {
+                        oLeftBar.style.left = -249 + 'px';
+
+                    }
+                }
             }
         }
 
