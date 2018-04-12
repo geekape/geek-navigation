@@ -7,6 +7,7 @@
     <title>猿梦极客导航-很有范的导航站</title>
     <link rel="shortcut icon" href="favcion.ico" />
     <link rel="stylesheet" href=" css/iconfont.css">
+    <link rel="stylesheet" href="../plug-in/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -34,8 +35,15 @@
         <section class="main">
             <div id="mainContent">
                 <!-- 手机端菜单 -->
-                <div id="menu">
-                    <a></a>
+                <div id="menu-box">
+                   <div id="menu">
+                       <input type="checkbox" id="menu-form">
+                       <label for="menu-form" class="menu-spin">
+                        <div class="line diagonal line-1"></div>
+                        <div class="line horizontal"></div>
+                        <div class="line diagonal line-2"></div>
+                      </label>
+                    </div>
                 </div>
                 <!-- 开发社区 -->
                 <div class="box">
@@ -425,10 +433,10 @@
         <script src="js/jquery.js"></script>
         <script>
         var oMenu = document.getElementById('menu');
-        var oBtn = oMenu.getElementsByTagName('a')[0];
         var oLeftBar = document.getElementById('leftBar');
+        var menuFrom = document.getElementById('menu-form');
 
-        oBtn.onclick = function() {
+        oMenu.onclick = function() {
             if (oLeftBar.offsetLeft == 0) {
                 oLeftBar.style.left = -249 + 'px';
             }
@@ -441,6 +449,7 @@
         // 监听页面宽度变化
         window.onresize = function() {
             judgeWidth();
+            // console.log(document.documentElement.clientWidth);
         };
 
         // 判断页面宽度
@@ -464,6 +473,7 @@
                 if (oLeftBar.offsetLeft == 0) {
                     if (document.documentElement.clientWidth <= 481) {
                         oLeftBar.style.left = -249 + 'px';
+                        menuFrom.checked = false;
 
                     }
                 }

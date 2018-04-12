@@ -237,39 +237,58 @@ body, .main, .container{
 }
 // 手机端菜单
 
-#menu {
+#menu-box {
 	display: none;
 	width: 100%;
     background: #ffffff;
-    padding: 20px 0;
     text-align: right;
     position: sticky;
     top: 0;
     z-index: 2;
-    box-shadow: 1px 1px 8px #e0dfdf;
-	a{
-		font-size: 18px;
-		width: 30px;
-		height: 4px;
-		background: #9E9E9E;
-		display: block;
-		position: relative;
-		left: 90%;
-		&::before,&::after {
-			content: '';
-			width: 30px;
-			height: 4px;
-			background: #9E9E9E;
-			position: absolute;
-			left: 0;
-		}
-		&::before {
-			top: 10px;
-		}
-		&::after {
-			bottom: 10px;
-		}
-	}
+    box-shadow: 1px 1px 8px #e0ddf;
+    height: 50px;
+    #menu {
+    	* {
+    		transition: all 0.3s;
+    		-webkit-transition: all 0.3s;
+    		box-sizing: border-box;
+    	}
+    	height: 50px;
+    	width: 40px;
+    	position: absolute;
+    	right: 10px;
+    	input[type=checkbox] {display:none;}
+    	input[type=checkbox]:checked ~ .menu-spin > .horizontal {
+    		opacity: 0;
+    	}
+    	input[type=checkbox]:checked ~ .menu-spin > .line-1 {
+    		transform:rotate(405deg);-webkit-transform:rotate(405deg);margin-top:10px;
+    	}
+    	input[type=checkbox]:checked ~ .menu-spin > .line-2 {
+    		transform:rotate(-405deg);-webkit-transform:rotate(-405deg);margin-top:-10px;
+    	}
+    	label {
+    		cursor: pointer;
+		    position: absolute;
+		    z-index: 99;
+		    height: 100%;
+		    width: 100%;
+		    top: 10px;
+		    left: 0;
+		    .line {
+		    	position: absolute;
+	    	    height: 4px;
+	    	    width: 100%;
+	    	    background-color: #a2a2a2;
+		    }
+		    .horizontal {
+		    	top: 10px;
+		    }
+		    .line-2 {
+		    	top: 20px;
+		    }
+    	}
+    }
 
 
 }
@@ -316,7 +335,7 @@ body, .main, .container{
 		z-index: 999;
 		left: -249px;
 	}
-	#menu{display: block;}
+	#menu-box{display: block;}
 }
 @media screen and (min-width: 481px) {
 	.container .left-bar {
