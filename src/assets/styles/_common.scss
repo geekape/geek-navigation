@@ -47,6 +47,8 @@
         flex: 1;
         -webkit-box-flex: 1;
         flex-grow: 1;
+		padding-bottom: 70px;
+		overflow-y: scroll;
         .item {
             height: 48px;
             line-height: 46px;

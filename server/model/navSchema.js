@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const navSchema = mongoose.Schema({
-        title: String,
+        sortName: String,
         icon: String,
         subData: {
-            title: String,
+            name: String,
             href: String,
-            des: String,
+            desc: String,
             logo: String
         }
     }, { collection: 'mynav' })
