@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 
 const navSchema = mongoose.Schema({
         sortName: String,
-        icon: String,
         subData: {
             name: String,
             href: String,

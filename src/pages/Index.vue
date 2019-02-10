@@ -123,6 +123,7 @@
 				this.selfIndex = idx;
 			},
 			submitForm(formName) {
+				var that = this
 				this.$refs[formName].validate((valid) => {
 					if (valid) {
 						this.form.subData.logo = this.form.subData.href + '/favicon.ico'
@@ -130,6 +131,7 @@
 							console.log(res)
 							this.$message('保存成功');
 							this.dialogFormVisible = false
+							that.getData()
 
 						})
 					} else {
@@ -140,18 +142,18 @@
 			},
 			resetForm(formName) {
 				this.$refs[formName].resetFields();
+			},
+			getData() {
+				this.$http.get("/api/data").then(res => {
+					console.log(res.data);
+					this.data = res.data
+				});
 			}
 
 		},
 		created() {
-			// this.$http.get("http://text.com").then(res => {
-			//   _this.data = res.data.data;
-			// });
-			this.$http.get("/api/data").then(res => {
-				console.log(res.data);
-				this.data = res.data
-			});
-
+			this.getData()
+	
 		}
 	}
 </script>

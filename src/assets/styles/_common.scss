@@ -47,8 +47,8 @@
         flex: 1;
         -webkit-box-flex: 1;
         flex-grow: 1;
-		padding-bottom: 70px;
-		overflow-y: scroll;
+        padding-bottom: 70px;
+        overflow-y: scroll;
         .item {
             height: 48px;
             line-height: 46px;
@@ -184,12 +184,9 @@
 
 // 页脚
 .footer {
-    width: 100%;
-    bottom: 0;
     line-height: 45px;
     background: #fff;
     box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
-    position: fixed;
     .copyright {
         margin-left: 30px;
         color: #949494;
