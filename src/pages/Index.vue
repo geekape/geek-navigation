@@ -1,14 +1,14 @@
 <template>
 	<div class="index container">
-		<aside class="left-bar" id="leftBar">
+		<aside class="left-bar" id="leftBar" :style="{left: isLeftbar ? 0 : '-249px'}">
 			<div class="title">
 				<p>猿梦极客导航</p>
 			</div>
 			<nav class="nav">
 				<div class="item active"><a href=""><i class="iconfont icon-daohang2"></i>极客导航</a><i class="line"></i></div>
 				<ul class="nav-item" id="navItem">
-					<li v-for="(item,index) in data" :key="index" @click="jumpId(i)"><a :href="'#' + item.sortName" :class="{active: index == selfIndex}"><i
-							 :class="item.icon"></i>{{item.sortName}}</a></li>
+					<li v-for="(item,index) in data" :key="index" @click="jumpId(i)"><a :href="'#' + item.classify" :class="{active: index == selfIndex}"><i
+							 :class="item.icon" class="icon"></i>{{item.classify}}</a></li>
 				</ul>
 				<div class="item comment" @click="dialogFormVisible = true"><a><i class="iconfont icon-liuyan"></i>新增网站</a></div>
 
@@ -23,7 +23,7 @@
 				<div id="menu-box">
 					<div id="menu">
 						<input type="checkbox" id="menu-form">
-						<label for="menu-form" class="menu-spin">
+						<label for="menu-form" class="menu-spin" @click="isLeftbar=!isLeftbar">
 							<div class="line diagonal line-1"></div>
 							<div class="line horizontal"></div>
 							<div class="line diagonal line-2"></div>
@@ -31,16 +31,16 @@
 					</div>
 				</div>
 				<!-- 开发社区 -->
-				<div class="box" v-for="value in data" :key="value._id">
-					<a href="#" :name="value.sortName"></a>
+				<div class="box" v-for="(item,index) in data" :key="index">
+					<a href="#" :name="item.classify"></a>
 					<div class="sub-category">
-						<div><i :class="value.icon"></i>{{value.sortName}}</div>
+						<div><i :class="item.icon" class="icon"></i>{{item.classify}}</div>
 					</div>
-					<div>
-						<a target="_blank" :href="value.subData.href">
+					<div v-for="(sub,idx) in item.sites" :key="'sub-'+idx">
+						<a target="_blank" :href="sub.href">
 							<div class="item">
-								<div class="logo"><img :src="value.subData.logo" :alt="value.subData.name">{{value.subData.name}}</div>
-								<div class="desc">{{value.subData.desc}}</div>
+								<div class="logo"><img :src="sub.logo" :alt="sub.name">{{sub.name}}</div>
+								<div class="desc">{{sub.desc}}</div>
 							</div>
 						</a>
 					</div>
@@ -64,20 +64,19 @@
 		<el-dialog title="添加网站" :visible.sync="dialogFormVisible" width="30%">
 			<el-form :model="form" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
 				<el-form-item label="网站名称" prop="name">
-					<el-input v-model="form.subData.name"></el-input>
+					<el-input v-model="form.sites.name"></el-input>
 				</el-form-item>
-				<el-form-item label="网站分类" prop="sortName">
-					<el-select v-model="form.sortName" placeholder="请选择网站分类">
-						<el-option label="技术论坛" value="shanghai"></el-option>
-						<el-option label="技术博客" value="beijing"></el-option>
+				<el-form-item label="网站分类" prop="classify">
+					<el-select v-model="form.classify" placeholder="请选择网站分类">
+						<el-option :label="classfiys.classify" :value="classfiys.classify" v-for="(classfiys, classfiyIdx) in data" :key="classfiys._id"></el-option>
 					</el-select>
 				</el-form-item>
 
 				<el-form-item label="网站链接" prop="href">
-					<el-input v-model="form.subData.href"></el-input>
+					<el-input v-model="form.sites.href"></el-input>
 				</el-form-item>
 				<el-form-item label="网站描述" prop="desc">
-					<el-input type="textarea" v-model="form.subData.desc"></el-input>
+					<el-input type="textarea" v-model="form.sites.desc"></el-input>
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" @click="submitForm('form')">立即创建</el-button>
@@ -85,6 +84,7 @@
 				</el-form-item>
 			</el-form>
 		</el-dialog>
+
 	</div>
 </template>
 
@@ -96,9 +96,11 @@
 				selfIndex: 0,
 				dialogTableVisible: false,
 				dialogFormVisible: false,
+				isLeftbar: true,
 				form: {
-					sortName: "",
-					subData: {
+					classify: "",
+					icon: "el-icon-edit",
+					sites: {
 						name: "",
 						href: "",
 						desc: "",
@@ -106,7 +108,7 @@
 					}
 				},
 				rules: {
-					sortName: [{
+					classify: [{
 						required: true,
 						message: '请选择网站分类',
 						trigger: 'change'
@@ -126,14 +128,12 @@
 				var that = this
 				this.$refs[formName].validate((valid) => {
 					if (valid) {
-						this.form.subData.logo = this.form.subData.href + '/favicon.ico'
+						this.form.sites.logo = this.form.sites.href + '/favicon.ico'
 						this.$http.post('/api/data', this.form).then(res => {
-							console.log(res)
-							this.$message('保存成功');
-							this.dialogFormVisible = false
-							that.getData()
-
 						})
+						this.$message('保存成功');
+						this.dialogFormVisible = false
+						that.getData()
 					} else {
 						console.log('error submit!!');
 						return false;
@@ -145,15 +145,24 @@
 			},
 			getData() {
 				this.$http.get("/api/data").then(res => {
-					console.log(res.data);
 					this.data = res.data
 				});
 			}
 
 		},
 		created() {
+			const that = this
 			this.getData()
-	
+			window.onresize = () => {
+					return (() => {
+							window.screenWidth = document.body.clientWidth
+							if(window.screenWidth<481) {
+								that.isLeftbar = false
+							}else {
+								that.isLeftbar = true
+							}
+					})()
+			}
 		}
 	}
 </script>

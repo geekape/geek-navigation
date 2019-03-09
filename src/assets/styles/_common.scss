@@ -1,4 +1,7 @@
 .container {
+    .icon {
+        margin-right: 5px;
+    }
     .left-bar {
         position: fixed;
         padding: 0 20px;
@@ -187,6 +190,10 @@
     line-height: 45px;
     background: #fff;
     box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
+    position: fixed;
+    bottom: 0;
+    left: 250px;
+    right: 0;
     .copyright {
         margin-left: 30px;
         color: #949494;
@@ -267,6 +274,10 @@
     }
 }
 
+#mainContent {
+    padding-bottom: 50px;
+}
+
 // 返回顶部
 #fixedBar {
     padding: 10px;
@@ -303,6 +314,9 @@
     }
     .main .box {
         margin: 10px;
+    }
+    .footer {
+        left: 0;
     }
 }
 
