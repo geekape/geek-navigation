@@ -158,7 +158,7 @@
 				this.$refs[formName].resetFields();
 			},
 			async addNav(data) {
-				const res = await this.$api.addNav(data)
+				const res = await this.$api.addAudit(data)
 				
 			},
 			async getData() {

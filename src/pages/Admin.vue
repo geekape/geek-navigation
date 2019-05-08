@@ -32,8 +32,8 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">通过</el-button>
-          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">拒绝</el-button>
+          <el-button size="mini" @click="openDialog(0, scope.row._id)">通过</el-button>
+          <el-button size="mini" type="danger" @click="openDialog(1, scope.row._id)">拒绝</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -45,19 +45,65 @@ export default {
   data() {
     return {
       tableData: []
-    }
+    };
   },
   methods: {
     async getData() {
-      const res = await this.$api.getAuditList()
-      this.tableData = res.data.data
+      const res = await this.$api.getAuditList();
+      this.tableData = res.data.data;
+    },
+    openDialog(index, id) {
+      const that = this;
+      if (index) {
+        // 拒绝
+        this.$confirm("确认拒绝这个提交？")
+          .then(_ => {
+            this.$message('删除成功');
+            this.delNav(id)
+            this.getData()
+          })
+          .catch(_ => {});
+      } else {
+        const filterData = this.tableData.filter(item => item._id == id)[0];
+        debugger
+        const {
+          classify,
+          name, href, desc, logo
+        } = filterData;
+        const data = {
+          classify: classify,
+          icon: "el-icon-edit",
+          sites: {
+            name: name,
+            href: href,
+            desc: desc,
+            logo: logo
+          }
+        };
+        this.$confirm("确认添加到首页？")
+          .then(_ => {
+            this.$message('添加成功');
+            this.addNav(data);
+            this.getData()
+          })
+          .catch(_ => {});
+      }
+    },
+    async delNav(id) {
+      const res = await this.$api.delNav({ id: id });
+    },
+    async addNav(data) {
+      const res = await this.$api.addNav(data);
     },
     formatTime(time) {
-      return new Date(time).toLocaleDateString() + new Date(time).toLocaleTimeString()
+      return (
+        new Date(time).toLocaleDateString() +
+        new Date(time).toLocaleTimeString()
+      );
     }
   },
   created() {
-    this.getData()
+    this.getData();
   }
 };
 </script>

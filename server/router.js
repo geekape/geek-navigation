@@ -18,10 +18,30 @@ router.get("/index", (req, res) => {
         });
 });
 
-// 添加一个导航
+// 提交一个导航
 router.post("/audit/add", (req, res) => {
     // 创建一个新数据
     auditModel.create(req.body, function () { })
+})
+
+// 删除、拒绝一个导航
+router.post("/audit/del", (req, res) => {
+    //使用Student model上的create方法储存数据
+    auditModel.remove({ _id: req.body.id }, (err, result) => {
+        console.log(result)
+    })
+})
+
+// 审核通过一个导航
+router.post("/nav/add", (req, res) => {
+   
+
+    navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } }, function (res, err) {
+        if (err.n === 0) {
+            // 创建一个新数据
+            navData.create(req.body, function () { })
+        }
+    })
 })
 
 // 请求审核列表
