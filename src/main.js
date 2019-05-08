@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from "./router"
+import api from "./api"
 import Mock from "./mock"
-import axios from 'axios'
 
 Vue.config.productionTip = false
 
@@ -12,7 +12,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
-Vue.prototype.$http= axios
+Vue.prototype.$api= api
 Vue.config.productionTip = false
 
 new Vue({

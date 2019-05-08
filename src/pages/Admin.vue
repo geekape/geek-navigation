@@ -7,7 +7,7 @@
       <el-table-column label="提交日期" width="180">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
-          <span style="margin-left: 10px">{{ scope.row.date }}</span>
+          <span style="margin-left: 10px">{{ formatTime(scope.row.time) }}</span>
         </template>
       </el-table-column>
       <el-table-column label="网站名称" width="180">
@@ -44,16 +44,20 @@
 export default {
   data() {
     return {
-      tableData: [
-        {
-          date: "2016-05-02",
-          classify: '网站分类',
-          name: '网站名称',
-          href: 'http://www.baidu.com',
-          desc: '这是网站描述',
-        }
-      ]
-    };
+      tableData: []
+    }
+  },
+  methods: {
+    async getData() {
+      const res = await this.$api.getAuditList()
+      this.tableData = res.data.data
+    },
+    formatTime(time) {
+      return new Date(time).toLocaleDateString() + new Date(time).toLocaleTimeString()
+    }
+  },
+  created() {
+    this.getData()
   }
 };
 </script>

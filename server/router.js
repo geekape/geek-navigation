@@ -4,10 +4,11 @@ const express = require("express");
 const router = express.Router();
 //引入数据模型模块
 const navData = require("./model/navSchema");
+const auditModel = require("./model/auditSchema");
 const account = require("./model/account");
 
-// 查询所有导航网站数据
-router.get("/data", (req, res) => {
+// 导航站首页
+router.get("/index", (req, res) => {
     navData.find({})
         .then(datas => {
             res.json(datas);
@@ -17,20 +18,25 @@ router.get("/data", (req, res) => {
         });
 });
 
-
-
-// 添加一个英雄信息路由
-router.post("/data", (req, res) => {
-    //使用Hero model上的create方法储存数据
-    navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } }, function (res, err) {
-        if (err.n === 0) {
-
-            // 创建一个新数据
-            navData.create(req.body, function () { })
-        }
-    })
+// 添加一个导航
+router.post("/audit/add", (req, res) => {
+    // 创建一个新数据
+    auditModel.create(req.body, function () { })
 })
 
-
+// 请求审核列表
+router.get("/audit/list", (req, res) => {
+    auditModel.find({})
+        .then(datas => {
+            let data = {}
+            data.data = datas
+            data.status = 200
+            data.msg = 'ok'
+            res.json(data);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
 
 module.exports = router;
