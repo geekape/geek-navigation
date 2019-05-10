@@ -5,8 +5,7 @@ function resolve(dir) {
     return path.join(__dirname, dir)
 }
 module.exports = {
-    baseUrl: process.env.NODE_ENV === 'production' ?
-        './' : '/',
+    baseUrl: './',
     chainWebpack: config => {
         config.resolve.alias
             .set('images', resolve('src/assets/img/'))
@@ -24,7 +23,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://localhost:3000',
+                target: 'http://localhost:4000',
                 changeOrigin: true
             },
 

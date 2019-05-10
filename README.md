@@ -2,6 +2,10 @@
 
 猿梦极客导航，致力于方便程序员寻找各种网络资源。
 
+## 效果图
+![首页](./images/page_index.png)
+![后台页](./images/page_admin.png)
+
 ## 版本更新
 - v.1.0 版本主要是静态的导航页面
 - v.x... 修复一些BUG，具体请看[commit](https://github.com/geekape/geek-navigation/commits/master)
@@ -15,8 +19,7 @@
 - [x] 管理员审核页面
 - [ ] 页面组件化
 - [ ] eslint规范代码
-- [ ]　设置默认的登录用户,后台可修改用户
-- [ ] 修改为本地JSON存储版
+- [ ] 设置默认的登录用户,后台可修改用户
 
 ## 使用
 ```js
