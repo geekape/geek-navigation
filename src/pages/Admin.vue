@@ -32,8 +32,8 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button size="mini" @click="openDialog(0, scope.row._id)">通过</el-button>
-          <el-button size="mini" type="danger" @click="openDialog(1, scope.row._id)">拒绝</el-button>
+          <el-button size="mini" @click="openDialog(0, scope.row._id, scope.$index)">通过</el-button>
+          <el-button size="mini" type="danger" @click="openDialog(1, scope.row._id, scope.$index)">拒绝</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -52,25 +52,22 @@ export default {
       const res = await this.$api.getAuditList();
       this.tableData = res.data.data;
     },
-    openDialog(index, id) {
+    openDialog(type, id, index) {
       const that = this;
-      if (index) {
+      if (type) {
         // 拒绝
         this.$confirm("确认拒绝这个提交？")
           .then(_ => {
-            this.$message('删除成功');
-            this.delNav(id)
-            this.getData()
+            this.$message("删除成功");
+            this.delNav(id);
+            this.tableData.splice(index, 1)
           })
           .catch(_ => {});
       } else {
         const filterData = this.tableData.filter(item => item._id == id)[0];
-        debugger
-        const {
-          classify,
-          name, href, desc, logo
-        } = filterData;
+        const { classify, name, href, desc, logo, _id } = filterData;
         const data = {
+          id: _id,
           classify: classify,
           icon: "el-icon-edit",
           sites: {
@@ -82,9 +79,9 @@ export default {
         };
         this.$confirm("确认添加到首页？")
           .then(_ => {
-            this.$message('添加成功');
+            this.$message("添加成功");
             this.addNav(data);
-            this.getData()
+            this.tableData.splice(index, 1)
           })
           .catch(_ => {});
       }
