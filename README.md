@@ -2,6 +2,9 @@
 
 猿梦极客导航，致力于方便程序员寻找各种网络资源。
 
+## 提示
+[静态导航版](https://github.com/geekape/geek-navigation/tree/master)
+
 ## 效果图
 ![首页](./images/page_index.png)
 ![后台页](./images/page_admin.png)
