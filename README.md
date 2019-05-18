@@ -2,27 +2,19 @@
 
 猿梦极客导航，致力于方便程序员寻找各种网络资源。
 
+## 功能导图
+![首页](./images/navigate.png)
+
 ## 提示
 [静态导航版](https://github.com/geekape/geek-navigation/tree/master)
+
+导航还有不少问题，欢迎各位朋友反馈，在[issues](https://github.com/geekape/geek-navigation/issues)提出，我会尽快解决。
 
 ## 效果图
 ![首页](./images/page_index.png)
 ![后台页](./images/page_admin.png)
 
-## 版本更新
-- v.1.0 版本主要是静态的导航页面
-- v.x... 修复一些BUG，具体请看[commit](https://github.com/geekape/geek-navigation/commits/master)
-- v.2.0 使用Vue+Express+MongoDB的动态导航站，支持用户提交网站，后台管理员审核通过才显示到前台。
 
-## 进度
-- [x] 将静态导航改为Vue
-- [x] mock数据  
-- [x] MongoDB对接，显示和增加网站
-- [x] 登录页面
-- [x] 管理员审核页面
-- [ ] 页面组件化
-- [ ] eslint规范代码
-- [ ] 设置默认的登录用户,后台可修改用户
 
 ## 使用
 ```js
