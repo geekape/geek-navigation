@@ -2,6 +2,7 @@
   <section class="admin">
     <header class="admin-header">
       <h2>极客猿梦导航后台</h2>
+      <el-button type="primary" size="mini" class="go-home"　@click="$router.push('/')">返回首页</el-button>
     </header>
     <el-tabs v-model="activeName">
       <el-tab-pane label="用户提交" name="one">
@@ -179,6 +180,7 @@ export default {
 .el-table {
   width: auto;
 }
+
 </style>
 
 

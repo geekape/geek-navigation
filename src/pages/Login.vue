@@ -1,22 +1,18 @@
 <template>
   <section class="login">
         <el-card class="box-card">
-    <el-row>
-      <el-col :xs="10" :md="24">
           <h2 class="g-text-c">登录后台</h2>
           <el-form ref="form" :model="form" label-width="80px">
             <el-form-item label="账号">
               <el-input v-model="form.user"></el-input>
             </el-form-item>
             <el-form-item label="密码">
-              <el-input v-model="form.password"></el-input>
+              <el-input v-model="form.pwd"></el-input>
             </el-form-item>
             <el-form-item>
               <el-button size="medium" type="primary" @click="onSubmit">登录</el-button>
             </el-form-item>
           </el-form>
-      </el-col>
-    </el-row>
         </el-card>
   </section>
 </template>
@@ -27,7 +23,7 @@ export default {
     return {
       form: {
         user: "",
-        password: ""
+        pwd: ""
       }
     };
   },
@@ -38,6 +34,20 @@ export default {
           type: 'warning',
           duration: 10000
         });
+    },
+    async onSubmit(e) {
+      const {user, pwd} = this.form
+      let data = await this.$api.login(user, pwd)
+      data = data.data
+      if (data.status == 200) {
+        this.$storage.set('TOKEN', data.token)
+        this.$router.replace('/admin')
+      } else {
+        this.$message({
+          message: data.msg,
+          type: 'error'
+        });
+      }
     }
   },
   created() {

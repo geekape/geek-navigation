@@ -8,16 +8,17 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "node-sass": "^4.10.0",
-    "sass-loader": "^7.1.0",
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "element-ui": "^2.4.7",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
     "mockjs": "^1.0.1-beta3",
-    "mongoose": "^5.3.2"
+    "mongoose": "^5.3.2",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.3",

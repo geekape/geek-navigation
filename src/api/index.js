@@ -17,6 +17,12 @@ const api = {
   },
   addNav(data) {
     return request('/api/nav/add', 'post', data)
+  },
+  login(account, pwd) {
+    return request('/api/login', 'post', {
+      account,
+      pwd
+    })
   }
 }
 

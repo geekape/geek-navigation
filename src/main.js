@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from "./router"
 import api from "./api"
 import Mock from "./mock"
-
+import localStorage from "./utils/localStorage"
+const Storage = new localStorage('NAV')
 Vue.config.productionTip = false
 
 import './assets/styles/iconfont.css';
@@ -13,6 +14,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
 Vue.prototype.$api= api
+Vue.prototype.$storage= Storage
 Vue.config.productionTip = false
 
 new Vue({
