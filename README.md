@@ -8,7 +8,8 @@
 ## 提示
 [静态导航版](https://github.com/geekape/geek-navigation/tree/master)
 
-后台地址：［http://navigate.ym1024.com/admin］
+[后台地址](http://navigate.ym1024.com/admin)
+
 导航还有不少问题，欢迎各位朋友反馈，在[issues](https://github.com/geekape/geek-navigation/issues)提出，我会尽快解决。
 
 ## 效果图
