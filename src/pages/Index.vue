@@ -20,13 +20,9 @@
 						</a>
 					</li>
 				</ul>
-				<div class="item comment" @click="dialogFormVisible = true">
-					<a>
-						<i class="iconfont icon-liuyan"></i>新增网站
-					</a>
-				</div>
 			</nav>
 		</aside>
+		<div @click="dialogFormVisible = true"><i class="el-icon-plus"></i></div>
 		<section class="main">
 			<div id="mainContent">
 				<!-- 手机端菜单 -->
@@ -71,87 +67,29 @@
 					</div>
 				</div>
 			</footer>
-			<div id="fixedBar">
-				<svg
-					class="Zi Zi--BackToTop"
-					title="回到顶部"
-					fill="currentColor"
-					viewBox="0 0 24 24"
-					width="24"
-					height="24"
-				>
-					<path
-						d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"
-					></path>
-				</svg>
-			</div>
+			<back-top />
 		</section>
-		<el-dialog title="添加网站" :visible.sync="dialogFormVisible" width="320">
-			<el-form :model="form" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
-				<el-form-item label="网站名称" prop="name">
-					<el-input v-model="form.name"></el-input>
-				</el-form-item>
-				<el-form-item label="网站分类" prop="classify">
-					<el-select v-model="form.classify" placeholder="请选择网站分类">
-						<el-option
-							:label="classfiys.classify"
-							:value="classfiys.classify"
-							v-for="classfiys in data"
-							:key="classfiys._id"
-						></el-option>
-					</el-select>
-				</el-form-item>
-				<el-form-item label="网站链接" prop="href">
-					<el-input v-model="form.href"></el-input>
-				</el-form-item>
-				<el-form-item label="网站描述" prop="desc">
-					<el-input type="textarea" v-model="form.desc"></el-input>
-				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" @click="submitForm('form')">立即创建</el-button>
-					<el-button @click="resetForm('form')">重置</el-button>
-				</el-form-item>
-			</el-form>
-		</el-dialog>
+		<add-nav-btn　:data="data" />
+		
 	</div>
 </template>
 
 <script>
+import BackTop from '@/components/BackTop'
+import AddNavBtn from '@/components/AddNavBtn'
 export default {
   data() {
     return {
       data: [],
-      scroll: 0,
+			scroll: 0,
       selfIndex: 0,
-      dialogTableVisible: false,
-      dialogFormVisible: false,
       isLeftbar: true,
-      form: {
-        classify: "",
-        icon: "el-icon-edit",
-        name: "",
-        href: "",
-        desc: "",
-        logo: ""
-      },
-      rules: {
-        classify: [
-          {
-            required: true,
-            message: "请选择网站分类",
-            trigger: "change"
-          }
-        ],
-        name: [
-          {
-            required: true,
-            message: "请填写网站名称",
-            trigger: "change"
-          }
-        ]
-      }
     };
-  },
+	},
+	components: {
+		BackTop,
+		AddNavBtn
+	},
   computed: {},
   methods: {
     jump(idx) {
@@ -172,25 +110,8 @@ export default {
       // Safari
       window.pageYOffset = selfOffsetTop;
     },
-    submitForm(formName) {
-      var that = this;
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-          this.form.time = new Date().getTime();
-          this.$message("提交成功，后台审核通过后才会显示");
-          this.dialogFormVisible = false;
-          this.addNav(this.form);
-        } else {
-          return false;
-        }
-      });
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-    },
-    async addNav(data) {
-      const res = await this.$api.addAudit(data);
-    },
+   
+    
     async getData() {
       const res = await this.$api.getHome();
       this.data = res.data;
@@ -200,14 +121,14 @@ export default {
       let scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop;
       let allSite = document.querySelectorAll(".box");
-
       for (let i = 0; i < allSite.length; i++) {
         if (scrollTop >= allSite[i].offsetTop) {
           that.selfIndex = i;
         }
       }
     }
-  },
+	},
+
   created() {
     const that = this;
     this.getData();
@@ -232,4 +153,6 @@ export default {
 .el-dialog {
   min-width: 320px;
 }
+
+
 </style>

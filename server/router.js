@@ -12,7 +12,7 @@ const jwt = require('jsonwebtoken');
 router.get("/index", (req, res) => {
 	navData.find({})
 		.then(datas => {
-		
+
 			res.json(datas);
 		})
 		.catch(err => {
@@ -35,7 +35,6 @@ router.post("/audit/del", (req) => {
 
 // 审核通过一个导航
 router.post("/nav/add", (req, res) => {
-	console.log(`nav add接口：`,req, res)
 	auditModel.remove({ _id: req.body.id }, (err, result) => { })
 
 	navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } }, function (res, err) {
@@ -44,6 +43,11 @@ router.post("/nav/add", (req, res) => {
 			navData.create(req.body, function () { })
 		}
 	})
+})
+
+// 删除一个导航
+router.post("/nav/del", (req, res) => {
+	navData.update({ _id: req.body.id }, { $pull: { sites: { name: req.body.name } } })
 })
 
 // 请求审核列表
@@ -63,8 +67,7 @@ router.get("/audit/list", (req, res) => {
 
 // 登录
 router.post("/login", (req, res) => {
-	console.log(req.body)
-	const {account, pwd} = req.body
+	const { account, pwd } = req.body
 
 	// 接口状态
 	let data = {

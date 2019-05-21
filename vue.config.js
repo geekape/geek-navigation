@@ -5,7 +5,7 @@ function resolve(dir) {
     return path.join(__dirname, dir)
 }
 module.exports = {
-    baseUrl: './',
+    publicPath: './',
     chainWebpack: config => {
         config.resolve.alias
             .set('images', resolve('src/assets/img/'))

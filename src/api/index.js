@@ -12,11 +12,17 @@ const api = {
   getAuditList() {
     return request('/api/audit/list')
   },
-  delNav(data) {
+  delAuditNav(data) {
     return request('/api/audit/del', 'post', data)
   },
   addNav(data) {
     return request('/api/nav/add', 'post', data)
+  },
+  delNav(id, name) {
+    return request('/api/nav/del', 'post', {
+      id,
+      name
+    })
   },
   login(account, pwd) {
     return request('/api/login', 'post', {

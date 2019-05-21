@@ -42,7 +42,7 @@
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)"
+                  @click="handleDelete(scope.$index, item._id, scope.row)"
                 >删除</el-button>
               </template>
             </el-table-column>
@@ -115,7 +115,7 @@ export default {
         this.$confirm("确认拒绝这个提交？")
           .then(_ => {
             this.$message("删除成功");
-            this.delNav(id);
+            this.delAuditNav(id);
             this.tableData.splice(index, 1);
           })
           .catch(_ => {});
@@ -143,8 +143,8 @@ export default {
       }
     },
     // 拒绝－直接删除提交
-    async delNav(id) {
-      const res = await this.$api.delNav({ id: id });
+    async delAuditNav(id) {
+      const res = await this.$api.delAuditNav({ id: id });
     },
     // 新增－展示到前台
     async addNav(data) {
@@ -154,6 +154,11 @@ export default {
     async getAllNav() {
       const res = await this.$api.getHome();
       this.tableNavData = res.data;
+    },
+    // 监听删除导航
+    async handleDelete(index, id, item) {
+      const name = item.name
+      const data = await this.$api.delNav(id, name)
     },
     formatTime(time) {
       return (
