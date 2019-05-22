@@ -47,10 +47,12 @@ router.post("/nav/add", (req, res) => {
 
 // 删除一个导航
 router.post("/nav/del", (req, res) => {
-	navData.update({ _id: req.body.id }, { $pull: { sites: { name: req.body.name } } })
+	navData.update({ _id: req.body.id }, { $pull: { sites: { name: req.body.name } } }, function (res, err) {
+		console.log(res, err)
+	})
 })
 
-// 请求审核列表
+	// 请求审核列表
 router.get("/audit/list", (req, res) => {
 	auditModel.find({})
 		.then(datas => {
