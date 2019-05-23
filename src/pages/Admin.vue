@@ -42,7 +42,7 @@
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, item._id, scope.row)"
+                  @click="handleDelete(scope.$index, item._id, scope.row, index)"
                 >删除</el-button>
               </template>
             </el-table-column>
@@ -156,9 +156,12 @@ export default {
       this.tableNavData = res.data;
     },
     // 监听删除导航
-    async handleDelete(index, id, item) {
+    async handleDelete(index, id, item, tableNavDataIndex) {
       const name = item.name
+      this.tableNavData[tableNavDataIndex].sites.splice(index, 1)
+      this.$message("删除成功");
       const data = await this.$api.delNav(id, name)
+      
     },
     formatTime(time) {
       return (

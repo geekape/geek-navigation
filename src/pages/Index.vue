@@ -15,14 +15,13 @@
 				<ul class="nav-item" id="navItem">
 					<li v-for="(item,index) in data" :key="index" @click="jump(index)">
 						<a :class="{active: index == selfIndex}">
-							<i :class="item.icon" class="icon"></i>
+							<i class="el-icon-position"></i>
 							{{item.classify}}
 						</a>
 					</li>
 				</ul>
 			</nav>
 		</aside>
-		<div @click="dialogFormVisible = true"><i class="el-icon-plus"></i></div>
 		<section class="main">
 			<div id="mainContent">
 				<!-- 手机端菜单 -->
@@ -45,51 +44,40 @@
 							{{item.classify}}
 						</div>
 					</div>
-					<div v-for="(sub,idx) in item.sites" :key="'sub-'+idx">
-						<a target="_blank" :href="sub.href">
-							<div class="item">
-								<div class="logo">
-									<img v-if="sub.logo" :src="sub.logo" :alt="sub.name">
-									<img v-else src="~images/not-website.png" :alt="sub.name">
-									{{sub.name}}
-								</div>
-								<div class="desc">{{sub.desc || '这个网站什么描述也没有...'}}</div>
-							</div>
-						</a>
-					</div>
+					<NavItem :data="sub"  v-for="(sub,idx) in item.sites" :key="'sub-'+idx" />
 				</div>
 			</div>
 			<footer class="footer">
 				<div class="copyright">
 					<div>
 						Copyright © 2018- 2050
-						<a href="http://www.zcbboke.com">极客猿梦导航 钟储兵博客</a>
+						<a href="http://geekape.github.io">极客猿梦导航 钟储兵博客</a>
 					</div>
 				</div>
 			</footer>
-			<back-top />
-		</section>
-		<add-nav-btn　:data="data" />
-		
+			<back-top/>
+		</section><add-nav-btn :data="data" />
 	</div>
 </template>
 
 <script>
-import BackTop from '@/components/BackTop'
-import AddNavBtn from '@/components/AddNavBtn'
+import BackTop from "@/components/BackTop";
+import AddNavBtn from "@/components/AddNavBtn";
+import NavItem from "@/components/NavItem";
 export default {
   data() {
     return {
       data: [],
-			scroll: 0,
+      scroll: 0,
       selfIndex: 0,
-      isLeftbar: true,
+      isLeftbar: true
     };
-	},
-	components: {
-		BackTop,
-		AddNavBtn
-	},
+  },
+  components: {
+    BackTop,
+		AddNavBtn,
+		NavItem
+  },
   computed: {},
   methods: {
     jump(idx) {
@@ -110,8 +98,7 @@ export default {
       // Safari
       window.pageYOffset = selfOffsetTop;
     },
-   
-    
+
     async getData() {
       const res = await this.$api.getHome();
       this.data = res.data;
@@ -127,7 +114,7 @@ export default {
         }
       }
     }
-	},
+  },
 
   created() {
     const that = this;
