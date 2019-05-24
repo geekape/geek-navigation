@@ -15,7 +15,7 @@
 				<ul class="nav-item" id="navItem">
 					<li v-for="(item,index) in data" :key="index" @click="jump(index)">
 						<a :class="{active: index == selfIndex}">
-							<i class="el-icon-position"></i>
+							<i :class="item.icon"></i>
 							{{item.classify}}
 						</a>
 					</li>

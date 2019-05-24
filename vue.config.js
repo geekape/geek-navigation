@@ -9,6 +9,7 @@ module.exports = {
     chainWebpack: config => {
         config.resolve.alias
             .set('images', resolve('src/assets/img/'))
+            .set('styles', resolve('src/assets/styles/'))
     },
     css: {
         loaderOptions: {

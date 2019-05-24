@@ -8,7 +8,7 @@ const Storage = new localStorage('NAV')
 Vue.config.productionTip = false
 
 import './assets/styles/iconfont.css';
-
+import './assets/styles/font.css';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
