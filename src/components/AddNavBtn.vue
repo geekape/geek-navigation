@@ -11,7 +11,7 @@
     <el-dialog title="添加网站" :visible.sync="dialogFormVisible" width="320">
       <el-form :model="form" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
         <el-form-item label="网站名称" prop="name">
-          <el-input v-model="form.name"></el-input>
+          <el-input placeholder="网站名称" v-model="form.name"></el-input>
         </el-form-item>
         <el-form-item label="网站分类" prop="classify">
           <el-select v-if="!isDiyClassify" v-model="form.classify" placeholder="请选择网站分类">
@@ -28,7 +28,10 @@
           </div>
         </el-form-item>
         <el-form-item label="网站链接" prop="href">
-          <el-input v-model="form.href"></el-input>
+          <el-input　placeholder="http://www.baidu.com/" v-model="form.href"></el-input>
+        </el-form-item>
+        <el-form-item label="网站LOGO" prop="logo">
+          <el-input placeholder="默认使用[http://www.baidu.com/favicon.icon]格式" v-model="form.logo"></el-input>
         </el-form-item>
         <el-form-item label="网站描述" prop="desc">
           <el-input type="textarea" v-model="form.desc"></el-input>
@@ -70,6 +73,13 @@ export default {
           {
             required: true,
             message: "请填写网站名称",
+            trigger: "change"
+          }
+        ],
+        href: [
+          {
+            required: true,
+            message: "请填写网站链接",
             trigger: "change"
           }
         ]

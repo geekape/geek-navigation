@@ -1,15 +1,11 @@
 <template>
-  <div class="m-navitem">
-    <a target="_blank" :href="data.href">
-      <div class="item">
-        <div class="logo">
-          <el-image :src="data.logo" fit="cover" lazy></el-image>
-          <span>{{data.name}}</span>
-        </div>
-        <div class="desc">{{data.desc || '这个网站什么描述也没有...'}}</div>
+  <a class="item" target="_blank" :href="data.href">
+      <div class="logo">
+        <el-image :src="data.logo" fit="cover" lazy></el-image>
+        <span>{{data.name}}</span>
       </div>
-    </a>
-  </div>
+      <div class="desc">{{data.desc || '这个网站什么描述也没有...'}}</div>
+  </a>
 </template>
 
 <script>
@@ -21,9 +17,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.m-navitem {
-
-}
 
 .main {
   .box {
@@ -38,7 +31,6 @@ export default {
       }
     }
     .item {
-          
       width: 20%;
       border: 1px solid #e4ecf3;
       box-shadow: 1px 2px 3px #f2f6f8;
@@ -60,7 +52,7 @@ export default {
       }
       .logo {
         align-items: center;
-    display: flex;
+        display: flex;
         height: 40px;
         position: relative;
         font-size: 14px;

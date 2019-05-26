@@ -1,9 +1,12 @@
-import axios from 'axios'
+import Axios from 'axios'
 import Vue from 'vue'
-
+import Storage from "../utils/localStorage"
+const storage = new Storage('NAV')
 // axios改造
-axios.defaults.timeout = 3000
-
+var axios = Axios.create({
+  timeout: 3000,
+  headers: {'token': storage.get('TOKEN')}
+});
 
 // 请求前
 axios.interceptors.request.use(res => {

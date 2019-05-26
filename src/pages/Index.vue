@@ -1,27 +1,27 @@
 
 <template>
 	<div class="index container">
-		<aside class="left-bar" id="leftBar" :style="{left: isLeftbar ? 0 : '-249px'}">
-			<div class="title">
-				<p>猿梦极客导航</p>
+    <el-row　class="left-bar" :style="{left: isLeftbar ? 0 : '-249px'}">
+      <div class="title">
+				<img class="logo" src="/favicon.ico" />
+        <span>猿梦极客导航</span>
 			</div>
-			<nav class="nav">
-				<div class="item active">
-					<a href="">
-						<i class="iconfont icon-daohang2"></i>极客导航
-					</a>
-					<i class="line"></i>
-				</div>
-				<ul class="nav-item" id="navItem">
-					<li v-for="(item,index) in data" :key="index" @click="jump(index)">
-						<a :class="{active: index == selfIndex}">
-							<i :class="item.icon"></i>
-							{{item.classify}}
-						</a>
-					</li>
-				</ul>
-			</nav>
-		</aside>
+      <el-col :span="24">
+        <el-menu
+        default-active="0"
+          class="el-menu-vertical-demo"
+          background-color="#30333c"
+          text-color="#6b7386"
+          active-text-color="#fff"
+          >
+          <el-menu-item :index="item._id"　v-for="(item,index) in data" :key="index" @click="jump(index)">
+            <i :class="item.icon"></i>
+            <span slot="title">{{item.classify}}</span>
+          </el-menu-item>
+        </el-menu>
+      </el-col>
+  </el-row>
+	
 		<section class="main">
 			<div id="mainContent">
 				<!-- 手机端菜单 -->
@@ -141,5 +141,9 @@ export default {
   min-width: 320px;
 }
 
-
+.logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
 </style>

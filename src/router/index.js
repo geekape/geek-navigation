@@ -30,12 +30,12 @@ let router = new VueRouter({
 	routes
 })
 
-router.beforeEach((to, from, next) => {
-	const token = Vue.prototype.$storage.get('TOKEN')
-  if (to.path == '/admin' && !token) {
-    return next('/login')
-  }
-   next()
-})
+// router.beforeEach((to, from, next) => {
+// 	const token = Vue.prototype.$storage.get('TOKEN')
+//   if (to.path == '/admin' && !token) {
+//     return next('/login')
+//   }
+//    next()
+// })
 
 export default router;

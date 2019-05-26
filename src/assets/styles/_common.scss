@@ -1,7 +1,6 @@
 .container {
   .left-bar {
     position: fixed;
-    padding: 0 20px;
     background: #30333c;
     color: #6b7386;
     box-sizing: border-box;
@@ -9,6 +8,7 @@
     height: 100vh;
     display: flex;
     width: 248px;
+    overflow-y: scroll;
     transition: all 0.5s;
   }
   .main {
@@ -35,66 +35,16 @@
 
 .left-bar {
   .title {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #30333c;
     color: white;
     font-size: 18px;
-    height: 50px;
-    p {
-      text-align: center;
-    }
-  }
-  .nav {
-    flex: 1;
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    padding-bottom: 70px;
-    .item {
-      height: 48px;
-      line-height: 46px;
-      border-top: 2px solid hsla(0, 0%, 100%, 0.04);
-      border-bottom: 2px solid hsla(0, 0%, 100%, 0.04);
-    }
-    > .active {
-      position: relative;
-      .line {
-        position: absolute;
-        right: 0px;
-        height: 30px;
-        width: 3px;
-        background: #3a85ff;
-        z-index: 100000;
-        margin-top: 10px;
-      }
-    }
-  }
-  .nav-item {
-    height: 90vh;
-    overflow-y: scroll;
-    &::-webkit-scrollbar-track {
-      @extend .set-scroll;
-    }
-    &::-webkit-scrollbar-thumb {
-      @extend .set-scroll;
-    }
-    &::-webkit-scrollbar {
-      @extend .set-scroll;
-    }
-    li {
-      height: 32px;
-      line-height: 32px;
-      > .active,
-      > .active i,
-      &:hover a,
-      &:hover i {
-        color: #fff;
-      }
-      a {
-        text-decoration: none;
-        font-size: 12px;
-        display: inline-block;
-        width: 100%;
-        color: #6b7386;
-      }
-    }
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid hsla(0,0%,100%,.04);
   }
 }
 
