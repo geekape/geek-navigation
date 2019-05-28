@@ -28,13 +28,7 @@ export default {
     };
   },
   methods: {
-    pageInit() {
-        this.$message({
-          message: '管理员账号和密码都是admin,登录后请及时修改',
-          type: 'warning',
-          duration: 10000
-        });
-    },
+  
     async onSubmit(e) {
       const {user, pwd} = this.form
       let data = await this.$api.login(user, pwd)
@@ -49,9 +43,6 @@ export default {
         });
       }
     }
-  },
-  created() {
-    this.pageInit()
   }
 };
 </script>

@@ -7,6 +7,9 @@ const navData = require("./model/navSchema");
 const auditModel = require("./model/auditSchema");
 const account = require("./model/account");
 const jwt = require('jsonwebtoken');
+const app = express()
+const secret = '123456'; //密钥
+app.set('superSecret', secret);
 
 // 导航站首页
 router.get("/index", (req, res) => {
@@ -52,38 +55,53 @@ router.post("/nav/del", (req, res) => {
 	})
 })
 
-	// 请求审核列表
-router.get("/audit/list", (req, res) => {&#x1F9DF;&#x200D;&#x2640;&#xFE0F;
-	auditModel.find({})
-		.then(datas => {
-			let data = {}
-			data.data = datas
-			data.status = 200
-			data.msg = 'ok'
-			res.json(data);
-		})
-		.catch(err => {
-			res.json(err);
-		});
+// 请求审核列表
+router.get("/audit/list", (req, res) => {
+	const token = req.headers.token
+	jwt.verify(token, app.get('superSecret'), function (err, decoded) {
+		//decoded　是得到的用户信息
+		if (decoded.admin != secret) {
+			return res.status(401).send({
+				status: 401,
+				msg: 'No token provided.'
+			});
+		} else {
+			auditModel.find({})
+				.then(datas => {
+					let data = {}
+					data.data = datas
+					data.status = 200
+					data.msg = 'ok'
+					res.json(data);
+				})
+				.catch(err => {
+					res.json(err);
+				});
+		}
+	})
+
+
 });
 
 // 登录
 router.post("/login", (req, res) => {
 	const { account, pwd } = req.body
 
-	// 接口状态
-	let data = {
-		status: 200,
-		msg: 'ok'
-	}
 	// 判断账号密码
-	if (account != 'admin' || pwd != 'admin') {
-		data.status = 400
-		data.msg = '账号或密码错误'
+	if (account != 'admin' || pwd != secret) {
+		res.json({
+			status: 400,
+			msg: '账号或密码错误',
+		});
 	} else {
-		data.token = jwt.sign({ admin: 'admin' }, 'shhhhh');
+		const token = jwt.sign({ 'admin': secret }, app.get('superSecret'))
+		res.json({
+			status: 200,
+			msg: 'ok',
+			token: token
+		});
 	}
-	res.json(data);
+
 });
 
 module.exports = router;

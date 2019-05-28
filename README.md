@@ -19,6 +19,10 @@
 
 
 ## 使用
+
+### 1. 修改后台登录密码
+打开根目录下的`server/router.js`文件，修改密钥**secret**的值。
+
 ```js
 // 1. 下载代码
 git clone git@github.com:geekape/geek-navigation.git

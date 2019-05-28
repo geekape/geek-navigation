@@ -2,7 +2,7 @@ const express = require('express');
 const data = require('./router')
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
-
+// const expressJwt = require("express-jwt");
 
 
 
@@ -14,6 +14,19 @@ var db = mongoose.connect('mongodb://47.75.178.162:27017/navigation');
 
 
 const app = express()
+// app.use(expressJwt({ secret: '123456', credentialsRequired: false, }).unless({ path: ['/api/index', '/api/login'] }));
+
+// app.use(function (err, req, res, next) {
+//     console.log(err, req)
+//     if (err.name === 'UnauthorizedError') {
+//         return res.status(401).send({
+//             status: 401,
+//             msg: 'No token provided.'
+//         });
+//     }
+    
+//     next()
+// });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', data)
