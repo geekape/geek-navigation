@@ -8,7 +8,7 @@ const auditModel = require("./model/auditSchema");
 const account = require("./model/account");
 const jwt = require('jsonwebtoken');
 const app = express()
-const secret = '123456'; //密钥
+const secret = '123123'; //密钥
 app.set('superSecret', secret);
 
 // 导航站首页

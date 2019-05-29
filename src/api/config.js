@@ -27,6 +27,7 @@ axios.interceptors.response.use(response => {
   if (response.token) {
     storage.set('TOKEN', response.token);
   }
+  debugger
   if (response.status == 401) {
     router.push('/login');
   }
