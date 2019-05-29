@@ -23,6 +23,9 @@
 ### 1. 修改后台登录密码
 打开根目录下的`server/router.js`文件，修改密钥**secret**的值。
 
+### 2. 本地mongodb没导航数据？
+运行爬虫文件`node reptile/index.js`,确保你已经开启了本地Mongodb数据库，就可以爬导航到本地的数据库了
+![后台页](./images/mongodb.png)
 
 ```js
 // 1. 下载代码
