@@ -1,7 +1,9 @@
-const superagent = require('superagent');
 const request = require('request');
 const cheerio = require('cheerio');
-const fs = require('fs');
+const mongoose = require("mongoose");
+var db = mongoose.connect('mongodb://localhost:27017/navigation');
+//引入数据模型模块
+const navData = require("../server/model/navSchema");
 
 
 /**
@@ -34,15 +36,21 @@ function reptile(url, type) {
         }
         arr.push(obj)
       }
-      console.log(JSON.stringify(arr))
+      // 存入数据库
+      navData.create(arr, function () {
+        
+      })
     }
   });
 }
+
+
+
 async function main() {
-  await reptile('http://chuangzaoshi.com/index','［设计］')
-  await reptile('http://chuangzaoshi.com/code','［前端］')
-  await reptile('http://chuangzaoshi.com/operate','［运营］')
-  await reptile('http://chuangzaoshi.com/product','［产品］')
+  await reptile('http://chuangzaoshi.com/index', '［设计］')
+  await reptile('http://chuangzaoshi.com/code', '［前端］')
+  await reptile('http://chuangzaoshi.com/operate', '［运营］')
+  await reptile('http://chuangzaoshi.com/product', '［产品］')
 }
 
 main()
