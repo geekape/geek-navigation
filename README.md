@@ -6,7 +6,9 @@
 ![首页](./images/navigate.png)
 
 ## 提示
-[静态导航版](https://github.com/geekape/geek-navigation/tree/master)
+[老版本纯静态导航版](https://github.com/geekape/geek-navigation/tree/master)
+[JSON静态导航版](https://github.com/geekape/geek-navigation/tree/json-navigation)
+[数据库动态导航版](https://github.com/geekape/geek-navigation/tree/vue2)
 
 [后台地址](http://navigate.ym1024.com/admin)
 
