@@ -12,6 +12,8 @@
 
 导航还有不少问题，欢迎各位朋友反馈，在[issues](https://github.com/geekape/geek-navigation/issues)提出，我会尽快解决。
 
+> 如果你对这个项目有兴趣，可点`star`保持关注，当然，你也可以`Fork`代码，自己完善这个项目，你愿意的话可以`pull`到我仓库来合并。
+
 ## 效果图
 ![首页](./images/page_index.png)
 ![后台页](./images/page_admin.png)
