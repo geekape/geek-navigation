@@ -128,9 +128,8 @@ export default {
   &,
   .el-button {
     border: 0;
-    width: 45px;
-    height: 45px;
     display: flex;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     position: fixed;

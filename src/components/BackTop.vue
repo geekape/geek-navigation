@@ -23,8 +23,7 @@ export default {
 .el-button,
 .backtop {
   border: 0;
-  width: 45px;
-  height: 45px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

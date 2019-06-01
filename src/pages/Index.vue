@@ -56,8 +56,9 @@
       <footer class="footer">
         <div class="copyright">
           <div>
-            Copyright © 2018- 2050
-            <a href="http://geekape.github.io">极客猿梦导航 钟储兵博客</a>
+            Copyright © 2019- 2050
+            <a href="https://github.com/geekape/blog">　钟储兵博客</a>
+            <a href="https://github.com/geekape/geek-navigation">　导航源码下载</a>
           </div>
         </div>
       </footer>

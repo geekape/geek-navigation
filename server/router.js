@@ -58,7 +58,9 @@ router.post("/nav/del", (req, res) => {
 // 请求审核列表
 router.get("/audit/list", (req, res) => {
 	const token = req.headers.token
+	console.log('token:',token)
 	jwt.verify(token, app.get('superSecret'), function (err, decoded) {
+		console.log(decoded, err)
 		//decoded　是得到的用户信息
 		if (decoded.admin != secret) {
 			return res.status(401).send({
@@ -101,7 +103,7 @@ router.post("/login", (req, res) => {
 			token: token
 		});
 	}
-
+	
 });
 
 module.exports = router;
