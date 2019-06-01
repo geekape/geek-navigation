@@ -64,13 +64,11 @@
       </footer>
       <back-top/>
     </section>
-    <add-nav-btn :data="data"/>
   </section>
 </template>
 
 <script>
 import BackTop from "@/components/BackTop";
-import AddNavBtn from "@/components/AddNavBtn";
 import NavItem from "@/components/NavItem";
 export default {
   data() {
@@ -84,7 +82,6 @@ export default {
   },
   components: {
     BackTop,
-    AddNavBtn,
     NavItem
   },
   watch: {
@@ -121,7 +118,7 @@ export default {
     },
 
     async getData() {
-      const res = await this.$api.getHome();
+      const res = await this.$http.get('./nav.json');
       this.data = res.data;
     },
     dataScroll() {

@@ -2,48 +2,25 @@
 
 猿梦极客导航，致力于方便程序员寻找各种网络资源。
 
-## 功能导图
-![首页](./images/navigate.png)
-
-## 提示
-[静态导航版](https://github.com/geekape/geek-navigation/tree/master)
-
-[后台地址](http://navigate.ym1024.com/admin)
-
-导航还有不少问题，欢迎各位朋友反馈，在[issues](https://github.com/geekape/geek-navigation/issues)提出，我会尽快解决。
-
-## 效果图
-![首页](./images/page_index.png)
-![后台页](./images/page_admin.png)
-
-
-
-## 使用
-
-### 1. 修改后台登录密码
-打开根目录下的`server/router.js`文件，修改密钥**secret**的值。
-
-### 2. 本地mongodb没导航数据？
-运行爬虫文件`node reptile/index.js`,确保你已经开启了本地Mongodb数据库，就可以爬导航到本地的数据库了
-![后台页](./images/mongodb.png)
+## JSON本地静态版
 
 ```js
-// 1. 下载代码
-git clone git@github.com:geekape/geek-navigation.git
+// 1. 下载源码
+git clone https://github.com/geekape/geek-navigation/tree/json-navigation
 
-// 2. 本地安装包
-npm i 或者 cnpm i
+// 2.安装依赖,进入根目录
+npm install 或 cnpm install
 
-// 3.假设已启动mongodb，启动本地服务器
-node server/app.js
-
-// 4. 运行项目
+// 3. 运行
 npm run serve
 
-// 5. 预览项目
-http://localhost:8080
+// 4. 查看效果
+打开localhost:8080
 ```
-> 
+
+## 常见问题
+1. 添加导航
+所有导航数据在根目录下`public/nav.json`里，在某个分类下新增sites数据就可以了，看结构就知道的。（静态版还是比较麻烦，你可以尝试Mongodb数据存储版，可在线提交网站，后台管理所有网站，添加删除操作都方便,[点我跳转](https://github.com/geekape/geek-navigation/tree/vue2)）
 
 
 
