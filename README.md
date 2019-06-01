@@ -6,11 +6,17 @@
 ![首页](./images/navigate.png)
 
 ## 提示
-[静态导航版](https://github.com/geekape/geek-navigation/tree/master)
+[老版本纯静态导航版](https://github.com/geekape/geek-navigation/tree/master)
+
+[JSON静态导航版](https://github.com/geekape/geek-navigation/tree/json-navigation)
+
+[数据库动态导航版](https://github.com/geekape/geek-navigation/tree/vue2)
 
 [后台地址](http://navigate.ym1024.com/admin)
 
 导航还有不少问题，欢迎各位朋友反馈，在[issues](https://github.com/geekape/geek-navigation/issues)提出，我会尽快解决。
+
+> 如果你对这个项目有兴趣，可点`star`保持关注，当然，你也可以`Fork`代码，自己完善这个项目，你愿意的话可以`pull`到我仓库来合并。
 
 ## 效果图
 ![首页](./images/page_index.png)
@@ -19,11 +25,15 @@
 
 
 ## 使用
+### 1. 什么是数据库版？什么是静态JSON版本？
+为了方便无需配置数据库的小白，提供了静态[JSON版本的导航](https://github.com/geekape/geek-navigation/tree/json-navigation)，静态版本只能本地修改JSON添加导航，没有管理后台。
 
-### 1. 修改后台登录密码
+而相对于静态版的××数据库版本**，它提供了管理导航的界面，用户可在线提交网站，后台审核，并管理所有网站（推荐）
+
+### 2. 修改后台登录密码
 打开根目录下的`server/router.js`文件，修改密钥**secret**的值。
 
-### 2. 本地mongodb没导航数据？
+### 3. 本地mongodb没导航数据？
 运行爬虫文件`node reptile/index.js`,确保你已经开启了本地Mongodb数据库，就可以爬导航到本地的数据库了
 ![后台页](./images/mongodb.png)
 
