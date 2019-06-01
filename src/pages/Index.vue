@@ -3,7 +3,7 @@
   <section class="index container">
     <div class="left-bar" :style="{left: isLeftbar ? 0 : '-249px'}">
       <div class="title">
-        <img class="logo" src="/favicon.ico">
+        <img class="icon-logo" src="/favicon.ico">
         <span>猿梦极客导航</span>
       </div>
       <el-row>
@@ -176,9 +176,4 @@ export default {
   min-width: 320px;
 }
 
-.logo {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-}
 </style>

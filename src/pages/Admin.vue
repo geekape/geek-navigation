@@ -1,62 +1,92 @@
 <template>
-  <section class="admin">
-    <header class="admin-header">
-      <h2>极客猿梦导航后台</h2>
-      <el-button type="primary" size="mini" class="go-home"　@click="$router.push('/')">返回首页</el-button>
-    </header>
-    <el-tabs v-model="activeName">
-      <el-tab-pane label="用户提交" name="one">
-        <el-table :data="tableData">
-          <el-table-column label="提交日期" width="180">
-            <template slot-scope="scope">
-              <i class="el-icon-time"></i>
-              <span style="margin-left: 10px">{{ formatTime(scope.row.time) }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="网站名称" width="180" prop="name"></el-table-column>
-          <el-table-column label="网站分类" width="180" prop="classify"></el-table-column>
-          <el-table-column label="网站链接" width="180" prop="href"></el-table-column>
-          <el-table-column label="网站描述" width="180" prop="desc"></el-table-column>
-          <el-table-column label="操作">
-            <template slot-scope="scope">
-              <el-button size="mini" @click="openDialog(0, scope.row._id, scope.$index)">通过</el-button>
-              <el-button
-                size="mini"
-                type="danger"
-                @click="openDialog(1, scope.row._id, scope.$index)"
-              >拒绝</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-tab-pane>
-      <el-tab-pane label="所有导航" name="two">
-        <section v-for="(item,index) in tableNavData" :key="item._id">
-          <h3>{{item.classify}}</h3>
-          <el-table :data="item.sites">
-            <el-table-column label="网站名字" width="180" prop="name"></el-table-column>
+  <section class="admin container">
+    <div class="left-bar">
+      <div class="title">
+        <img class="icon-logo" src="/favicon.ico">
+        <span>猿梦极客导航后台</span>
+        <el-button @click="$router.go(-1)" class="go-back-home" type="primary">返回首页</el-button>
+      </div>
+      <el-row>
+        <el-col :span="24">
+          <el-menu
+            :default-active="active"
+            class="el-menu-vertical-demo"
+            background-color="#30333c"
+            text-color="#6b7386"
+            active-text-color="#fff"
+          >
+            <el-menu-item :index="0" @click="active=0">
+              <span slot="title">用户提交</span>
+            </el-menu-item>
+            <el-menu-item :index="1" @click="active=1">
+              <span slot="title">所有网站</span>
+            </el-menu-item>
+          </el-menu>
+        </el-col>
+      </el-row>
+    </div>
+    <section class="main">
+      <div id="mainContent">
+        <div class="user-commit-web" v-show="active==0">
+          <el-table :data="tableData">
+            <el-table-column label="提交日期" width="180">
+              <template slot-scope="scope">
+                <i class="el-icon-time"></i>
+                <span style="margin-left: 10px">{{ formatTime(scope.row.time) }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column label="网站名称" width="180" prop="name"></el-table-column>
+            <el-table-column label="网站分类" width="180" prop="classify"></el-table-column>
             <el-table-column label="网站链接" width="180" prop="href"></el-table-column>
-            <el-table-column label="网站描述" width="180" prop="desc"></el-table-column>Î
+            <el-table-column label="网站描述" width="180" prop="desc"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
-                <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">修改</el-button>
+                <el-button size="mini" @click="openDialog(0, scope.row._id, scope.$index)">通过</el-button>
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, item._id, scope.row, index)"
-                >删除</el-button>
+                  @click="openDialog(1, scope.row._id, scope.$index)"
+                >拒绝</el-button>
               </template>
             </el-table-column>
           </el-table>
-        </section>
-      </el-tab-pane>
-    </el-tabs>
+        </div>
+        <div class="all-web" v-show="active==1">
+          <section class="mb-15" v-for="(item,index) in tableNavData" :key="item._id">
+            <h3>{{item.classify}}</h3>
+            <el-table :data="item.sites">
+              <el-table-column label="网站名字" width="180" prop="name"></el-table-column>
+              <el-table-column label="网站链接" width="180" prop="href"></el-table-column>
+              <el-table-column label="网站描述" width="180" prop="desc"></el-table-column>Î
+              <el-table-column label="操作">
+                <template slot-scope="scope">
+                  <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">修改</el-button>
+                  <el-button
+                    size="mini"
+                    type="danger"
+                    @click="handleDelete(scope.$index, item._id, scope.row, index)"
+                  >删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </section>
+        </div>
+      </div>
+    </section>
+    <BackTop />
   </section>
 </template>
 
 <script>
+import BackTop from "@/components/BackTop";
+
 export default {
+  components: {
+    BackTop
+  },
   data() {
     return {
+      active: 0,
       tableData: [],
       tableNavData: [],
       tableData1: [
@@ -142,6 +172,9 @@ export default {
           .catch(_ => {});
       }
     },
+    handleEdit () {
+      this.$message("功能等待添加中...");
+    },
     // 拒绝－直接删除提交
     async delAuditNav(id) {
       const res = await this.$api.delAuditNav({ id: id });
@@ -157,11 +190,10 @@ export default {
     },
     // 监听删除导航
     async handleDelete(index, id, item, tableNavDataIndex) {
-      const name = item.name
-      this.tableNavData[tableNavDataIndex].sites.splice(index, 1)
+      const name = item.name;
+      this.tableNavData[tableNavDataIndex].sites.splice(index, 1);
       this.$message("删除成功");
-      const data = await this.$api.delNav(id, name)
-      
+      const data = await this.$api.delNav(id, name);
     },
     formatTime(time) {
       return (
@@ -178,15 +210,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.admin {
-  margin: 30px;
-
-  &-header {
-    margin-bottom: 50px;
-  }
-}
 .el-table {
   width: auto;
+}
+.main {
+  padding: 30px;
+}
+h3 {
+  margin: 0;
+  padding: 15px;
+  background: #fff;
+}
+.container .left-bar{
+  overflow: hidden;
+}
+.mb-15 {
+  margin-bottom: 15px;
+}
+.go-back-home {
+    font-size: 11px;
+    padding: 0;
+    background: #999;
+    border: 0;
+    border-radius: 30px;
+    margin-left: 5px;
+    padding: 3px;
+    &:active,
+    &:hover {
+      background: #999;
+    }
 }
 
 </style>
