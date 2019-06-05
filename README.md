@@ -13,26 +13,27 @@
 
 ![后台页](./images/page_admin.png)
 
-##　导航版本
-[老版本纯静态导航版](https://github.com/geekape/geek-navigation/tree/master)：最初的一版静态页面，数据都写在页面里的。
+## 导航版本
 
-[JSON静态导航版](https://github.com/geekape/geek-navigation/tree/json-navigation)：数据和页面分享，可以部署在`github`或`gitee`上使用，将dist目录下的文件上传到远程仓库里访问。
+- [老版本纯静态导航版](https://github.com/geekape/geek-navigation/tree/master)：最初的一版静态页面，数据都写在页面里的。
 
-[数据库动态导航版](https://github.com/geekape/geek-navigation/tree/vue2)：功能最全的版本，后续会增加更多功能
+- [JSON静态导航版](https://github.com/geekape/geek-navigation/tree/json-navigation)：数据和页面分享，可以部署在`github`或`gitee`上使用，将dist目录下的文件上传到远程仓库里访问。
 
-[后台地址](http://navigate.ym1024.com/admin)：给你也访问不了呀
+- [数据库动态导航版](https://github.com/geekape/geek-navigation/tree/vue2)：功能最全的版本，后续会增加更多功能
+
+- [后台地址](http://navigate.ym1024.com/admin)：给你也访问不了呀
 
 
-##　友情提示
+## 友情提示
 
-> 如果你对这个项目有兴趣，可点`star`保持关注，当然，你也可以`Fork`代码，自己完善这个项目，你愿意的话可以`pull`到我仓库来合并。
+- 如果你对这个项目有兴趣，可点`star`保持关注，当然，你也可以`Fork`代码，自己完善这个项目，你愿意的话可以`pull`到我仓库来合并。
 
-> 你如果遇到什么困难或bug，随时可以在[issues](https://github.com/geekape/geek-navigation/issues)提出，我会尽快解决。
+- 你如果遇到什么困难或bug，随时可以在[issues](https://github.com/geekape/geek-navigation/issues)提出，我会尽快解决。
 
 
 
 ## 常见问题
-> [已解决的问题列表](https://github.com/geekape/geek-navigation/issues?q=is%3Aissue+is%3Aclosed)
+- [已解决的问题列表](https://github.com/geekape/geek-navigation/issues?q=is%3Aissue+is%3Aclosed)
 
 ### 1. 什么是数据库版？什么是静态JSON版本？
 为了方便无需配置数据库的小白，提供了静态[JSON版本的导航](https://github.com/geekape/geek-navigation/tree/json-navigation)，静态版本只能本地修改JSON添加导航，没有管理后台。
