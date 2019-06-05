@@ -60,7 +60,7 @@
               <el-table-column label="网站描述" width="180" prop="desc"></el-table-column>Î
               <el-table-column label="操作">
                 <template slot-scope="scope">
-                  <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">修改</el-button>
+                  <el-button size="mini" @click="handleEdit(index, scope.row, item._id)">修改</el-button>
                   <el-button
                     size="mini"
                     type="danger"
@@ -74,62 +74,26 @@
       </div>
     </section>
     <BackTop />
+    <AddNavPopup :data="tableNavData" :show.sync="isNavPopup" :type="1" :editItem="editItem" />
   </section>
 </template>
 
 <script>
 import BackTop from "@/components/BackTop";
+import AddNavPopup from "@/components/AddNavPopup";
 
 export default {
   components: {
-    BackTop
+    BackTop,
+    AddNavPopup
   },
   data() {
     return {
+      isNavPopup: false,
+      editItem: {},
       active: 0,
       tableData: [],
       tableNavData: [],
-      tableData1: [
-        {
-          id: 1,
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          id: 2,
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          id: 3,
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄",
-          children: [
-            {
-              id: 31,
-              date: "2016-05-01",
-              name: "王小虎",
-              address: "上海市普陀区金沙江路 1519 弄"
-            },
-            {
-              id: 32,
-              date: "2016-05-01",
-              name: "王小虎",
-              address: "上海市普陀区金沙江路 1519 弄"
-            }
-          ]
-        },
-        {
-          id: 4,
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
-      ],
-
       activeName: "two"
     };
   },
@@ -172,8 +136,12 @@ export default {
           .catch(_ => {});
       }
     },
-    handleEdit () {
-      this.$message("功能等待添加中...");
+    handleEdit (index, item, id) {
+      console.log(index, item)
+      this.isNavPopup = true
+      item.classify = this.tableNavData[index].classify
+      item._id = id
+      this.editItem = item
     },
     // 拒绝－直接删除提交
     async delAuditNav(id) {

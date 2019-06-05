@@ -4,7 +4,7 @@
     <div class="left-bar" :style="{left: isLeftbar ? 0 : '-249px'}">
       <div class="title">
         <img class="icon-logo" src="/favicon.ico">
-        <span>猿梦极客导航</span>
+        <span>极客猿梦导航</span>
       </div>
       <el-row>
         <el-col :span="24">
@@ -65,15 +65,24 @@
           </div>
         </div>
       </footer>
+
       <back-top/>
     </section>
-    <add-nav-btn :data="data"/>
+    <div class="add-nav-btn" @click="dialogFormVisible=true">
+      <el-tooltip class="item" effect="dark" content="添加网站" placement="left-start">
+        <el-button>
+          <i class="el-icon-plus"></i>
+        </el-button>
+      </el-tooltip>
+    </div>
+
+    <AddNavPopup :data="data" :show.sync="dialogFormVisible"/>
   </section>
 </template>
 
 <script>
 import BackTop from "@/components/BackTop";
-import AddNavBtn from "@/components/AddNavBtn";
+import AddNavPopup from "@/components/AddNavPopup";
 import NavItem from "@/components/NavItem";
 export default {
   data() {
@@ -81,12 +90,14 @@ export default {
       active: "0",
       data: [],
       selfIndex: 0,
-      isLeftbar: true
+      isLeftbar: true,
+      dialogFormVisible: false,
+
     };
   },
   components: {
     BackTop,
-    AddNavBtn,
+    AddNavPopup,
     NavItem
   },
   computed: {
@@ -182,5 +193,26 @@ export default {
 }
 .csz {
   margin-right: 5px;
+}
+
+.add-nav-btn {
+  &,
+  .el-button {
+    border: 0;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: #fff;
+    right: 10px;
+    bottom: 85px;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+}
+[class^="el-icon-"] {
+  font-size: 20px;
 }
 </style>

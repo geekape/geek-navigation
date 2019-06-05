@@ -23,36 +23,19 @@ router.get("/index", (req, res) => {
 		});
 });
 
+/**
+ * 审核表
+ */
+
 // 提交一个导航
 router.post("/audit/add", (req) => {
 	// 创建一个新数据
-
 	auditModel.create(req.body, function () { })
 })
-
 // 删除、拒绝一个导航
 router.post("/audit/del", (req) => {
 	//使用Student model上的create方法储存数据
 	auditModel.remove({ _id: req.body.id }, (err, result) => { })
-})
-
-// 审核通过一个导航
-router.post("/nav/add", (req, res) => {
-	auditModel.remove({ _id: req.body.id }, (err, result) => { })
-
-	navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } }, function (res, err) {
-		if (err.n === 0) {
-			// 创建一个新数据
-			navData.create(req.body, function () { })
-		}
-	})
-})
-
-// 删除一个导航
-router.post("/nav/del", (req, res) => {
-	navData.update({ _id: req.body.id }, { $pull: { sites: { name: req.body.name } } }, function (res, err) {
-		console.log(res, err)
-	})
 })
 
 // 请求审核列表
@@ -81,9 +64,46 @@ router.get("/audit/list", (req, res) => {
 				});
 		}
 	})
-
-
 });
+
+/**
+ * 导航表
+ */
+
+// 审核通过一个导航
+router.post("/nav/add", (req, res) => {
+	auditModel.remove({ _id: req.body.id }, (err, result) => { })
+	navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } }, function (res, err) {
+		if (err.n === 0) {
+			// 创建一个新数据
+			navData.create(req.body, function () { })
+		}
+	})
+})
+
+// 删除一个导航
+router.post("/nav/del", (req, res) => {
+	navData.update({ _id: req.body.id }, { $pull: { sites: { name: req.body.name } } }, function (res, err) {
+		console.log(res, err)
+	})
+})
+
+// 编辑导航
+router.post("/nav/edit", (req, res) => {
+	navData.update({ _id: req.body.id }, { $pull: { sites: { href: req.body.sites.href } } })
+
+	navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } }, function () {
+		res.json({
+			status: 200,
+			msg: 'ok',
+		})
+	})
+})
+
+
+/**
+ * 登录路由
+ */
 
 // 登录
 router.post("/login", (req, res) => {
@@ -103,7 +123,6 @@ router.post("/login", (req, res) => {
 			token: token
 		});
 	}
-	
 });
 
 module.exports = router;

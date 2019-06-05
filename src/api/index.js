@@ -18,6 +18,9 @@ const api = {
   addNav(data) {
     return request('/api/nav/add', 'post', data)
   },
+  editNav(data) {
+    return request('/api/nav/edit', 'post', data)
+  },
   delNav(id, name) {
     return request('/api/nav/del', 'post', {
       id,
