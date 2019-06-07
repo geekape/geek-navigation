@@ -2,6 +2,8 @@
 const express = require("express");
 //定义路由级中间件
 const router = express.Router();
+const mongoose = require('mongoose')
+
 //引入数据模型模块
 const navData = require("./model/navSchema");
 const auditModel = require("./model/auditSchema");
@@ -41,7 +43,7 @@ router.post("/audit/del", (req) => {
 // 请求审核列表
 router.get("/audit/list", (req, res) => {
 	const token = req.headers.token
-	console.log('token:',token)
+	console.log('token:', token)
 	jwt.verify(token, app.get('superSecret'), function (err, decoded) {
 		console.log(decoded, err)
 		//decoded　是得到的用户信息
@@ -90,7 +92,12 @@ router.post("/nav/del", (req, res) => {
 
 // 编辑导航
 router.post("/nav/edit", (req, res) => {
-	navData.update({ _id: req.body.id }, { $pull: { sites: { href: req.body.sites.href } } })
+	const { id, sites: {
+		href
+	} } = req.body
+	navData.update({ _id: id }, { $pull: { sites: { href: href } } }, function(success, err) {
+		if (err) console.log(`错误了`, err)
+	})
 
 	navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } }, function () {
 		res.json({

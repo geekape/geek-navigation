@@ -9,16 +9,16 @@
       <el-row>
         <el-col :span="24">
           <el-menu
-            :default-active="active"
+            :default-active="String(active)"
             class="el-menu-vertical-demo"
             background-color="#30333c"
             text-color="#6b7386"
             active-text-color="#fff"
           >
-            <el-menu-item :index="0" @click="active=0">
+            <el-menu-item index="0" @click="active=0">
               <span slot="title">用户提交</span>
             </el-menu-item>
-            <el-menu-item :index="1" @click="active=1">
+            <el-menu-item index="1" @click="active=1">
               <span slot="title">所有网站</span>
             </el-menu-item>
           </el-menu>
@@ -74,7 +74,7 @@
       </div>
     </section>
     <BackTop />
-    <AddNavPopup :data="tableNavData" :show.sync="isNavPopup" :type="1" :editItem="editItem" />
+    <AddNavPopup @reloadData="getAllNav" :data="tableNavData" :show.sync="isNavPopup" :type="1" :editItem="editItem" />
   </section>
 </template>
 
@@ -140,7 +140,7 @@ export default {
       console.log(index, item)
       this.isNavPopup = true
       item.classify = this.tableNavData[index].classify
-      item._id = id
+      item.navId = id
       this.editItem = item
     },
     // 拒绝－直接删除提交
