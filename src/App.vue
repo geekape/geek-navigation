@@ -9,7 +9,21 @@
 export default {
   name: 'app',
   components: {
-  }
+  },
+  mounted() {
+      this.initCNZZ()
+  },
+  methods: {
+      initCNZZ() {
+          //添加脚本
+          const script = document.createElement('script')
+          script.src =
+              'https://s5.cnzz.com/z_stat.php?id=1277680350&web_id=1277680350'
+          script.language = 'JavaScript'
+          script.id = 'cnzz'
+          document.body.appendChild(script)
+      }
+  },
 }
 </script>
 

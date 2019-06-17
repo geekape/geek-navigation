@@ -4,7 +4,7 @@
     <div class="left-bar" :style="{left: isLeftbar ? 0 : '-249px'}">
       <div class="title">
         <img class="icon-logo" src="/favicon.ico">
-        <span>猿梦极客导航</span>
+        <span>阿猫阿导航站</span>
       </div>
       <el-row>
         <el-col :span="24">
@@ -15,12 +15,12 @@
             text-color="#6b7386"
             active-text-color="#fff"
           >
-            <el-submenu :index="item.name" v-for="(item,index) in newDataList" :key="item.name">
+            <el-submenu :index="item.name" v-for="(item) in newDataList" :key="item.name">
               <template slot="title">
                 <i :class="item.icon"></i>
                 <span slot="title">{{item.name}}</span>
               </template>
-              <el-menu-item :index="nav._id" v-for="(nav,idx) in item.data" :key="nav._id">
+              <el-menu-item :index="nav._id" v-for="(nav) in item.data" :key="nav._id">
                 <a :href="`#${nav.classify}`">
                   <i :class="nav.icon"></i>
                   <span slot="title">{{nav.classify}}</span>
@@ -60,8 +60,8 @@
         <div class="copyright">
           <div>
             Copyright © 2019- 2050
-            <a href="https://github.com/geekape/blog">钟储兵博客</a>
-            <a href="https://github.com/geekape/geek-navigation">导航源码下载</a>
+            <a href="https://3hccm.com/" target="_blank">阿猫阿狗博客</a>
+            <span style="margin-left:20px;color:red"> <a href="https://3hccm.com/guestbook" target="_blank">需要增加网站请点击此处留言</a></span>
           </div>
         </div>
       </footer>
@@ -90,10 +90,18 @@ export default {
   computed: {
     newDataList() {
       const arr = [];
+      let blogs = {};
       let product = {};
       let operation = {};
       let design = {};
       let web = {};
+      // 个人博客
+      blogs.name = "个人博客";
+      blogs.icon = "csz czs-circle";
+      blogs.data = this.data.filter(
+        item => item.classify.indexOf("［个人博客］") != -1
+      );
+      arr.push(blogs);
       // 产品
       product.name = "产品";
       product.icon = "csz czs-circle";
