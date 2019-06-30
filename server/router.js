@@ -95,6 +95,7 @@ router.post("/nav/edit", (req, res) => {
 	const { id, sites: {
 		href
 	} } = req.body
+	console.log(req.body)
 	navData.update({ _id: id }, { $pull: { sites: { href: href } } }, function(success, err) {
 		if (err) console.log(`错误了`, err)
 	})

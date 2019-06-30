@@ -147,7 +147,9 @@ export default {
         // 如果没logo就默认一个
         // 验证通过
         data.time = new Date().getTime()
-        data.href += 'favicon.ico'
+        if (!data.logo) {
+          data.logo = data.href + 'favicon.ico'
+        }
         this.$message('提交成功，后台审核通过后才会显示')
         this.$emit('update:show', false)
 
