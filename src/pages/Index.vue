@@ -14,14 +14,15 @@
             background-color="#30333c"
             text-color="#6b7386"
             active-text-color="#fff"
+            :default-openeds="['0']"
           >
-            <el-submenu :index="item.name" v-for="(item,index) in newDataList" :key="item.name">
+            <el-submenu :index="String(index)" v-for="(item,index) in newDataList" :key="item._id">
               <template slot="title">
                 <i :class="item.icon"></i>
                 <span slot="title">{{item.name}}</span>
               </template>
               <el-menu-item :index="nav._id" v-for="(nav,idx) in item.data" :key="nav._id">
-                <a :href="`#${nav.classify}`">
+                <a :href="`#${nav._id}`">
                   <i :class="nav.icon"></i>
                   <span slot="title">{{nav.classify}}</span>
                 </a>
@@ -46,7 +47,7 @@
         </div>
         <!-- 开发社区 -->
         <div class="box" v-for="(item,index) in data" :key="index">
-          <a :id="`#${item.classify}`" :name="item.classify"></a>
+          <a :id="`${item._id}`" :name="item.classify"></a>
           <div class="sub-category">
             <div>
               <i :class="item.icon" class="icon"></i>
@@ -87,7 +88,7 @@ import NavItem from "@/components/NavItem";
 export default {
   data() {
     return {
-      active: "0",
+      active: '5ce77a76afdec884fab959a9',
       data: [],
       selfIndex: 0,
       isLeftbar: true,
@@ -135,6 +136,7 @@ export default {
         item => item.classify.indexOf("［前端］") != -1
       );
       arr.push(web);
+      arr.reverse()
       return arr;
     }
   },
@@ -142,6 +144,9 @@ export default {
     async getData() {
       const res = await this.$api.getHome();
       this.data = res.data;
+      this.$nextTick(() => {
+        document.getElementById('5ce77a76afdec884fab959a9').scrollIntoView()
+      })
     },
     dataScroll() {
       const that = this;
@@ -170,6 +175,9 @@ export default {
       })();
     };
     window.onresize();
+  },
+  mounted() {
+    
   }
 };
 </script>
