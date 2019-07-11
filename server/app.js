@@ -4,8 +4,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
 // const expressJwt = require("express-jwt");
 
-
-
 //这一句是连接上数据库
 var db = mongoose.connect('mongodb://localhost:27017/navigation');
 
