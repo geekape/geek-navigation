@@ -27,6 +27,11 @@ const api = {
       name
     })
   },
+  findNav(id) {
+    return request('/api/nav/find', 'post', {
+      id
+    })
+  },
   login(account, pwd) {
     return request('/api/login', 'post', {
       account,
