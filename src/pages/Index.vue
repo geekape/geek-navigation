@@ -118,7 +118,7 @@
     </div>
 
     <AddNavPopup
-      :data="data"
+      :data="dataList"
       :show.sync="dialogFormVisible"
     />
   </section>
@@ -133,6 +133,7 @@ export default {
     return {
       active: '［前端］热门推荐',
       data: [],
+      dataList: [],
       newDataList: [],
       selfIndex: 0,
       isLeftbar: true,
@@ -144,13 +145,11 @@ export default {
     AddNavPopup,
     NavItem
   },
-  computed: {
-    newDataList() {}
-  },
   methods: {
     async getData() {
       const res = await this.$api.getHome()
       const data = res.data
+      this.dataList = data
 
       const arr = []
       let product = {}
