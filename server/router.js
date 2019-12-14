@@ -1,15 +1,21 @@
 const express = require("express");
 const router = express.Router();
-
 //引入数据模型模块
+const app = express()
+const jwt = require('jsonwebtoken')
 const navData = require("./model/navSchema");
 const auditModel = require("./model/auditSchema");
+const jwtAuth = require("./jwt")
+const { secretKey } = require('./config')
 
-// 设置登录验证
-const jwt = require('jsonwebtoken');
-const app = express()
-const secret = '123123'; //密钥
-app.set('superSecret', secret);
+router.use(jwtAuth)
+
+router.use((req, res, next) => {
+  // 任何路由信息都会执行这里面的语句
+  // 把它交给下一个中间件，注意中间件的注册顺序是按序执行
+  next()
+})
+
 
 
 /**
@@ -47,28 +53,17 @@ router.post("/audit/del", (req) => {
  * 审核表
  */
 router.get("/audit/list", (req, res) => {
-	const token = req.headers.token
-	jwt.verify(token, app.get('superSecret'), function (err, decoded) {
-		//decoded　是得到的用户信息
-		if (decoded.admin != secret) {
-			return res.status(401).send({
-				status: 401,
-				msg: 'No token provided.'
-			});
-		} else {
-			auditModel.find({})
-			.then(datas => {
-				let data = {}
-				data.data = datas
-				data.status = 200
-				data.msg = 'ok'
-				res.json(data);
-			})
-			.catch(err => {
-				res.json(err);
-			});
-		}
-	})
+	auditModel.find({})
+		.then(datas => {
+			let data = {}
+			data.data = datas
+			data.status = 200
+			data.msg = 'ok'
+			res.json(data);
+		})
+		.catch(err => {
+			res.json(err);
+		});
 });
 
 
@@ -87,7 +82,7 @@ router.post("/nav/add", (req, res) => {
  * 删除导航表中的导航
  */
 router.post("/nav/del", (req, res) => {
-	navData.update({ _id: req.body.id }, { $pull: { sites: { name: req.body.name } } }, () => {})
+	navData.update({ _id: req.body.id }, { $pull: { sites: { name: req.body.name } } }, () => { })
 })
 
 
@@ -99,7 +94,6 @@ router.post("/nav/edit", (req, res) => {
 		href
 	} } = req.body
 	navData.update({ _id: id }, { $pull: { sites: { href: href } } }, (success, err) => {
-		if (err) console.log(`错误了`, err)
 	})
 
 	navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } }, () => {
@@ -116,8 +110,7 @@ router.post("/nav/edit", (req, res) => {
  */
 router.post("/nav/find", (req, res) => {
 	const { id } = req.body
-	console.log(req)
-	navData.find({_id: id})
+	navData.find({ _id: id })
 		.then(datas => {
 			res.json(datas);
 		})
@@ -134,19 +127,46 @@ router.post("/login", (req, res) => {
 	const { account, pwd } = req.body
 
 	// 判断账号密码
-	if (account != 'admin' || pwd != secret) {
+	if (account != 'admin' || pwd != 'admin') {
 		res.json({
 			status: 400,
 			msg: '账号或密码错误',
-		});
-	} else {
-		const token = jwt.sign({ 'admin': secret }, app.get('superSecret'))
-		res.json({
-			status: 200,
-			msg: 'ok',
-			token: token
-		});
+		})
 	}
+
+	let token = jwt.sign({}, secretKey, {
+		expiresIn: 60 * 60 * 24 // 授权时效24小时
+	})
+
+	res.json({
+		status: 200,
+		msg: 'ok',
+		token
+	})
+})
+
+// 处理 404
+router.use((req, res, next) => {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// 处理500
+router.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).json({
+      code: 401,
+      message: 'invalid token',
+      data: err
+    });
+  } else {
+    res.status(err.status || 500).json({
+      code: err.status || 500,
+      message: err.message,
+      data: err
+    });
+  }
 });
 
 

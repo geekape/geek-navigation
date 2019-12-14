@@ -40,7 +40,7 @@ function request(url = '', methods = 'get', params = {}) {
     url: url,
     data: params,
     headers: {
-      "token": token
+      "Authorization": token
     }
   })
 }
