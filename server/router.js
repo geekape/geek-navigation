@@ -134,7 +134,7 @@ router.post("/login", (req, res) => {
 		})
 	}
 
-	let token = jwt.sign({}, secretKey, {
+	let token = 'Bearer ' + jwt.sign({}, secretKey, {
 		expiresIn: 60 * 60 * 24 // 授权时效24小时
 	})
 

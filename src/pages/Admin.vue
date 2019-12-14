@@ -157,7 +157,7 @@ export default {
     return {
       isNavPopup: false,
       editItem: {},
-      active: 1,
+      active: 0,
       tableData: [],
       tableNavData: [],
       activeName: 'two'
@@ -249,7 +249,7 @@ export default {
     }
   },
   created() {
-    this.getAllNav()
+    this.getData()
   }
 }
 </script>
