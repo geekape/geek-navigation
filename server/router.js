@@ -5,6 +5,7 @@ const app = express()
 const jwt = require('jsonwebtoken')
 const navData = require("./model/navSchema");
 const auditModel = require("./model/auditSchema");
+const userModel = require("./model/userSchema");
 const jwtAuth = require("./jwt")
 const { secretKey } = require('./config')
 
@@ -123,11 +124,14 @@ router.post("/nav/find", (req, res) => {
 /**
  * 登录
  */
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
 	const { account, pwd } = req.body
 
+	const users = await userModel.find({isAdmin: true})
+	const {username, password} = users[0]
+
 	// 判断账号密码
-	if (account != 'admin' || pwd != 'admin') {
+	if (account != username || pwd != password) {
 		res.json({
 			status: 400,
 			msg: '账号或密码错误',
