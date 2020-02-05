@@ -18,4 +18,10 @@ module.exports = app => {
   router.post('/api/website', controller.website.add);
   router.delete('/api/website', controller.website.delete);
   router.put('/api/website', controller.website.edit);
+
+  // audit
+  router.get('/api/audit', controller.audit.list);
+  router.post('/api/audit', controller.audit.add);
+  router.delete('/api/audit', controller.audit.delete);
+  router.put('/api/audit', controller.audit.edit);
 };

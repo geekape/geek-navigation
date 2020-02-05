@@ -1,9 +1,10 @@
 const Service = require('egg').Service
 
 class WebsiteService extends Service {
-  async find() {
+  async find(categoryId) {
     const { ctx } = this
-    return ctx.model.Website.find()
+    let option = categoryId ? { categoryId } : {}
+    return ctx.model.Website.find(option)
   }
 
   async add(payload) {

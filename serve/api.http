@@ -32,13 +32,16 @@ Authorization: {{authToken}}
 ### 所有网站列表
 GET {{baseUrl}}/api/website
 
+###
+GET {{baseUrl}}/api/website?id=5e3a73a0dff34ea2f74a7266
+
 
 ### 添加网站
 POST {{baseUrl}}/api/website
 Content-Type: application/json
 Authorization: {{authToken}}
 
-{"name": "test", "logo": "", "url": "", "desc": "网站描述", "view": 0, "links": 0}
+{"name": "腾讯博客", "logo": "", "url": "", "desc": "网站描述", "view": 0, "links": 0, "categoryId": "5e3a73a0dff34ea2f74a7266"}
 
 ### 删除网站
 DELETE {{baseUrl}}/api/website
@@ -49,6 +52,33 @@ Authorization: {{authToken}}
 
 ### 编辑网站
 PUT {{baseUrl}}/api/website
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{"id": "5e3a8d36f672a2107e535fc0", "name": "网站名称"}
+
+
+
+### 审核列表
+GET {{baseUrl}}/api/audit
+
+
+### 添加审核
+POST {{baseUrl}}/api/audit
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{"categoryId": "", "url": "https://juejin.im/"}
+
+### 删除审核
+DELETE {{baseUrl}}/api/audit
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{"id": "5e3a8d789ce515109ab8a1ac"}
+
+### 编辑审核
+PUT {{baseUrl}}/api/audit
 Content-Type: application/json
 Authorization: {{authToken}}
 

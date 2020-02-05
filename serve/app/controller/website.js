@@ -6,7 +6,10 @@ class WebsiteController extends Controller {
   // 网站列表
   async list() {
     const { ctx, service } = this
-    const res = await service.website.find()
+    // id 为分类id
+    const { id } = ctx.query
+    console.log(ctx.query, 'ctx.query');
+    const res = await service.website.find(id)
     await ctx.helper.success({ ctx, res })
   }
   // 添加网站

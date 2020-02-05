@@ -1,8 +1,11 @@
+// 网站表
+
 module.exports = app => {
   const mongoose = app.mongoose
   const Schema = mongoose.Schema
   const WebsiteSchema = new Schema({
     name: String,
+    categoryId: { type: String, default: "" },
     logo: String,
     url: String,
     desc: String,
