@@ -1,0 +1,55 @@
+
+@baseUrl = http://localhost:7002
+@authToken = 12312
+
+
+### 分类列表
+GET {{baseUrl}}/api/category
+
+
+### 添加分类
+POST {{baseUrl}}/api/category
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{"name": "test", "categoryId": 0}
+
+### 删除分类
+DELETE {{baseUrl}}/api/category
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{"id": "5e3a8219867b090e4800ec10"}
+
+### 编辑分类
+PUT {{baseUrl}}/api/category
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{"id": "5e3a73a0dff34ea2f74a7266", "name": "技术博客1"}
+
+
+### 所有网站列表
+GET {{baseUrl}}/api/website
+
+
+### 添加网站
+POST {{baseUrl}}/api/website
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{"name": "test", "logo": "", "url": "", "desc": "网站描述", "view": 0, "links": 0}
+
+### 删除网站
+DELETE {{baseUrl}}/api/website
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{"id": "5e3a8d789ce515109ab8a1ac"}
+
+### 编辑网站
+PUT {{baseUrl}}/api/website
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{"id": "5e3a8d36f672a2107e535fc0", "name": "网站名称"}
