@@ -7,11 +7,6 @@
           src="/favicon.ico"
         >
         <span>猿梦极客导航后台</span>
-        <el-button
-          @click="$router.go(-1)"
-          class="go-back-home"
-          type="primary"
-        >返回首页</el-button>
       </div>
       <el-row>
         <el-col :span="24">
@@ -39,6 +34,10 @@
       </el-row>
     </div>
     <section class="main">
+      <Header>
+        <i class="el-icon-s-home"  @click="$router.go(-1)" style='font-size: 20px' />
+        <!-- <i class="el-icon-circle-close" @click="$router.go(-1)" style='font-size: 20px' /> -->
+      </Header>
       <div id="mainContent">
         <div
           class="user-commit-web"
@@ -146,12 +145,14 @@
 
 <script>
 import BackTop from '@/components/BackTop'
+import Header from '../index/Header'
 import AddNavPopup from '@/components/AddNavPopup'
 
 export default {
   components: {
     BackTop,
-    AddNavPopup
+    AddNavPopup,
+    Header,
   },
   data() {
     return {
@@ -258,8 +259,8 @@ export default {
 .el-table {
   width: auto;
 }
-.main {
-  padding: 30px;
+#mainContent {
+  margin: 20px;
 }
 h3 {
   margin: 0;

@@ -1,9 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Index from "@/pages/Index.vue";
+import Index from "@/pages/index/Index.vue";
 import Login from "@/pages/Login.vue";
-import Admin from "@/pages/Admin.vue";
+import Admin from "@/pages/admin/Index.vue";
 
 Vue.use(VueRouter);
 

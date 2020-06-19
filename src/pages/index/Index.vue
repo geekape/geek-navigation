@@ -19,10 +19,9 @@
             background-color="#30333c"
             text-color="#6b7386"
             active-text-color="#fff"
-            :default-openeds="['0']"
           >
             <el-submenu
-              :index="String(index)"
+              :index="`${index}`"
               v-for="(item,index) in newDataList"
               :key="item._id"
             >
@@ -31,10 +30,9 @@
                 <span slot="title">{{item.name}}</span>
               </template>
               <el-menu-item
-                :index="nav._id"
+                :index="`${index}-${idx}`"
                 v-for="(nav,idx) in item.data"
                 :key="nav._id"
-                :class="nav.classify==active && 'is-active'"
                 @click="findNav(nav._id)"
               >
                 <a href="#">
@@ -48,6 +46,7 @@
       </el-row>
     </div>
     <section class="main">
+      <Header />
       <div id="mainContent">
         <!-- 手机端菜单 -->
         <div id="menu-box">
@@ -128,6 +127,7 @@
 import BackTop from '@/components/BackTop'
 import AddNavPopup from '@/components/AddNavPopup'
 import NavItem from '@/components/NavItem'
+import Header from './Header'
 export default {
   data() {
     return {
@@ -143,7 +143,8 @@ export default {
   components: {
     BackTop,
     AddNavPopup,
-    NavItem
+    NavItem,
+    Header
   },
   methods: {
     async getData() {

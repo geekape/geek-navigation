@@ -127,11 +127,12 @@ router.post("/nav/find", (req, res) => {
 router.post("/login", async (req, res) => {
 	const { account, pwd } = req.body
 
-	const users = await userModel.find({isAdmin: true})
-	const {username, password} = users[0]
+	// const users = await userModel.find()
+
+	// const {username, password} = users[0]
 
 	// 判断账号密码
-	if (account != username || pwd != password) {
+	if (account != 'admin' || pwd != 'admin') {
 		res.json({
 			status: 400,
 			msg: '账号或密码错误',
