@@ -50,7 +50,7 @@
             >
               <template slot-scope="scope">
                 <i class="el-icon-time"></i>
-                <span style="margin-left: 10px">{{ formatTime(scope.row.time) }}</span>
+                <span style="margin-left: 10px">{{ $dayjs(scope.row.createAt).format('YYYY-MM-DD HH:ss') }}</span>
               </template>
             </el-table-column>
             <el-table-column

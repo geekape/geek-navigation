@@ -145,7 +145,6 @@ export default {
         // 添加导航到审核
         // 如果没logo就默认一个
         // 验证通过
-        data.time = new Date().getTime()
         if (!data.logo) {
           data.logo = data.href + 'favicon.ico'
         }

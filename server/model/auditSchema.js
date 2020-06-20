@@ -7,7 +7,7 @@ const auditSchema = mongoose.Schema({
         href: String,
         desc: String,
         logo: String,
-        time: Number,
+        createAt: Number,
     }, { collection: 'audit' })
     //这里mongoose.Schema要写上第二个参数，明确指定到数据库中的哪个表取数据
 

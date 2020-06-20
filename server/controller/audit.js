@@ -1,0 +1,38 @@
+const auditModel = require("../model/auditSchema")
+
+class Audit {
+  constructor() {
+
+  }
+
+  async add(req, res) {
+    try {
+      const resData = await auditModel.create(req.body)
+      res.json(resData)
+    } catch (error) {
+      res.json(error)
+    }
+  }
+
+  async del(req, res) {
+    try {
+      const resData = await auditModel.remove({ _id: req.body.id }, () => { })
+      res.json(resData)
+    } catch (error) {
+      res.json(error)
+    }
+  }
+
+  async list(req, res) {
+    try {
+      const resData = await auditModel.find({})
+      res.json({
+        data: resData
+      })
+    } catch (error) {
+      res.json(error)
+    }
+  }
+}
+
+module.exports = new Audit()

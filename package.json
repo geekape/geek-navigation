@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.3",
+    "dayjs": "^1.8.28",
     "element-ui": "^2.4.7",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
