@@ -3,10 +3,7 @@ const jwt = require('jsonwebtoken')
 const userModel = require("../model/userSchema")
 const { secretKey } = require('../config')
 
-class User {
-  constructor() {
-
-  }
+const user = {
 
   async login(req, res) {
     try {
@@ -37,4 +34,4 @@ class User {
   }
 }
 
-module.exports = new User()
+module.exports = user

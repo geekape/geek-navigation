@@ -1,9 +1,6 @@
 const auditModel = require("../model/auditSchema")
 
-class Audit {
-  constructor() {
-
-  }
+const audit = {
 
   async add(req, res) {
     try {
@@ -12,7 +9,7 @@ class Audit {
     } catch (error) {
       res.json(error)
     }
-  }
+  },
 
   async del(req, res) {
     try {
@@ -21,7 +18,7 @@ class Audit {
     } catch (error) {
       res.json(error)
     }
-  }
+  },
 
   async list(req, res) {
     try {
@@ -32,7 +29,7 @@ class Audit {
     } catch (error) {
       res.json(error)
     }
-  }
+  },
 }
 
-module.exports = new Audit()
+module.exports = audit

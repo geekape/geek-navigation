@@ -1,32 +1,46 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Index from "@/pages/index/Index.vue";
-import Login from "@/pages/Login.vue";
-import Admin from "@/pages/admin/Index.vue";
+import Index from "@/pages/index/Index.vue"
+import Login from "@/pages/Login.vue"
+import Admin from "@/pages/admin/Index.vue"
+import List from "@/pages/admin/List.vue"
+import Category from "@/pages/admin/Category.vue"
+import Audit from "@/pages/admin/Audit.vue"
 
 Vue.use(VueRouter);
 
 const routes = [
 	{
 		path: '/',
-		name: 'index',
 		component: Index
 	},
 	{
 		path: '/login',
-		name: 'login',
 		component: Login
 	},
 	{
 		path: '/admin',
-		name: 'Admin',
-		component: Admin
+		component: Admin,
+		children: [
+			{
+				path: '/',
+				component: Audit
+			},
+			{
+				path: 'list',
+				component: List
+			},
+			{
+				path: 'category',
+				component: Category
+			}
+		]
 	}
 ]
 
 let router = new VueRouter({
-	mode:'history',
+	mode: 'history',
 	routes
 })
 

@@ -37,7 +37,20 @@ const api = {
       account,
       pwd
     })
-  }
+  },
+
+  getCategoryList() {
+    return request('/api/category/list')
+  },
+  addCategory(data) {
+    return request('/api/category/add', 'post',  data)
+  },
+  delCategory(id) {
+    return request('/api/category/del', 'post', { id })
+  },
+  editCategory(data) {
+    return request('/api/category/edit', 'post', data)
+  },
 }
 
 export default api

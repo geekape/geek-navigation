@@ -27,6 +27,11 @@ router.post("/nav/del", controller.nav.del)
 router.post("/nav/edit", controller.nav.edit)
 router.post("/nav/find", controller.nav.info)
 
+router.post("/category/add", controller.category.add)
+router.post("/category/del", controller.category.del)
+router.post("/category/edit", controller.category.edit)
+router.get("/category/list", controller.category.list)
+
 router.post("/login", controller.user.login)
 
 

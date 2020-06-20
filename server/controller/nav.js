@@ -1,10 +1,7 @@
 const navData = require("../model/navSchema")
 const auditModel = require("../model/auditSchema")
 
-class Nav {
-  constructor() {
-
-  }
+const nav =  {
 
   async index(req, res) {
     try {
@@ -13,7 +10,7 @@ class Nav {
     } catch (error) {
       res.json(error)
     }
-  }
+  },
 
   async add(req, res) {
     try {
@@ -24,7 +21,7 @@ class Nav {
     } catch (error) {
       res.json(error)
     }
-  }
+  },
 
   async del(req, res) {
     try {
@@ -33,7 +30,7 @@ class Nav {
     } catch (error) {
       res.json(error)
     }
-  }
+  },
 
   async edit(req, res) {
     try {
@@ -48,7 +45,7 @@ class Nav {
     } catch (error) {
       res.json(error)
     }
-  }
+  },
 
   async info(req, res) {
     try {
@@ -60,4 +57,4 @@ class Nav {
     }
   }
 }
-module.exports = new Nav()
+module.exports = nav

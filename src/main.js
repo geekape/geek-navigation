@@ -7,6 +7,7 @@ import Mock from "./mock"
 import localStorage from "./utils/localStorage"
 const Storage = new localStorage('NAV')
 Vue.config.productionTip = false
+import './app.scss';
 
 import './assets/styles/iconfont.css';
 import './assets/styles/font.css';
