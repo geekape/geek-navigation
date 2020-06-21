@@ -3,8 +3,15 @@ const categoryModel = require("../model/categorySchema")
 const category = {
   async list(req, res) {
     try {
-      const data = await categoryModel.find({})
-      res.json({ data })
+      let data = await categoryModel.find({}).limit(100000)
+      const stairCategory = data.filter(item=> !item.categoryId)
+      const secondCategory = data.filter(item=> item.categoryId)
+
+      let newData = stairCategory.map(item=> {
+        item.children = [...secondCategory.filter(cate=> item._id == cate.categoryId)]
+        return item
+      })
+      res.json({ data: newData })
     } catch (error) {
       res.json(error)
     }
@@ -18,11 +25,21 @@ const category = {
     }
   },
   async edit(req, res) {
-
+    try {
+      const { id, name } = req.body
+      const data = await categoryModel.update({ _id: id }, { name })
+      res.json(data)
+    } catch (error) {
+      res.json(error)
+    }
   },
   async del(req, res) {
     try {
-      const data = await categoryModel.remove({ _id: req.body.id }, () => { })
+      const { id } = req.body
+      const data = await Promise.all([
+        categoryModel.remove({ _id: id }),
+        categoryModel.remove({ categoryId: id }),
+      ])
       res.json(data)
     } catch (error) {
       res.json(error)

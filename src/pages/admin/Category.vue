@@ -1,38 +1,44 @@
 <template>
-  <div>
+  <div class='category'>
     <el-row type="flex" justify="start">
       <el-button type="primary" @click="dialogVisible = true">
         添加分类
       </el-button>
     </el-row>
-    <el-table :data="data" style="width: 100%;margin-top: 30px">
-      <el-table-column prop="name" label="名称" width="180"></el-table-column>
-      <el-table-column
-        prop="createAt"
-        label="创建时间"
-        width="180"
-      ></el-table-column>
-      <el-table-column
-      align="right">
-      <template slot-scope="scope">
-        <!-- <el-button
-          size="mini"
-          @click="handleEdit(scope.$index, scope.row)">Edit</el-button> -->
-        <el-button
-          size="mini"
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
-      </template>
-    </el-table-column>
-    </el-table>
+    <el-tree
+      :data="data"
+      show-checkbox
+      node-key="_id"
+      default-expand-all
+      :expand-on-click-node="false"
+    >
+      <span class="custom-tree-node" slot-scope="{ node, data }">
+        <span>{{ data.name }}</span>
+        <span>
+          <el-button type="text" size="mini" @click="() => handleDelete(data)">
+            删除
+          </el-button>
+        </span>
+      </span>
+    </el-tree>
 
     <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
       <el-form :model="form" class="demo-form-inline">
         <el-form-item label="分类名称" required>
           <el-input v-model="form.name" placeholder="分类名称"></el-input>
         </el-form-item>
+        <el-form-item label="父级分类">
+          <el-select v-model="form.categoryId" placeholder="">
+            <el-option
+              :label="item.name"
+              :value="item._id"
+              v-for="item in data"
+              :key="item._id"
+            ></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="handleAdd">添加</el-button>
+          <el-button type="primary" @click="handleAdd">保存</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -45,27 +51,48 @@ export default {
     return {
       data: [],
       dialogVisible: false,
+      editId: '',
       form: {
         name: '',
       },
     }
   },
   methods: {
-    async handleAdd() {
-      await this.$api.addCategory(this.form)
+    async handleAdd(id) {
+      if (this.editId) {
+        await this.$api.editCategory({
+          id: this.editId,
+          ...this.form,
+        })
+      } else {
+        await this.$api.addCategory(this.form)
+      }
+
       this.form.name = ''
       this.dialogVisible = false
-      this.$message.error('添加成功')
+      this.$message.error(this.editId ? '编辑成功' : '新增成功')
+      this.editId = ''
       this.getData()
     },
-    async handleEdit() {},
-    async handleDelete(index, row) {
+    async handleEdit(index, row) {
+      ;(this.dialogVisible = true), (this.form.name = row.name)
+      this.editId = row._id
+    },
+    async handleDelete(row) {
       await this.$api.delCategory(row._id)
+      this.form = {}
       this.getData()
     },
     async getData() {
       const res = await this.$api.getCategoryList()
-      this.data = res.data.data
+      let resData = res.data.data
+
+      // const sencondCategory = resData.filter(item=> item.categoryId)
+      // resData = resData.map(item=> {
+      //   item.children = sencondCategory.filter(cate=> cate.categoryId === item.categoryId)
+      // })
+
+      this.data = resData
     },
   },
   created() {
@@ -74,4 +101,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-tree {
+  margin-top: 30px;
+}
+
+.category {
+  .el-dialog {
+    text-align: left;
+  }
+}
+</style>

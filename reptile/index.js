@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 var db = mongoose.connect('mongodb://localhost:27017/navigation');
 //引入数据模型模块
 const navData = require("../server/model/navSchema");
+const categorySchema = require("../server/model/categorySchema");
 
 
 /**
