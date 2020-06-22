@@ -50,7 +50,7 @@ const nav =  {
   async info(req, res) {
     try {
       const { id } = req.body
-      const resData = await navData.find({ _id: id })
+      const resData = await navData.find({ categoryId: id })
       res.json(resData)
     } catch (error) {
       res.json(error)

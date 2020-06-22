@@ -54,6 +54,7 @@ export default {
       editId: '',
       form: {
         name: '',
+        categoryId: '',
       },
     }
   },
@@ -68,9 +69,9 @@ export default {
         await this.$api.addCategory(this.form)
       }
 
-      this.form.name = ''
       this.dialogVisible = false
       this.$message.error(this.editId ? '编辑成功' : '新增成功')
+      this.form = {}
       this.editId = ''
       this.getData()
     },

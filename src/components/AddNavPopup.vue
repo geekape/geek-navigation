@@ -24,28 +24,19 @@
           label="*网站分类"
           prop="classify"
         >
-          <el-select
-            v-if="!isDiyClassify"
-            v-model="classify"
-            placeholder="请选择网站分类"
-          >
-            <el-option
-              :label="classfiys.classify"
-              :value="classfiys.classify"
-              v-for="classfiys in data"
-              :key="classfiys._id"
-            ></el-option>
+          <el-select placeholder="请选择">
+            <el-option-group
+              v-for="group in categorys"
+              :key="group.name"
+              :label="group.name">
+              <el-option
+                v-for="item in group.children"
+                :key="item.categoryId"
+                :label="item.name"
+                :value="item.categoryId">
+              </el-option>
+            </el-option-group>
           </el-select>
-          <el-input
-            v-else
-            v-model="classify"
-          ></el-input>
-          <div
-            class="add-classify-btn"
-            @click="isDiyClassify=!isDiyClassify"
-          >
-            <i class="el-icon-folder-add"></i>{{isDiyClassify ? '选择分类' : '自定义分类'}}
-          </div>
         </el-form-item>
         <el-form-item
           label="*网站链接"
@@ -107,6 +98,7 @@ export default {
       href: '',
       desc: '',
       logo: '',
+      categorys: [],
       formReles: {
         name: '',
         href: '',
@@ -116,6 +108,10 @@ export default {
     }
   },
   methods: {
+    async getCategorys() {
+      const { data } = await this.$api.getCategoryList()
+      this.categorys = data.data
+    },
     async addNav() {
       // 验证
       if (!this.name) {
@@ -188,7 +184,6 @@ export default {
     },
     show() {
       if (this.type && this.show) {
-        console.log('弹窗显示')
         // 修改网站
         this.name = this.editItem.name
         this.href = this.editItem.href
@@ -197,6 +192,9 @@ export default {
         this.classify = this.editItem.classify
       }
     }
+  },
+  created() {
+    this.getCategorys()
   }
 }
 </script>
