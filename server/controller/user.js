@@ -7,16 +7,20 @@ const user = {
 
   async login(req, res) {
     try {
-      const { account, pwd } = req.body
+      const users = await userModel.findOne()
+      console.log(users, 'users')
+      if (!users) {
+        // 没有管理员，默认设置一个
+        await userModel.create(req.body)
+      } else {
+        const { username, password } = req.body
 
-      // const users = await userModel.find()
-      // const {username, password} = users[0]
-
-      if (account != 'admin' || pwd != 'admin') {
-        res.json({
-          status: 400,
-          msg: '账号或密码错误',
-        })
+        if (username != users.username || password != users.password) {
+          res.json({
+            status: 400,
+            msg: '账号或密码错误',
+          })
+        }
       }
 
       let token = 'Bearer ' + jwt.sign({}, secretKey, {
@@ -24,8 +28,6 @@ const user = {
       })
 
       res.json({
-        status: 200,
-        msg: 'ok',
         token
       })
     } catch (error) {

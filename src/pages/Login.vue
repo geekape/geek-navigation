@@ -1,19 +1,21 @@
 <template>
   <section class="login">
-        <el-card class="box-card">
-          <h2 class="g-text-c">登录后台</h2>
-          <el-form ref="form" :model="form" label-width="80px">
-            <el-form-item label="账号">
-              <el-input v-model="form.user"></el-input>
-            </el-form-item>
-            <el-form-item label="密码">
-              <el-input v-model="form.pwd"></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button size="medium" type="primary" @click="onSubmit">登录</el-button>
-            </el-form-item>
-          </el-form>
-        </el-card>
+    <el-card class="box-card">
+      <h2 class="g-text-c">登录后台</h2>
+      <el-form ref="ruleForm" :model="form" label-width="80px" :rules="rules">
+        <el-form-item label="账号" prop="username">
+          <el-input v-model="form.username"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="form.password"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button size="medium" type="primary" @click="onSubmit('ruleForm')">
+            登录
+          </el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
   </section>
 </template>
 
@@ -22,29 +24,50 @@ export default {
   data() {
     return {
       form: {
-        user: "",
-        pwd: ""
-      }
-    };
+        username: '',
+        password: '',
+      },
+      rules: {
+        username: [
+          { required: true, message: '请输入用户名', trigger: 'change' },
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'change' },
+        ],
+      },
+    }
   },
   methods: {
-  
-    async onSubmit(e) {
-      const {user, pwd} = this.form
-      let data = await this.$api.login(user, pwd)
-      data = data.data
-      if (data.status == 200) {
-        this.$storage.set('TOKEN', data.token)
-        this.$router.replace('/admin')
-      } else {
-        this.$message({
-          message: data.msg,
-          type: 'error'
-        });
-      }
-    }
+    async onSubmit(formName) {
+      this.$refs[formName].validate(async (valid) => {
+        if (valid) {
+          let data = await this.$api.login(this.form)
+          data = data.data
+          if (data.token) {
+            this.$storage.set('TOKEN', data.token)
+            this.$router.replace('/admin')
+          } else {
+            this.$message({
+              message: data.msg,
+              type: 'error',
+            })
+          }
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+  },
+  created() {
+    this.$notify({
+      title: '登录提示',
+      type: 'info',
+      message: '默认首次登录的账号密码为管理员身份',
+      duration: 0
+    });
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -69,6 +92,3 @@ export default {
   width: 400px;
 }
 </style>
-
-
-

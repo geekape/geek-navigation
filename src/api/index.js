@@ -32,11 +32,8 @@ const api = {
       id
     })
   },
-  login(account, pwd) {
-    return request('/api/login', 'post', {
-      account,
-      pwd
-    })
+  login(data) {
+    return request('/api/login', 'post', data)
   },
 
   getCategoryList() {
