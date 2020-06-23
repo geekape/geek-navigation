@@ -57,7 +57,7 @@
           </div>
         </div>
         <!-- 开发社区 -->
-        <div class="box">
+        <div class="box" v-if="data.length">
           <NavItem :data="item" v-for="item in data" :key="item._id" />
         </div>
       </div>
@@ -65,7 +65,6 @@
         <div class="copyright">
           <div>
             Copyright © 2019- 2050
-            <a href="https://github.com/geekape/blog">钟储兵博客</a>
             <a href="https://github.com/geekape/geek-navigation">
               导航源码下载
             </a>

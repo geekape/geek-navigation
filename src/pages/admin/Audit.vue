@@ -8,11 +8,20 @@
         </span>
       </template>
     </el-table-column>
-    <el-table-column label="网站url" width="180" prop="url"></el-table-column>
     <el-table-column
-      label="网站分类"
+      label="网站名称"
       width="180"
-      prop="category.name"
+      prop="name"
+    ></el-table-column>
+    <el-table-column
+      label="网站描述"
+      width="180"
+      prop="desc"
+    ></el-table-column>
+    <el-table-column
+      label="网站链接"
+      width="180"
+      prop="url"
     ></el-table-column>
     <el-table-column label="操作">
       <template slot-scope="scope">
@@ -71,23 +80,13 @@ export default {
           })
           .catch((_) => {})
       } else {
-        const filterData = this.tableData.filter((item) => item._id == id)[0]
-        const { classify, name, href, desc, logo, _id } = filterData
-        const data = {
-          id: _id,
-          classify: classify,
-          icon: 'el-icon-edit',
-          sites: {
-            name: name,
-            href: href,
-            desc: desc,
-            logo: logo,
-          },
-        }
+        let filterData = this.tableData.filter((item) => item._id == id)[0]
+        delete filterData._id
+
         this.$confirm('确认添加到首页？')
           .then((_) => {
             this.$message('添加成功')
-            this.addNav(data)
+            this.addNav(filterData)
             this.tableData.splice(index, 1)
           })
           .catch((_) => {})

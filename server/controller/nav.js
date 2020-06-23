@@ -14,9 +14,8 @@ const nav = {
 
   async add(req, res) {
     try {
-      await auditModel.remove({ _id: req.body.id })
-      const resData = await navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } })
-      if (resData.err.n === 0) navData.create(req.body, function () { })
+      await auditModel.update({ _id: req.body.id }, {status: 1})
+      const resData = await navData.create(req.body)
       res.json(resData)
     } catch (error) {
       res.json(error)
