@@ -1,7 +1,7 @@
 const navData = require("../model/navSchema")
 const auditModel = require("../model/auditSchema")
 
-const nav =  {
+const nav = {
 
   async index(req, res) {
     try {
@@ -50,7 +50,20 @@ const nav =  {
   async info(req, res) {
     try {
       const { id } = req.body
-      const resData = await navData.find({ categoryId: id })
+      const resData = await navData.aggregate([
+        {
+          $lookup:
+          {
+            from: "category",
+            localField: "categoryId",
+            foreignField: "_id",
+            as: "category"
+          }
+        }
+      ])
+      .match({
+        categoryId: id
+      })
       res.json(resData)
     } catch (error) {
       res.json(error)

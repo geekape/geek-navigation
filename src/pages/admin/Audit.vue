@@ -8,14 +8,12 @@
         </span>
       </template>
     </el-table-column>
-    <el-table-column label="网站名称" width="180" prop="name"></el-table-column>
+    <el-table-column label="网站url" width="180" prop="url"></el-table-column>
     <el-table-column
       label="网站分类"
       width="180"
-      prop="classify"
+      prop="category.name"
     ></el-table-column>
-    <el-table-column label="网站链接" width="180" prop="href"></el-table-column>
-    <el-table-column label="网站描述" width="180" prop="desc"></el-table-column>
     <el-table-column label="操作">
       <template slot-scope="scope">
         <el-button

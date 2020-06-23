@@ -2,72 +2,37 @@
   <div class="add-nav-warp">
     <!-- 添加网站popup -->
     <el-dialog
-      :title="type ? '修改网站': '添加网站'"
+      title="添加网站"
       :visible.sync="show"
       width="320"
       @close="$emit('update:show', false)"
     >
-      <el-form
-        ref="form"
-        label-width="100px"
-      >
-        <el-form-item
-          label="*网站名称"
-          prop="name"
-        >
-          <el-input
-            placeholder="网站名称"
-            v-model="name"
-          ></el-input>
+      <el-form ref="ruleForm" label-width="100px" :model="form" :rules="rules">
+        <el-form-item label="网站链接" prop="url">
+          <el-input placeholder="http://www.baidu.com/" v-model="form.url" />
         </el-form-item>
-        <el-form-item
-          label="*网站分类"
-          prop="classify"
-        >
-          <el-select placeholder="请选择">
+
+        <el-form-item label="网站分类" prop="categoryId">
+          <el-select v-model="form.categoryId" placeholder="请选择">
             <el-option-group
               v-for="group in categorys"
-              :key="group.name"
-              :label="group.name">
+              :key="group._id"
+              :label="group.name"
+            >
               <el-option
                 v-for="item in group.children"
-                :key="item.categoryId"
+                :key="item._id"
                 :label="item.name"
-                :value="item.categoryId">
-              </el-option>
+                :value="item._id"
+              ></el-option>
             </el-option-group>
           </el-select>
         </el-form-item>
-        <el-form-item
-          label="*网站链接"
-          prop="href"
-        >
-          <el-input　placeholder="http://www.baidu.com/" v-model="href"></el-input>
-        </el-form-item>
-        <el-form-item
-          label="网站LOGO"
-          prop="logo"
-        >
-          <el-input
-            placeholder="默认使用[http://www.baidu.com/favicon.icon]格式"
-            v-model="logo"
-          ></el-input>
-        </el-form-item>
-        <el-form-item
-          label="网站描述"
-          prop="desc"
-        >
-          <el-input
-            type="textarea"
-            v-model="desc"
-          ></el-input>
-        </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click="addNav"
-          >立即创建</el-button>
-          <el-button @click="resetForm()">重置</el-button>
+          <el-button type="primary" @click="addNav('ruleForm')">
+            立即创建
+          </el-button>
+          <el-button @click="form = {}">重置</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -82,29 +47,28 @@ export default {
     //popup类型：0为添加网站，1为修改网站
     type: {
       type: Number,
-      default: 0
+      default: 0,
     },
     show: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    editItem: Object
+    editItem: Object,
   },
   data() {
     return {
-      classify: '',
-      icon: 'el-icon-edit',
-      name: '',
-      href: '',
-      desc: '',
-      logo: '',
       categorys: [],
-      formReles: {
-        name: '',
-        href: '',
-        classify: ''
+      form: {
+        url: '',
+        categoryId: '',
       },
-      isDiyClassify: false
+      rules: {
+        url: [{ required: true, message: '请输入url', trigger: 'blur' }],
+        categoryId: [
+          { required: true, message: '请选择分类', trigger: 'change' },
+        ],
+      },
+      isDiyClassify: false,
     }
   },
   methods: {
@@ -112,90 +76,34 @@ export default {
       const { data } = await this.$api.getCategoryList()
       this.categorys = data.data
     },
-    async addNav() {
-      // 验证
-      if (!this.name) {
-        this.$message.error('网站名称不能为空')
-        return
-      }
-
-      if (!this.classify) {
-        this.$message.error('网站分类不能为空')
-        return
-      }
-
-      if (!this.href) {
-        this.$message.error('网站链接不能为空')
-        return
-      }
-
-      let data = {
-        classify: this.classify,
-        name: this.name,
-        href: this.href,
-        desc: this.desc,
-        logo: this.logo
-      }
-
-      if (!this.type) {
-        // 添加导航到审核
-        // 如果没logo就默认一个
-        // 验证通过
-        if (!data.logo) {
-          data.logo = data.href + 'favicon.ico'
+    async addNav(formName) {
+      this.$refs[formName].validate(async (valid) => {
+        if (valid) {
+          const res = await this.$api.addAudit(this.form)
+          this.$message('提交成功，后台审核通过后才会显示')
+          this.$emit('update:show', false)
+        } else {
+          console.log('error submit!!')
+          return false
         }
-        this.$message('提交成功，后台审核通过后才会显示')
-        this.$emit('update:show', false)
+      })
 
-        const res = await this.$api.addAudit(data)
-      } else {
-        // 编辑导航
-        const { navId } = this.editItem
-        const { classify, name, logo, desc, href, _id } = data
-        this.$message('修改成功')
-        this.$emit('update:show', false)
-        const res = await this.$api.editNav({
-          id: navId,
-          classify: classify,
-          sites: {
-            name: name,
-            logo: logo,
-            desc: desc,
-            href: href
-          }
-        })
-        this.$emit('reloadData')
-      }
+      
     },
-
-    resetForm() {
-      this.classify = ''
-      this.name = ''
-      this.href = ''
-      this.desc = ''
-      this.logo = ''
-    }
   },
   watch: {
+    form(val) {
+      console.log('this.form', val)
+    },
     dialogFormVisible() {
       if (!this.dialogFormVisible) {
         this.isDiyClassify = false
       }
     },
-    show() {
-      if (this.type && this.show) {
-        // 修改网站
-        this.name = this.editItem.name
-        this.href = this.editItem.href
-        this.desc = this.editItem.desc
-        this.logo = this.editItem.logo
-        this.classify = this.editItem.classify
-      }
-    }
   },
   created() {
     this.getCategorys()
-  }
+  },
 }
 </script>
 
@@ -213,4 +121,3 @@ export default {
   min-width: 320px;
 }
 </style>
-

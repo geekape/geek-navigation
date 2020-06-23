@@ -22,7 +22,14 @@ const audit = {
 
   async list(req, res) {
     try {
-      const resData = await auditModel.find({})
+      const resData = await auditModel.aggregate()
+      .lookup({
+        from: "category",
+        localField: "categoryId",
+        foreignField: "_id",
+        as: "category"
+      })
+
       res.json({
         data: resData
       })
