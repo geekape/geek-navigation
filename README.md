@@ -22,9 +22,12 @@
 ⚠️ 用户提交网站，只需要填写网站url和分类，提交后爬虫会补信息，如logo，标题和描述。
 
 ![登录](./images/navigation_login.jpg)
+
 ![首页](./images/navigation_home.jpg)
+
 ![审核页](./images/navigation_audit.jpg)
-![审核页](./images/navigation_category.jpg)
+
+![分类页](./images/navigation_category.jpg)
 
 
 ## 友情提示
@@ -43,14 +46,11 @@
 
 而相对于静态版的××数据库版本**，它提供了管理导航的界面，用户可在线提交网站，后台审核，并管理所有网站（推荐）
 
-### 2. 修改后台登录密码
-打开根目录下的`server/router.js`文件，修改密钥**secret**的值。
 
-### 3. 本地mongodb没导航数据？
-运行爬虫文件`node reptile/index.js`,确保你已经开启了本地Mongodb数据库，就可以爬导航到本地的数据库了
-![后台页](./images/mongodb.png)
+### 2. 本地mongodb没导航数据？
+运行爬虫文件`node reptile.js`,确保你已经开启了本地Mongodb数据库，就可以爬导航到本地的数据库了
 
-### 4. 本地运行
+### 3. 本地运行
 ```js
 // 1. 下载代码
 git clone git@github.com:geekape/geek-navigation.git
