@@ -23,7 +23,7 @@ const audit = {
             desc,
             href: url,
           })
-          
+
         } else {
           resData = await auditModel.create(req.body)
         }
@@ -45,10 +45,12 @@ const audit = {
   },
 
   async list(req, res) {
+    const { status = 0 } = req.query
+
     try {
       const resData = await auditModel.aggregate()
         .match({
-          status: 0
+          status: Number(status)
         })
         .lookup({
           from: "category",

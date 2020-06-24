@@ -18,4 +18,3 @@ function pagination(p,s){
         console.log(pagePerson);
     })
 }
-console.log(pagination(0,6));//查询第一页，每页的数据条数为6条

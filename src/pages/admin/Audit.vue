@@ -1,52 +1,74 @@
 <template>
-  <el-table :data="tableData">
-    <el-table-column label="提交日期" width="180">
-      <template slot-scope="scope">
-        <i class="el-icon-time"></i>
-        <span style="margin-left: 10px">
-          {{ $dayjs(scope.row.createAt).format('YYYY-MM-DD HH:ss') }}
-        </span>
-      </template>
-    </el-table-column>
-    <el-table-column
-      label="网站名称"
-      width="180"
-      prop="name"
-    ></el-table-column>
-    <el-table-column
-      label="网站描述"
-      width="180"
-      prop="desc"
-    ></el-table-column>
-    <el-table-column
-      label="网站链接"
-      width="180"
-      prop="url"
-    ></el-table-column>
-    <el-table-column label="操作">
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          @click="openDialog(0, scope.row._id, scope.$index)"
-        >
-          通过
-        </el-button>
-        <el-button
-          size="mini"
-          type="danger"
-          @click="openDialog(1, scope.row._id, scope.$index)"
-        >
-          拒绝
-        </el-button>
-      </template>
-    </el-table-column>
-  </el-table>
+  <div>
+    <el-row>
+      <el-col :span="4">
+        <el-select v-model="selectedStatus" placeholder="请选择状态">
+          <el-option
+            :value="item.value"
+            :label="item.label"
+            v-for="item in status"
+            :key="item.value"
+          />
+        </el-select>
+      </el-col>
+    </el-row>
+    <el-table :data="tableData">
+      <el-table-column label="提交日期" width="180">
+        <template slot-scope="scope">
+          <i class="el-icon-time"></i>
+          <span style="margin-left: 10px">
+            {{ $dayjs(scope.row.createAt).format('YYYY-MM-DD HH:ss') }}
+          </span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="网站名称"
+        width="180"
+        prop="name"
+      ></el-table-column>
+      <el-table-column
+        label="网站描述"
+        width="180"
+        prop="desc"
+      ></el-table-column>
+      <el-table-column
+        label="网站链接"
+        width="180"
+        prop="url"
+      ></el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button
+            size="mini"
+            @click="openDialog(0, scope.row._id, scope.$index)"
+            v-if="!scope.row.status"
+          >
+            通过
+          </el-button>
+          <el-button
+            size="mini"
+            type="danger"
+            @click="openDialog(1, scope.row._id, scope.$index)"
+            v-if="!scope.row.status"
+          >
+            拒绝
+          </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      status: [
+        { value: 0, label: '审核中' },
+        { value: 1, label: '已通过' },
+        { value: 2, label: '已拒绝' },
+      ],
+      selectedStatus: 0,
       isNavPopup: false,
       editItem: {},
       active: 0,
@@ -56,8 +78,8 @@ export default {
     }
   },
   methods: {
-    async getData() {
-      const res = await this.$api.getAuditList()
+    async getData(status) {
+      const res = await this.$api.getAuditList(status)
       this.tableData = res.data.data
     },
     // 拒绝－直接删除提交
@@ -81,8 +103,7 @@ export default {
           .catch((_) => {})
       } else {
         let filterData = this.tableData.filter((item) => item._id == id)[0]
-        delete filterData._id
-
+        filterData.auditId = filterData._id
         this.$confirm('确认添加到首页？')
           .then((_) => {
             this.$message('添加成功')
@@ -93,10 +114,19 @@ export default {
       }
     },
   },
+  watch: {
+    selectedStatus(val) {
+      this.getData(val)
+    },
+  },
   created() {
     this.getData()
   },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-table {
+  margin-top: 20px;
+}
+</style>

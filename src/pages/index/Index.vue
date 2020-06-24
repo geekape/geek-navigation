@@ -12,6 +12,9 @@
             background-color="#30333c"
             text-color="#6b7386"
             active-text-color="#fff"
+            :default-openeds="defaultOpeneds"
+            @open="defaultOpeneds=[$event]"
+            default-active="0-0"
           >
             <el-submenu
               :index="`${index}`"
@@ -102,6 +105,7 @@ export default {
       active: '［前端］热门推荐',
       data: [],
       categorys: [],
+      defaultOpeneds: ['0'],
       selfIndex: 0,
       isLeftbar: true,
       dialogFormVisible: false,

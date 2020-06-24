@@ -9,8 +9,8 @@ const api = {
   addAudit(data) {
     return request('/api/audit/add', 'post', data)
   },
-  getAuditList() {
-    return request('/api/audit/list')
+  getAuditList(status = 0) {
+    return request(`/api/audit/list?status=${status}`)
   },
   delAuditNav(data) {
     return request('/api/audit/del', 'post', data)
@@ -21,10 +21,9 @@ const api = {
   editNav(data) {
     return request('/api/nav/edit', 'post', data)
   },
-  delNav(id, name) {
+  delNav(id) {
     return request('/api/nav/del', 'post', {
       id,
-      name
     })
   },
   findNav(id) {

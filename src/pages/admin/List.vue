@@ -18,16 +18,16 @@
       ></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button
+          <!-- <el-button
             size="mini"
-            @click="handleEdit(index, scope.row, item._id)"
+            @click="handleEdit(scope.row)"
           >
             修改
-          </el-button>
+          </el-button> -->
           <el-button
             size="mini"
             type="danger"
-            @click="handleDelete(scope.$index, item._id, scope.row, index)"
+            @click="handleDelete(scope.row._id)"
           >
             删除
           </el-button>
@@ -53,17 +53,16 @@ export default {
       const res = await this.$api.getHome()
       this.tableData = res.data
     },
-    handleEdit(index, item, id) {
+    handleEdit(item) {
       this.isNavPopup = true
       item.classify = this.tableData[index].classify
       item.navId = id
       this.editItem = item
     },
-    async handleDelete(index, id, item, tableDataIndex) {
-      const name = item.name
-      this.tableData[tableDataIndex].sites.splice(index, 1)
+    async handleDelete(id) {
+      const data = await this.$api.delNav(id)
       this.$message('删除成功')
-      const data = await this.$api.delNav(id, name)
+      this.getData()
     },
   },
   created() {

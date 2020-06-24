@@ -13,9 +13,6 @@ export default {
   props: {
     data: Object
   },
-  created() {
-    console.log(this.data, 'this.data')
-  }
 };
 </script>
 
@@ -61,9 +58,6 @@ export default {
         font-size: 14px;
         font-weight: 700;
         color: #3273dc;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         padding: 0 0.1rem;
         img {
           width: 40px;

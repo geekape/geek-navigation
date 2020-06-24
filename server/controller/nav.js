@@ -14,7 +14,10 @@ const nav = {
 
   async add(req, res) {
     try {
-      await auditModel.update({ _id: req.body.id }, {status: 1})
+      const { auditId } = req.body
+      delete req.body.auditId
+      delete req.body._id
+      await auditModel.update({ _id: auditId }, {status: 1})
       const resData = await navData.create(req.body)
       res.json(resData)
     } catch (error) {
@@ -24,7 +27,7 @@ const nav = {
 
   async del(req, res) {
     try {
-      const resData = await navData.update({ _id: req.body.id }, { $pull: { sites: { name: req.body.name } } }, () => { })
+      const resData = await navData.remove({ _id: req.body.id })
       res.json(resData)
     } catch (error) {
       res.json(error)

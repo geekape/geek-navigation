@@ -52,6 +52,7 @@ export default {
       data: [],
       dialogVisible: false,
       editId: '',
+      
       form: {
         name: '',
         categoryId: '',

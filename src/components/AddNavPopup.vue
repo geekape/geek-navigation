@@ -28,11 +28,13 @@
             </el-option-group>
           </el-select>
         </el-form-item>
+        
         <el-form-item>
           <el-button type="primary" @click="addNav('ruleForm')">
-            立即创建
+            提交
           </el-button>
           <el-button @click="form = {}">重置</el-button>
+          <p>提交后爬虫会自动补全网站信息</p>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -63,7 +65,13 @@ export default {
         categoryId: '',
       },
       rules: {
-        url: [{ required: true, message: '请输入url', trigger: 'blur' }],
+        url: [
+          { required: true, message: '请输入url', trigger: 'blur' },
+          {
+            pattern: /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/,
+            message: '请输入正确的url',
+          },
+        ],
         categoryId: [
           { required: true, message: '请选择分类', trigger: 'change' },
         ],
@@ -87,8 +95,6 @@ export default {
           return false
         }
       })
-
-      
     },
   },
   watch: {
