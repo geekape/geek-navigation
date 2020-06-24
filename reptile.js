@@ -1,10 +1,10 @@
 const request = require('request');
 const cheerio = require('cheerio');
 const mongoose = require("mongoose");
-var db = mongoose.connect('mongodb://localhost:27017/navigation');
+var db = mongoose.connect('mongodb://yuanmeng:yuanmeng521@176.122.147.140:27017/navigation', { useNewUrlParser: true });
 //引入数据模型模块
-const navData = require("../server/model/navSchema");
-const categorySchema = require("../server/model/categorySchema");
+const navData = require("./server/model/navSchema");
+const categorySchema = require("./server/model/categorySchema");
 
 class Reptile {
   constructor(url, type) {

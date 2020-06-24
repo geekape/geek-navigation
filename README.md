@@ -15,33 +15,16 @@
 
 - [数据库动态导航版](https://github.com/geekape/geek-navigation/tree/vue2)：功能最全的版本，后续会增加更多功能
 
-- [后台地址](http://navigate.ym1024.com/admin)：给你也访问不了呀
+## v2.0
+- vue全家桶
+- elementUI
 
+⚠️ 用户提交网站，只需要填写网站url和分类，提交后爬虫会补信息，如logo，标题和描述。
 
-![功能导图](./images/navigate.png)
-
-![首页](./images/page_index.png)
-
-![后台页](./images/page_admin.png)
-
-## v2.0重构（进行中）
-### UI设计
-![功能导图](./images/首页.png)
-![功能导图](./images/首页－提交网站.png)
-![功能导图](./images/首页－排行榜.png)
-
-### 新增功能
-- [ ] 全新的UI改版
-  - [ ] 重构前端界面
-  - [ ] 重构后端界面
-  - [ ] 优化代码整洁度，组件的可复用率
-- [ ] 提交网站只需要填写一个链接，分类是可选
-- [ ] 每个网站项有浏览量，点赞数
-- [ ] 增加排行榜，显示最热，点赞最多，最新的排行
-
-- [ ] 使用nuxtjs重构，更快加载速度和对seo友好
-- [ ] 使用koa2重构后端，更简洁的后端开发
-
+![登录](./images/navigation_login.jpg)
+![首页](./images/navigation_home.jpg)
+![审核页](./images/navigation_audit.jpg)
+![审核页](./images/navigation_category.jpg)
 
 
 ## 友情提示
