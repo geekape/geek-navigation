@@ -60,9 +60,7 @@
           </div>
         </div>
         <!-- 开发社区 -->
-        <div class="box" v-if="data.length">
-          <NavItem :data="item" v-for="item in data" :key="item._id" />
-        </div>
+        <WebsiteList :list="data" />
       </div>
       <footer class="footer">
         <div class="copyright">
@@ -99,6 +97,7 @@ import BackTop from '@/components/BackTop'
 import AddNavPopup from '@/components/AddNavPopup'
 import NavItem from '@/components/NavItem'
 import Header from './Header'
+import WebsiteList from './WebsiteList'
 export default {
   data() {
     return {
@@ -116,6 +115,7 @@ export default {
     AddNavPopup,
     NavItem,
     Header,
+    WebsiteList,
   },
   methods: {
     async getCategoryList() {
