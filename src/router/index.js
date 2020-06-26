@@ -13,7 +13,11 @@ Vue.use(VueRouter);
 const routes = [
 	{
 		path: '/',
-		component: Index
+		name: 'index',
+		component: Index,
+		meta: {
+			keepAlive: true
+		}
 	},
 	{
 		path: '/login',

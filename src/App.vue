@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
@@ -20,7 +23,7 @@ export default {
       script.language = 'JavaScript'
       script.id = 'cnzz'
       document.body.appendChild(script)
-    }
+    },
   },
   watch: {
     $route() {
@@ -37,8 +40,8 @@ export default {
       if (window._czc) {
         czc.push(['_trackEvent', category, action, label, value, nodeid])
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
