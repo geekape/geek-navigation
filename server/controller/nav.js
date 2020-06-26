@@ -36,13 +36,10 @@ const nav = {
 
   async edit(req, res) {
     try {
-      const { id, sites: {
-        href
-      } } = req.body
+      const { id } = req.body
+      delete req.body.id
 
-      await navData.update({ _id: id }, { $pull: { sites: { href: href } } }, (success, err) => {
-      })
-      const resData = await navData.update({ classify: req.body.classify }, { $push: { sites: req.body.sites } })
+      const resData = await navData.update({ _id: id }, req.body)
       res.json(resData)
     } catch (error) {
       res.json(error)

@@ -120,7 +120,7 @@ export default {
   methods: {
     async getCategoryList() {
       const { data } = await this.$api.getCategoryList()
-      this.categorys = data.data
+      this.categorys = data
 
       if (this.categorys.length) {
         const { children } = this.categorys.slice(0, 1)[0]
@@ -141,7 +141,7 @@ export default {
     },
     async findNav(id) {
       const data = await this.$api.findNav(id)
-      this.data = data.data
+      this.data = data
     },
   },
   created() {

@@ -24,7 +24,7 @@ axios.interceptors.response.use(response => {
     router.push('/login');
   }
 
-  return response
+  return response.data
 }, error => {
   router.push('/login');
 

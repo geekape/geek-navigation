@@ -87,7 +87,7 @@ export default {
     },
     async getData() {
       const res = await this.$api.getCategoryList()
-      let resData = res.data.data
+      let resData = res.data
 
       // const sencondCategory = resData.filter(item=> item.categoryId)
       // resData = resData.map(item=> {

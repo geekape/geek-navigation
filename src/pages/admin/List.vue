@@ -18,12 +18,9 @@
       ></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <!-- <el-button
-            size="mini"
-            @click="handleEdit(scope.row)"
-          >
+          <el-button size="mini" @click="handleEdit(scope.row)">
             修改
-          </el-button> -->
+          </el-button>
           <el-button
             size="mini"
             type="danger"
@@ -34,14 +31,20 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <AddNavPopup :show.sync="show" :item="editItem" type="update" @submit="getData" />
   </div>
 </template>
 
 <script>
+import AddNavPopup from '@/components/AddNavPopup'
 export default {
+  components: {
+    AddNavPopup,
+  },
   data() {
     return {
-      isNavPopup: false,
+      show: false,
       editItem: {},
       active: 0,
       tableData: [],
@@ -51,12 +54,10 @@ export default {
   methods: {
     async getData() {
       const res = await this.$api.getHome()
-      this.tableData = res.data
+      this.tableData = res
     },
     handleEdit(item) {
-      this.isNavPopup = true
-      item.classify = this.tableData[index].classify
-      item.navId = id
+      this.show = true
       this.editItem = item
     },
     async handleDelete(id) {

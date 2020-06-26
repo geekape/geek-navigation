@@ -80,7 +80,7 @@ export default {
   methods: {
     async getData(status) {
       const res = await this.$api.getAuditList(status)
-      this.tableData = res.data.data
+      this.tableData = res.data
     },
     // 拒绝－直接删除提交
     async delAuditNav(id) {

@@ -9,7 +9,7 @@
     >
       <el-form ref="ruleForm" label-width="100px" :model="form" :rules="rules">
         <el-form-item label="网站链接" prop="url">
-          <el-input placeholder="http://www.baidu.com/" v-model="form.url" />
+          <el-input placeholder="http://www.baidu.com/" v-model="form.url"  :disabled="type === 'update'" />
         </el-form-item>
 
         <el-form-item label="网站分类" prop="categoryId">
@@ -28,12 +28,17 @@
             </el-option-group>
           </el-select>
         </el-form-item>
-        
+        <el-form-item label="网站名称" prop="name" v-if="isError">
+          <el-input placeholder="输入网站名称" v-model="form.name" />
+        </el-form-item>
+        <el-form-item label="网站描述" prop="desc" v-if="isError">
+          <el-input placeholder="输入网站描述" v-model="form.desc" />
+        </el-form-item>
+
         <el-form-item>
           <el-button type="primary" @click="addNav('ruleForm')">
             提交
           </el-button>
-          <el-button @click="form = {}">重置</el-button>
           <p>提交后爬虫会自动补全网站信息</p>
         </el-form-item>
       </el-form>
@@ -44,18 +49,17 @@
 <script>
 export default {
   props: {
-    // 分类列表
-    data: Array,
-    //popup类型：0为添加网站，1为修改网站
-    type: {
-      type: Number,
-      default: 0,
-    },
     show: {
       type: Boolean,
       default: false,
     },
-    editItem: Object,
+    type: {
+      validator: function(value = 'create') {
+        // 这个值必须匹配下列字符串中的一个
+        return ['create', 'update'].indexOf(value) !== -1
+      },
+    },
+    item: Object,
   },
   data() {
     return {
@@ -63,6 +67,8 @@ export default {
       form: {
         url: '',
         categoryId: '',
+        name: '',
+        desc: '',
       },
       rules: {
         url: [
@@ -73,38 +79,55 @@ export default {
           },
         ],
         categoryId: [
-          { required: true, message: '请选择分类', trigger: 'change' },
+          { required: true, message: '请选择分类', trigger: 'blur' },
         ],
+        name: [],
+        desc: [],
       },
-      isDiyClassify: false,
+      isError: false,
     }
   },
   methods: {
     async getCategorys() {
       const { data } = await this.$api.getCategoryList()
-      this.categorys = data.data
+      this.categorys = data
     },
     async addNav(formName) {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
-          const res = await this.$api.addAudit(this.form)
-          this.$message('提交成功，后台审核通过后才会显示')
+          // 判断编辑还是更新
+          if (this.type === 'update') {
+            const id = this.item._id
+            const res = await this.$api.editNav({
+              id,
+              ...this.form
+            })
+          } else {
+            const res = await this.$api.addAudit(this.form)
+            if (res.msg) {
+              this.$message.error(`${res.msg}，请手动输入！`)
+              this.isError = true
+              return false
+            }
+            this.$message(`感谢您的提交，请等待后台审核通过！`)
+          }
+          this.form = {}
+
           this.$emit('update:show', false)
+          this.$emit('submit')
         } else {
-          console.log('error submit!!')
           return false
         }
       })
     },
   },
   watch: {
-    form(val) {
-      console.log('this.form', val)
-    },
-    dialogFormVisible() {
-      if (!this.dialogFormVisible) {
-        this.isDiyClassify = false
-      }
+    item(ite) {
+      this.isError = true
+      this.form.name = ite.name
+      this.form.url = ite.href
+      this.form.desc = ite.desc
+      this.form.categoryId = ite.categoryId
     },
   },
   created() {
