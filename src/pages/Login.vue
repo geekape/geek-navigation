@@ -42,7 +42,6 @@ export default {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           let data = await this.$api.login(this.form)
-          data = data.data
           if (data.token) {
             this.$storage.set('TOKEN', data.token)
             this.$router.replace('/admin')
