@@ -1,54 +1,54 @@
 
-import { request } from './config'
+import request from './config'
 
 
 const api = {
   getHome() {
-    return request('/api/index')
+    return request.get('/api/index')
   },
   addAudit(data) {
-    return request('/api/audit/add', 'post', data)
+    return request.post('/api/audit/add', data)
   },
   getAuditList(status = 0) {
-    return request(`/api/audit/list?status=${status}`)
+    return request.get(`/api/audit/list?status=${status}`)
   },
   delAuditNav(data) {
-    return request('/api/audit/del', 'post', data)
+    return request.post('/api/audit/del', data)
   },
   fastRejectAudit() {
-    return request('/api/audit/fastReject', 'post')
+    return request.post('/api/audit/fastReject')
   },
   addNav(data) {
-    return request('/api/nav/add', 'post', data)
+    return request.post('/api/nav/add', data)
   },
   editNav(data) {
-    return request('/api/nav/edit', 'post', data)
+    return request.post('/api/nav/edit', data)
   },
   delNav(id) {
-    return request('/api/nav/del', 'post', {
+    return request.post('/api/nav/del', {
       id,
     })
   },
   findNav(id) {
-    return request('/api/nav/find', 'post', {
+    return request.post('/api/nav/find', {
       id
     })
   },
   login(data) {
-    return request('/api/login', 'post', data)
+    return request.post('/api/login', data)
   },
 
   getCategoryList() {
-    return request('/api/category/list')
+    return request.get('/api/category/list')
   },
   addCategory(data) {
-    return request('/api/category/add', 'post',  data)
+    return request.post('/api/category/add', data)
   },
   delCategory(id) {
-    return request('/api/category/del', 'post', { id })
+    return request.post('/api/category/del', { id })
   },
   editCategory(data) {
-    return request('/api/category/edit', 'post', data)
+    return request.post('/api/category/edit', data)
   },
 }
 

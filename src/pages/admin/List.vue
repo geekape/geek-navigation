@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-table :data="tableData">
+    <el-table :data="tableData" v-loading="loading">
       <el-table-column
         label="网站名字"
         width="180"
@@ -44,6 +44,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       show: false,
       editItem: {},
       active: 0,
@@ -53,8 +54,10 @@ export default {
   },
   methods: {
     async getData() {
+      this.loading = true
       const res = await this.$api.getHome()
       this.tableData = res
+      this.loading = false
     },
     handleEdit(item) {
       this.show = true

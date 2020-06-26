@@ -12,10 +12,10 @@
         </el-select>
       </el-col>
       <el-col :span="4">
-        <el-button type='danger' @click="clear">一键拒绝审核列表</el-button>
+        <el-button type="danger" @click="clear">一键拒绝审核列表</el-button>
       </el-col>
     </el-row>
-    <el-table :data="tableData">
+    <el-table :data="tableData" v-loading="loading">
       <el-table-column label="提交日期" width="180">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
@@ -66,6 +66,7 @@
 export default {
   data() {
     return {
+      loading: false,
       status: [
         { value: 0, label: '审核中' },
         { value: 1, label: '已通过' },
@@ -82,8 +83,10 @@ export default {
   },
   methods: {
     async getData(status) {
+      this.loading = true
       const res = await this.$api.getAuditList(status)
       this.tableData = res.data
+      this.loading = false
     },
     // 拒绝－直接删除提交
     async delAuditNav(id) {
@@ -117,11 +120,11 @@ export default {
       }
     },
     clear() {
-      this.$confirm('确认清空审核列表？').then(res=> {
+      this.$confirm('确认清空审核列表？').then((res) => {
         this.$api.fastRejectAudit()
         this.getData()
       })
-    }
+    },
   },
   watch: {
     selectedStatus(val) {

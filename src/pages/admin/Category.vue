@@ -1,5 +1,5 @@
 <template>
-  <div class='category'>
+  <div class="category">
     <el-row type="flex" justify="start">
       <el-button type="primary" @click="dialogVisible = true">
         添加分类
@@ -11,6 +11,7 @@
       node-key="_id"
       default-expand-all
       :expand-on-click-node="false"
+      v-loading="loading"
     >
       <span class="custom-tree-node" slot-scope="{ node, data }">
         <span>{{ data.name }}</span>
@@ -49,10 +50,11 @@
 export default {
   data() {
     return {
+      loading: false,
       data: [],
       dialogVisible: false,
       editId: '',
-      
+
       form: {
         name: '',
         categoryId: '',
@@ -77,7 +79,8 @@ export default {
       this.getData()
     },
     async handleEdit(index, row) {
-      ;(this.dialogVisible = true), (this.form.name = row.name)
+      this.dialogVisible = true
+      this.form.name = row.name
       this.editId = row._id
     },
     async handleDelete(row) {
@@ -86,14 +89,10 @@ export default {
       this.getData()
     },
     async getData() {
+      this.loading = true
       const res = await this.$api.getCategoryList()
       let resData = res.data
-
-      // const sencondCategory = resData.filter(item=> item.categoryId)
-      // resData = resData.map(item=> {
-      //   item.children = sencondCategory.filter(cate=> cate.categoryId === item.categoryId)
-      // })
-
+      this.loading = false
       this.data = resData
     },
   },

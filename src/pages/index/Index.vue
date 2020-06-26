@@ -60,7 +60,7 @@
           </div>
         </div>
         <!-- 开发社区 -->
-        <WebsiteList :list="data" />
+        <WebsiteList v-loading="loading" :list="data" />
       </div>
       <footer class="footer">
         <div class="copyright">
@@ -95,12 +95,12 @@
 <script>
 import BackTop from '@/components/BackTop'
 import AddNavPopup from '@/components/AddNavPopup'
-import NavItem from '@/components/NavItem'
 import Header from './Header'
 import WebsiteList from './WebsiteList'
 export default {
   data() {
     return {
+      loading: false,
       active: '［前端］热门推荐',
       data: [],
       categorys: [],
@@ -113,7 +113,6 @@ export default {
   components: {
     BackTop,
     AddNavPopup,
-    NavItem,
     Header,
     WebsiteList,
   },
@@ -140,8 +139,10 @@ export default {
       }
     },
     async findNav(id) {
+      this.loading = true
       const data = await this.$api.findNav(id)
       this.data = data
+      this.loading = false
     },
   },
   created() {
