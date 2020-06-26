@@ -4,35 +4,39 @@ const cheerio = require('cheerio');
 
 const audit = {
 
-  async add(req, res) {
-    try {
-      const { url } = req.body
-      req.body.status = 0
-      let resData
-      request(url, async (error, res, body) => {
-        if (!error && res.statusCode == 200) {
-          const $ = cheerio.load(body)
-          const logo = `https://www.google.com/s2/favicons?domain=${url}`
-          const name = $('title').text()
-          const desc = $('meta[name="description"]').attr('content')
+  add(req, res) {
+    const { url, name } = req.body
+    req.body.status = 0
+    req.body.logo = `https://www.google.com/s2/favicons?domain=${url}`
 
-          resData = await auditModel.create({
-            ...req.body,
-            logo,
-            name,
-            desc,
-            href: url,
-          })
-
-        } else {
-          resData = await auditModel.create(req.body)
-        }
+    // 手动输入
+    if (name) {
+      auditModel.create(req.body, (err, doc)=> {
+        res.json({ data: doc })
       })
-      res.json(resData)
-
-    } catch (error) {
-      res.json(error)
+      return
     }
+
+    request(url, (error, requestData, body) => {
+      if (!error && requestData.statusCode == 200) {
+        const $ = cheerio.load(body)
+        const name = $('title').text()
+        const desc = $('meta[name="description"]').attr('content')
+        auditModel.create({
+          ...req.body,
+          name,
+          desc,
+          href: url,
+        }, (err, doc)=> {
+          res.json({ data: doc })
+        })
+      } else {
+        res.json({
+          code: 0,
+          msg: '爬虫爬取失败',
+        })
+      }
+    })
   },
 
   async del(req, res) {
