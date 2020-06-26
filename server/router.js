@@ -20,6 +20,7 @@ router.use((req, res, next) => {
 router.post("/audit/add", controller.audit.add)
 router.post("/audit/del", controller.audit.del)
 router.get("/audit/list", controller.audit.list);
+router.post("/audit/fastReject", controller.audit.fastReject);
 
 router.get("/index", controller.nav.index)
 router.post("/nav/add", controller.nav.add)

@@ -49,6 +49,16 @@ const audit = {
     }
   },
 
+  // 全部拒绝
+  async fastReject(req, res) {
+    try {
+      const resData = await auditModel.update({ status: 0 }, { status: 2 }, {multi: true})
+      res.json(resData)
+    } catch (error) {
+      res.json(error)
+    }
+  },
+
   async list(req, res) {
     const { status = 0 } = req.query
 

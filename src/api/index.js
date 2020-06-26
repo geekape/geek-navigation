@@ -15,6 +15,9 @@ const api = {
   delAuditNav(data) {
     return request('/api/audit/del', 'post', data)
   },
+  fastRejectAudit() {
+    return request('/api/audit/fastReject', 'post')
+  },
   addNav(data) {
     return request('/api/nav/add', 'post', data)
   },

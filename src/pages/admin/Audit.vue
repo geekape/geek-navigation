@@ -11,6 +11,9 @@
           />
         </el-select>
       </el-col>
+      <el-col :span="4">
+        <el-button type='danger' @click="clear">一键拒绝审核列表</el-button>
+      </el-col>
     </el-row>
     <el-table :data="tableData">
       <el-table-column label="提交日期" width="180">
@@ -113,6 +116,12 @@ export default {
           .catch((_) => {})
       }
     },
+    clear() {
+      this.$confirm('确认清空审核列表？').then(res=> {
+        this.$api.fastRejectAudit()
+        this.getData()
+      })
+    }
   },
   watch: {
     selectedStatus(val) {
