@@ -42,13 +42,13 @@
 - [x] 审核网站爬虫自动补全信息
 - [x] 用户登录，默认第一次登录账号为管理员
 
-![登录](./images/navigation_login.jpg)
+![登录](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593546788-5b5fbe71-579f-43f7-8991-1138e444034d.jpeg?x-oss-process=image%2Fresize%2Cw_1016)
 
-![首页](./images/navigation_home.jpg)
+![首页](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593547716-ad9b83f3-7586-4513-9552-09bf60454b91.jpeg?x-oss-process=image%2Fresize%2Cw_1016)
 
-![审核页](./images/navigation_audit.jpg)
+![审核页](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593548792-f011d40e-6c53-4960-a22b-333a7e1fb45f.jpeg?x-oss-process=image%2Fresize%2Cw_1016)
 
-![分类页](./images/navigation_category.jpg)
+![分类页](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593549607-f86d5c36-6166-4645-ac30-39bfeecac4bf.jpeg?x-oss-process=image%2Fresize%2Cw_1016)
 
 ## 友情提示
 
@@ -94,6 +94,6 @@ http://localhost:8080
 
 ---
 
-| 个人微信号(zcb861013016)         | QQ 交流群(361979424)        |
-| -------------------------------- | --------------------------- |
-| ![](./images/wechat_qrcode.jpeg) | ![](./images/qq_qrcode.jpg) |
+| 个人微信号(zcb861013016)                                                                                    | QQ 交流群(361979424)                                                                                        |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| ![](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593545660-5385c319-49af-49a7-833e-25a3169721c6.jpeg) | ![](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593544745-f344575b-aaae-4d56-96bc-6c8d44df189a.jpeg) |
