@@ -1,6 +1,6 @@
 # 极客猿梦导航
 
-> 致力于打造一个互联网更为全面的导航站点！
+> 独立开发者的导航站!
 
 预览: [➡️ http://navigation.zcbing.cn/](http://navigation.zcbing.cn/)
 
