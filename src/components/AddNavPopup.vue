@@ -137,11 +137,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.add-classify-btn {
-  color: $color-blue;
-  cursor: pointer;
-  max-width: 200px;
-}
+
 .el-icon-folder-add {
   margin-right: 5px;
 }

@@ -7,6 +7,10 @@
       </div>
       <div class="desc">{{ data.desc || '这个网站什么描述也没有...' }}</div>
     </a>
+    <!-- <div class="website-item__footer">
+      <span class="iconfont icon-attentionfill"></span>123
+      <span class="iconfont icon-appreciatefill"></span>123
+    </div> -->
   </el-col>
 </template>
 
@@ -25,8 +29,20 @@ export default {
 
 <style lang="scss" scoped>
 .website-item {
-  font-size: 16px;
+  font-size: 12px;
   margin-bottom: 10px;
+  color: #999;
+
+  .iconfont {
+    margin-left: 15px;
+  }
+
+  &__footer {
+    border-top: 1px solid #f2f2f2;
+    background: #fff;
+    padding: 10px 15px;
+    text-align: right;
+  }
 }
 
 .info {
@@ -69,11 +85,11 @@ export default {
 .title {
   color: #3273dc;
   @include text-overflow;
+  font-size: 16px;
 }
 
 .desc {
   color: gray;
-  font-size: 12px;
   padding-top: 10px;
   @include text-overflow;
 }

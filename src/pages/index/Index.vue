@@ -13,7 +13,6 @@
             text-color="#6b7386"
             active-text-color="#fff"
             :default-openeds="defaultOpeneds"
-            @open="defaultOpeneds=[$event, ...defaultOpeneds]"
             default-active="0-0"
           >
             <el-submenu
