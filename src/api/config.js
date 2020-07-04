@@ -13,7 +13,7 @@ const tip = (message) => {
 }
 
 const toLogin = () => {
-  router.push('/login')
+  router.replace('/login')
 }
 
 const errorHandle = (status) => {

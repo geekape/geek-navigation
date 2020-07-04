@@ -63,7 +63,7 @@ export default {
       title: '登录提示',
       type: 'info',
       message: '默认首次登录的账号密码为管理员身份',
-      duration: 0
+      duration: 3000
     });
   }
 }

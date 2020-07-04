@@ -1,8 +1,9 @@
 <template>
   <div class="header">
     <slot>
-      <router-link class="el-icon-s-custom icon-login" to="/admin"></router-link>
+      <router-link class="el-icon-s-custom icon-login icon" to="/admin"></router-link>
     </slot>
+    <span class="el-icon-more icon" @click="$emit('handleMoreClick')"></span>
   </div>
 </template>
 
@@ -19,9 +20,12 @@ export default {
     text-align: right;
     font-size: 14px;
   }
-  .icon-login {
+  .icon {
     font-size: 20px;
     cursor: pointer;
     text-decoration: none;
+  }
+  .el-icon-more {
+    margin-left: 30px;
   }
 </style>

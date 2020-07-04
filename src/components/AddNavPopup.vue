@@ -13,7 +13,7 @@
         </el-form-item>
 
         <el-form-item label="网站分类" prop="categoryId">
-          <el-select v-model="form.categoryId" placeholder="请选择">
+          <el-select v-model="form.categoryId" placeholder="请选择" filterable>
             <el-option-group
               v-for="group in categorys"
               :key="group._id"

@@ -41,7 +41,7 @@
       </el-row>
     </div>
     <section class="main">
-      <Header />
+      <Header @handleMoreClick="isDrawer = true" />
       <div id="mainContent">
         <!-- 手机端菜单 -->
         <div id="menu-box">
@@ -88,6 +88,13 @@
     </div>
 
     <AddNavPopup :show.sync="dialogFormVisible" />
+
+    <el-drawer :visible.sync="isDrawer" direction="rtl">
+      <el-tabs>
+        <el-tab-pane label="我的分类" name="first">用户管理</el-tab-pane>
+        <el-tab-pane label="最近添加" name="second">配置管理</el-tab-pane>
+      </el-tabs>
+    </el-drawer>
   </section>
 </template>
 
@@ -100,6 +107,7 @@ export default {
   data() {
     return {
       loading: false,
+      isDrawer: false,
       active: '［前端］热门推荐',
       data: [],
       categorys: [],

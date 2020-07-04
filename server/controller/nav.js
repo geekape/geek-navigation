@@ -17,7 +17,7 @@ const nav = {
       const { auditId } = req.body
       delete req.body.auditId
       delete req.body._id
-      await auditModel.update({ _id: auditId }, {status: 1})
+      await auditModel.update({ _id: auditId }, { status: 1 })
       const resData = await navData.create(req.body)
       res.json(resData)
     } catch (error) {
@@ -60,9 +60,9 @@ const nav = {
           }
         }
       ])
-      .match({
-        categoryId: id
-      })
+        .match({
+          categoryId: id
+        })
       res.json(resData)
     } catch (error) {
       res.json(error)
