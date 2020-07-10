@@ -19,6 +19,22 @@
 
 ⚠️ 用户提交网站，只需要填写网站 url 和分类，提交后爬虫会补信息，如 logo，标题和描述。
 
+### nginx配置
+nginx.conf中加如下配置，换上你自己ip地址
+```nginx
+location /api {
+  proxy_pass http://176.122.147.140:3000/api;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection 'upgrade';
+  proxy_set_header Host $host;
+  proxy_cache_bypass $http_upgrade;
+}
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
 ### TODO
 
 - [ ] mongoose 联表优化
@@ -29,11 +45,10 @@
 - [ ] 分页等接口优化
 - [ ] 审核列表状态切换
 - [ ] 提交排除重复网站
-- [ ] 自动化部署
+- [x] 自动化部署
 - [ ] 常用分类
 - [ ] 最近添加
-- [ ] 优化 README 文档
-
+- [x] 优化 README 文档
 - [x] 一键拒绝审核列表
 - [x] 后台网站编辑更新
 - [x] 爬虫爬取失败手动填写
