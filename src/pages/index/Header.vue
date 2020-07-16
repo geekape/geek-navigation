@@ -3,7 +3,7 @@
     <slot>
       <router-link class="el-icon-s-custom icon-login icon" to="/admin"></router-link>
     </slot>
-    <span class="el-icon-more icon" @click="$emit('handleMoreClick')"></span>
+    <!-- <span class="el-icon-more icon" @click="$emit('handleMoreClick')"></span> -->
   </div>
 </template>
 

@@ -12,6 +12,9 @@
 
 - [数据库动态导航版](https://github.com/geekape/geek-navigation/tree/vue2)：功能最全的版本，后续会增加更多功能
 
+### TODO
+- [ ] 本地数据库版本，有界面操作
+
 ## v2.0
 
 - vue 全家桶
@@ -21,8 +24,9 @@
 
 ### TODO
 
-- [ ] mongoose 联表优化
 - [x] 首页加 keep-live
+- [ ] 适配下移动端
+- [ ] mongoose 联表优化
 - [ ] 增加喜欢和浏览量
 - [ ] 增加提交作者名，信息
 - [ ] 增加搜索
