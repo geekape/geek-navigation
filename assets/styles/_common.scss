@@ -1,0 +1,220 @@
+.icon-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+.container {
+  .left-bar {
+    position: fixed;
+    background: #30333c;
+    color: #6b7386;
+    box-sizing: border-box;
+    flex-direction: column;
+    height: 100vh;
+    display: flex;
+    width: 248px;
+    overflow-y: scroll;
+    transition: all 0.5s;
+  }
+  .main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    // -webkit-box-pack: center;
+    // justify-content: center;
+    margin-left: 248px;
+  }
+}
+
+// 左侧栏
+.set-scroll {
+  background-color: #494f5e;
+  border-radius: 0;
+  width: 4px;
+}
+
+.left-bar {
+  .title {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #30333c;
+    color: white;
+    font-size: 18px;
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid hsla(0,0%,100%,.04);
+  }
+}
+
+.nav {
+  .item {
+    a {
+      color: white;
+    }
+  }
+}
+
+// 右内容
+.main {
+  .box {
+    overflow: hidden;
+    margin: 20px 30px;
+    background: #fff;
+    padding-bottom: 20px;
+    .sub-category {
+      > div {
+        padding: 12px 0 0 2.1%;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+// 页脚
+.footer {
+  line-height: 45px;
+  background: #fff;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 0;
+  left: 250px;
+  right: 0;
+  .copyright {
+    margin-left: 30px;
+    color: #949494;
+    font-size: 12px;
+    a {
+      text-decoration: none;
+      color: #3a85ff;
+    }
+  }
+}
+
+// 手机端菜单
+#menu-box {
+  display: none;
+  width: 100%;
+  background: #ffffff;
+  text-align: right;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 1px 1px 8px #e0ddf;
+  height: 50px;
+  #menu {
+    * {
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      box-sizing: border-box;
+    }
+    height: 50px;
+    width: 40px;
+    position: absolute;
+    right: 10px;
+    input[type="checkbox"] {
+      display: none;
+    }
+    input[type="checkbox"]:checked ~ .menu-spin > .horizontal {
+      opacity: 0;
+    }
+    input[type="checkbox"]:checked ~ .menu-spin > .line-1 {
+      transform: rotate(405deg);
+      -webkit-transform: rotate(405deg);
+      margin-top: 10px;
+    }
+    input[type="checkbox"]:checked ~ .menu-spin > .line-2 {
+      transform: rotate(-405deg);
+      -webkit-transform: rotate(-405deg);
+      margin-top: -10px;
+    }
+    label {
+      cursor: pointer;
+      position: absolute;
+      z-index: 99;
+      height: 100%;
+      width: 100%;
+      top: 10px;
+      left: 0;
+      .line {
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        background-color: #a2a2a2;
+      }
+      .horizontal {
+        top: 10px;
+      }
+      .line-2 {
+        top: 20px;
+      }
+    }
+  }
+}
+
+// 导航源码下载
+.download {
+  a,
+  i {
+    color: #3668bd !important;
+  }
+}
+
+#mainContent {
+  padding-bottom: 50px;
+}
+
+@media screen and (max-width: 481px) {
+  .container .box .item {
+    width: 39%;
+    min-width: 100px;
+  }
+  .container .main {
+    margin-left: 0;
+  }
+  .container .left-bar {
+    z-index: 999;
+    left: -249px;
+  }
+  #menu-box {
+    display: block;
+  }
+  .main .box {
+    margin: 10px;
+  }
+  .footer {
+    left: 0;
+  }
+  /deep/ .el-dialog {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .container .left-bar {
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 482px) and (max-width: 789px) {
+  .container .box .item {
+    width: 90%;
+  }
+  .container .left-bar {
+    left: 0px;
+  }
+}
+
+@media screen and (min-width: 790px) and (max-width: 1039px) {
+  .container .box .item {
+    width: 43%;
+  }
+}
+
+@media screen and (min-width: 1040px) and (max-width: 1920px) {
+  .container .box .item {
+    width: 20%;
+  }
+}

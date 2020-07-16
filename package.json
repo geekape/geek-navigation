@@ -11,21 +11,26 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/style-resources": "^1.0.0",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
     "coffee-loader": "^1.0.0",
     "coffeescript": "^2.5.1",
     "cross-env": "^5.2.0",
+    "css-loader": "^3.6.0",
     "element-ui": "^2.4.11",
     "express": "^4.16.4",
     "express-jwt": "^6.0.0",
     "mongoose": "^5.9.24",
     "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
+    "postcss-loader": "^3.0.0",
     "pug": "2.0.3",
     "pug-plain-loader": "^1.0.0",
     "request": "^2.88.2",
-    "sass-loader": "^9.0.2"
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
