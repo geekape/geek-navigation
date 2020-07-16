@@ -5,21 +5,27 @@
   "author": "geekape",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/app.js --watch server",
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node server/app.js",
+    "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
+    "coffee-loader": "^1.0.0",
+    "coffeescript": "^2.5.1",
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.11",
     "express": "^4.16.4",
     "express-jwt": "^6.0.0",
     "mongoose": "^5.9.24",
+    "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
-    "request": "^2.88.2"
+    "pug": "2.0.3",
+    "pug-plain-loader": "^1.0.0",
+    "request": "^2.88.2",
+    "sass-loader": "^9.0.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
