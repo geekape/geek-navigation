@@ -3,7 +3,8 @@ const data = require('./router')
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
 
-var db = mongoose.connect('mongodb://localhost:27017/navigation');
+// var db = mongoose.connect('mongodb://localhost:27017/navigation');
+var db = mongoose.connect('mongodb://yuanmeng:yuanmeng521@176.122.147.140:27017/navigation', { useNewUrlParser: true });
 
 const app = express()
 
