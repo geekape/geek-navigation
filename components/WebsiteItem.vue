@@ -5,7 +5,7 @@
         <el-image class="logo" :src="data.logo" fit="cover" lazy />
         <span class="title">{{ data.name }}</span>
       </div>
-      <div class="desc">{{ data.desc || '这个网站什么描述也没有...' }}</div>
+      <div class="desc">{{ data.desc || "这个网站什么描述也没有..." }}</div>
     </a>
     <!-- <div class="website-item__footer">
       <span class="iconfont icon-attentionfill"></span>123
@@ -20,21 +20,34 @@ export default {
     data: {
       type: Object,
       default: function() {
-        return {}
-      },
-    },
-  },
-}
+        return {};
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss">
 .website-item {
   font-size: 12px;
   margin-bottom: 10px;
-  color: #999;
+  a {
+    color: #999;
+  }
+
+  .title {
+    color: #3273dc;
+    font-size: 16px;
+  }
 
   .iconfont {
     margin-left: 15px;
+  }
+
+  .desc {
+    margin-top: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__footer {

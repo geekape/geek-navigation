@@ -8,9 +8,10 @@ import '../node_modules/element-ui/lib/theme-chalk/index.css'
 
 import '../assets/styles/style.scss'
 
+import _5d27265e from '../layouts/admin-layout.vue'
 import _6f6c098b from '../layouts/default.vue'
 
-const layouts = { "_default": sanitizeComponent(_6f6c098b) }
+const layouts = { "_admin-layout": sanitizeComponent(_5d27265e),"_default": sanitizeComponent(_6f6c098b) }
 
 export default {
   render (h, props) {
@@ -171,10 +172,6 @@ export default {
     },
 
     setLayout (layout) {
-      if(layout && typeof layout !== 'string') {
-        throw new Error('[nuxt] Avoid using non-string value as layout property.')
-      }
-
       if (!layout || !layouts['_' + layout]) {
         layout = 'default'
       }

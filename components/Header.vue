@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <slot>
-      <router-link class="el-icon-s-custom icon-login icon" to="/admin"></router-link>
+      <nuxt-link class="el-icon-s-custom icon-login icon" to="/admin"></nuxt-link>
     </slot>
     <!-- <span class="el-icon-more icon" @click="$emit('handleMoreClick')"></span> -->
   </div>

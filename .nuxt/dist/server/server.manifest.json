@@ -1,0 +1,19 @@
+{
+  "entry": "server.js",
+  "files": {
+    "pages/admin/category.js": "pages/admin/category.js",
+    "pages/admin/index.js": "pages/admin/index.js",
+    "pages/admin/list.js": "pages/admin/list.js",
+    "pages/index.js": "pages/index.js",
+    "pages/login.js": "pages/login.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "pages/admin/category.js": "pages/admin/category.js.map",
+    "pages/admin/index.js": "pages/admin/index.js.map",
+    "pages/admin/list.js": "pages/admin/list.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "pages/login.js": "pages/login.js.map",
+    "server.js": "server.js.map"
+  }
+}

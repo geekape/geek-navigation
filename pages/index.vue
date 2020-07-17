@@ -30,7 +30,7 @@
                 :key="nav._id"
                 @click="findNav(nav._id)"
               >
-                <a href="#">
+                <a>
                   <i :class="nav.icon"></i>
                   <span slot="title">{{ nav.name }}</span>
                 </a>
@@ -103,6 +103,7 @@ import BackTop from "~/components/BackTop";
 import AddNavPopup from "~/components/AddNavPopup";
 import Header from "~/components/Header";
 import WebsiteList from "~/components/WebsiteList";
+import axios from "~/plugins/axios";
 export default {
   components: {
     BackTop,
@@ -148,14 +149,35 @@ export default {
     async findNav(id) {
       this.loading = true;
       const data = await this.$api.findNav(id);
-      this.data = data.data;
+      this.data = data;
       this.loading = false;
     }
   },
-  created() {
-    this.getCategoryList();
+  async asyncData() {
+    const { data: categorys } = await axios.get('/api/category/list')
+
+    const id = categorys[0] && categorys[0].children[0] && categorys[0].children[0]._id
+    const websites = await axios.post('/api/nav/find', {
+      id
+    })
+    return {
+      categorys,
+      data: websites
+    }
   },
-  mounted() {}
+  mounted() {
+    window.onresize = () => {
+      return (() => {
+        window.screenWidth = document.body.clientWidth
+        if (window.screenWidth < 481) {
+          this.isLeftbar = false
+        } else {
+          this.isLeftbar = true
+        }
+      })()
+    }
+    window.onresize()
+  }
 };
 </script>
 

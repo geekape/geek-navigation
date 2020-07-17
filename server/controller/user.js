@@ -24,7 +24,7 @@ const user = {
       }
 
       let token = 'Bearer ' + jwt.sign({}, secretKey, {
-        expiresIn: 60 * 60 * 24 // 授权时效24小时
+        expiresIn: 60 * 60 * 24,
       })
 
       res.json({
