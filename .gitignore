@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 node_module/*
-.nuxt/
+.nuxt
 /dist
 /deploy
 # local env files
