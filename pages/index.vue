@@ -41,7 +41,6 @@
       </el-row>
     </div>
     <section class="main">
-      <Header @handleMoreClick="isDrawer = true" />
       <div id="mainContent">
         <!-- 手机端菜单 -->
         <div id="menu-box">
@@ -85,6 +84,11 @@
           <i class="el-icon-plus"></i>
         </el-button>
       </el-tooltip>
+    </div>
+    <div class="login">
+      <el-button>
+        <nuxt-link class="el-icon-s-custom icon-login icon" to="/admin"></nuxt-link>
+      </el-button>
     </div>
 
     <AddNavPopup :show.sync="dialogFormVisible" />
@@ -202,6 +206,7 @@ export default {
   margin-right: 5px;
 }
 
+.login,
 .add-nav-btn {
   &,
   .el-button {
@@ -217,6 +222,11 @@ export default {
     z-index: 9999;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+  }
+}
+.login {
+  .el-button {
+    bottom: 140px
   }
 }
 [class^="el-icon-"] {

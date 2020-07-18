@@ -4,7 +4,7 @@
 
 预览: [➡️ http://navigation.zcbing.cn/](http://navigation.zcbing.cn/)
 
-## V1.0 版本
+## 全部版本
 
 - [老版本纯静态导航版](https://github.com/geekape/geek-navigation/tree/master)：最初的一版静态页面，数据都写在页面里的。
 
@@ -12,8 +12,7 @@
 
 - [数据库动态导航版](https://github.com/geekape/geek-navigation/tree/vue2)：功能最全的版本，后续会增加更多功能
 
-### TODO
-- [ ] 本地数据库版本，有界面操作
+- [nuxt ssr版](https://github.com/geekape/geek-navigation/tree/nuxt)：更好的seo，更快的加载速度
 
 ## v2.0
 
@@ -24,8 +23,10 @@
 
 ### TODO
 
+- [x] Nuxt SSR
 - [x] 首页加 keep-live
 - [ ] 适配下移动端
+- [ ] 本地数据库版本，有界面操作
 - [ ] mongoose 联表优化
 - [ ] 增加喜欢和浏览量
 - [ ] 增加提交作者名，信息

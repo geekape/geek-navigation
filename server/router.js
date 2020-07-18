@@ -48,7 +48,7 @@ router.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
     res.status(401).json({
       code: 401,
-      message: 'invalid token',
+      message: '请先登录',
       data: err
     });
   } else {

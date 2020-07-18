@@ -3,8 +3,8 @@ import Storage from './localStorage'
 
 const storage = new Storage()
 
-const toLogin = () => {
-  location.href = '/login'
+const toLogin = (test) => {
+  location.replace('/login')
 }
 
 const errorHandle = (status) => {
@@ -18,7 +18,7 @@ const errorHandle = (status) => {
 }
 
 const myAxios = axios.create({
-  baseURL: 'http://navigation.zcbing.cn/',
+  baseURL: process.env.baseUrl,
 })
 
 myAxios.interceptors.request.use(function (config) {
@@ -35,8 +35,10 @@ myAxios.interceptors.request.use(function (config) {
 myAxios.interceptors.response.use(function (response) {
   return response.data;
 }, function (error) {
-  errorHandle(error.response.status)
-  return Promise.reject(error.response);
+  if(process.browser){
+    errorHandle(error.response.status)
+  }
+  return Promise.reject(error.response.data.message);
 });
 
 export default myAxios

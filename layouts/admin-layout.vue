@@ -1,10 +1,10 @@
 <template>
   <el-container class="base-layout">
     <el-aside width="200px">
-      <div class="title">
+      <nuxt-link class="title" to="/">
         <img class="icon-logo" src="/favicon.ico" />
         <span>猿梦极客导航后台</span>
-      </div>
+      </nuxt-link>
       <el-row>
         <el-col :span="24">
           <el-menu
@@ -29,11 +29,11 @@
       </el-row>
     </el-aside>
     <el-container>
-      <el-header><nuxt-link class="el-icon-s-home"  to='/' style='font-size: 20px' /></el-header>
+      <!-- <el-header><nuxt-link class="el-icon-s-home"  to='/' style='font-size: 20px' /></el-header> -->
       <el-main>
         <slot></slot>
       </el-main>
-      <el-footer>Footer</el-footer>
+      <!-- <el-footer>Footer</el-footer> -->
     </el-container>
   </el-container>
 </template>
@@ -69,6 +69,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 }
 

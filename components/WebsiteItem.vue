@@ -68,7 +68,7 @@ export default {
   height: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   &:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
