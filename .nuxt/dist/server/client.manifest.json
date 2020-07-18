@@ -4,7 +4,7 @@
     "../server/index.spa.html",
     "../server/index.ssr.html",
     "LICENSES",
-    "app.b42ae35.js",
+    "app.d20fbab.js",
     "commons/app.37916f8.js",
     "fonts/element-icons.535877f.woff",
     "fonts/element-icons.732389d.ttf",
@@ -20,7 +20,7 @@
     "runtime.c7854a1.js",
     "commons/app.37916f8.js",
     "vendors~app.9dde85b.js",
-    "app.b42ae35.js"
+    "app.d20fbab.js"
   ],
   "async": [
     "pages/admin/category.24d481b.js",
@@ -576,13 +576,13 @@
     "f5d579f2": [
       3
     ],
-    "b0990394": [
+    "7fc2a049": [
       3
     ],
     "00181fa6": [
       3
     ],
-    "5fbe1e44": [
+    "37cd4057": [
       3
     ],
     "0837e151": [
@@ -939,10 +939,10 @@
       5,
       6
     ],
-    "6ebd7a2c": [
+    "43e3d915": [
       3
     ],
-    "c5adc474": [
+    "186bb3f1": [
       3
     ],
     "57389cfa": [
@@ -1565,7 +1565,7 @@
   },
   "assetsMapping": {
     "1a3ae26b": [
-      "app.b42ae35.js"
+      "app.d20fbab.js"
     ],
     "085a35c4": [
       "commons/app.37916f8.js"

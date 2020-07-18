@@ -6,7 +6,7 @@ import NuxtLoading from './components/nuxt-loading.vue'
 
 import '../node_modules/element-ui/lib/theme-chalk/index.css'
 
-import '../assets/styles/style.scss'
+import '../static/styles/style.scss'
 
 import _5d27265e from '../layouts/admin-layout.vue'
 import _6f6c098b from '../layouts/default.vue'

@@ -6,8 +6,9 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "start": "cross-env NODE_ENV=production BASE_URL=http://navigation.zcbing.cn node server/index.js",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
+    "deploy": "nuxt build && node ./deploy",
     "generate": "nuxt generate"
   },
   "dependencies": {
@@ -17,23 +18,28 @@
     "cheerio": "^1.0.0-rc.3",
     "coffee-loader": "^1.0.0",
     "coffeescript": "^2.5.1",
+    "cors": "^2.8.5",
     "cross-env": "^5.2.0",
-    "css-loader": "^3.6.0",
     "dayjs": "^1.8.29",
     "element-ui": "^2.4.11",
     "express": "^4.16.4",
     "express-jwt": "5.3.1",
     "mongoose": "^5.9.24",
-    "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/proxy": "^2.0.1",
+    "chalk": "^4.1.0",
+    "css-loader": "^3.6.0",
+    "node-sass": "^4.14.1",
+    "nodemon": "^1.18.9",
+    "ora": "^4.0.4",
     "postcss-loader": "^3.0.0",
     "pug": "2.0.3",
     "pug-plain-loader": "^1.0.0",
-    "request": "^2.88.2",
     "sass-loader": "^9.0.2",
+    "scp2": "^0.5.0",
     "style-loader": "^1.2.1"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.9"
   }
 }

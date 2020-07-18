@@ -152,7 +152,7 @@ const errorHandle = status => {
 };
 
 const myAxios = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: "http://localhost:3000"
+  baseURL: 'http://navigation.zcbing.cn/'
 });
 myAxios.interceptors.request.use(function (config) {
   if (false) {}
@@ -166,7 +166,7 @@ myAxios.interceptors.response.use(function (response) {
   return response.data;
 }, function (error) {
   errorHandle(error.response.status);
-  return Promise.reject(error);
+  return Promise.reject(error.response);
 });
 /* harmony default export */ __webpack_exports__["a"] = (myAxios);
 
@@ -3254,12 +3254,12 @@ module.exports = require("vue-client-only");
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./layouts/admin-layout.vue?vue&type=template&id=b787a16e&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-container',{staticClass:"base-layout"},[_c('el-aside',{attrs:{"width":"200px"}},[_c('div',{staticClass:"title"},[_c('img',{staticClass:"icon-logo",attrs:{"src":"/favicon.ico"}}),_vm._v(" "),_c('span',[_vm._v("猿梦极客导航后台")])]),_vm._v(" "),_c('el-row',[_c('el-col',{attrs:{"span":24}},[_c('el-menu',{staticClass:"el-menu-vertical-demo",attrs:{"router":"","background-color":"#30333c","text-color":"#6b7386","active-text-color":"#fff","default-active":_vm.$route.path}},[_c('el-menu-item',{attrs:{"index":"/admin"}},[_c('span',{attrs:{"slot":"title"},slot:"title"},[_vm._v("用户提交")])]),_vm._v(" "),_c('el-menu-item',{attrs:{"index":"/admin/list"}},[_c('span',{attrs:{"slot":"title"},slot:"title"},[_vm._v("所有网站")])]),_vm._v(" "),_c('el-menu-item',{attrs:{"index":"/admin/category"}},[_c('span',{attrs:{"slot":"title"},slot:"title"},[_vm._v("分类管理")])])],1)],1)],1)],1),_vm._v(" "),_c('el-container',[_c('el-header',[_c('router-link',{staticClass:"el-icon-s-home",staticStyle:{"font-size":"20px"},attrs:{"to":"/"}})],1),_vm._v(" "),_c('el-main',[_vm._t("default")],2),_vm._v(" "),_c('el-footer',[_vm._v("Footer")])],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./layouts/admin-layout.vue?vue&type=template&id=6381518f&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-container',{staticClass:"base-layout"},[_c('el-aside',{attrs:{"width":"200px"}},[_c('div',{staticClass:"title"},[_c('img',{staticClass:"icon-logo",attrs:{"src":"/favicon.ico"}}),_vm._v(" "),_c('span',[_vm._v("猿梦极客导航后台")])]),_vm._v(" "),_c('el-row',[_c('el-col',{attrs:{"span":24}},[_c('el-menu',{staticClass:"el-menu-vertical-demo",attrs:{"router":"","background-color":"#30333c","text-color":"#6b7386","active-text-color":"#fff","default-active":_vm.$route.path}},[_c('el-menu-item',{attrs:{"index":"/admin"}},[_c('span',{attrs:{"slot":"title"},slot:"title"},[_vm._v("用户提交")])]),_vm._v(" "),_c('el-menu-item',{attrs:{"index":"/admin/list"}},[_c('span',{attrs:{"slot":"title"},slot:"title"},[_vm._v("所有网站")])]),_vm._v(" "),_c('el-menu-item',{attrs:{"index":"/admin/category"}},[_c('span',{attrs:{"slot":"title"},slot:"title"},[_vm._v("分类管理")])])],1)],1)],1)],1),_vm._v(" "),_c('el-container',[_c('el-header',[_c('nuxt-link',{staticClass:"el-icon-s-home",staticStyle:{"font-size":"20px"},attrs:{"to":"/"}})],1),_vm._v(" "),_c('el-main',[_vm._t("default")],2),_vm._v(" "),_c('el-footer',[_vm._v("Footer")])],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./layouts/admin-layout.vue?vue&type=template&id=b787a16e&
+// CONCATENATED MODULE: ./layouts/admin-layout.vue?vue&type=template&id=6381518f&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/admin-layout.vue?vue&type=script&lang=js&
 //
@@ -47581,7 +47581,7 @@ module.exports = __webpack_require__.p + "fonts/element-icons.732389d.ttf";
 var content = __webpack_require__(58);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
-__webpack_require__(7).default("86684824", content, true)
+__webpack_require__(7).default("380e7219", content, true)
 
 /***/ }),
 /* 58 */
@@ -58821,7 +58821,7 @@ var nuxt_loading_component = Object(componentNormalizer["a" /* default */])(
 // EXTERNAL MODULE: ./node_modules/element-ui/lib/theme-chalk/index.css
 var theme_chalk = __webpack_require__(52);
 
-// EXTERNAL MODULE: ./assets/styles/style.scss
+// EXTERNAL MODULE: ./static/styles/style.scss
 var style = __webpack_require__(57);
 
 // EXTERNAL MODULE: ./layouts/admin-layout.vue + 4 modules

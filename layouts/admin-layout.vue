@@ -29,7 +29,7 @@
       </el-row>
     </el-aside>
     <el-container>
-      <el-header><router-link class="el-icon-s-home"  to='/' style='font-size: 20px' /></el-header>
+      <el-header><nuxt-link class="el-icon-s-home"  to='/' style='font-size: 20px' /></el-header>
       <el-main>
         <slot></slot>
       </el-main>

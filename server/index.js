@@ -3,6 +3,7 @@ const consola = require('consola')
 const data = require('./router')
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
+const cors = require('cors');
 
 var db = mongoose.connect('mongodb://yuanmeng:yuanmeng521@176.122.147.140:27017/navigation', { useNewUrlParser: true });
 
@@ -10,14 +11,17 @@ const { Nuxt, Builder } = require('nuxt')
 const app = express()
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', data)
+
+
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
-async function start () {
+async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 

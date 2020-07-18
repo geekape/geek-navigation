@@ -18,7 +18,7 @@ const errorHandle = (status) => {
 }
 
 const myAxios = axios.create({
-  baseURL: process.env.baseUrl,
+  baseURL: 'http://navigation.zcbing.cn/',
 })
 
 myAxios.interceptors.request.use(function (config) {
@@ -36,7 +36,7 @@ myAxios.interceptors.response.use(function (response) {
   return response.data;
 }, function (error) {
   errorHandle(error.response.status)
-  return Promise.reject(error);
+  return Promise.reject(error.response);
 });
 
 export default myAxios
