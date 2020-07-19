@@ -3,7 +3,8 @@
 module.exports = {
   mode: 'universal',
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    navUrl: 'http://navigation.zcbing.cn'
   },
   /*
   ** Headers of the page
@@ -46,8 +47,19 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-
+    '@nuxtjs/proxy'
   ],
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api': {
+      target: process.env.BASE_URL || 'http://localhost:3000',
+      pathRewrite: {
+        '^/api': '/'
+      }
+    }
+  },
 
   /*
   ** Build configuration

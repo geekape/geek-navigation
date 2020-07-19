@@ -5,10 +5,10 @@
   "author": "geekape",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
-    "start": "cross-env BASE_URL=http://navigation.zcbing.cn node server/index.js",
+    "dev": "cross-env NODE_ENV=development aaa=http://navigation.zcbing.cn nodemon server/index.js --watch server",
+    "start": "cross-env NODE_ENV=production BASE_URL=http://navigation.zcbing.cn node server/index.js",
     "build": "nuxt build",
-    "deploy": "nuxt build && node ./deploy",
+    "deploy": "sh ./deploy/index.sh",
     "generate": "nuxt generate"
   },
   "dependencies": {

@@ -23,6 +23,5 @@ export default {
 
 <style lang="scss" scoped>
 .website {
-  padding: 20px;
 }
 </style>

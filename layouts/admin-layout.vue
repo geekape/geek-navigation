@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .el-header,
 .el-footer {
   background-color: #fff;
@@ -91,4 +91,34 @@ body > .el-container {
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
 }
+
+.icon-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.left-bar {
+  .title {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #30333c;
+    color: white;
+    font-size: 18px;
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid hsla(0,0%,100%,.04);
+  }
+}
+
+.nav {
+  .item {
+    a {
+      color: white;
+    }
+  }
+}
+
 </style>

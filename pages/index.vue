@@ -1,77 +1,9 @@
 <template>
-  <section class="index container">
-    <div class="left-bar" :style="{ left: isLeftbar ? 0 : '-249px' }">
-      <div class="title">
-        <img class="icon-logo" src="/favicon.ico" />
-        <span>极客猿梦导航</span>
-      </div>
-      <el-row>
-        <el-col :span="24">
-          <el-menu
-            class="el-menu-vertical-demo"
-            background-color="#30333c"
-            text-color="#6b7386"
-            active-text-color="#fff"
-            :default-openeds="defaultOpeneds"
-            default-active="0-0"
-          >
-            <el-submenu
-              :index="`${index}`"
-              v-for="(item, index) in categorys"
-              :key="item._id"
-            >
-              <template slot="title">
-                <i :class="item.icon"></i>
-                <span slot="title">{{ item.name }}</span>
-              </template>
-              <el-menu-item
-                :index="`${index}-${idx}`"
-                v-for="(nav, idx) in item.children"
-                :key="nav._id"
-                @click="findNav(nav._id)"
-              >
-                <a>
-                  <i :class="nav.icon"></i>
-                  <span slot="title">{{ nav.name }}</span>
-                </a>
-              </el-menu-item>
-            </el-submenu>
-          </el-menu>
-        </el-col>
-      </el-row>
-    </div>
+  <user-layout :categorys="categorys" @click="findNav($event)">
     <section class="main">
       <div id="mainContent">
-        <!-- 手机端菜单 -->
-        <div id="menu-box">
-          <div id="menu">
-            <input type="checkbox" id="menu-form" />
-            <label
-              for="menu-form"
-              class="menu-spin"
-              @click="isLeftbar = !isLeftbar"
-            >
-              <div class="line diagonal line-1"></div>
-              <div class="line horizontal"></div>
-              <div class="line diagonal line-2"></div>
-            </label>
-          </div>
-        </div>
-        <!-- 开发社区 -->
         <WebsiteList v-loading="loading" :list="data" />
       </div>
-      <footer class="footer">
-        <div class="copyright">
-          <div>
-            Copyright © 2019- 2050
-            <a href="https://github.com/geekape/geek-navigation">
-              导航源码下载
-            </a>
-          </div>
-        </div>
-      </footer>
-
-      <back-top />
     </section>
     <div class="add-nav-btn" @click="dialogFormVisible = true">
       <el-tooltip
@@ -87,7 +19,10 @@
     </div>
     <div class="login">
       <el-button>
-        <nuxt-link class="el-icon-s-custom icon-login icon" to="/admin"></nuxt-link>
+        <nuxt-link
+          class="el-icon-s-custom icon-login icon"
+          to="/admin"
+        ></nuxt-link>
       </el-button>
     </div>
 
@@ -99,18 +34,18 @@
         <el-tab-pane label="最近添加" name="second">配置管理</el-tab-pane>
       </el-tabs>
     </el-drawer>
-  </section>
+  </user-layout>
 </template>
 
 <script>
-import BackTop from "~/components/BackTop";
 import AddNavPopup from "~/components/AddNavPopup";
 import Header from "~/components/Header";
 import WebsiteList from "~/components/WebsiteList";
+import userLayout from "~/layouts/user-layout";
 import axios from "~/plugins/axios";
 export default {
   components: {
-    BackTop,
+    userLayout,
     AddNavPopup,
     Header,
     WebsiteList
@@ -158,29 +93,33 @@ export default {
     }
   },
   async asyncData() {
-    const { data: categorys } = await axios.get('/api/category/list')
+    const { data: categorys } = await axios.get("/api/category/list");
 
-    const id = categorys[0] && categorys[0].children[0] && categorys[0].children[0]._id
-    const websites = await axios.post('/api/nav/find', {
+    const id =
+      categorys[0] && categorys[0].children[0] && categorys[0].children[0]._id;
+    const websites = await axios.post("/api/nav/find", {
       id
-    })
+    });
     return {
       categorys,
       data: websites
-    }
+    };
   },
   mounted() {
     window.onresize = () => {
       return (() => {
-        window.screenWidth = document.body.clientWidth
+        window.screenWidth = document.body.clientWidth;
         if (window.screenWidth < 481) {
-          this.isLeftbar = false
+          this.isLeftbar = false;
         } else {
-          this.isLeftbar = true
+          this.isLeftbar = true;
         }
-      })()
-    }
-    window.onresize()
+      })();
+    };
+    window.onresize();
+  },
+  created() {
+    console.log(process.env.navUrl, "process.env");
   }
 };
 </script>
@@ -218,7 +157,7 @@ export default {
     position: fixed;
     background: #fff;
     right: 10px;
-    bottom: 85px;
+    bottom: 25px;
     z-index: 9999;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -226,7 +165,7 @@ export default {
 }
 .login {
   .el-button {
-    bottom: 140px
+    bottom: 80px;
   }
 }
 [class^="el-icon-"] {
