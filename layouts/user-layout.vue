@@ -1,6 +1,6 @@
 <template>
   <el-container class="user-layout">
-    <el-aside :style="{transform: `translateX(${isLeftbar ? '0' : '-300px'})`}">
+    <el-aside :style="{transform: `translateX(${isLeftbar ? '0' : '-250px'})`}">
       <nuxt-link class="title" to="/">
         <img class="icon-logo" src="/favicon.ico" />
         <span>猿梦极客导航后台</span>
@@ -116,7 +116,7 @@ export default {
   }
 
   .el-aside {
-    width: 250px;
+    width: 250px!important;
     background-color: #30333c;
     color: #6b7386;
     text-align: center;
@@ -142,7 +142,7 @@ export default {
 
   .el-main {
     padding-bottom: 80px;
-    margin-left: 300px;
+    margin-left: 250px;
   }
 
   .el-submenu__title,
@@ -166,7 +166,7 @@ export default {
       display: flex;
     }
     .el-aside {
-      transform: translateX(-300px);
+      transform: translateX(-250px);
     }
     .el-main {
       margin-left: 0;
@@ -182,7 +182,7 @@ export default {
       transform: translateX(0);
     }
     .el-main {
-      margin-left: 300px;
+      margin-left: 250px;
     }
   }
 }

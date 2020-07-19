@@ -2,9 +2,9 @@
 
 module.exports = {
   mode: 'universal',
+  telemetry: false,
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    navUrl: 'http://navigation.zcbing.cn'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   },
   /*
   ** Headers of the page

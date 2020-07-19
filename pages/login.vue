@@ -10,7 +10,7 @@
           <el-input v-model="form.password"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button size="medium" type="primary" @click="onSubmit('ruleForm')">
+          <el-button :loading="loading" size="medium" type="primary" @click="onSubmit('ruleForm')">
             登录
           </el-button>
         </el-form-item>
@@ -23,6 +23,7 @@
 export default {
   data() {
     return {
+      loading: false,
       form: {
         username: '',
         password: '',
@@ -41,6 +42,7 @@ export default {
     async onSubmit(formName) {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
+          this.loading = true
           let data = await this.$api.login(this.form)
           if (data.token) {
             this.$storage.set('TOKEN', data.token)
@@ -51,6 +53,7 @@ export default {
               type: 'error',
             })
           }
+          this.loading = false
         } else {
           console.log('error submit!!')
           return false

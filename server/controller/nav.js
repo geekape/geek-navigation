@@ -1,12 +1,21 @@
 const navData = require("../model/navSchema")
+const services = require("../services")
 const auditModel = require("../model/auditSchema")
 
 const nav = {
 
   async index(req, res) {
     try {
-      const resData = await navData.find({})
-      res.json(resData)
+      const { pageSize = 20, pageNumber = 1 } = req.query
+      const skipNumber = pageSize * pageNumber - pageSize
+      const [resData, total] = await Promise.all([
+        navData.find().skip(skipNumber).limit(pageSize),
+        navData.count(),
+      ])
+      res.json({
+        data: resData,
+        total
+      })
     } catch (error) {
       res.json(error)
     }

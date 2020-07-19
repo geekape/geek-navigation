@@ -32,6 +32,12 @@
           </template>
         </el-table-column>
       </el-table>
+      <el-pagination
+        layout="pager"
+        :total="total"
+        @current-change="handlePageNumber"
+      >
+      </el-pagination>
 
       <AddNavPopup
         :show.sync="show"
@@ -46,6 +52,7 @@
 <script>
 import AddNavPopup from "@/components/AddNavPopup";
 import adminLayout from "~/layouts/admin-layout";
+import api from "~/api";
 
 export default {
   components: {
@@ -55,19 +62,28 @@ export default {
   data() {
     return {
       loading: false,
+      pageNumber: 1,
       show: false,
       editItem: {},
       active: 0,
       tableData: [],
+      total: 0,
       activeName: "two"
     };
   },
   methods: {
     async getData() {
       this.loading = true;
-      const res = await this.$api.getHome();
-      this.tableData = res;
+      const res = await this.$api.getHome({
+        pageNumber: this.pageNumber
+      });
+      this.tableData = res.data;
+      this.total = res.total;
       this.loading = false;
+    },
+    handlePageNumber(num) {
+      this.pageNumber = num
+      this.getData()
     },
     handleEdit(item) {
       this.show = true;
@@ -79,8 +95,12 @@ export default {
       this.getData();
     }
   },
-  created() {
-    this.getData();
+  async asyncData() {
+    const { data, total } = await api.getHome();
+    return {
+      tableData: data,
+      total
+    };
   }
 };
 </script>

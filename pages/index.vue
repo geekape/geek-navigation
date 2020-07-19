@@ -147,11 +147,9 @@ export default {
 
 .login,
 .add-nav-btn {
-  &,
   .el-button {
     border: 0;
     display: flex;
-    padding: 10px;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -161,6 +159,8 @@ export default {
     z-index: 9999;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    width: 40px;
+    height: 40px;
   }
 }
 .login {

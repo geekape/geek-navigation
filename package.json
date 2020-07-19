@@ -5,7 +5,7 @@
   "author": "geekape",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development aaa=http://navigation.zcbing.cn nodemon server/index.js --watch server",
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "start": "cross-env NODE_ENV=production BASE_URL=http://navigation.zcbing.cn node server/index.js",
     "build": "nuxt build",
     "deploy": "sh ./deploy/index.sh",

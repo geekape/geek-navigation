@@ -1,9 +1,19 @@
 
 import axios from '@/plugins/axios';
 
+function objToQuery(obj) {
+  if (!obj) return ''
+
+  let query = `?`
+  for (let i in obj) {
+    query += `${i}=${obj[i]}&`
+  }
+  return query
+}
+
 const api = {
-  getHome() {
-    return axios.get('/api/index')
+  getHome(data) {
+    return axios.get(`/api/index${objToQuery(data)}`)
   },
   addAudit(data) {
     return axios.post('/api/audit/add', data)

@@ -36,10 +36,10 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="addNav('ruleForm')">
+          <el-button type="primary" :loading="loading" @click="addNav('ruleForm')">
             提交
           </el-button>
-          <p>提交后爬虫会自动补全网站信息</p>
+          <p v-if="type !== 'update'">提交后爬虫会自动补全网站信息</p>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -63,6 +63,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       categorys: [],
       form: {
         url: '',
@@ -95,6 +96,7 @@ export default {
     async addNav(formName) {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
+          this.loading = true
           // 判断编辑还是更新
           if (this.type === 'update') {
             const id = this.item._id
@@ -107,12 +109,12 @@ export default {
             if (res.msg) {
               this.$message.error(`${res.msg}，请手动输入！`)
               this.isError = true
-              return false
+            } else {
+              this.$message(`感谢您的提交，请等待后台审核通过！`)
             }
-            this.$message(`感谢您的提交，请等待后台审核通过！`)
           }
+          this.loading = false
           this.form = {}
-
           this.$emit('update:show', false)
           this.$emit('submit')
         } else {
@@ -142,7 +144,14 @@ export default {
   margin-right: 5px;
 }
 
-.el-dialog {
-  min-width: 320px;
+.add-nav-warp {
+  /deep/ .el-dialog {
+    width: 95%;
+    max-width:500px;
+  }
+  .el-dialog__body {
+    text-align: left;
+  }
+
 }
 </style>
