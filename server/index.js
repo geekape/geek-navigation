@@ -3,9 +3,10 @@ const consola = require('consola')
 const data = require('./router')
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
+const serverConfig = require("./config")
 const cors = require('cors');
 
-var db = mongoose.connect('mongodb://yuanmeng:yuanmeng521@176.122.147.140:27017/navigation', { useNewUrlParser: true });
+var db = mongoose.connect(serverConfig.mongoUrl, { useNewUrlParser: true });
 
 const { Nuxt, Builder } = require('nuxt')
 const app = express()

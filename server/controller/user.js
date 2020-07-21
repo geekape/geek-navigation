@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 
 const userModel = require("../model/userSchema")
-const { secretKey } = require('../config')
+const config = require('../config')
 
 const user = {
 
@@ -23,7 +23,7 @@ const user = {
         }
       }
 
-      let token = 'Bearer ' + jwt.sign({}, secretKey, {
+      let token = 'Bearer ' + jwt.sign({}, config.secretKey, {
         expiresIn: 60 * 60 * 24,
       })
 

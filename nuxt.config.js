@@ -47,19 +47,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/proxy'
   ],
-  axios: {
-    proxy: true
-  },
-  proxy: {
-    '/api': {
-      target: process.env.BASE_URL || 'http://localhost:3000',
-      pathRewrite: {
-        '^/api': '/'
-      }
-    }
-  },
 
   /*
   ** Build configuration
