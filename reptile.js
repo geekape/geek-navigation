@@ -1,7 +1,8 @@
 const request = require('request');
 const cheerio = require('cheerio');
 const mongoose = require("mongoose");
-var db = mongoose.connect('mongodb://yuanmeng:yuanmeng521@176.122.147.140:27017/navigation', { useNewUrlParser: true });
+const appConfig = require("./nuxt.config");
+var db = mongoose.connect(appConfig.env.mongoUrl, { useNewUrlParser: true });
 //引入数据模型模块
 const navData = require("./server/model/navSchema");
 const categorySchema = require("./server/model/categorySchema");
@@ -29,7 +30,7 @@ class Reptile {
       if (!error && res.statusCode == 200) {
         const $ = cheerio.load(body)
         const $cardBlock = $('.panel')
-        
+
         for (let i = 0; i < $cardBlock.length; i++) {
           const secondCategoryName = $('.panel-title.card').eq(i).text().trim()
           const {_id: secondCategoryId } = await categorySchema.create({
@@ -55,7 +56,7 @@ class Reptile {
           await Promise.all(websites)
         }
       }
-      
+
       console.log(`${this.url}请求完成`)
     });
   }
