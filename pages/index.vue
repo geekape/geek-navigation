@@ -3,6 +3,7 @@
     <section class="main">
       <div id="mainContent">
         <WebsiteList v-loading="loading" :list="data" />
+        <p class="enpty" v-if="!data.length">这里是空的～</p>
       </div>
     </section>
     <div class="add-nav-btn" @click="dialogFormVisible = true">
@@ -170,5 +171,10 @@ export default {
 }
 [class^="el-icon-"] {
   font-size: 20px;
+}
+
+.enpty {
+  font-size: 18px;
+  text-align: center;
 }
 </style>

@@ -3,7 +3,7 @@ node_modules
 node_module/*
 .nuxt
 /dist
-/deploy
+/deploy/index2.js
 /server/config.js
 # local env files
 .env.local

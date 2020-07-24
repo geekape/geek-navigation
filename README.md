@@ -1,10 +1,12 @@
-# 极客猿梦导航
+<h1 style="text-align: center">极客猿梦导航</h1>
+<p style="text-align: center">
+  独立开发者的导航站　<br>
+  <a href="http://navigation.zcbing.cn/">Demo</a>  |  <a href="https://github.com/geekape/geek-navigation/commits/nuxt">更新日志</a> | <a href="https://github.com/geekape/geek-navigation/issues/46">提需求/留言</a> | <a href="https://github.com/geekape/geek-navigation/issues/new">提BUG</a> | 
+  <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=fDuB_YjUasI22QoHU_HlZozIz5LPpZ8z&jump_from=webapi">QQ交流群</a>
+</p>
 
-> 独立开发者的导航站!
 
-预览: [➡️ http://navigation.zcbing.cn/](http://navigation.zcbing.cn/)
-
-## 全部版本
+## 版本说明
 
 - [老版本纯静态导航版](https://github.com/geekape/geek-navigation/tree/master)：最初的一版静态页面，数据都写在页面里的。
 
@@ -14,39 +16,7 @@
 
 - [nuxt ssr版](https://github.com/geekape/geek-navigation/tree/nuxt)：更好的seo，更快的加载速度
 
-## v2.0
-
-- vue 全家桶
-- elementUI
-
-⚠️ 用户提交网站，只需要填写网站 url 和分类，提交后爬虫会补信息，如 logo，标题和描述。
-
-### TODO
-
-- [x] Nuxt SSR
-- [x] 首页加 keep-live
-- [ ] 适配下移动端
-- [ ] 本地数据库版本，有界面操作
-- [ ] mongoose 联表优化
-- [ ] 增加喜欢和浏览量
-- [ ] 增加提交作者名，信息
-- [ ] 增加搜索
-- [ ] 分页等接口优化
-- [ ] 审核列表状态切换
-- [ ] 提交排除重复网站
-- [ ] 自动化部署
-- [ ] 常用分类
-- [ ] 最近添加
-- [ ] 优化 README 文档
-
-- [x] 提交网站分类可搜索
-- [x] 一键拒绝审核列表
-- [x] 后台网站编辑更新
-- [x] 爬虫爬取失败手动填写
-- [x] 验证 url
-- [x] websitelist
-- [x] 审核网站爬虫自动补全信息
-- [x] 用户登录，默认第一次登录账号为管理员
+## 应用截图
 
 ![登录](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593546788-5b5fbe71-579f-43f7-8991-1138e444034d.jpeg?x-oss-process=image%2Fresize%2Cw_1016)
 
@@ -56,50 +26,45 @@
 
 ![分类页](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593549607-f86d5c36-6166-4645-ac30-39bfeecac4bf.jpeg?x-oss-process=image%2Fresize%2Cw_1016)
 
-## 友情提示
+## 安装部署
 
-> 一个好的产品，是需要不断打磨和完善的。
+### nuxt版本
 
-- 如果你对这个项目有兴趣，可点`star`保持关注。
-- 有什么建议和问题都可提[issues](https://github.com/geekape/geek-navigation/issues)或者加 qq 群
-
-## 常见问题
-
-- [已解决的问题列表](https://github.com/geekape/geek-navigation/issues?q=is%3Aissue+is%3Aclosed)
-
-### 1. 什么是数据库版？什么是静态 JSON 版本？
-
-为了方便无需配置数据库的小白，提供了静态[JSON 版本的导航](https://github.com/geekape/geek-navigation/tree/json-navigation)，静态版本只能本地修改 JSON 添加导航，没有管理后台。
-
-而相对于静态版的 ×× 数据库版本\*\*，它提供了管理导航的界面，用户可在线提交网站，后台审核，并管理所有网站（推荐）
-
-### 2. 本地 mongodb 没导航数据？
-
-运行爬虫文件`node reptile.js`,确保你已经开启了本地 Mongodb 数据库，就可以爬导航到本地的数据库了
-
-### 3. 本地运行
-
-```js
-// 1. 下载代码
-git clone git@github.com:geekape/geek-navigation.git
-
-// 2. 本地安装包
-npm i 或者 cnpm i
-
-// 3.假设已启动mongodb，启动本地服务器
-nodemon server/app.js
-
-// 4. 运行项目
-npm run serve
-
-// 5. 预览项目
-http://localhost:8080
+1. 找到deploy/index.js文件，填写下服务器信息，配置下自动部署
+2. 找到server/config.js文件，配置下mongodb链接
+3. 找到nuxt.config.js文件，配置axios请求根域名
+4. 运行`npm deploy`自动构建并打包到服务器上
+5. 配置下网站的nginx文件，替换掉server_name
 ```
+map $sent_http_content_type $expires {
+    "text/html"                 epoch;
+    "text/html; charset=utf-8"  epoch;
+    default                     off;
+}
 
-## 前端交流学习
+server {
+    listen          80;             # the port nginx is listening on
+    server_name     navigation.zcbing.cn;    # setup your domain here
 
----
+    gzip            on;
+    gzip_types      text/plain application/xml text/css application/javascript;
+    gzip_min_length 1000;
 
-| 个人微信号(zcb861013016)                                                                                    | QQ 交流群(361979424)                                                                                        |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| ![](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593545660-5385c319-49af-49a7-833e-25a3169721c6.jpeg) | ![](https://cdn.nlark.com/yuque/0/2020/jpeg/225518/1593593544745-f344575b-aaae-4d56-96bc-6c8d44df189a.jpeg) |
+    location / {
+        expires $expires;
+
+        proxy_redirect                      off;
+        proxy_set_header Host               $host;
+        proxy_set_header X-Real-IP          $remote_addr;
+        proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto  $scheme;
+        proxy_read_timeout          1m;
+        proxy_connect_timeout       1m;
+        proxy_pass                          http://127.0.0.1:3000; # set the address of the Node.js instance here
+    }
+}
+```
+6. 服务器项目根目录下`npm install`安装包
+7. `npm i -g pm2`安装下node进程管理
+8. `pm2 start npm --name "nav" -- run start`启动下服务器
+9. 访问下你配置的域名就ok了。

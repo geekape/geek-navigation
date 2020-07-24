@@ -4,7 +4,8 @@ module.exports = {
   mode: 'universal',
   telemetry: false,
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    root: 'http://navigation.zcbing.cn'
   },
   /*
   ** Headers of the page

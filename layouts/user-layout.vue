@@ -1,6 +1,6 @@
 <template>
   <el-container class="user-layout">
-    <el-aside :style="{transform: `translateX(${isLeftbar ? '0' : '-250px'})`}">
+    <el-aside :class="isLeftbar ? 'aside-show' : 'aside-hide'">
       <nuxt-link class="title" to="/">
         <img class="icon-logo" src="/favicon.ico" />
         <span>猿梦极客导航后台</span>
@@ -75,11 +75,14 @@ export default {
   },
   data() {
     return {
-      isLeftbar: true,
+      isLeftbar: true
     };
   },
   methods: {
     handleMenuItemClick(id) {
+      if (document.body.clientWidth <= 568) {
+        this.isLeftbar = false;
+      }
       this.$emit("click", id);
     },
     handleWindowSize() {
@@ -88,8 +91,8 @@ export default {
     }
   },
   mounted() {
-    this.handleWindowSize();
-    window.onresize = this.handleWindowSize;
+    this.handleWindowSize()
+    window.addEventListener('resize', this.handleWindowSize);
   }
 };
 </script>
@@ -116,7 +119,7 @@ export default {
   }
 
   .el-aside {
-    width: 250px!important;
+    width: 250px !important;
     background-color: #30333c;
     color: #6b7386;
     text-align: center;
@@ -128,6 +131,14 @@ export default {
     top: 0;
     left: 0;
     bottom: 0;
+
+    &.aside-hide {
+      transform: translateX(-250px);
+    }
+
+    &.aside-show {
+      transform: translateX(0);
+    }
 
     .title {
       font-size: 16px;
@@ -165,9 +176,6 @@ export default {
     .el-header {
       display: flex;
     }
-    .el-aside {
-      transform: translateX(-250px);
-    }
     .el-main {
       margin-left: 0;
     }
@@ -177,9 +185,6 @@ export default {
   .user-layout {
     .el-header {
       display: none;
-    }
-    .el-aside {
-      transform: translateX(0);
     }
     .el-main {
       margin-left: 250px;
