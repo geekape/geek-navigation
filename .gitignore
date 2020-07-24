@@ -4,6 +4,7 @@ node_module/*
 .nuxt
 /dist
 /deploy
+/server/config.js
 # local env files
 .env.local
 .env.*.local
