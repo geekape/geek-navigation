@@ -1,7 +1,7 @@
 const request = require('request');
 const cheerio = require('cheerio');
 const mongoose = require("mongoose");
-var db = mongoose.connect('mongodb://yuanmeng:yuanmeng521@176.122.147.140:27017/navigation', { useNewUrlParser: true });
+var db = mongoose.connect('mongodb://127.0.0.1:27017/navigation', { useNewUrlParser: true });
 //引入数据模型模块
 const navData = require("./server/model/navSchema");
 const categorySchema = require("./server/model/categorySchema");
