@@ -1,7 +1,7 @@
 // jwt.js,token中间件
 const expressJwt = require("express-jwt");
-const { secretKey } = require('./config')
-const jwtAuth = expressJwt({ secret: secretKey }).unless({ path: [
+const appConfig = require("../nuxt.config");
+const jwtAuth = expressJwt({ secret: appConfig.env.secretKey }).unless({ path: [
   "/api/nav/find",
   "/api/audit/add",
   "/api/login",

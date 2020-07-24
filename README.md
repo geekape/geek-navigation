@@ -30,9 +30,9 @@
 
 ### nuxt版本
 
-1. 找到deploy/index.js文件，填写下服务器信息，配置下自动部署
-2. 找到server/config.js文件，配置下mongodb链接
-3. 找到nuxt.config.js文件，配置axios请求根域名
+1. 找到`deploy/index.js`文件，填写下服务器信息，配置下自动部署
+2. 找到`package.json`文件，scripts.start下配置下root变量
+3. 找到`nuxt.config.js`文件，配置mongodb链接
 4. 运行`npm deploy`自动构建并打包到服务器上
 5. 配置下网站的nginx文件，替换掉server_name
 ```

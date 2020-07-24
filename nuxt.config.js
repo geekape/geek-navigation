@@ -4,8 +4,9 @@ module.exports = {
   mode: 'universal',
   telemetry: false,
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    root: 'http://navigation.zcbing.cn'
+    baseUrl: process.env.root || 'http://localhost:3000',
+    mongoUrl: 'mongodb://127.0.0.1:27017/navigation',
+    secretKey: 'xiaobing_19960412_jwttoken',
   },
   /*
   ** Headers of the page

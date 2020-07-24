@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Storage from './localStorage'
+import appConfig from '../nuxt.config'
 
 const storage = new Storage()
 
