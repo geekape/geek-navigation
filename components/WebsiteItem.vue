@@ -28,8 +28,15 @@ export default {
 </script>
 
 <style lang="scss">
+@mixin text-overflow($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:$line;
+}
 .website-item {
-  font-size: 12px;
+  font-size: 13px;
   margin-bottom: 10px;
   a {
     color: #999;
@@ -38,6 +45,7 @@ export default {
   .title {
     color: #3273dc;
     font-size: 16px;
+    @include text-overflow(2);
   }
 
   .iconfont {
@@ -46,8 +54,7 @@ export default {
 
   .desc {
     margin-top: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    @include text-overflow(1);
   }
 
   &__footer {

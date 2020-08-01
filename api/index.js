@@ -40,7 +40,7 @@ const api = {
   },
   findNav(id) {
     return axios.post('/api/nav/find', {
-      id
+      categoryId: id
     })
   },
   login(data) {

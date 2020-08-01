@@ -1,9 +1,9 @@
 <template>
-  <user-layout :categorys="categorys" @click="findNav($event)">
-    <section class="main">
-      <div id="mainContent">
-        <WebsiteList v-loading="loading" :list="data" />
-        <p class="enpty" v-if="!data.length">这里是空的～</p>
+  <user-layout :categorys="categorys" @click="findNav($event.index)" @handleSubMenuClick="findNav($event)">
+    <section class="main" v-loading="loading">
+      <div class="website-wrapper" v-for="item in data" :key="item.name">
+        <p class="website-title" :id="item._id">{{ item.name }}</p>
+        <WebsiteList :list="item.list" />
       </div>
     </section>
     <div class="add-nav-btn" @click="dialogFormVisible = true">
@@ -96,11 +96,11 @@ export default {
   async asyncData() {
     const { data: categorys } = await axios.get("/api/category/list");
 
-    const id =
-      categorys[0] && categorys[0].children[0] && categorys[0].children[0]._id;
+    const id = categorys[0]._id;
     const websites = await axios.post("/api/nav/find", {
-      id
+      categoryId: id
     });
+    console.log(websites, "websites");
     return {
       categorys,
       data: websites
@@ -171,6 +171,19 @@ export default {
 }
 [class^="el-icon-"] {
   font-size: 20px;
+}
+.main {
+  margin-top: -50px;
+}
+.website-wrapper {
+  .website-title {
+    font-size: 14px;
+    margin: 50px 0 20px;
+    background: #fff;
+    display: inline-block;
+    padding: 5px 10px;
+    border-top-right-radius: 15px;
+  }
 }
 
 .enpty {

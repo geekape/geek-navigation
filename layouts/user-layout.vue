@@ -13,11 +13,13 @@
             text-color="#6b7386"
             active-text-color="#fff"
             default-active="0-0"
+            @open="handleSubMenuClick"
+            unique-opened
           >
             <el-submenu
-              :index="`${index}`"
               v-for="(item, index) in categorys"
               :key="item._id"
+              :index="item._id"
               style="text-align: left"
             >
               <template slot="title">
@@ -79,11 +81,16 @@ export default {
     };
   },
   methods: {
+    handleSubMenuClick(e) {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+      this.$emit('handleSubMenuClick', e)
+    },
     handleMenuItemClick(id) {
       if (document.body.clientWidth <= 568) {
         this.isLeftbar = false;
       }
-      this.$emit("click", id);
+      debugger
+      document.getElementById(id).scrollIntoView()
     },
     handleWindowSize() {
       const width = document.body.clientWidth;
