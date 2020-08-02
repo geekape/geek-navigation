@@ -31,9 +31,9 @@ export default {
 @mixin text-overflow($line) {
   overflow: hidden;
   text-overflow: ellipsis;
-  display:-webkit-box;
-  -webkit-box-orient:vertical;
-  -webkit-line-clamp:$line;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
 }
 .website-item {
   font-size: 13px;

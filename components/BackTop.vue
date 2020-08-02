@@ -23,17 +23,14 @@ export default {
 .el-button,
 .backtop {
   border: 0;
-  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  background: #fff;
-  right: 10px;
-  bottom: 30px;
-  z-index: 9999;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  .el-button {
   cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
 }
 [class^=el-icon-] {
   font-size: 20px;

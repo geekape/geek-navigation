@@ -1,40 +1,19 @@
 <template>
-  <user-layout :categorys="categorys" @click="findNav($event.index)" @handleSubMenuClick="findNav($event)">
+  <user-layout
+    :categorys="categorys"
+    @click="findNav($event.index)"
+    @handleSubMenuClick="findNav($event)"
+  >
+    <Affiche />
     <section class="main" v-loading="loading">
       <div class="website-wrapper" v-for="item in data" :key="item.name">
         <p class="website-title" :id="item._id">{{ item.name }}</p>
         <WebsiteList :list="item.list" />
       </div>
     </section>
-    <div class="add-nav-btn" @click="dialogFormVisible = true">
-      <el-tooltip
-        class="item"
-        effect="dark"
-        content="添加网站"
-        placement="left-start"
-      >
-        <el-button>
-          <i class="el-icon-plus"></i>
-        </el-button>
-      </el-tooltip>
-    </div>
-    <div class="login">
-      <el-button>
-        <nuxt-link
-          class="el-icon-s-custom icon-login icon"
-          to="/admin"
-        ></nuxt-link>
-      </el-button>
-    </div>
+    <Toolbar @addWebsite="dialogFormVisible=true" />
 
     <AddNavPopup :show.sync="dialogFormVisible" />
-
-    <el-drawer :visible.sync="isDrawer" direction="rtl">
-      <el-tabs>
-        <el-tab-pane label="我的分类" name="first">用户管理</el-tab-pane>
-        <el-tab-pane label="最近添加" name="second">配置管理</el-tab-pane>
-      </el-tabs>
-    </el-drawer>
   </user-layout>
 </template>
 
@@ -42,6 +21,8 @@
 import AddNavPopup from "~/components/AddNavPopup";
 import Header from "~/components/Header";
 import WebsiteList from "~/components/WebsiteList";
+import Toolbar from "~/components/Toolbar";
+import Affiche from "~/components/Affiche";
 import userLayout from "~/layouts/user-layout";
 import axios from "~/plugins/axios";
 export default {
@@ -49,7 +30,9 @@ export default {
     userLayout,
     AddNavPopup,
     Header,
-    WebsiteList
+    WebsiteList,
+    Toolbar,
+    Affiche,
   },
   data() {
     return {
@@ -60,6 +43,7 @@ export default {
       categorys: [],
       defaultOpeneds: ["0"],
       selfIndex: 0,
+      carouselActive: 0,
       isLeftbar: true,
       dialogFormVisible: false
     };
@@ -146,35 +130,7 @@ export default {
   margin-right: 5px;
 }
 
-.login,
-.add-nav-btn {
-  .el-button {
-    border: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    background: #fff;
-    right: 10px;
-    bottom: 25px;
-    z-index: 9999;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-  }
-}
-.login {
-  .el-button {
-    bottom: 80px;
-  }
-}
-[class^="el-icon-"] {
-  font-size: 20px;
-}
-.main {
-  margin-top: -50px;
-}
+
 .website-wrapper {
   .website-title {
     font-size: 14px;
@@ -190,4 +146,5 @@ export default {
   font-size: 18px;
   text-align: center;
 }
+
 </style>

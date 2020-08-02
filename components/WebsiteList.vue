@@ -7,18 +7,18 @@
 </template>
 
 <script>
-import WebsiteItem from './WebsiteItem'
+import WebsiteItem from "./WebsiteItem";
 export default {
   components: {
-    WebsiteItem,
+    WebsiteItem
   },
   props: {
     list: {
       type: Array,
-      default: () => [],
-    },
-  },
-}
+      default: () => []
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

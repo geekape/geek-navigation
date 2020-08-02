@@ -114,7 +114,7 @@ export default {
             }
           }
           this.loading = false
-          this.form = {}
+          this.form.url = ''
           this.$emit('update:show', false)
           this.$emit('submit')
         } else {
