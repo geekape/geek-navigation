@@ -74,11 +74,11 @@ export default {
   methods: {
     async getData() {
       this.loading = true;
-      const res = await this.$api.getHome({
+      const res = await this.$api.getNavList({
         pageNumber: this.pageNumber
       });
       this.tableData = res.data;
-      this.total = res.total;
+      this.total = res.pageNumber;
       this.loading = false;
     },
     handlePageNumber(num) {
@@ -96,10 +96,10 @@ export default {
     }
   },
   async asyncData() {
-    const { data, total } = await api.getHome();
+    const { data, pageNumber } = await api.getNavList();
     return {
       tableData: data,
-      total
+      total: pageNumber
     };
   }
 };

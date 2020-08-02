@@ -105,7 +105,7 @@ export default {
               ...this.form
             })
           } else {
-            const res = await this.$api.addAudit(this.form)
+            const res = await this.$api.addNav(this.form)
             if (res.msg) {
               this.$message.error(`${res.msg}，请手动输入！`)
               this.isError = true

@@ -90,7 +90,6 @@ export default {
       if (document.body.clientWidth <= 568) {
         this.isLeftbar = false;
       }
-      debugger
       document.getElementById(id).scrollIntoView()
     },
     handleWindowSize() {

@@ -16,13 +16,7 @@ router.use((req, res, next) => {
 	next()
 })
 
-
-router.post("/audit/add", controller.audit.add)
-router.post("/audit/del", controller.audit.del)
-router.get("/audit/list", controller.audit.list);
-router.post("/audit/fastReject", controller.audit.fastReject);
-
-router.get("/index", controller.nav.index)
+router.get("/nav/list", controller.nav.list)
 router.post("/nav/add", controller.nav.add)
 router.post("/nav/del", controller.nav.del)
 router.post("/nav/edit", controller.nav.edit)

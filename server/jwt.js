@@ -3,7 +3,7 @@ const expressJwt = require("express-jwt");
 const appConfig = require("../nuxt.config");
 const jwtAuth = expressJwt({ secret: appConfig.env.secretKey }).unless({ path: [
   "/api/nav/find",
-  "/api/audit/add",
+  "/api/nav/add",
   "/api/login",
   "/api/index",
   "/api/category/list"

@@ -1,19 +1,31 @@
 const navDB = require("../model/navSchema")
 const categoryDB = require("../model/categorySchema")
-const auditDB = require("../model/auditSchema")
+const request = require('request');
+const cheerio = require('cheerio');
 
 const nav = {
-  async index(req, res) {
+  async list(req, res) {
     try {
-      const { pageSize = 20, pageNumber = 1 } = req.query
+      const { pageSize = 20, pageNumber = 1, status = 0 } = req.query
       const skipNumber = pageSize * pageNumber - pageSize
+
+      let findParam = { status }
+      if (!status) {
+        findParam = {
+          $or: [
+            { status: { $exists: false } },
+            { status: 0 },
+          ]
+        }
+      }
       const [resData, total] = await Promise.all([
-        navDB.find().skip(skipNumber).limit(pageSize),
-        navDB.count(),
+        navDB.find(findParam).skip(skipNumber).limit(pageSize),
+        navDB.find(findParam).count(),
       ])
       res.json({
         data: resData,
-        total
+        total,
+        pageNumber: Math.ceil(total / pageSize),
       })
     } catch (error) {
       res.json(error)
@@ -22,12 +34,39 @@ const nav = {
 
   async add(req, res) {
     try {
-      const { auditId } = req.body
-      delete req.body.auditId
-      delete req.body._id
-      await auditDB.update({ _id: auditId }, { status: 1 })
-      const resData = await navDB.create(req.body)
-      res.json(resData)
+      const { url, name } = req.body
+      req.body.status = 1
+      req.body.logo = `https://www.google.com/s2/favicons?domain=${url}`
+      req.body.href = url
+
+      // 手动输入
+      if (name) {
+        navDB.create(req.body, (err, doc) => {
+          res.json({ data: doc })
+        })
+        return
+      }
+
+      request(url, (error, requestData, body) => {
+        if (!error && requestData.statusCode == 200) {
+          const $ = cheerio.load(body)
+          const name = $('title').text()
+          const desc = $('meta[name="description"]').attr('content')
+          navDB.create({
+            ...req.body,
+            name,
+            desc,
+            href: url,
+          }, (err, doc) => {
+            res.json({ data: doc })
+          })
+        } else {
+          res.json({
+            code: 0,
+            msg: '爬虫爬取失败',
+          })
+        }
+      })
     } catch (error) {
       res.json(error)
     }
@@ -44,7 +83,7 @@ const nav = {
 
   async edit(req, res) {
     try {
-      const { id } = req.body
+      const { id, status } = req.body
       delete req.body.id
 
       const resData = await navDB.update({ _id: id }, req.body)
@@ -66,11 +105,15 @@ const nav = {
       const categoryIds = categorys.reduce((t, v) => [...t, v._id], [])
 
       const navs = await navDB.find({
-        categoryId: { $in: categoryIds }
+        categoryId: { $in: categoryIds },
+        $or: [
+          { status: { $exists: false } },
+          { status: 0 },
+        ]
       })
 
-      categorys.map(category=> {
-        const nowNavs = navs.filter(nav=> nav.categoryId == category._id)
+      categorys.map(category => {
+        const nowNavs = navs.filter(nav => nav.categoryId == category._id)
         resData.push({
           _id: category._id,
           name: category.name,

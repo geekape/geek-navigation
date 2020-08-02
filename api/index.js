@@ -12,9 +12,6 @@ function objToQuery(obj) {
 }
 
 const api = {
-  getHome(data) {
-    return axios.get(`/api/index${objToQuery(data)}`)
-  },
   addAudit(data) {
     return axios.post('/api/audit/add', data)
   },
@@ -26,6 +23,9 @@ const api = {
   },
   fastRejectAudit() {
     return axios.post('/api/audit/fastReject')
+  },
+  getNavList(data) {
+    return axios.get(`/api/nav/list${objToQuery(data)}`)
   },
   addNav(data) {
     return axios.post('/api/nav/add', data)

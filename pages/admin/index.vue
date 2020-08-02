@@ -12,9 +12,6 @@
             />
           </el-select>
         </el-col>
-        <el-col :span="4">
-          <el-button type="danger" @click="clear">一键拒绝审核列表</el-button>
-        </el-col>
       </el-row>
       <el-table :data="tableData" v-loading="loading">
         <el-table-column label="提交日期" width="180">
@@ -45,7 +42,7 @@
             <el-button
               size="mini"
               @click="openDialog(0, scope.row._id, scope.$index)"
-              v-if="!scope.row.status"
+              v-if="scope.row.status == 1"
             >
               通过
             </el-button>
@@ -53,14 +50,21 @@
               size="mini"
               type="danger"
               @click="openDialog(1, scope.row._id, scope.$index)"
-              v-if="!scope.row.status"
+              v-if="scope.row.status == 1"
             >
               拒绝
             </el-button>
           </template>
         </el-table-column>
       </el-table>
+
     </div>
+    <el-pagination
+      layout="pager"
+      :total="total"
+      @current-change="getData({pageNumber: $event})"
+    >
+    </el-pagination>
   </admin-layout>
 </template>
 
@@ -76,33 +80,34 @@ export default {
     return {
       loading: false,
       status: [
-        { value: 0, label: "审核中" },
-        { value: 1, label: "已通过" },
+        { value: 1, label: "审核中" },
         { value: 2, label: "已拒绝" }
       ],
-      selectedStatus: 0,
+      selectedStatus: 1,
       isNavPopup: false,
       editItem: {},
       active: 0,
+      total: 0,
       tableData: [],
       tableNavData: [],
       activeName: "two"
     };
   },
   methods: {
-    async getData(status) {
+    async getData(data = {}) {
       this.loading = true;
-      const res = await this.$api.getAuditList(status);
+      const res = await this.$api.getNavList(data);
       this.tableData = res.data;
+      this.total = res.pageNumber;
       this.loading = false;
     },
     // 拒绝－直接删除提交
     async delAuditNav(id) {
-      const res = await this.$api.delAuditNav({ id: id });
+      const res = await this.$api.editNav({ id, status: 2 });
     },
     // 新增－展示到前台
-    async addNav(data) {
-      const res = await this.$api.addNav(data);
+    async addNav(id) {
+      const res = await this.$api.editNav({ id, status: 0 });
     },
     openDialog(type, id, index) {
       const that = this;
@@ -116,12 +121,10 @@ export default {
           })
           .catch(_ => {});
       } else {
-        let filterData = this.tableData.filter(item => item._id == id)[0];
-        filterData.auditId = filterData._id;
         this.$confirm("确认添加到首页？")
           .then(_ => {
             this.$message("添加成功");
-            this.addNav(filterData);
+            this.addNav(id);
             this.tableData.splice(index, 1);
           })
           .catch(_ => {});
@@ -136,13 +139,14 @@ export default {
   },
   watch: {
     selectedStatus(val) {
-      this.getData(val);
+      this.getData({status: val});
     }
   },
   async asyncData() {
-    const res = await api.getAuditList()
+    const { data, pageNumber } = await api.getNavList({status: 1})
     return {
-      tableData: res.data
+      tableData: data,
+      total: pageNumber
     }
   }
 };
