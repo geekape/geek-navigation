@@ -84,7 +84,6 @@ export default {
     const websites = await axios.post("/api/nav/find", {
       categoryId: id
     });
-    console.log(websites, "websites");
     return {
       categorys,
       data: websites
