@@ -1,6 +1,5 @@
-const jwt = require('jsonwebtoken')
-const appConfig = require("../../nuxt.config");
 const userModel = require("../model/userSchema")
+const tokenVertify = require("../tokenVertify")
 
 const user = {
 
@@ -22,9 +21,7 @@ const user = {
         }
       }
 
-      let token = 'Bearer ' + jwt.sign({}, appConfig.env.secretKey, {
-        expiresIn: 60 * 60 * 24,
-      })
+      let token = await tokenVertify.setToken()
 
       res.json({
         token

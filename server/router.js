@@ -3,17 +3,32 @@ const router = express.Router();
 //引入数据模型模块
 const jwtAuth = require("./jwt")
 const controller = require('./controller/index')
+const tokenVertify = require('./tokenVertify')
 
 router.use(jwtAuth)
 
 // 中间件
 router.use((req, res, next) => {
-	console.log('url', req.path)
-	// 如果url包含“add”，就添加一个创建时间
-	if (req.path.includes('/add')) {
-		req.body.createAt = +new Date()
-	}
-	next()
+  console.log('url', req.path)
+  // 如果url包含“add”，就添加一个创建时间
+  if (req.path.includes('/add')) {
+    req.body.createAt = +new Date()
+  }
+  next()
+})
+
+router.use((req, res, next) => {
+  const token = req.headers['authorization']
+  if (token == undefined) {
+    return next();
+  } else {
+    tokenVertify.verToken(token).then((res) => {
+      req.isLogin = res;
+      return next();
+    }).catch((error) => {
+      return next()
+    })
+  }
 })
 
 router.get("/nav/list", controller.nav.list)

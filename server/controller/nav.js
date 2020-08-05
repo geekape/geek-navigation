@@ -39,6 +39,11 @@ const nav = {
       req.body.logo = `https://www.google.com/s2/favicons?domain=${url}`
       req.body.href = url
 
+      if (req.isLogin) {
+        // 已经登录了，提交网站直接审核通过
+        req.body.status = 0
+      }
+
       // 手动输入
       if (name) {
         navDB.create(req.body, (err, doc) => {
