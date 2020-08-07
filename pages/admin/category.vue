@@ -13,6 +13,7 @@
         default-expand-all
         :expand-on-click-node="false"
         v-loading="loading"
+        @node-click="handleNodeClick"
       >
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span>{{ data.name }}</span>
@@ -20,10 +21,18 @@
             <el-button
               type="text"
               size="mini"
-              @click="() => handleDelete(data)"
+              @click="handleEdit(data)"
+            >
+              编辑
+            </el-button>
+            <el-button
+              type="text"
+              size="mini"
+              @click="handleDelete(data)"
             >
               删除
             </el-button>
+
           </span>
         </span>
       </el-tree>
@@ -84,19 +93,19 @@ export default {
       }
 
       this.dialogVisible = false;
-      this.$message.error(this.editId ? "编辑成功" : "新增成功");
-      this.form = {};
-      this.editId = "";
+      this.$message.info(this.editId ? "编辑成功" : "新增成功");
+      this.resetForm()
       this.getData();
     },
-    async handleEdit(index, row) {
+    async handleEdit(data) {
       this.dialogVisible = true;
-      this.form.name = row.name;
-      this.editId = row._id;
+      this.form.name = data.name;
+      this.form.categoryId = data.categoryId;
+      this.editId = data._id;
     },
     async handleDelete(row) {
       await this.$api.delCategory(row._id);
-      this.form = {};
+      this.resetForm()
       this.getData();
     },
     async getData() {
@@ -105,6 +114,20 @@ export default {
       let resData = res.data;
       this.loading = false;
       this.data = resData;
+    },
+    resetForm() {
+      this.editId = ''
+      this.form.name = ''
+      this.form.categoryId = ''
+    },
+    handleNodeClick(e) {
+      if (e.children) return
+
+      // 二级分类才触发
+      this.$router.replace(`/admin/list?id=${e._id}`)
+      console.log('====================================');
+      console.log(e);
+      console.log('====================================');
     }
   },
   async asyncData() {
@@ -124,6 +147,9 @@ export default {
 .category {
   .el-dialog {
     text-align: left;
+  }
+  .el-button+.el-button {
+    margin: 0;
   }
 }
 </style>

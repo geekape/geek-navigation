@@ -68,6 +68,7 @@ export default {
       active: 0,
       tableData: [],
       total: 0,
+      categoryId: undefined,
       activeName: "two"
     };
   },
@@ -75,6 +76,7 @@ export default {
     async getData() {
       this.loading = true;
       const res = await this.$api.getNavList({
+        categoryId: this.categoryId,
         pageNumber: this.pageNumber
       });
       this.tableData = res.data;
@@ -95,11 +97,14 @@ export default {
       this.getData();
     }
   },
-  async asyncData() {
-    const { data, pageNumber } = await api.getNavList();
+  async asyncData({ query }) {
+    const param = {}
+    query.id && (param.categoryId = query.id)
+    const { data, pageNumber } = await api.getNavList(param);
     return {
       tableData: data,
-      total: pageNumber
+      total: pageNumber,
+      categoryId: query.id
     };
   }
 };
