@@ -13,7 +13,6 @@
         default-expand-all
         :expand-on-click-node="false"
         v-loading="loading"
-        @node-click="handleNodeClick"
       >
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span>{{ data.name }}</span>
@@ -31,6 +30,14 @@
               @click="handleDelete(data)"
             >
               删除
+            </el-button>
+            <el-button
+              type="text"
+              size="mini"
+              v-if="data.categoryId"
+              @click="handleNodeClick(data)"
+            >
+              管理分类
             </el-button>
 
           </span>
@@ -121,13 +128,9 @@ export default {
       this.form.categoryId = ''
     },
     handleNodeClick(e) {
-      if (e.children) return
 
       // 二级分类才触发
       this.$router.replace(`/admin/list?id=${e._id}`)
-      console.log('====================================');
-      console.log(e);
-      console.log('====================================');
     }
   },
   async asyncData() {

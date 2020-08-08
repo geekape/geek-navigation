@@ -60,7 +60,9 @@ export default {
   color: #6b7386;
   text-align: center;
   height: 100vh;
-  overflow-y: scroll;
+  position: fixed;
+  left: 0;
+  top: 0;
 
   .title {
     font-size: 16px;
@@ -77,6 +79,7 @@ export default {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
+  margin-left: 200px;
 }
 
 body > .el-container {

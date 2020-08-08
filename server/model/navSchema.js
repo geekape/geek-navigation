@@ -13,6 +13,8 @@ const navSchema = mongoose.Schema({
   href: String,
   desc: String,
   logo: String,
+  authorName: String,
+  authorUrl: String,
   view: {
     type: Number,
     default: 0

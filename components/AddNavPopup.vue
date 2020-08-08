@@ -28,6 +28,12 @@
             </el-option-group>
           </el-select>
         </el-form-item>
+        <el-form-item label="作者名称" prop="authorName">
+          <el-input placeholder="填写你推广的名称" v-model="form.authorName" />
+        </el-form-item>
+        <el-form-item label="作者网站" prop="authorUrl">
+          <el-input placeholder="填写你要推广的链接" v-model="form.authorUrl" />
+        </el-form-item>
         <el-form-item label="网站名称" prop="name" v-if="isError">
           <el-input placeholder="输入网站名称" v-model="form.name" />
         </el-form-item>
@@ -70,6 +76,8 @@ export default {
         categoryId: '',
         name: '',
         desc: '',
+        authorName: '',
+        authorUrl: ''
       },
       rules: {
         url: [
@@ -84,6 +92,20 @@ export default {
         ],
         name: [],
         desc: [],
+        authorUrl: [
+          {
+            pattern: /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/,
+            message: '请输入正确的url',
+            trigger: 'change'
+          },
+        ],
+        authorName: [
+          {
+            pattern: /^[\u4e00-\u9fa5]{2,6}$/,
+            message: '作者名称在2个字到6个字以内',
+            trigger: 'change'
+          },
+        ],
       },
       isError: false,
     }

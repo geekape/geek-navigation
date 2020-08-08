@@ -1,6 +1,6 @@
 <template>
   <el-col :xs="24" :md="6" class="website-item">
-    <div class="info" target="_blank" @click="handleClick">
+    <div class="info" @click="handleClick">
       <div class="info-header">
         <el-image class="logo" :src="navData.logo" fit="cover" lazy />
         <span class="title">{{ navData.name }}</span>
@@ -8,15 +8,25 @@
       <div class="desc">{{ navData.desc || "这个网站什么描述也没有..." }}</div>
     </div>
     <div class="website-item__footer">
-      <span class="website-item__icon" :class="isView && 'active'"
-        ><span class="iconfont icon-attentionfill"></span>{{ navData.view }}</span
-      >
-      <span
-        class="website-item__icon"
-        :class="isStar && 'active'"
-        @click="handleStar"
-        ><span class="iconfont icon-appreciatefill"></span>{{ navData.star }}</span
-      >
+      <div class="left" v-if="navData.authorUrl">
+        <a :href="navData.authorUrl" target="_blank">
+          <span class="iconfont icon-zuozhe"></span>
+          {{ navData.authorName }}
+        </a>
+      </div>
+      <div class="right">
+        <span class="website-item__icon" :class="isView && 'active'"
+          ><span class="iconfont icon-attentionfill"></span
+          >{{ navData.view }}</span
+        >
+        <span
+          class="website-item__icon"
+          :class="isStar && 'active'"
+          @click="handleStar"
+          ><span class="iconfont icon-appreciatefill"></span
+          >{{ navData.star }}</span
+        >
+      </div>
     </div>
   </el-col>
 </template>
@@ -40,26 +50,26 @@ export default {
   },
   methods: {
     async handleClick() {
-      const views = this.$storage.get('VIEWS') || {}
+      const views = this.$storage.get("VIEWS") || {};
       const { href, view, _id: id } = this.navData;
       await this.$api.editNav({ id, view: view + 1 });
-      views[id] = view + 1
-      this.$storage.set('VIEWS', views)
+      views[id] = view + 1;
+      this.$storage.set("VIEWS", views);
       window.open(href, "_blank");
     },
     async handleStar() {
-      const stars = this.$storage.get('STARS') || {}
+      const stars = this.$storage.get("STARS") || {};
       let { star, _id: id } = this.navData;
-      if (this.isStar || stars[id]) return
+      if (this.isStar || stars[id]) return;
 
-      star++
+      star++;
       await this.$api.editNav({ id, star });
-      stars[id] = star
-      this.navData.star = star
-      this.isStar = true
-      this.$storage.set('STARS', stars)
-    },
-  },
+      stars[id] = star;
+      this.navData.star = star;
+      this.isStar = true;
+      this.$storage.set("STARS", stars);
+    }
+  }
 };
 </script>
 
@@ -101,6 +111,19 @@ export default {
     background: #fff;
     padding: 10px 15px;
     text-align: right;
+    display: flex;
+    .left {
+      .iconfont {
+        margin-left: 0;
+      }
+      a {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .right {
+      flex: 1;
+    }
   }
   &__icon.active {
     &,
