@@ -3,18 +3,19 @@
     <el-aside :class="isLeftbar ? 'aside-show' : 'aside-hide'">
       <nuxt-link class="title" to="/">
         <img class="icon-logo" src="/favicon.ico" />
-        <span>猿梦极客导航后台</span>
+        <!-- <span>猿梦极客导航后台</span> -->
       </nuxt-link>
       <el-row>
         <el-col :span="24">
           <el-menu
             class="el-menu-vertical-demo"
-            background-color="#30333c"
-            text-color="#6b7386"
-            active-text-color="#fff"
+            background-color="#2740ee"
+            text-color="#fff"
+            active-text-color="#2740ee"
             default-active="0-0"
             @open="handleSubMenuClick"
             unique-opened
+            :collapse="isCollapse"
           >
             <el-submenu
               v-for="(item, index) in categorys"
@@ -23,14 +24,14 @@
               style="text-align: left"
             >
               <template slot="title">
-                <i :class="item.icon"></i>
+                <i class="el-icon-eleme icon-title"></i>
                 <span slot="title">{{ item.name }}</span>
               </template>
               <el-menu-item
                 :index="`${index}-${idx}`"
                 v-for="(nav, idx) in item.children"
                 :key="nav._id"
-                @click="handleMenuItemClick(nav._id)"
+                @click="handleMenuItemClick(item._id, nav._id)"
               >
                 <a>
                   <i :class="nav.icon"></i>
@@ -41,35 +42,34 @@
           </el-menu>
         </el-col>
       </el-row>
+      <!-- <div>
+        <i @click="isCollapse=false" class="el-icon-d-arrow-left" v-if="isCollapse"></i>
+        <i @click="isCollapse=true" class="el-icon-d-arrow-right" v-else></i>
+      </div> -->
     </el-aside>
-    <el-container>
+    <el-container class="body">
       <el-header>
-        <span
-          :class="!isLeftbar ? `el-icon-menu` : `el-icon-error`"
-          @click="isLeftbar = !isLeftbar"
-          style="font-size: 30px"
-        ></span>
+        <Affiche />
+        <el-button icon="el-icon-plus" @click="dialogFormVisible=true">添加网站</el-button>
+        <el-button icon="el-icon-user-solid" @click="$router.push('/admin')">{{isLogin ? '查看后台' : '登录'}}</el-button>
       </el-header>
       <el-main>
         <slot></slot>
       </el-main>
-      <!-- <el-footer class="footer">
-        <div class="copyright">
-          <div>
-            Copyright © 2019- 2050
-            <a href="https://github.com/geekape/geek-navigation">
-              导航源码下载
-            </a>
-          </div>
-        </div>
-      </el-footer> -->
-
     </el-container>
+
+    <AddNavPopup :show.sync="dialogFormVisible" />
   </el-container>
 </template>
 
 <script>
+import Affiche from "~/components/Affiche";
+import AddNavPopup from "~/components/AddNavPopup";
 export default {
+  components: {
+    Affiche,
+    AddNavPopup,
+  },
   props: {
     categorys: {
       type: Array,
@@ -78,19 +78,30 @@ export default {
   },
   data() {
     return {
-      isLeftbar: true
+      dialogFormVisible: false,
+      isLeftbar: true,
+      isCollapse: true,
+      selectedCategoryId: '',
     };
+  },
+  computed: {
+    isLogin() {
+      if (process.server) return false
+      return this.$storage.get('TOKEN')
+    }
   },
   methods: {
     handleSubMenuClick(e) {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
       this.$emit('handleSubMenuClick', e)
     },
-    handleMenuItemClick(id) {
-      if (document.body.clientWidth <= 568) {
-        this.isLeftbar = false;
+    handleMenuItemClick(parentId, id) {
+      if (this.selectedCategoryId === parentId) {
+        document.getElementById(id).scrollIntoView()
+        return
       }
-      document.getElementById(id).scrollIntoView()
+      this.selectedCategoryId = parentId
+      this.$emit('handleSubMenuClick', parentId)
     },
     handleWindowSize() {
       const width = document.body.clientWidth;
@@ -105,6 +116,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$sidebar-w: auto;
+
 .user-layout {
   position: relative;
   .footer {
@@ -116,31 +129,41 @@ export default {
     color: #999;
   }
 
+
+
   .el-header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     color: #333;
-    display: none;
     background: #fff;
   }
 
+  .body {
+    margin-left: 70px;
+  }
+
   .el-aside {
-    width: 250px !important;
-    background-color: #30333c;
+    width: $sidebar-w !important;
+    background-color: #2740ee;
     color: #6b7386;
     text-align: center;
     height: 100vh;
     transition: all 0.5s;
-    overflow-x: hidden;
     z-index: 99;
     position: fixed;
     top: 0;
     left: 0;
+    overflow: visible;
     bottom: 0;
 
+    i,
+    .icon-title {
+      color: #fff;
+    }
+
     &.aside-hide {
-      transform: translateX(-250px);
+      transform: translateX(-$sidebar-w);
     }
 
     &.aside-show {
@@ -156,11 +179,6 @@ export default {
       justify-content: center;
       cursor: pointer;
     }
-  }
-
-  .el-main {
-    padding-bottom: 80px;
-    margin-left: 250px;
   }
 
   .el-submenu__title,
@@ -180,21 +198,30 @@ export default {
 
 @media screen and (max-width: 568px) {
   .user-layout {
-    .el-header {
-      display: flex;
-    }
     .el-main {
-      margin-left: 0;
     }
   }
 }
 @media screen and (min-width: 569px) {
   .user-layout {
-    .el-header {
-      display: none;
-    }
     .el-main {
-      margin-left: 250px;
+    }
+  }
+}
+
+/deep/ .el-menu--popup-right-start {
+    height: 500px!important;
+    overflow: auto;
+}
+body {
+  .el-menu--popup-right-start {
+    background-color: #fff!important;
+    .el-menu-item {
+      background-color: #fff!important;
+      color: #333!important;
+      &:hover {
+        background-color: #ecf5ff!important;
+      }
     }
   }
 }

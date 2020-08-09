@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row class="website" :gutter="10">
+    <el-row class="website" :gutter="20">
       <WebsiteItem v-for="item in list" :data="item" :key="item._id" />
     </el-row>
   </div>

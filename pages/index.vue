@@ -4,35 +4,28 @@
     @click="findNav($event.index)"
     @handleSubMenuClick="findNav($event)"
   >
-    <Affiche />
     <section class="main" v-loading="loading">
       <div class="website-wrapper" v-for="item in data" :key="item.name">
         <p class="website-title" :id="item._id">{{ item.name }}</p>
         <WebsiteList :list="item.list" />
       </div>
     </section>
-    <Toolbar @addWebsite="dialogFormVisible=true" />
+    <!-- <Toolbar @addWebsite="dialogFormVisible=true" /> -->
 
-    <AddNavPopup :show.sync="dialogFormVisible" />
   </user-layout>
 </template>
 
 <script>
-import AddNavPopup from "~/components/AddNavPopup";
-import Header from "~/components/Header";
 import WebsiteList from "~/components/WebsiteList";
 import Toolbar from "~/components/Toolbar";
-import Affiche from "~/components/Affiche";
 import userLayout from "~/layouts/user-layout";
 import axios from "~/plugins/axios";
+import api from "~/api";
 export default {
   components: {
     userLayout,
-    AddNavPopup,
-    Header,
     WebsiteList,
     Toolbar,
-    Affiche,
   },
   data() {
     return {
@@ -45,7 +38,6 @@ export default {
       selfIndex: 0,
       carouselActive: 0,
       isLeftbar: true,
-      dialogFormVisible: false
     };
   },
   methods: {
@@ -78,12 +70,10 @@ export default {
     }
   },
   async asyncData() {
-    const { data: categorys } = await axios.get("/api/category/list");
+    const { data: categorys } = await api.getCategoryList()
 
     const id = categorys[0]._id;
-    const websites = await axios.post("/api/nav/find", {
-      categoryId: id
-    });
+    const websites = await api.findNav(id)
     return {
       categorys,
       data: websites

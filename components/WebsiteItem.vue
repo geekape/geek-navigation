@@ -1,31 +1,35 @@
 <template>
-  <el-col :xs="24" :md="6" class="website-item">
-    <div class="info" @click="handleClick">
-      <div class="info-header">
-        <el-image class="logo" :src="navData.logo" fit="cover" lazy />
-        <span class="title">{{ navData.name }}</span>
+  <el-col :xs="24" :sm="8" :md="6" class="website-item">
+    <div class="wrap">
+      <div class="info" @click="handleClick">
+        <div class="info-header">
+          <el-image class="logo" :src="navData.logo" fit="cover" lazy />
+          <span class="title">{{ navData.name }}</span>
+        </div>
+        <div class="desc">
+          {{ navData.desc || "这个网站什么描述也没有..." }}
+        </div>
       </div>
-      <div class="desc">{{ navData.desc || "这个网站什么描述也没有..." }}</div>
-    </div>
-    <div class="website-item__footer">
-      <div class="left" v-if="navData.authorUrl">
-        <a :href="navData.authorUrl" target="_blank">
-          <span class="iconfont icon-zuozhe"></span>
-          {{ navData.authorName }}
-        </a>
-      </div>
-      <div class="right">
-        <span class="website-item__icon" :class="isView && 'active'"
-          ><span class="iconfont icon-attentionfill"></span
-          >{{ navData.view }}</span
-        >
-        <span
-          class="website-item__icon"
-          :class="isStar && 'active'"
-          @click="handleStar"
-          ><span class="iconfont icon-appreciatefill"></span
-          >{{ navData.star }}</span
-        >
+      <div class="website-item__footer">
+        <div class="left" v-if="navData.authorUrl">
+          <a :href="navData.authorUrl" target="_blank">
+            <span class="iconfont icon-zuozhe"></span>
+            {{ navData.authorName }}
+          </a>
+        </div>
+        <div class="right">
+          <span class="website-item__icon" :class="isView && 'active'"
+            ><span class="iconfont icon-attentionfill"></span
+            >{{ navData.view }}</span
+          >
+          <span
+            class="website-item__icon"
+            :class="isStar && 'active'"
+            @click="handleStar"
+            ><span class="iconfont icon-appreciatefill"></span
+            >{{ navData.star }}</span
+          >
+        </div>
       </div>
     </div>
   </el-col>
@@ -83,8 +87,12 @@ export default {
 }
 .website-item {
   font-size: 13px;
-  margin-bottom: 10px;
-  border-radius: 6px;
+  margin-bottom: 20px;
+  .wrap {
+    box-shadow: 1px 2px 3px 7px 13px 11px 9px #f2f6f8;
+    border-radius: 6px;
+    background: #fff;
+  }
 
   a {
     color: #999;
@@ -112,6 +120,8 @@ export default {
     padding: 10px 15px;
     text-align: right;
     display: flex;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     .left {
       .iconfont {
         margin-left: 0;
@@ -135,7 +145,6 @@ export default {
 
 .info {
   display: block;
-  box-shadow: 1px 2px 3px #f2f6f8;
   transition: all 0.3s;
   background: #fff;
   padding: 10px;
@@ -143,13 +152,15 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   &:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   &-header {
     display: flex;
     align-items: center;
+    overflow: auto;
   }
 }
 

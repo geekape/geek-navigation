@@ -1,9 +1,9 @@
 <template>
-  <div class="affiche">
     <el-carousel
       height="30px"
       direction="vertical"
       indicator-position="none"
+      class="affiche"
       :setActiveItem="carouselActive"
     >
       <el-carousel-item>
@@ -24,15 +24,12 @@
           >
         </p>
       </el-carousel-item>
+      <el-carousel-item>
+        <p class="medium">
+          支持提交网站带个人信息了，欢迎大家提交网站
+        </p>
+      </el-carousel-item>
     </el-carousel>
-    <!-- <div class="icon-group">
-        <nuxt-link
-          class="icon el-icon-s-custom icon-login icon"
-          to="/admin"
-        ></nuxt-link>
-        <i class="icon el-icon-circle-plus" @click="dialogFormVisible=true"></i>
-      </div> -->
-  </div>
 </template>
 
 <script>
@@ -41,12 +38,8 @@ export default {};
 
 <style lang="scss" scoped>
 .affiche {
-  padding: 10px 20px;
-  background: #fff;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  font-size: 16px;
+  width: 100%;
+  font-size: 14px;
   .el-carousel {
     flex: 1;
   }
