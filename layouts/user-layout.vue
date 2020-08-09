@@ -24,7 +24,7 @@
               style="text-align: left"
             >
               <template slot="title">
-                <i class="el-icon-eleme icon-title"></i>
+                <i :class="item.icon ? item.icon : `el-icon-eleme icon-title`"></i>
                 <span slot="title">{{ item.name }}</span>
               </template>
               <el-menu-item

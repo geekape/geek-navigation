@@ -26,8 +26,9 @@ const category = {
   },
   async edit(req, res) {
     try {
-      const { id, name } = req.body
-      const data = await categoryModel.update({ _id: id }, { name })
+      const id = req.body.id
+      delete req.body.id
+      const data = await categoryModel.update({ _id: id }, req.body)
       res.json(data)
     } catch (error) {
       res.json(error)

@@ -59,6 +59,17 @@
               ></el-option>
             </el-select>
           </el-form-item>
+          <el-form-item label="选择icon">
+            <el-select v-model="form.icon">
+              <el-option
+                :value="item"
+                v-for="item in iconList"
+                :key="item"
+              >
+                <i :class="item"></i>
+              </el-option>
+            </el-select>
+          </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="handleAdd">保存</el-button>
           </el-form-item>
@@ -78,13 +89,23 @@ export default {
   data() {
     return {
       loading: false,
+      iconList: [
+        'iconfont icon-qianduan',
+        'iconfont icon-bd_jiaocheng',
+        'iconfont icon-ziyuan',
+        'iconfont icon-chanpin',
+        'iconfont icon-gongju',
+        'iconfont icon-yunying',
+        'iconfont icon-sheji',
+      ],
       data: [],
       dialogVisible: false,
       editId: "",
 
       form: {
         name: "",
-        categoryId: ""
+        categoryId: "",
+        icon: ""
       }
     };
   },
@@ -108,6 +129,7 @@ export default {
       this.dialogVisible = true;
       this.form.name = data.name;
       this.form.categoryId = data.categoryId;
+      this.form.icon = data.icon;
       this.editId = data._id;
     },
     async handleDelete(row) {
