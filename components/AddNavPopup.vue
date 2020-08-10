@@ -8,6 +8,12 @@
       @close="$emit('update:show', false)"
     >
       <el-form ref="ruleForm" label-width="100px" :model="form" :rules="rules">
+        <el-form-item label="网站名称" prop="name" v-if="isMoreForm">
+          <el-input placeholder="输入网站名称" v-model="form.name" />
+        </el-form-item>
+        <el-form-item label="网站描述" prop="desc" v-if="isMoreForm">
+          <el-input placeholder="输入网站描述" v-model="form.desc" />
+        </el-form-item>
         <el-form-item label="网站链接" prop="url">
           <el-input placeholder="http://www.baidu.com/" v-model="form.url"  :disabled="type === 'update'" />
         </el-form-item>
@@ -34,18 +40,11 @@
         <el-form-item label="作者网站" prop="authorUrl">
           <el-input placeholder="填写你要推广的链接" v-model="form.authorUrl" />
         </el-form-item>
-        <el-form-item label="网站名称" prop="name" v-if="isError">
-          <el-input placeholder="输入网站名称" v-model="form.name" />
-        </el-form-item>
-        <el-form-item label="网站描述" prop="desc" v-if="isError">
-          <el-input placeholder="输入网站描述" v-model="form.desc" />
-        </el-form-item>
-
         <el-form-item>
           <el-button type="primary" :loading="loading" @click="addNav('ruleForm')">
             提交
           </el-button>
-          <p v-if="type !== 'update'">提交后爬虫会自动补全网站信息</p>
+          <p v-if="type !== 'update'"><el-link @click="isMoreForm=!isMoreForm" type="primary">{{!isMoreForm ? '手动添加' : '爬虫自动添加'}}网站名称和描述</el-link></p>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -107,7 +106,7 @@ export default {
           },
         ],
       },
-      isError: false,
+      isMoreForm: false,
     }
   },
   methods: {
@@ -130,7 +129,7 @@ export default {
             const res = await this.$api.addNav(this.form)
             if (res.msg) {
               this.$message.error(`${res.msg}，请手动输入！`)
-              this.isError = true
+              this.isMoreForm = true
             } else {
               this.$message(`感谢您的提交，请等待后台审核通过！`)
             }
@@ -147,12 +146,18 @@ export default {
   },
   watch: {
     item(ite) {
-      this.isError = true
+      this.isMoreForm = true
       this.form.name = ite.name
       this.form.url = ite.href
       this.form.desc = ite.desc
       this.form.categoryId = ite.categoryId
     },
+    isMoreForm(newVal) {
+      if (!newVal) {
+        this.form.name = ''
+        this.form.desc = ''
+      }
+    }
   },
   created() {
     this.getCategorys()

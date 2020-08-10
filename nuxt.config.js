@@ -24,7 +24,7 @@ module.exports = {
       { rel: 'stylesheet', href: '//at.alicdn.com/t/font_552690_1dhs8z79zur.css' }
     ],
     script: [
-      {src: '//v1.cnzz.com/z_stat.php?id=1279139494&web_id=1279139494'}
+      {src: '//v1.cnzz.com/z_stat.php?id=1279139494&web_id=1279139494', defer: 'defer'}
     ],
   },
   /*

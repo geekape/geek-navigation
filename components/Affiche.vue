@@ -1,35 +1,37 @@
 <template>
-    <el-carousel
-      height="30px"
-      direction="vertical"
-      indicator-position="none"
-      class="affiche"
-      :setActiveItem="carouselActive"
-    >
-      <el-carousel-item>
-        <p class="medium">
-          极客猿梦导航，专注独立开发者的导航站。<a
-            class="link"
-            href="https://github.com/geekape/geek-navigation"
-            >开源去下载</a
-          >
-        </p>
-      </el-carousel-item>
-      <el-carousel-item>
-        <p class="medium">
-          一个好的产品要经历千锤百炼，我们需要你的建议。<a
-            class="link"
-            href="https://github.com/geekape/geek-navigation"
-            >去围观</a
-          >
-        </p>
-      </el-carousel-item>
-      <el-carousel-item>
-        <p class="medium">
-          支持提交网站带个人信息了，欢迎大家提交网站
-        </p>
-      </el-carousel-item>
-    </el-carousel>
+  <el-carousel
+    height="30px"
+    direction="vertical"
+    indicator-position="none"
+    class="affiche"
+    :setActiveItem="carouselActive"
+  >
+    <el-carousel-item>
+      <p class="medium">
+        极客猿梦导航，专注独立开发者的导航站。<a
+          class="link"
+          href="https://github.com/geekape/geek-navigation"
+          target="_blank"
+          >开源去下载</a
+        >
+      </p>
+    </el-carousel-item>
+    <el-carousel-item>
+      <p class="medium">
+        一个好的产品要经历千锤百炼，我们需要你的建议。<a
+          class="link"
+          href="https://github.com/geekape/geek-navigation"
+          target="_blank"
+          >去围观</a
+        >
+      </p>
+    </el-carousel-item>
+    <el-carousel-item>
+      <p class="medium">
+        支持提交网站带个人信息了，欢迎大家提交网站
+      </p>
+    </el-carousel-item>
+  </el-carousel>
 </template>
 
 <script>

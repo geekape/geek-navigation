@@ -14,21 +14,22 @@
         <div class="left" v-if="navData.authorUrl">
           <a :href="navData.authorUrl" target="_blank">
             <span class="iconfont icon-zuozhe"></span>
-            {{ navData.authorName }}
+            <span>{{ navData.authorName }}</span>
           </a>
         </div>
         <div class="right">
-          <span class="website-item__icon" :class="isView && 'active'"
-            ><span class="iconfont icon-attentionfill"></span
-            >{{ navData.view }}</span
-          >
+          <span class="website-item__icon" :class="isView && 'active'">
+            <span class="iconfont icon-attentionfill"></span>
+            {{ navData.view }}
+          </span>
           <span
             class="website-item__icon"
             :class="isStar && 'active'"
             @click="handleStar"
-            ><span class="iconfont icon-appreciatefill"></span
-            >{{ navData.star }}</span
           >
+            <span class="iconfont icon-appreciatefill"></span>
+            {{ navData.star }}
+          </span>
         </div>
       </div>
     </div>
@@ -88,6 +89,8 @@ export default {
 .website-item {
   font-size: 13px;
   margin-bottom: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
   .wrap {
     box-shadow: 1px 2px 3px 7px 13px 11px 9px #f2f6f8;
     border-radius: 6px;
@@ -123,6 +126,7 @@ export default {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     .left {
+      font-size: 12px;
       .iconfont {
         margin-left: 0;
       }

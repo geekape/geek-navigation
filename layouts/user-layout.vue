@@ -137,6 +137,10 @@ $sidebar-w: auto;
     align-items: center;
     color: #333;
     background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0px 1px 6px rgba(142,142,142, .1);
   }
 
   .body {
@@ -198,13 +202,15 @@ $sidebar-w: auto;
 
 @media screen and (max-width: 568px) {
   .user-layout {
-    .el-main {
+    .affiche {
+      display: none;
     }
   }
 }
 @media screen and (min-width: 569px) {
   .user-layout {
-    .el-main {
+    .affiche {
+      display: block;
     }
   }
 }
