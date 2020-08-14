@@ -2,7 +2,7 @@
   <user-layout
     :categorys="categorys"
     @click="findNav($event.index)"
-    @handleSubMenuClick="findNav($event)"
+    @handleSubMenuClick="handleSubMenuClick"
   >
     <section class="main" v-loading="loading">
       <div class="website-wrapper" v-for="item in data" :key="item.name">
@@ -67,7 +67,11 @@ export default {
       const data = await this.$api.findNav(id);
       this.data = data;
       this.loading = false;
-    }
+    },
+    async handleSubMenuClick(parentId, id) {
+      await this.findNav(parentId)
+      document.getElementById(id).scrollIntoView()
+    },
   },
   async asyncData() {
     const { data: categorys } = await api.getCategoryList()

@@ -1,6 +1,6 @@
 <template>
   <el-container class="user-layout">
-    <el-aside :class="isLeftbar ? 'aside-show' : 'aside-hide'">
+    <el-aside :class="isLeftbar ? 'aside-show' : 'aside-hide'" :style="{width: sideBarWidth}">
       <nuxt-link class="title" to="/">
         <img class="icon-logo" src="/favicon.ico" />
         <!-- <span>猿梦极客导航后台</span> -->
@@ -11,9 +11,8 @@
             class="el-menu-vertical-demo"
             background-color="#2740ee"
             text-color="#fff"
-            active-text-color="#2740ee"
+            active-text-color="#03a9f4"
             default-active="0-0"
-            @open="handleSubMenuClick"
             unique-opened
             :collapse="isCollapse"
           >
@@ -42,12 +41,12 @@
           </el-menu>
         </el-col>
       </el-row>
-      <!-- <div>
-        <i @click="isCollapse=false" class="el-icon-d-arrow-left" v-if="isCollapse"></i>
-        <i @click="isCollapse=true" class="el-icon-d-arrow-right" v-else></i>
-      </div> -->
+      <div class="arrow">
+        <i @click="isCollapse=true" class="el-icon-d-arrow-left" v-if="!isCollapse"></i>
+        <i @click="isCollapse=false" class="el-icon-d-arrow-right" v-else></i>
+      </div>
     </el-aside>
-    <el-container class="body">
+    <el-container class="body" :style="{marginLeft: sideBarWidth}">
       <el-header>
         <Affiche />
         <el-button icon="el-icon-plus" @click="dialogFormVisible=true">添加网站</el-button>
@@ -88,6 +87,9 @@ export default {
     isLogin() {
       if (process.server) return false
       return this.$storage.get('TOKEN')
+    },
+    sideBarWidth() {
+      return !this.isCollapse ? '240px' : '70px'
     }
   },
   methods: {
@@ -101,17 +103,9 @@ export default {
         return
       }
       this.selectedCategoryId = parentId
-      this.$emit('handleSubMenuClick', parentId)
+      this.$emit('handleSubMenuClick', parentId, id)
     },
-    handleWindowSize() {
-      const width = document.body.clientWidth;
-      this.isLeftbar = width < 568 ? false : true;
-    }
   },
-  mounted() {
-    this.handleWindowSize()
-    window.addEventListener('resize', this.handleWindowSize);
-  }
 };
 </script>
 
@@ -127,6 +121,9 @@ $sidebar-w: auto;
     bottom: 0;
     font-size: 14px;
     color: #999;
+  }
+  /deep/ .el-submenu__title i {
+    color: #fff;
   }
 
 
@@ -148,7 +145,6 @@ $sidebar-w: auto;
   }
 
   .el-aside {
-    width: $sidebar-w !important;
     background-color: #2740ee;
     color: #6b7386;
     text-align: center;
@@ -160,6 +156,14 @@ $sidebar-w: auto;
     left: 0;
     overflow: visible;
     bottom: 0;
+    .arrow {
+      padding: 20px 0;
+      font-size: 14px;
+      margin-left: -10px;
+    }
+    .el-menu--collapse {
+      border: 0;
+    }
 
     i,
     .icon-title {
