@@ -6,7 +6,9 @@ const cheerio = require('cheerio');
 const nav = {
   async list(req, res) {
     try {
-      const { pageSize = 20, pageNumber = 1, status = 0, categoryId } = req.query
+      let { pageSize = 10, pageNumber = 1, status = 0, categoryId } = req.query
+      pageSize = Number(pageSize)
+      pageNumber = Number(pageNumber)
       const skipNumber = pageSize * pageNumber - pageSize
 
       let findParam = { status }
@@ -25,7 +27,7 @@ const nav = {
       }
 
       const [resData, total] = await Promise.all([
-        navDB.find(findParam).skip(skipNumber).limit(pageSize),
+        navDB.find(findParam).skip(skipNumber).limit(pageSize).sort({_id: -1}),
         navDB.find(findParam).count(),
       ])
       res.json({

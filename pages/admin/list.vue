@@ -2,6 +2,7 @@
   <adminLayout>
     <div>
       <el-table :data="tableData" v-loading="loading">
+        <el-table-column type="selection"></el-table-column>
         <el-table-column
           label="网站名字"
           width="180"
@@ -33,9 +34,11 @@
         </el-table-column>
       </el-table>
       <el-pagination
-        layout="pager"
         :total="total"
+        :page-size="pageSize"
         @current-change="handlePageNumber"
+        @size-change="handlePageSize"
+        layout="sizes, prev, pager, next"
       >
       </el-pagination>
 
@@ -63,6 +66,7 @@ export default {
     return {
       loading: false,
       pageNumber: 1,
+      pageSize: 10,
       show: false,
       editItem: {},
       active: 0,
@@ -75,16 +79,22 @@ export default {
   methods: {
     async getData() {
       this.loading = true;
-      const res = await this.$api.getNavList({
-        categoryId: this.categoryId,
-        pageNumber: this.pageNumber
-      });
+      const param = {
+        pageNumber: this.pageNumber,
+        pageSize: this.pageSize
+      }
+      this.categoryId && (param.categoryId = this.categoryId)
+      const res = await this.$api.getNavList(param);
       this.tableData = res.data;
-      this.total = res.pageNumber;
+      this.total = res.total;
       this.loading = false;
     },
     handlePageNumber(num) {
       this.pageNumber = num
+      this.getData()
+    },
+    handlePageSize(size) {
+      this.pageSize = size
       this.getData()
     },
     handleEdit(item) {

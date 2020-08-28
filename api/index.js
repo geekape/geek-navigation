@@ -4,11 +4,13 @@ import axios from '@/plugins/axios';
 function objToQuery(obj) {
   if (!obj) return ''
 
-  let query = `?`
+  const query = `?`
+  const queryArr = []
   for (let i in obj) {
-    query += `${i}=${obj[i]}&`
+    queryArr.push(`${i}=${obj[i]}`)
   }
-  return query
+
+  return query + queryArr.join('&')
 }
 
 const api = {

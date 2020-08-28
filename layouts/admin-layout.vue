@@ -1,19 +1,24 @@
 <template>
-  <el-container class="base-layout">
-    <el-aside width="200px">
-      <nuxt-link class="title" to="/">
-        <img class="icon-logo" src="/favicon.ico" />
-        <span>猿梦极客导航后台</span>
-      </nuxt-link>
+  <user-layout :collapse="false">
+
+    <template v-slot:header>
+      <el-button
+        icon="el-icon-platform-eleme"
+        @click="$router.push('/')"
+        >Home</el-button
+      >
+    </template>
+    <template v-slot:sidebar>
       <el-row>
         <el-col :span="24">
           <el-menu
             router
             class="el-menu-vertical-demo"
-            background-color="#30333c"
-            text-color="#6b7386"
-            active-text-color="#fff"
+            background-color="#2740ee"
+            text-color="#fff"
+            active-text-color="#03a9f4"
             :default-active="$route.path"
+            unique-opened
           >
             <el-menu-item index="/admin">
               <span slot="title">用户提交</span>
@@ -27,24 +32,22 @@
           </el-menu>
         </el-col>
       </el-row>
-    </el-aside>
-    <el-container>
-      <!-- <el-header><nuxt-link class="el-icon-s-home"  to='/' style='font-size: 20px' /></el-header> -->
-      <el-main>
-        <slot></slot>
-      </el-main>
-      <!-- <el-footer>Footer</el-footer> -->
-    </el-container>
-  </el-container>
+    </template>
+    <slot></slot>
+  </user-layout>
 </template>
 
 <script>
+import userLayout from "./user-layout";
 export default {
-}
+  components: {
+    userLayout
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-.el-header,
+/* .el-header,
 .el-footer {
   background-color: #fff;
   color: #333;
@@ -122,6 +125,5 @@ body > .el-container {
       color: white;
     }
   }
-}
-
+} */
 </style>

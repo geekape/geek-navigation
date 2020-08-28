@@ -91,6 +91,11 @@ export default {
   margin-bottom: 20px;
   box-sizing: border-box;
   overflow: hidden;
+  cursor: pointer;
+  transition: all .3s;
+  &:hover {
+    transform: translate(0, -10px);
+  }
   .wrap {
     box-shadow: 1px 2px 3px 7px 13px 11px 9px #f2f6f8;
     border-radius: 6px;
