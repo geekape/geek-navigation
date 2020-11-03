@@ -1,9 +1,9 @@
 <template>
-  <el-carousel
+  <div class="affiche" v-if="show">
+    <el-carousel
     height="30px"
     direction="vertical"
     indicator-position="none"
-    class="affiche"
     :setActiveItem="carouselActive"
   >
     <el-carousel-item>
@@ -32,16 +32,34 @@
       </p>
     </el-carousel-item>
   </el-carousel>
+  <i class="el-icon-close" @click="show=false"></i>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      show: true
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 .affiche {
   width: 100%;
   font-size: 14px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  i {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
   .el-carousel {
     flex: 1;
   }

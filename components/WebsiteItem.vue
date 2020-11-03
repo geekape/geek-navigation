@@ -100,6 +100,7 @@ export default {
     box-shadow: 1px 2px 3px 7px 13px 11px 9px #f2f6f8;
     border-radius: 6px;
     background: #fff;
+    cursor: pointer;
   }
 
   a {

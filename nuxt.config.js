@@ -4,10 +4,11 @@ module.exports = {
   mode: 'universal',
   telemetry: false,
   env: {
-    baseUrl: process.env.root || 'http://localhost:3000',
+    baseUrl: process.env.root,
     mongoUrl: 'mongodb://127.0.0.1:27017/navigation',
     secretKey: 'xiaobing_19960412_jwttoken',
   },
+  server: {},
   /*`
   ** Headers of the page
   */
@@ -21,10 +22,10 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_552690_1dhs8z79zur.css' }
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_552690_njqotmfk5k.css' }
     ],
     script: [
-      {src: '//v1.cnzz.com/z_stat.php?id=1279139494&web_id=1279139494', defer: 'defer'}
+      { src: '//v1.cnzz.com/z_stat.php?id=1279139494&web_id=1279139494', defer: 'defer' }
     ],
   },
   /*

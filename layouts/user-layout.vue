@@ -50,24 +50,23 @@
             </el-menu>
           </el-col>
         </el-row>
-        <div class="arrow">
-          <i
-            @click="isCollapse = true"
-            class="el-icon-d-arrow-left"
-            v-if="!isCollapse"
-          ></i>
-          <i
-            @click="isCollapse = false"
-            class="el-icon-d-arrow-right"
-            v-else
-          ></i>
-        </div>
       </slot>
     </el-aside>
     <el-container class="body" :style="{ marginLeft: sideBarWidth }">
       <el-header>
         <slot name="header">
-          <Affiche />
+          <div class="arrow">
+            <i
+              @click="isCollapse = true"
+              class="el-icon-s-fold"
+              v-if="!isCollapse"
+            ></i>
+            <i
+              @click="isCollapse = false"
+              class="el-icon-s-unfold"
+              v-else
+            ></i>
+          </div>
           <el-button icon="el-icon-plus" @click="dialogFormVisible = true"
             >添加网站</el-button
           >
@@ -89,11 +88,9 @@
 </template>
 
 <script>
-import Affiche from "~/components/Affiche";
 import AddNavPopup from "~/components/AddNavPopup";
 export default {
   components: {
-    Affiche,
     AddNavPopup
   },
   props: {
@@ -167,6 +164,14 @@ $sidebar-w: auto;
     top: 0;
     z-index: 10;
     box-shadow: 0px 1px 6px rgba(142, 142, 142, 0.1);
+    .arrow {
+      flex: 1;
+      cursor: pointer;
+    }
+    .arrow i {
+      color: #999;
+      font-size: 24px;
+    }
   }
 
   .body {
@@ -185,18 +190,9 @@ $sidebar-w: auto;
     left: 0;
     overflow: visible;
     bottom: 0;
-    .arrow {
-      padding: 20px 0;
-      font-size: 14px;
-      margin-left: -10px;
-    }
+
     .el-menu--collapse {
       border: 0;
-    }
-
-    i,
-    .icon-title {
-      color: #fff;
     }
 
     &.aside-hide {
@@ -235,15 +231,14 @@ $sidebar-w: auto;
 
 @media screen and (max-width: 568px) {
   .user-layout {
-    .arrow,
-    .affiche {
+    .arrow {
       display: none;
     }
   }
 }
 @media screen and (min-width: 569px) {
   .user-layout {
-    .affiche {
+    .arrow {
       display: block;
     }
   }

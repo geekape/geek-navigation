@@ -4,6 +4,7 @@
     @click="findNav($event.index)"
     @handleSubMenuClick="handleSubMenuClick"
   >
+    <Affiche />
     <section class="main" v-loading="loading">
       <div class="website-wrapper" v-for="item in data" :key="item.name">
         <p class="website-title" :id="item._id">{{ item.name }}</p>
@@ -19,11 +20,14 @@
 import WebsiteList from "~/components/WebsiteList";
 import Toolbar from "~/components/Toolbar";
 import userLayout from "~/layouts/user-layout";
+import Affiche from "~/components/Affiche";
+
 import axios from "~/plugins/axios";
 import api from "~/api";
 export default {
   components: {
     userLayout,
+    Affiche,
     WebsiteList,
     Toolbar,
   },
