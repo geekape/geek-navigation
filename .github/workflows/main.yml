@@ -2,7 +2,7 @@ name: Deployment
 on:
   push:
     branches:
-      - main
+      - nuxt
 jobs:
   deploy:
     runs-on: ubuntu-latest
