@@ -1,7 +1,8 @@
 name: Publish And Deploy Demo
 on:
   push:
-    - nuxt
+    branches:
+      - nuxt
 
 jobs:
   build-and-deploy:
