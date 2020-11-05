@@ -6,6 +6,7 @@ on:
 
 jobs:
   build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
 
     # 下载源码
