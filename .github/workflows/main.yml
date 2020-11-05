@@ -39,14 +39,13 @@ jobs:
         # Target directory
         TARGET: /www/wwwroot/root/
     - name: start project
-      uses: fifsky/ssh-action@master
+      uses: JimCronqvist/action-ssh@master
       with:
+        hosts: 'yuanmeng@176.122.147.140:27493'
+        debug: true
+        privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
         command: |
           cd /www/wwwroot/root/
           ls
           tar -zxvf release.tgz
-        host: ${{ secrets.HOST }}
-        user: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.PORT }} 
         
