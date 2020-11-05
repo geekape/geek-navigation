@@ -1,7 +1,8 @@
 name: Publish And Deploy Demo
 on:
   push:
-    ['nuxt']
+    tags:
+      - 'v*'
 
 jobs:
   build-and-deploy:
