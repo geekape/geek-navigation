@@ -38,3 +38,13 @@ jobs:
         SOURCE: release.tgz
         # Target directory
         TARGET: /www/wwwroot/root/
+    - name: start project
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          ls
+          tar -zxvf release.tgz
