@@ -39,13 +39,13 @@ jobs:
         # Target directory
         TARGET: /www/wwwroot/root/
     - name: start project
-      uses: appleboy/ssh-action@master
+      uses: fifsky/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        user: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
+        port: ${{ secrets.PORT }} 
+        command: |
           cd /www/wwwroot/root/
           ls
           tar -zxvf release.tgz
