@@ -11,7 +11,9 @@ jobs:
 
     # 下载源码
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
+      with:
+        path: nuxt
 
     # 打包构建
     - name: Build
