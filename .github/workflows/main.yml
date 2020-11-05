@@ -31,7 +31,7 @@ jobs:
         # Remote host
         REMOTE_HOST: ${{secrets.HOST}}
         # Remote user
-        REMOTE_USER: ${{secrets.USERNAME}}
+        REMOTE_USER: root
         # Remote port
         REMOTE_PORT: ${{secrets.PORT}}
         # Source directory
