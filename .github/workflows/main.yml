@@ -56,4 +56,5 @@ jobs:
           cd /www/wwwroot/root
           wget https://github.com/geekape/geek-navigation/releases/latest/download/release.tgz -O release.tgz
           tar zxvf release.tgz
+          ls
           pm2 start nav
