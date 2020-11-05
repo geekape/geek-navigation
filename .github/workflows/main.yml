@@ -41,11 +41,12 @@ jobs:
     - name: start project
       uses: fifsky/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        user: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.PORT }} 
         command: |
           cd /www/wwwroot/root/
           ls
           tar -zxvf release.tgz
+        host: ${{ secrets.HOST }}
+        user: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.PORT }} 
+        
