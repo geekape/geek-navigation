@@ -6,15 +6,22 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
 
     # 下载源码
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        path: nuxt
 
     # 打包构建
     - name: Build
-      uses: actions/setup-node@master
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build
     - run: tar -zcvf release.tgz .nuxt server nuxt.config.js package.json
