@@ -1,7 +1,7 @@
 <h1 align="center">极客猿梦导航</h1>
 <p align="center">
   独立开发者的导航站　<br>
-  <a href="http://navigation.zcbing.cn/">Demo</a>  |  <a href="https://github.com/geekape/geek-navigation/commits/nuxt">更新日志</a> | <a href="https://github.com/geekape/geek-navigation/issues/new">提BUG</a> | 
+  <a href="http://nav.geekape.net/">Demo</a>  |  <a href="https://github.com/geekape/geek-navigation/commits/nuxt">更新日志</a> | <a href="https://github.com/geekape/geek-navigation/issues/new">提BUG</a> | 
   <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=fDuB_YjUasI22QoHU_HlZozIz5LPpZ8z&jump_from=webapi">QQ交流群</a>
 </p>
 
