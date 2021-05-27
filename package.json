@@ -38,7 +38,7 @@
     "nodemon": "^1.18.9",
     "ora": "^4.0.4",
     "postcss-loader": "^3.0.0",
-    "pug": "2.0.3",
+    "pug": "3.0.1",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^9.0.2",
     "scp2": "^0.5.0",
