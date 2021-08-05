@@ -5,7 +5,7 @@
   "author": "geekape",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development root=http://localhost:3000 nuxt",
+    "dev": "cross-env NODE_ENV=development root=http://localhost:3001 nuxt",
     "start": "cross-env NODE_ENV=production root=http://navigation.zcbing.cn node server/index.js",
     "build": "nuxt build",
     "deploy": "sh ./deploy/index.sh",
@@ -15,20 +15,14 @@
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/style-resources": "^1.0.0",
     "axios": "^0.19.2",
-    "body-parser": "^1.19.0",
-    "cheerio": "^1.0.0-rc.3",
     "coffee-loader": "^1.0.0",
     "coffeescript": "^2.5.1",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.29",
     "element-ui": "^2.4.11",
-    "express": "^4.16.4",
-    "express-jwt": "6.0.0",
     "https": "^1.0.0",
-    "mongoose": "^5.9.24",
-    "nuxt": "^2.0.0",
-    "request": "^2.88.2"
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {
     "@nuxtjs/proxy": "^2.0.1",

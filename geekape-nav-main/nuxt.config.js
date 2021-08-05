@@ -5,10 +5,11 @@ module.exports = {
   telemetry: false,
   env: {
     baseUrl: process.env.root,
-    mongoUrl: 'mongodb://127.0.0.1:27017/navigation',
-    secretKey: 'xiaobing_19960412_jwttoken',
   },
-  server: {},
+  server: {
+    host: '0.0.0.0',
+    port: 3001
+  },
   /*`
   ** Headers of the page
   */
