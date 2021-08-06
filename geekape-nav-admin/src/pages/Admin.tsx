@@ -7,7 +7,7 @@ export default (): React.ReactNode => {
     <PageHeaderWrapper content={' 这个页面只有 admin 权限才能查看'}>
       <Card>
         <Alert
-          message={'更快更强的重型组件，已经发布234。'}
+          message={'更快更强的重型组件，已经发布。'}
           type="success"
           showIcon
           banner
