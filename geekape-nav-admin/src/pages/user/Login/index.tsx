@@ -14,7 +14,7 @@ import Footer from '@/components/Footer';
 import styles from './index.less';
 import {login} from "@/services/api";
 import {setPersistenceData} from "@/utils/persistence";
-import {TOKEN} from "@/constants";
+import {CURRENT_USER, TOKEN} from "@/constants";
 
 
 const goto = () => {
@@ -51,6 +51,7 @@ const Login: React.FC = () => {
         })
         goto();
         setPersistenceData(TOKEN, res.token)
+        setPersistenceData(CURRENT_USER, { name: values.username })
         return;
       } // 如果失败去设置用户错误信息
 

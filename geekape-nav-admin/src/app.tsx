@@ -6,7 +6,7 @@ import { history, Link } from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
 import {getPersistenceData} from "@/utils/persistence";
-import {TOKEN} from "@/constants";
+import {CURRENT_USER, TOKEN} from "@/constants";
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -26,9 +26,10 @@ export async function getInitialState(): Promise<{
 }> {
   const fetchUserInfo = async () => {
     const token = getPersistenceData(TOKEN)
+    const user: any = getPersistenceData(CURRENT_USER)
     if (token) {
       return {
-        name: '',
+        name: JSON.parse(user)?.name,
         access: 'admin',
       }
     } else {

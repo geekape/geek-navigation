@@ -1,11 +1,9 @@
 import React, { useCallback } from 'react';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar, Menu, Spin } from 'antd';
+import {Avatar, Dropdown, Menu, Spin} from 'antd';
 import { history, useModel } from 'umi';
 import { stringify } from 'querystring';
-import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
-import { outLogin } from '@/services/ant-design-pro/api';
 
 export type GlobalHeaderRightProps = {
   menu?: boolean;
@@ -15,7 +13,6 @@ export type GlobalHeaderRightProps = {
  * 退出登录，并且将当前的 url 保存
  */
 const loginOut = async () => {
-  await outLogin();
   const { query = {}, pathname } = history.location;
   const { redirect } = query;
   // Note: There may be security issues, please note
@@ -95,12 +92,12 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     </Menu>
   );
   return (
-    <HeaderDropdown overlay={menuHeaderDropdown}>
+    <Dropdown overlay={menuHeaderDropdown}>
       <span className={`${styles.action} ${styles.account}`}>
         <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" />
         <span className={`${styles.name} anticon`}>{currentUser.name}</span>
       </span>
-    </HeaderDropdown>
+    </Dropdown>
   );
 };
 
