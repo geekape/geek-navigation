@@ -5,8 +5,8 @@ import type { RequestConfig, RunTimeLayoutConfig } from 'umi';
 import { history, Link } from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
-import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
-import {login} from "@/services/api";
+import {getPersistenceData} from "@/utils/persistence";
+import {CURRENT_USER, TOKEN} from "@/constants";
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -19,34 +19,38 @@ export const initialStateConfig = {
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
  * */
-// export async function getInitialState(): Promise<{
-//   settings?: Partial<LayoutSettings>;
-//   currentUser?: API.CurrentUser;
-//   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
-// }> {
-//   const fetchUserInfo = async () => {
-//     try {
-//       const currentUser = await queryCurrentUser();
-//       return currentUser;
-//     } catch (error) {
-//       history.push(loginPath);
-//     }
-//     return undefined;
-//   };
-//   // 如果是登录页面，不执行
-//   if (history.location.pathname !== loginPath) {
-//     const currentUser = await fetchUserInfo();
-//     return {
-//       fetchUserInfo,
-//       currentUser,
-//       settings: {},
-//     };
-//   }
-//   return {
-//     fetchUserInfo,
-//     settings: {},
-//   };
-// }
+export async function getInitialState(): Promise<{
+  settings?: Partial<LayoutSettings>;
+  currentUser?: API.CurrentUser;
+  fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
+}> {
+  const fetchUserInfo = async () => {
+    const token = getPersistenceData(TOKEN)
+    const user: any = getPersistenceData(CURRENT_USER)
+    if (token) {
+      return {
+        name: JSON.parse(user)?.name,
+        access: 'admin',
+      }
+    } else {
+      history.push(loginPath);
+    }
+    return undefined;
+  };
+  // 如果是登录页面，不执行
+  if (history.location.pathname !== loginPath) {
+    const currentUser = await fetchUserInfo();
+    return {
+      fetchUserInfo,
+      currentUser,
+      settings: {},
+    };
+  }
+  return {
+    fetchUserInfo,
+    settings: {},
+  };
+}
 
 /**
  * 异常处理程序
@@ -112,8 +116,8 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login
-      const token = localStorage.getItem('TOKEN')
-      if (!token) {
+      const token = getPersistenceData(TOKEN)
+      if (!token && location.pathname !== loginPath) {
         history.push(loginPath);
       }
     },

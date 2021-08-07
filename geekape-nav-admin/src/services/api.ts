@@ -1,11 +1,21 @@
-import { request } from 'umi';
+import request from "@/utils/request";
 
-export async function login(username: any, password: any) {
-  return request('/api/login', {
+export const API_LOGIN = '/api/login'
+export const API_NAV_LIST = '/api/nav/list'
+export const API_NAV = '/api/nav'
+
+export async function login(data: { username: string, password: string }) {
+  return request({
+    url: API_LOGIN,
     method: 'POST',
-    data: {
-      username,
-      password
-    }
+    data,
+  });
+}
+
+export async function getNavList(data: any) {
+  return request({
+    url: API_NAV_LIST,
+    method: 'GET',
+    data
   });
 }

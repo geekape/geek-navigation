@@ -32,14 +32,14 @@ router.use((req, res, next) => {
 })
 
 router.get("/nav/list", controller.nav.list)
-router.post("/nav/add", controller.nav.add)
-router.post("/nav/del", controller.nav.del)
-router.post("/nav/edit", controller.nav.edit)
-router.post("/nav/find", controller.nav.info)
+router.post("/nav", controller.nav.add)
+router.delete("/nav", controller.nav.del)
+router.put("/nav", controller.nav.edit)
+router.get("/nav/find", controller.nav.info)
 
 router.post("/category/add", controller.category.add)
-router.post("/category/del", controller.category.del)
-router.post("/category/edit", controller.category.edit)
+router.delete("/category/del", controller.category.del)
+router.put("/category/edit", controller.category.edit)
 router.get("/category/list", controller.category.list)
 
 router.post("/login", controller.user.login)
