@@ -2,6 +2,8 @@ before_script:
   - nvm use 14.0.0
   - node -v
 
+stages:
+  - build_admin
 
 #打包admin
 build_admin:
