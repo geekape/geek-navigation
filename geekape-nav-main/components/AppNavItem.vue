@@ -92,9 +92,11 @@ export default {
   box-sizing: border-box;
   overflow: hidden;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
   &:hover {
-    transform: translate(0, -10px);
+    transform: translateY(-6px);
+    box-shadow: 0 26px 40px -24px rgba(#000, .2);
+    transition: all 0.3s ease;
   }
   .wrap {
     box-shadow: 1px 2px 3px 7px 13px 11px 9px #f2f6f8;

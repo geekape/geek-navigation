@@ -1,16 +1,16 @@
 <template>
   <div>
     <el-row class="website" :gutter="20">
-      <WebsiteItem v-for="item in list" :data="item" :key="item._id" />
+      <AppNavItem v-for="item in list" :data="item" :key="item._id" />
     </el-row>
   </div>
 </template>
 
 <script>
-import WebsiteItem from "./WebsiteItem";
+import AppNavItem from "./AppNavItem";
 export default {
   components: {
-    WebsiteItem
+    AppNavItem
   },
   props: {
     list: {

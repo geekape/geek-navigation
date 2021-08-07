@@ -1,73 +1,85 @@
-
-
 module.exports = {
-  mode: 'universal',
+  mode: "universal",
   telemetry: false,
   env: {
-    baseUrl: process.env.root,
+    baseUrl: process.env.root
   },
-  server: {
-    host: '0.0.0.0',
-    port: 3001
-  },
+  server: {},
   /*`
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
-    title: '极客猿梦导航-专注独立开发者的导航站',
+    title: "极客猿梦导航-专注独立开发者的导航站",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'keyword', name: 'description', content: '极客猿梦导航,导航站' },
-      { hid: 'description', name: 'description', content: '专注独立开发者的导航站' },
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { hid: "keyword", name: "description", content: "极客猿梦导航,导航站" },
+      {
+        hid: "description",
+        name: "description",
+        content: "专注独立开发者的导航站"
+      }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_552690_njqotmfk5k.css' }
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href: "//at.alicdn.com/t/font_552690_njqotmfk5k.css"
+      }
     ],
     script: [
-      { src: '//v1.cnzz.com/z_stat.php?id=1279139494&web_id=1279139494', defer: 'defer' }
-    ],
+      {
+        src: "//v1.cnzz.com/z_stat.php?id=1279139494&web_id=1279139494",
+        defer: "defer"
+      }
+    ]
   },
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
+   ** Customize the progress-bar color
+   */
+  loading: { color: "#fff" },
   /*
-  ** Global CSS
-  */
-  css: [
-    'element-ui/lib/theme-chalk/index.css',
-    '@/static/styles/style.scss',
-  ],
+   ** Global CSS
+   */
+  css: ["element-ui/lib/theme-chalk/index.css", "@/static/styles/style.scss"],
 
   /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-    '@/plugins/element-ui',
-    '@/plugins/vue-inject',
-  ],
+   ** Plugins to load before mounting the App
+   */
+  plugins: ["@/plugins/element-ui", "@/plugins/vue-inject"],
   /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-  ],
+   ** Nuxt.js dev-modules
+   */
+  buildModules: [],
   /*
-  ** Nuxt.js modules
-  */
-  modules: [
-  ],
+   ** Nuxt.js modules
+   */
+  modules: [],
+
+  axios: {
+    proxy: true, // 表示开启代理
+    credentials: true // 表示跨域请求时是否需要使用凭证
+  },
+
+  proxy: {
+    '/api': {
+      target: 'http://localhost:3001', // 目标接口域名
+      pathRewrite: {
+        '^/api': '/', // 把 /api 替换成 /
+        changeOrigin: true // 表示是否跨域
+      }
+    },
+  },
 
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     transpile: [/^element-ui/],
     /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
-  },
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {},
+    vendor: ["axios"]
+  }
 }

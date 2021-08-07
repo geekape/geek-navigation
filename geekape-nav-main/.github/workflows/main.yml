@@ -1,0 +1,51 @@
+name: Deployment
+on:
+  push:
+    branches:
+      - nuxt
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install Yarn
+      run: npm i -g yarn
+    - name: Use Yarn Install Packages
+      run: yarn
+    - name: Build page
+      run: yarn build
+    - name: Build Zip
+      run: tar -zcvf release.tgz .nuxt server nuxt.config.js package.json
+    - name: ssh deploy
+      uses: easingthemes/ssh-deploy@v2.1.5
+      with:
+        # Private Key
+        SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+        # Remote host
+        REMOTE_HOST: ${{secrets.HOST}}
+        # Remote user
+        REMOTE_USER: root
+        # Remote port
+        REMOTE_PORT: ${{secrets.PORT}}
+        # Source directory
+        SOURCE: release.tgz
+        # Target directory
+        TARGET: /www/wwwroot/root/
+    - name: start project
+      uses: JimCronqvist/action-ssh@master
+      with:
+        hosts: 'yuanmeng@176.122.147.140:27493'
+        debug: true
+        privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+        command: |
+          cd /www/wwwroot/root/
+          ls
+          tar -zxvf release.tgz
+        
