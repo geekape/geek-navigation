@@ -18,8 +18,8 @@ import request from "@/utils/request";
 
 interface GeekProTableProps extends ProTableProps<any, any> {
   showPageHeader?: boolean;
-  pageHeaderProps: PageHeaderProps;
-  requestParams: any;
+  pageHeaderProps?: PageHeaderProps;
+  requestParams?: any;
   defaultRequestData?: object
   renderOptions?: (text: ReactNode, record: any, _: any, action: any) => ReactNode[];
 }
@@ -70,7 +70,7 @@ function GeekProTable(props: GeekProTableProps, ref: any) {
       columns={realColumns}
       loading={loading}
       formRef={from}
-      request={onRequest}
+      request={proTableProps.request || onRequest}
       {...proTableProps}
     />
   );

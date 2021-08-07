@@ -32,7 +32,7 @@ interface RequestOptions {
 }
 
 function request(params: RequestOptions) {
-  let { url, method, headers, data, body, msg } = params
+  let { url, method = 'GET', headers, data, body, msg } = params
   if (!headers) {
     headers = defaultHeaders()
   }

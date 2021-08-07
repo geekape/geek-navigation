@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useMemo, useState} from 'react';
 
 interface PopupShowParams {
   data?: any
@@ -39,6 +39,8 @@ export default function useGeekProTablePopup() {
     setVisible(false)
   }
 
+  const isEdit = useMemo(()=> openType === 'edit', [openType])
+
   return {
     show,
     hide,
@@ -46,7 +48,7 @@ export default function useGeekProTablePopup() {
     openType,
     selectedData,
     onVisibleChange: setVisible,
-    visible
-
+    visible,
+    isEdit
   }
 }

@@ -16,19 +16,25 @@ export default function useGeekProForm(props: IProps) {
   const form = useRef<any>({});
 
   useEffect(() => {
-    if (props?.visible && props.selectedData && props.openType === 'edit') {
-      // 设置编辑表单的选中值
-      let selectedData = props.selectedData
-      if (props.onInitialValues) {
-        selectedData = props.onInitialValues(props.selectedData)
+    if (props?.visible && props.selectedData) {
+      if (props.isEdit) {
+        // 设置编辑表单的选中值
+        let selectedData = props.selectedData
+        if (props.onInitialValues) {
+          selectedData = props.onInitialValues(props.selectedData)
+        }
+        console.log('form.current.setFieldsValue:', selectedData);
+        form.current.setFieldsValue(selectedData)
+      } else {
+        form.current.resetFields()
       }
-      console.log('form.current.setFieldsValue:', selectedData);
-      form.current.setFieldsValue(selectedData)
+
     }
   }, [props?.visible]);
 
 
   return {
     formRef: form,
+    ...props
   }
 }

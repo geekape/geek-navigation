@@ -37,9 +37,9 @@ router.delete("/nav", controller.nav.del)
 router.put("/nav", controller.nav.edit)
 router.get("/nav/find", controller.nav.info)
 
-router.post("/category/add", controller.category.add)
-router.delete("/category/del", controller.category.del)
-router.put("/category/edit", controller.category.edit)
+router.post("/category", controller.category.add)
+router.delete("/category", controller.category.del)
+router.put("/category", controller.category.edit)
 router.get("/category/list", controller.category.list)
 
 router.post("/login", controller.user.login)

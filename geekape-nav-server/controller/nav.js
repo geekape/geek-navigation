@@ -11,7 +11,10 @@ const nav = {
       pageNumber = Number(pageNumber)
       const skipNumber = pageSize * pageNumber - pageSize
 
-      let findParam = { status }
+      let findParam = {
+          status,
+
+      }
       if (!status) {
         findParam = {
           $or: [
