@@ -37,8 +37,9 @@ export default function NavAuditListPage() {
     },
     {
       title: '提交时间',
-      dataIndex: 'createAt',
+      dataIndex: 'submitTime',
       search: false,
+      valueType: 'dateTime'
     },
   ]
 

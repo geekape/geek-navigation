@@ -1,22 +1,48 @@
 import styles from './index.less'
 import {PageContainer} from "@ant-design/pro-layout";
-import {API_NAV, API_NAV_LIST} from "@/services/api";
+import {API_CATEGORY_LIST, API_NAV, API_NAV_LIST} from "@/services/api";
 import GeekProTable from "@/components/GeekProTable/GeekProTable";
 import {ProColumns} from "@ant-design/pro-table";
 import useGeekProTablePopup from "@/components/GeekProTable/useGeekProTablePopup";
 import NavListForm from "@/pages/nav/List/NavListForm";
-import {Popconfirm} from "antd";
+import {Popconfirm, Select} from "antd";
 import request from "@/utils/request";
+import {useRef, useState} from "react";
 
 export default function NavListPage() {
+  const tableRef = useRef({});
   const formProps = useGeekProTablePopup()
+  const [categoryList, setCategoryList] = useState([]);
+
+  async function onChange() {
+    if (categoryList.length) return
+    const res = await request({
+      url: API_CATEGORY_LIST,
+      method: 'GET'
+    })
+    setCategoryList(res.data)
+  }
+
   const columns: ProColumns[] = [
     {
       title: '网站名称',
       dataIndex: 'name',
       width: 180,
+      search: false,
     },
-
+    {
+      title: '分类',
+      dataIndex: 'categoryId',
+      width: 500,
+      hideInTable: true,
+      renderFormItem: () => (
+        <Select onClick={onChange} showSearch>
+          {categoryList.map(item => <Select.OptGroup label={item.name}>
+            {item.children.map(subItem => <Select.Option value={subItem._id}>{subItem.name}</Select.Option>)}
+          </Select.OptGroup>)}
+        </Select>
+      )
+    },
     {
       title: '网站描述',
       dataIndex: 'desc',
@@ -29,15 +55,17 @@ export default function NavListPage() {
       search: false,
     },
     {
-      title: '提交时间',
-      dataIndex: 'createAt',
+      title: '创建时间',
+      dataIndex: 'createTime',
       search: false,
+      valueType: 'dateTime'
     },
   ]
 
   return (
     <div>
       <GeekProTable
+        actionRef={tableRef}
         columns={columns}
         requestParams={{url: API_NAV_LIST, method: 'GET'}}
         renderOptions={(text, record, _, action) => record.status != 2 ? [
@@ -59,7 +87,7 @@ export default function NavListPage() {
           </Popconfirm>,
         ] : []}
       />
-      <NavListForm {...formProps} />
+      <NavListForm {...formProps} tableRef={tableRef.current} />
     </div>
   )
 }

@@ -12,9 +12,6 @@
       <el-button icon="el-icon-plus" @click="$emit('showPopup')"
         >添加网站</el-button
       >
-      <el-button icon="el-icon-user-solid" @click="$router.push('/login')">{{
-        isLogin ? "查看后台" : "登录"
-      }}</el-button>
     </div>
   </el-header>
 </template>

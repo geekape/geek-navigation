@@ -54,7 +54,10 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
 
   axios: {
     proxy: true, // 表示开启代理
@@ -63,10 +66,10 @@ module.exports = {
 
   proxy: {
     '/api': {
-      target: 'http://localhost:3001', // 目标接口域名
+      target: 'http://localhost:3002/api', // 目标接口域名
+      changeOrigin: true,
       pathRewrite: {
-        '^/api': '/', // 把 /api 替换成 /
-        changeOrigin: true // 表示是否跨域
+        '^/api' : '/'
       }
     },
   },

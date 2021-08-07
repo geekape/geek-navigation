@@ -14,19 +14,6 @@ export default function CategoryForm(props: any) {
     onInitialValues(values: any): object {
       return values
     },
-    onFinish: async (values) => {
-      await request({
-        url: API_CATEGORY,
-        method: props.isEdit ? 'PUT' : 'POST',
-        msg: props.isEdit ? '修改成功' : '添加成功',
-        data: {
-          id: props.isEdit ? props.selectedData?._id : undefined,
-          ...values
-        }
-      })
-      props.hide();
-      props.tableRef.reload()
-    }
   })
   const nameProps = useProFormItem({
     name: 'name',
@@ -55,8 +42,24 @@ export default function CategoryForm(props: any) {
     'iconfont icon-sheji',
   ]
 
+  async function onFinish(values: any) {
+    const data = {
+        id: props.isEdit ? props.selectedData?._id : undefined,
+        ...values,
+      }
+      console.log(data, 'data')
+      await request({
+        url: API_CATEGORY,
+        method: props.isEdit ? 'PUT' : 'POST',
+        msg: props.isEdit ? '修改成功' : '添加成功',
+        data
+      })
+      props.hide();
+      props.tableRef.reload()
+  }
+
   return (
-    <ModalForm {...props} {...formProps} width={300}>
+    <ModalForm {...props} {...formProps} onFinish={onFinish} width={300}>
       <ProFormText {...nameProps} />
       <ProFormSelect {...categoryProps} options={props.categoryList.reduce((t, v) => [...t, {label: v.name, value: v._id}], [])}/>
       <ProFormSelect

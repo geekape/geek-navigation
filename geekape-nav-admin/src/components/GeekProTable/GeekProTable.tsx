@@ -71,6 +71,8 @@ function GeekProTable(props: GeekProTableProps, ref: any) {
       loading={loading}
       formRef={from}
       request={proTableProps.request || onRequest}
+      rowSelection={{type: 'checkbox'}}
+      rowKey={'_id'}
       {...proTableProps}
     />
   );

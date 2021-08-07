@@ -48,7 +48,8 @@ const nav = {
       const { url, name } = req.body
       req.body.status = 1
       req.body.logo = `https://www.google.com/s2/favicons?domain=${url}`
-      req.body.href = url
+        req.body.href = url
+        req.body.submitTime = new Date()
 
       if (req.isLogin) {
         // 已经登录了，提交网站直接审核通过
@@ -101,7 +102,9 @@ const nav = {
     try {
       const { id, status } = req.body
       delete req.body.id
-
+        if (status === 0) {
+            req.body.createTime = new Date()
+        }
       const resData = await navDB.update({ _id: id }, req.body)
       res.json(resData)
     } catch (error) {
@@ -114,7 +117,7 @@ const nav = {
    */
   async info(req, res) {
     try {
-      const { id, categoryId } = req.body
+      const { id, categoryId } = req.query
       let resData = []
       // 取所有子分类
       const categorys = await categoryDB.find({ categoryId })

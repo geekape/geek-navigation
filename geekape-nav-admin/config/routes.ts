@@ -7,8 +7,8 @@
     ],
   },
 
-  {name: '审核列表', icon: 'smile', path: '/nav/audit', component: './nav/Audit'},
-  {name: '导航列表', icon: 'smile', path: '/nav/list', component: './nav/List'},
+  {name: '审核列表', icon: 'audit', path: '/nav/audit', component: './nav/Audit'},
+  {name: '导航列表', icon: 'send', path: '/nav/list', component: './nav/List'},
   {name: '分类列表', icon: 'smile', path: '/nav/category', component: './nav/Category'},
 
   {path: '/', redirect: '/nav/audit'},

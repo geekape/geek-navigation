@@ -98,6 +98,7 @@ export default {
   },
   async asyncData() {
     const { data: categorys } = await api.getCategoryList();
+
     const id = categorys[0]._id;
     const websites = await api.findNav(id);
     return {
@@ -167,7 +168,7 @@ $sidebar-w: auto;
   }
 
   .el-aside {
-    background-color: #2740ee;
+    background-color: #4700f1;
     color: #6b7386;
     text-align: center;
     height: 100vh;

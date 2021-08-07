@@ -15,6 +15,8 @@ const navSchema = mongoose.Schema({
   logo: String,
   authorName: String,
   authorUrl: String,
+    submitTime: Date,
+    createTime: Date,
   view: {
     type: Number,
     default: 0

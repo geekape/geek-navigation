@@ -22,15 +22,18 @@ export default function NavListForm(props: any) {
     },
     onFinish: async (values) => {
       values.logo = values.logo[0]?.url
+      const data = {
+        id: props.isEdit ? props.selectedData?._id : undefined,
+        ...values
+      }
       await request({
         url: API_NAV,
         method: props.isEdit ? 'PUT' : 'POST',
         msg: props.isEdit ? '编辑成功' : '添加成功',
-        data: {
-          id: props.isEdit ? props.selectedData?.id : undefined,
-          ...values
-        }
+        data
       })
+      props.hide()
+      props.tableRef?.reload()
     }
   })
   const logoProps = useProFormItem<UploadProps>({

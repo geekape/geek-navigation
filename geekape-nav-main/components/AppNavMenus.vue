@@ -22,9 +22,9 @@
         <el-col :span="24">
           <el-menu
             class="el-menu-vertical-demo"
-            background-color="#2740ee"
+            background-color="#4700f1"
             text-color="#fff"
-            active-text-color="#03a9f4"
+            active-text-color="#a27cff"
             :default-active="defaultActive"
             unique-opened
             :collapse="isCollapse"

@@ -7,6 +7,9 @@ import routes from './routes';
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
   hash: true,
+  devServer: {
+    port: 3001
+  },
   antd: {},
   dva: {
     hmr: true,
