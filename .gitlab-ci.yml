@@ -1,0 +1,22 @@
+before_script:
+  - nvm use 14.0.0
+  - node -v
+
+
+#打包admin
+build_admin:
+  stage: build_admin
+  only:
+    - dev
+  script:
+    # 将镜像源设置成淘宝镜像
+    - yarn config set registry 'https://registry.npm.taobao.org'
+    - cd geekape-nav-admin
+    - tyarn install
+    - echo "admin安装完成"
+    - yarn build
+    - echo "admin打包完成"
+    - mv dist admin
+    - mv admin /home/wwwroot/nav.geekape.net/
+    - echo "admin移动目录完成"
+ 
