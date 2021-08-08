@@ -7,7 +7,7 @@ stages:
   - build_admin
   - build_server
 
-clean1
+clean1:
   stage: clean
   only:
     - dev
