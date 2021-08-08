@@ -6,6 +6,7 @@ stages:
   - clean
   - build_admin
   - build_server
+  - build_main
 
 clean1:
   stage: clean
@@ -34,23 +35,23 @@ build_admin:
     - echo "admin移动目录完成"
 
 #打包main
-# build_main:
-#   stage: build_main
-#   only:
-#     - dev
-#   script:
-#     # 将镜像源设置成淘宝镜像
-#     - yarn config set registry 'https://registry.npm.taobao.org'
-#     - cd geekape-nav-main
-#     - tyarn install
-#     - echo "main安装完成"
-#     - yarn build
-#     - echo "main打包完成"
-#     - mv .nuxt static package.json nuxt.config.js /home/wwwroot/nav.geekape.net/
-#     - cd /home/wwwroot/nav.geekape.net/
-#     - tyarn install
-#     - echo "main包安装完成，可以运行"
-#     #- npm run start
+build_main:
+  stage: build_main
+  only:
+    - dev
+  script:
+    # 将镜像源设置成淘宝镜像
+    - yarn config set registry 'https://registry.npm.taobao.org'
+    - cd geekape-nav-main
+    - tyarn install
+    - echo "main安装完成"
+    - yarn build
+    - echo "main打包完成"
+    - mv .nuxt/ static/ package.json nuxt.config.js /home/wwwroot/nav.geekape.net/
+    - cd /home/wwwroot/nav.geekape.net/
+    - tyarn install
+    - echo "main包安装完成，可以运行"
+    #- npm run start
     
 #打包server
 build_server:
