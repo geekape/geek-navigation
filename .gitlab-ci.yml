@@ -20,7 +20,7 @@ build_admin:
     - yarn build
     - echo "admin打包完成"
     - mv dist admin
-    - mv admin /home/wwwroot/nav.geekape.net/admin/
+    - mv admin/ /home/wwwroot/nav.geekape.net/
     - echo "admin移动目录完成"
 
 #打包main
@@ -48,9 +48,11 @@ build_server:
   only:
     - dev
   script:
-    - mv geekape-nav-server/* /home/wwwroot/nav.geekape.net/server/
+    - mv geekape-nav-server/ /home/wwwroot/nav.geekape.net/
     - echo "server移动目录完成"
-    - cd /home/wwwroot/nav.geekape.net/server/
+    - cd /home/wwwroot/nav.geekape.net/
+    - mv geekape-nav-server server
+    - cd server/
     - tyarn install
     - echo "server包安装完成"
     
