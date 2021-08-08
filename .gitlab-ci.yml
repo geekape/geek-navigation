@@ -34,7 +34,6 @@ build_admin:
     - yarn build
     - echo "admin打包完成"
     - mv dist admin
-    - mkdir /home/wwwroot/nav.geekape.net
     - mv admin/ /home/wwwroot/nav.geekape.net/
     - echo "admin移动目录完成"
 
