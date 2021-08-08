@@ -10,6 +10,7 @@ export default defineConfig({
   devServer: {
     port: 3001
   },
+  history: {type: 'hash'},
   base: '/admin/',
   publicPath: '/admin/',
   antd: {},
