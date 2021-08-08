@@ -34,6 +34,22 @@ build_admin:
     - mv admin/ /home/wwwroot/nav.geekape.net/
     - echo "admin移动目录完成"
 
+#打包server
+build_server:
+  stage: build_server
+  only:
+    - dev
+  script:
+    - mv geekape-nav-server/ /home/wwwroot/nav.geekape.net/
+    - echo "server移动目录完成"
+    - cd /home/wwwroot/nav.geekape.net/
+    - mv geekape-nav-server server
+    - cd server/
+    - tyarn install
+    - echo "server包安装完成"
+    - pm2 start npm --name "geekape-nav-server" -- run server
+    - echo "pm2 server启动成功"
+
 #打包main
 build_main:
   stage: build_main
@@ -51,19 +67,8 @@ build_main:
     - cd /home/wwwroot/nav.geekape.net/
     - tyarn install
     - echo "main包安装完成，可以运行"
-    #- npm run start
+    - pm2 start npm --name "geekape-nav-main" -- run server
+    - echo "pm2 main启动成功"
     
-#打包server
-build_server:
-  stage: build_server
-  only:
-    - dev
-  script:
-    - mv geekape-nav-server/ /home/wwwroot/nav.geekape.net/
-    - echo "server移动目录完成"
-    - cd /home/wwwroot/nav.geekape.net/
-    - mv geekape-nav-server server
-    - cd server/
-    - tyarn install
-    - echo "server包安装完成"
+
     
