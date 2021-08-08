@@ -6,7 +6,7 @@ const Settings: LayoutSettings & {
 } = {
   navTheme: 'light',
   // 拂晓蓝
-  primaryColor: '#a27cff',
+  primaryColor: '#1890ff',
   layout: 'mix',
   contentWidth: 'Fluid',
   fixedHeader: false,
@@ -14,7 +14,7 @@ const Settings: LayoutSettings & {
   colorWeak: false,
   title: '极客猿导航',
   pwa: false,
-  logo: '/logo-nav.png',
+  logo: '/logo-icon.png',
   iconfontUrl: '',
 };
 

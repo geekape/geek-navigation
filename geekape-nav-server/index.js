@@ -3,8 +3,9 @@ const data = require('./router')
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
 const cors = require('cors');
+const config = require('./config');
 
-var db = mongoose.connect('mongodb://yuanmeng:yuanmeng521@176.122.147.140:27017/navigation', { useNewUrlParser: true });
+var db = mongoose.connect(config.mongodbUrl, { useNewUrlParser: true });
 
 const app = express()
 
