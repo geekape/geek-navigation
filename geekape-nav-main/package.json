@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
+    "server": "nuxt",
     "start": "cross-env NODE_ENV=production root=http://nav.geekape.net node server/index.js",
     "build": "nuxt build",
     "deploy": "sh ./deploy/index.sh",
