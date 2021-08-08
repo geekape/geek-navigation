@@ -13,7 +13,8 @@ clean1:
   only:
     - dev
   script:
-    - rm -rf /home/wwwroot/nav.geekape.net/
+    - cd /home/wwwroot/nav.geekape.net/
+    - rm -rf web server admin
     - echo "清空nav.geekape.net目录成功"
     - pm2 stop all
     - pm2 delete all
@@ -50,6 +51,7 @@ build_server:
     - cd server/
     - tyarn install
     - echo "server包安装完成"
+    - mv /home/wwwroot/nav.geekape.net/config.js /home/wwwroot/nav.geekape.net/server/ 
     - pm2 start npm --name "geekape-nav-server" -- run server
     - echo "pm2 server启动成功"
 
@@ -59,8 +61,11 @@ build_main:
   only:
     - dev
   script:
-    - mv geekape-nav-main/* /home/wwwroot/nav.geekape.net/
+    - mkdir /home/wwwroot/nav.geekape.net/main
+    - mv geekape-nav-main/ /home/wwwroot/nav.geekape.net/
     - cd /home/wwwroot/nav.geekape.net/
+    - mv geekape-nav-main web
+    - cd web/
     - tyarn install
     - echo "main包安装完成"
     - yarn build
