@@ -59,14 +59,7 @@ build_main:
   only:
     - dev
   script:
-    # 将镜像源设置成淘宝镜像
-    - yarn config set registry 'https://registry.npm.taobao.org'
-    - cd geekape-nav-main
-    - tyarn install
-    - echo "main安装完成"
-    - yarn build
-    - echo "main打包完成"
-    - mv .nuxt/ static/ package.json nuxt.config.js /home/wwwroot/nav.geekape.net/
+    - mv geekape-nav-main/* /home/wwwroot/nav.geekape.net/
     - cd /home/wwwroot/nav.geekape.net/
     - tyarn install
     - echo "main包安装完成，可以运行"
