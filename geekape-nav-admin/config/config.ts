@@ -10,6 +10,8 @@ export default defineConfig({
   devServer: {
     port: 3001
   },
+  base: '/admin/',
+  publicPath: '/admin/',
   antd: {},
   dva: {
     hmr: true,
