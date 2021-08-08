@@ -3,8 +3,17 @@ before_script:
   - node -v
 
 stages:
+  - clean
   - build_admin
   - build_server
+
+clean1
+  stage: clean
+  only:
+    - dev
+  script:
+    - rm -rf /home/wwwroot/nav.geekape.net/
+    - echo "清空nav.geekape.net目录成功"
 
 #打包admin
 build_admin:
@@ -20,6 +29,7 @@ build_admin:
     - yarn build
     - echo "admin打包完成"
     - mv dist admin
+    - mkdir /home/wwwroot/nav.geekape.net
     - mv admin/ /home/wwwroot/nav.geekape.net/
     - echo "admin移动目录完成"
 
