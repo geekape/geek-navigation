@@ -15,6 +15,8 @@ clean1:
   script:
     - rm -rf /home/wwwroot/nav.geekape.net/
     - echo "清空nav.geekape.net目录成功"
+    - pm2 stop all
+    - pm2 delete all
 
 #打包admin
 build_admin:
