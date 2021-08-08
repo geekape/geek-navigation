@@ -5,9 +5,9 @@
   "author": "geekape",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "server": "nuxt",
-    "start": "cross-env NODE_ENV=production root=http://nav.geekape.net node server/index.js",
+    "dev": "cross-env NODE_ENV=develop root=http://localhost:3002/ nuxt",
+    "server": "cross-env NODE_ENV=production root=http://localhost:3002/ nuxt",
+    "start": "cross-env NODE_ENV=production root=http://localhost:3002/ nuxt",
     "build": "nuxt build",
     "deploy": "sh ./deploy/index.sh",
     "generate": "nuxt generate"
