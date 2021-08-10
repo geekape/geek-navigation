@@ -49,7 +49,7 @@ build_server:
     - cd server/
     - tyarn install
     - echo "server包安装完成"
-    - mv /home/wwwroot/nav.geekape.net/config.js /home/wwwroot/nav.geekape.net/server/ 
+    - mv /home/wwwroot/nav.geekape.net/mongodb.ts /home/wwwroot/nav.geekape.net/server/config/ 
     - pm2 start npm --name "geekape-nav-server" -- run server
     - echo "pm2 server启动成功"
 
