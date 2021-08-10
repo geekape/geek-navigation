@@ -26,7 +26,7 @@ export default class CategoryController extends Controller {
   async edit() {
     const { ctx } = this
     const { id } = ctx.request.body;
-    let data = await ctx.service.common.update(id, ctx.request.body, 'Category');
+    let data = await ctx.service.common.update(ctx.request.body, 'Category');
     this.success(data)
   }
 

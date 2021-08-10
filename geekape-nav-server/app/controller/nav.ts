@@ -95,8 +95,8 @@ export default class NavController extends Controller {
   }
 
   async edit() {
-    const { body } = this.ctx.request.body
-    const res = this.ctx.service.common.update(body.id, body, 'Nav')
+    const { body } = this.ctx.request
+    const res = this.ctx.service.common.update(body, 'Nav')
     this.success(res);
   }
 

@@ -19,6 +19,6 @@ export default class UserService extends Service {
     const token = await app.jwt.sign({
       username,
     }, app.config.jwt.secret);
-    return token;
+    return 'Bearer ' + token;
   }
 }

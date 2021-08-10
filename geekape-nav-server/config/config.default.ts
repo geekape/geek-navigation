@@ -11,8 +11,11 @@ export default (appInfo: EggAppInfo) => {
     }
   }
 
-  config.httpclient ={
-
+  config.cluster ={
+    listen: {
+        port: 3002,
+        hostname: 'localhost'
+    }
   }
 
   config.middleware = [ 'error', 'auth' ];

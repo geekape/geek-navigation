@@ -10,7 +10,9 @@ export default class CommonService extends Service {
     const res = await this.ctx.model[modelName].remove({ _id: id });
     return res;
   }
-  async update(id, data, modelName) {
+  async update(data, modelName) {
+      const { id } = data
+      delete data.id
     const res = await this.ctx.model[modelName].update({ _id: id }, data);
     return res;
   }

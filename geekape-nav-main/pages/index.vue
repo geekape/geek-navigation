@@ -24,6 +24,7 @@
 
     <AddNavPopup :show.sync="showPopup" />
     <Toolbar />
+
   </el-container>
 </template>
 
@@ -87,7 +88,7 @@ export default {
     },
     async findNav(id) {
       this.loading = true;
-      const data = await this.$api.findNav(id);
+      const { data } = await this.$api.findNav(id);
       this.data = data;
       this.loading = false;
     },
@@ -100,10 +101,10 @@ export default {
     const { data: categorys } = await api.getCategoryList();
 
     const id = categorys[0]._id;
-    const websites = await api.findNav(id);
+    const { data } = await api.findNav(id);
     return {
       categorys,
-      data: websites
+      data
     };
   },
   mounted() {

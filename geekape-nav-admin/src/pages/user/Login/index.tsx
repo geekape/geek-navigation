@@ -40,7 +40,7 @@ const Login: React.FC = () => {
       // 登录
       const res: any = await login({username: values.username as string, password: values.password as string});
 
-      if (res?.token) {
+      if (res?.data) {
         const defaultloginSuccessMessage = '登录成功！';
         message.success(defaultloginSuccessMessage);
         setInitialState({
@@ -50,7 +50,7 @@ const Login: React.FC = () => {
           }
         })
         goto();
-        setPersistenceData(TOKEN, res.token)
+        setPersistenceData(TOKEN, res.data)
         setPersistenceData(CURRENT_USER, { name: values.username })
         return;
       } // 如果失败去设置用户错误信息

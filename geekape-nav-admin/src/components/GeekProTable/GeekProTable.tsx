@@ -98,11 +98,10 @@ function GeekProTable(props: GeekProTableProps, ref: any) {
       setLoading(false);
       // const resData = parseListData(res);
       return {
-        data: res?.data,
-        total: res?.total,
+        data: res?.data?.data,
+        total: res?.data?.total,
       };
     } catch (err) {
-      debugger
       console.error(err)
     }
   }
