@@ -1,41 +1,49 @@
-import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
+import {EggAppConfig, EggAppInfo, PowerPartial} from 'egg';
+import mongoConfig from './mongodb';
 
 export default (appInfo: EggAppInfo) => {
-  const config = {} as PowerPartial<EggAppConfig>;
+    const config = {} as PowerPartial<EggAppConfig>;
 
-  config.keys = 'yuanmeng';
+    config.keys = 'yuanmeng';
 
-  config.security = {
-    csrf: {
-      enable: false
+    config.security = {
+        csrf: {
+            enable: false
+        }
     }
-  }
 
-  config.cluster ={
-    listen: {
-        port: 3002,
-        hostname: 'localhost'
+    config.cluster = {
+        listen: {
+            port: 3002,
+            hostname: 'localhost'
+        }
     }
-  }
 
-  config.middleware = [ 'error', 'auth' ];
-  config.error = {
-    postFormat: (_e, { stack, ...rest }) => (appInfo.env === 'prod' ? rest : { stack, ...rest }),
-  };
+    config.mongoose = {
+        client: {
+            url: mongoConfig.mongoUrl,
+            options: {},
+        },
+    };
 
-  config.jwt = {
-    secret: 'xiaobing_19960412_jwttoken',
-  };
+    config.middleware = ['error', 'auth'];
+    config.error = {
+        postFormat: (_e, {stack, ...rest}) => (appInfo.env === 'prod' ? rest : {stack, ...rest}),
+    };
 
-  config.routerAuth = [
-    "/api/nav",
-    "/api/nav/find",
-    "/api/login",
-    "/api/index",
-    "/api/category/list"
-  ];
+    config.jwt = {
+        secret: 'xiaobing_19960412_jwttoken',
+    };
 
-  return {
-    ...config,
-  };
+    config.routerAuth = [
+        "/api/nav",
+        "/api/nav/find",
+        "/api/login",
+        "/api/index",
+        "/api/category/list"
+    ];
+
+    return {
+        ...config,
+    };
 };
