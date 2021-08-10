@@ -11,7 +11,7 @@ stages:
 clean1:
   stage: clean
   only:
-    - dev
+    - prod
   script:
     - cd /home/wwwroot/nav.geekape.net/
     - rm -rf web server admin
@@ -24,7 +24,7 @@ clean1:
 build_admin:
   stage: build_admin
   only:
-    - dev
+    - prod
   script:
     # 将镜像源设置成淘宝镜像
     - yarn config set registry 'https://registry.npm.taobao.org'
@@ -41,7 +41,7 @@ build_admin:
 build_server:
   stage: build_server
   only:
-    - dev
+    - prod
   script:
     - mv geekape-nav-server/ /home/wwwroot/nav.geekape.net/
     - echo "server移动目录完成"
@@ -58,7 +58,7 @@ build_server:
 build_main:
   stage: build_main
   only:
-    - dev
+    - prod
   script:
     - mkdir /home/wwwroot/nav.geekape.net/main
     - mv geekape-nav-main/ /home/wwwroot/nav.geekape.net/
