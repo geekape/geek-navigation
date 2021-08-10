@@ -14,7 +14,7 @@ clean1:
   script:
     - cd /home/wwwroot/nav.geekape.net/
     - rm -rf web server admin
-    - echo "清空nav.geekape.net目录成功"
+    - echo "清空nav.geekape.net目录成功1"
     - pm2 stop all
     - pm2 delete all
   allow_failure: true
