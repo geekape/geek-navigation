@@ -1,5 +1,4 @@
 before_script:
-  - nvm use 14.0.0
   - node -v
 
 stages:
