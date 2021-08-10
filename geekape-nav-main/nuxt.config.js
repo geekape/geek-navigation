@@ -4,7 +4,9 @@ module.exports = {
   env: {
     baseUrl: process.env.root
   },
-  server: {},
+  server: {
+
+  },
   /*`
    ** Headers of the page
    */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="TypeScriptCompiler">
+    <option name="showAllErrors" value="false" />
+    <option name="typeScriptServiceDirectory" value="$PROJECT_DIR$/geekape-nav-server-eggjs" />
+    <option name="versionType" value="SERVICE_DIRECTORY" />
+  </component>
+</project>

@@ -1,29 +1,62 @@
 {
-  "name": "geekape-nav-server",
+  "name": "eggts",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
+  "egg": {
+    "typescript": true,
+    "declarations": true
+  },
   "scripts": {
-    "server": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "egg-scripts start --daemon --host=localhost --port=3002 --title=egg-server-eggts",
+    "stop": "egg-scripts stop --title=egg-server-eggts",
+    "dev": "egg-bin dev --port=3002",
+    "debug": "egg-bin debug",
+    "test-local": "egg-bin test",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "cov": "egg-bin cov",
+    "tsc": "ets && tsc -p tsconfig.json",
+    "ci": "npm run lint && npm run cov && npm run tsc",
+    "autod": "autod",
+    "lint": "eslint . --ext .ts",
+    "clean": "ets clean"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cheerio": "^1.0.0-rc.3",
-    "cross-env": "^5.2.0",
-    "express": "^4.16.4",
-    "express-jwt": "5.3.1",
-    "request": "^2.88.2",
-    "mongoose": "^5.9.24",
-    "cors": "^2.8.5"
+    "cheerio": "^1.0.0-rc.10",
+    "egg": "^2.6.1",
+    "egg-jwt": "^3.1.7",
+    "egg-mongoose": "^3.3.1",
+    "egg-scripts": "^2.6.0",
+    "koa-json-error": "^3.1.2",
+    "request": "^2.88.2"
   },
   "devDependencies": {
-    "chalk": "^4.1.0",
-    "nodemon": "^1.18.9",
-    "ora": "^4.0.4",
-    "postcss-loader": "^3.0.0",
-    "scp2": "^0.5.0"
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
+    "@types/supertest": "^2.0.0",
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "egg-bin": "^4.11.0",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.16.0",
+    "eslint": "^6.7.2",
+    "eslint-config-egg": "^8.0.0",
+    "tslib": "^1.9.0",
+    "typescript": "^3.0.0"
   },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "eslintIgnore": [
+    "coverage"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
