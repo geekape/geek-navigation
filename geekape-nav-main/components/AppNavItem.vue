@@ -1,14 +1,17 @@
 <template>
-  <el-col :xs="24" :sm="8" :md="6" class="website-item">
+  <el-col :xs="24" :sm="8" :md="4" class="website-item">
     <div class="wrap">
       <div class="info" @click="handleClick">
         <div class="info-header">
           <el-image class="logo" :src="navData.logo" fit="cover" lazy />
-          <span class="title">{{ navData.name }}</span>
+          <div class="info-header-right">
+            <strong class="title">{{ navData.name }}</strong>
+            <div class="desc">
+              {{ navData.desc || "这个网站什么描述也没有..." }}
+            </div>
+          </div>
         </div>
-        <div class="desc">
-          {{ navData.desc || "这个网站什么描述也没有..." }}
-        </div>
+
       </div>
       <div class="website-item__footer">
         <div class="left" v-if="navData.authorUrl">
@@ -87,12 +90,14 @@ export default {
   -webkit-line-clamp: $line;
 }
 .website-item {
-  font-size: 13px;
+  font-size: 12px;
   margin-bottom: 20px;
   box-sizing: border-box;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s;
+  color: #999;
+
   &:hover {
     transform: translateY(-6px);
     box-shadow: 0 26px 40px -24px rgba(#000, .2);
@@ -112,16 +117,20 @@ export default {
   .title {
     color: #3273dc;
     font-size: 16px;
-    @include text-overflow(2);
+    @include text-overflow(1);
   }
 
   .iconfont {
     margin-left: 15px;
     cursor: pointer;
+    color: #999;
+    font-size: 12px;
+    padding-left: 0;
   }
 
   .desc {
-    margin-top: 10px;
+    margin-top: 5px;
+
     @include text-overflow(1);
   }
 
@@ -159,8 +168,7 @@ export default {
   display: block;
   transition: all 0.3s;
   background: #fff;
-  padding: 10px;
-  height: 100px;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -173,6 +181,11 @@ export default {
     display: flex;
     align-items: center;
     overflow: auto;
+
+    &-right {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 

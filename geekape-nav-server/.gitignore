@@ -2,6 +2,7 @@ logs/
 npm-debug.log
 node_modules/
 coverage/
+config/mongodb.ts
 .idea/
 run/
 logs/
