@@ -1,5 +1,5 @@
 before_script:
-  - nvm use 14.0.0
+  - nvm use 12.13.0
   - node -v
 
 stages:
@@ -15,7 +15,7 @@ clean1:
   script:
     - cd /home/wwwroot/nav.geekape.net/
     - rm -rf web server admin
-    - echo "清空nav.geekape.net目录成功"
+    - echo "清空nav.geekape.net目录成功1"
     - pm2 stop all
     - pm2 delete all
   allow_failure: true
@@ -30,12 +30,13 @@ build_admin:
     - yarn config set registry 'https://registry.npm.taobao.org'
     - cd geekape-nav-admin
     - tyarn install
-    - echo "admin安装完成1"
+    - echo "admin安装完成"
     - yarn build
     - echo "admin打包完成"
     - mv dist admin
     - mv admin/ /home/wwwroot/nav.geekape.net/
     - echo "admin移动目录完成"
+  allow_failure: true
 
 #打包server
 build_server:
@@ -50,10 +51,12 @@ build_server:
     - cd server/
     - tyarn install
     - echo "server包安装完成"
-    - mv /home/wwwroot/nav.geekape.net/config.js /home/wwwroot/nav.geekape.net/server/ 
+    - rm -rf /home/wwwroot/nav.geekape.net/server/config/mongodb.ts
+    - cp /home/wwwroot/nav.geekape.net/mongodb.ts /home/wwwroot/nav.geekape.net/server/config/ 
     - pm2 start npm --name "geekape-nav-server" -- run server
     - echo "pm2 server启动成功"
-
+  allow_failure: true
+  
 #打包main
 build_main:
   stage: build_main
@@ -71,6 +74,6 @@ build_main:
     - echo "main打包完成，可以运行"
     - pm2 start npm --name "geekape-nav-main" -- run server
     - echo "pm2 main启动成功"
-    
+  allow_failure: true
 
     
