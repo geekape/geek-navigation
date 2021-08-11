@@ -64,7 +64,7 @@
               </div>
               <div class="app-card-content">
                 <el-row :gutter="10">
-                  <el-col span="12" v-for="item in randomNavList">
+                  <el-col span="12" v-for="item in randomNavList" :key="item._id">
                     <a class="nav-block" :href="item.href" target="_blank">
                       <img :src="item.logo" alt="" class="nav-logo">
                       <h4 class="nav-name">{{item.name}}</h4>

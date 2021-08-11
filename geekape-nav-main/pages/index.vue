@@ -11,9 +11,10 @@
         @showPopup="showPopup = true"
         :isCollapse="isCollapse"
       />
+      <affiche />
+      <app-search />
 
       <section class="main" v-loading="loading">
-        <affiche />
         <div class="website-wrapper" v-for="item in data" :key="item.name">
           <p class="website-title" :id="item._id">{{ item.name }}</p>
           <WebsiteList :list="item.list" />
@@ -37,8 +38,10 @@ import AddNavPopup from "~/components/AddNavPopup";
 import Affiche from "~/components/Affiche";
 
 import api from "~/api";
+import AppSearch from "../components/AppSearch";
 export default {
   components: {
+    AppSearch,
     Affiche,
     AppNavList,
     AddNavPopup,

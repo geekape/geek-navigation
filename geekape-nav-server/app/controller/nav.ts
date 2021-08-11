@@ -7,7 +7,7 @@ export default class NavController extends Controller {
     const { ctx } = this
     const { request, model } = ctx
     try {
-      let { pageSize = 10, pageNumber = 1, status = 0, categoryId } = request.query
+      let { pageSize = 10, pageNumber = 1, status = 0, categoryId, name } = request.query
       pageSize = Number(pageSize)
       pageNumber = Number(pageNumber)
       const skipNumber = pageSize * pageNumber - pageSize
@@ -26,6 +26,12 @@ export default class NavController extends Controller {
       if (categoryId) {
         findParam.categoryId = {
           $eq: categoryId
+        }
+      }
+      if (name) {
+        let reg = new RegExp(name,'i');
+        findParam.name = {
+          $regex: reg
         }
       }
 
@@ -137,7 +143,15 @@ export default class NavController extends Controller {
 
   async get() {
     const { ctx } = this
-    const res = await ctx.service.common.get(ctx.query.id, 'Nav');
+    const { id, keyword } = ctx.query
+
+    let res
+
+    if (id) {
+      res = await ctx.service.common.get(ctx.query.id, 'Nav');
+    } else if(keyword) {
+      res = await ctx.service.nav.findName(keyword);
+    }
     this.success(res)
   }
 

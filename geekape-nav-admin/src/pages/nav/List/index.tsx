@@ -28,7 +28,6 @@ export default function NavListPage() {
       title: '网站名称',
       dataIndex: 'name',
       width: 180,
-      search: false,
     },
     {
       title: '分类',

@@ -17,17 +17,19 @@ export default class CommonService extends Service {
     return res;
   }
   async get(id, modelName) {
-    console.log(this.ctx.model);
     const res = await this.ctx.model[modelName].findOne({ _id: id });
     return res;
   }
   async getList(modelName) {
-    console.log(this.ctx.model);
     const res = await this.ctx.model[modelName].find({});
     return res;
   }
   async getRandomData(randomNumber: number = 10, modelName) {
     const res = await this.ctx.model[modelName].aggregate( [ { $sample: { size: randomNumber } } ] );
+    return res;
+  }
+  async find(findObj, modelName) {
+    const res = await this.ctx.model[modelName].find(findObj);
     return res;
   }
 }
