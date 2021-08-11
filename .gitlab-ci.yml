@@ -63,7 +63,6 @@ build_main:
   only:
     - prod
   script:
-    - mkdir /home/wwwroot/nav.geekape.net/main
     - mv geekape-nav-main/ /home/wwwroot/nav.geekape.net/
     - cd /home/wwwroot/nav.geekape.net/
     - mv geekape-nav-main web
