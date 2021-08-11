@@ -133,4 +133,17 @@ export default class NavController extends Controller {
       this.error(error.message)
     }
   }
+
+
+  async get() {
+    const { ctx } = this
+    const res = await ctx.service.common.get(ctx.query.id, 'Nav');
+    this.success(res)
+  }
+
+  async random() {
+    const { ctx } = this
+    const res = await ctx.service.common.getRandomData(10, 'Nav');
+    this.success(res)
+  }
 }

@@ -1,6 +1,11 @@
 <template>
-  <el-col :xs="24" :sm="8" :md="4" class="website-item">
+  <el-col :xs="24" :sm="8" :md="4" lg="4" class="website-item">
     <div class="wrap">
+      <a class="link" target="_blank" :href="data.href">
+        <el-tooltip content="链接直达" property="top">
+          <i class="iconfont icon-tiaozhuan"></i>
+        </el-tooltip>
+      </a>
       <div class="info" @click="handleClick">
         <div class="info-header">
           <el-image class="logo" :src="navData.logo" fit="cover" lazy />
@@ -11,6 +16,7 @@
             </div>
           </div>
         </div>
+
 
       </div>
       <div class="website-item__footer">
@@ -63,7 +69,10 @@ export default {
       await this.$api.editNav({ id, view: view + 1 });
       views[id] = view + 1;
       this.$storage.set("VIEWS", views);
-      window.open(href, "_blank");
+      // window.open(href, "_blank");
+      this.$router.push({
+        path: `/nav/${id}`
+      })
     },
     async handleStar() {
       const stars = this.$storage.get("STARS") || {};
@@ -97,6 +106,20 @@ export default {
   cursor: pointer;
   transition: all 0.3s;
   color: #999;
+  position: relative;
+  &:hover {
+    .link {
+      display: block;
+    }
+  }
+
+  .link {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    display: none;
+    z-index: 10;
+  }
 
   &:hover {
     transform: translateY(-6px);
@@ -170,12 +193,14 @@ export default {
   background: #fff;
   padding: 20px 10px;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: flex-start;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  &:hover {
-  }
+
+
+
 
   &-header {
     display: flex;

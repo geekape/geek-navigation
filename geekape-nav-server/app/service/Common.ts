@@ -16,9 +16,18 @@ export default class CommonService extends Service {
     const res = await this.ctx.model[modelName].update({ _id: id }, data);
     return res;
   }
-  async get(modelName) {
+  async get(id, modelName) {
+    console.log(this.ctx.model);
+    const res = await this.ctx.model[modelName].findOne({ _id: id });
+    return res;
+  }
+  async getList(modelName) {
     console.log(this.ctx.model);
     const res = await this.ctx.model[modelName].find({});
+    return res;
+  }
+  async getRandomData(randomNumber: number = 10, modelName) {
+    const res = await this.ctx.model[modelName].aggregate( [ { $sample: { size: randomNumber } } ] );
     return res;
   }
 }

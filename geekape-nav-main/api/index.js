@@ -13,8 +13,12 @@ function objToQuery(obj) {
   return query + queryArr.join('&')
 }
 
-const api = {
+export const API_NAV = '/api/nav'
+export const API_NAV_RANDOM = '/api/nav/random'
+export const API_NAV_FIND = '/api/nav/find'
+export const API_CATEGORY_LIST = '/api/category/list'
 
+const api = {
   addNav(data) {
     return axios.post('/api/nav', data)
   },

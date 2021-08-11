@@ -9542,6 +9542,11 @@ vuex@^3.5.1:
   resolved "https://registry.npmjs.org/vuex/-/vuex-3.5.1.tgz#f1b8dcea649bc25254cf4f4358081dbf5da18b3d"
   integrity sha512-w7oJzmHQs0FM9LXodfskhw9wgKBiaB+totOdb8sNzbTB2KDCEEwEs29NzBZFh/lmEK1t5tDmM1vtsO7ubG1DFw==
 
+vuex@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.nlark.com/vuex/download/vuex-3.6.2.tgz?cache=0&sync_timestamp=1623945218026&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvuex%2Fdownload%2Fvuex-3.6.2.tgz#236bc086a870c3ae79946f107f16de59d5895e71"
+  integrity sha1-I2vAhqhww655lG8QfxbeWdWJXnE=
+
 watchpack-chokidar2@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/watchpack-chokidar2/-/watchpack-chokidar2-2.0.0.tgz#9948a1866cbbd6cb824dea13a7ed691f6c8ddff0"

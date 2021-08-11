@@ -37,6 +37,7 @@ export default (appInfo: EggAppInfo) => {
 
     config.routerAuth = [
         "/api/nav",
+        "/api/nav/random",
         "/api/nav/find",
         "/api/login",
         "/api/index",

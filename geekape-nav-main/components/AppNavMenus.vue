@@ -87,10 +87,10 @@ export default {
   },
   methods: {
     handleMenuItemClick(parentId, id) {
-      if (this.selectedCategoryId === parentId) {
-        document.getElementById(id).scrollIntoView();
-        return;
-      }
+      // if (this.selectedCategoryId === parentId) {
+      //   document.getElementById(id).scrollIntoView();
+      //   return;
+      // }
       this.selectedCategoryId = parentId;
       this.$emit("handleSubMenuClick", parentId, id);
     }

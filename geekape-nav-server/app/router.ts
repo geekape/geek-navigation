@@ -12,6 +12,8 @@ export default (app: Application) => {
 
   router.get("/api/nav/list", controller.nav.list)
   router.post("/api/nav", controller.nav.add)
+  router.get("/api/nav", controller.nav.get)
+  router.get("/api/nav/random", controller.nav.random)
   router.delete("/api/nav", controller.nav.del)
   router.put("/api/nav", controller.nav.edit)
   router.get("/api/nav/find", controller.nav.info)

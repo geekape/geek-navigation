@@ -1,21 +1,21 @@
 <template>
   <el-header>
-    <div class="arrow">
-      <i
-        @click="$emit('showMenus')"
-        class="el-icon-s-fold"
-        v-if="!isCollapse"
-      ></i>
-      <i @click="$emit('showMenus')" class="el-icon-s-unfold" v-else></i>
-    </div>
-    <div class="button-item">
-      <el-button icon="el-icon-question" @click="onJumpFeedback">意见反馈</el-button>
-    </div>
-    <div class="button-item">
-      <el-button icon="el-icon-plus" @click="$emit('showPopup')"
+      <div class="arrow">
+        <i
+          @click="$emit('showMenus')"
+          class="el-icon-s-fold"
+          v-if="!isCollapse"
+        ></i>
+        <i @click="$emit('showMenus')" class="el-icon-s-unfold" v-else></i>
+      </div>
+      <div class="button-item">
+        <el-button icon="el-icon-question" @click="onJumpFeedback">意见反馈</el-button>
+      </div>
+      <div class="button-item">
+        <el-button icon="el-icon-plus" @click="$emit('showPopup')"
         >添加网站</el-button
-      >
-    </div>
+        >
+      </div>
   </el-header>
 </template>
 
@@ -44,5 +44,24 @@ export default {
 .button-item {
   margin-left: 10px;
 }
+.el-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #333;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0px 1px 6px rgba(#000, .1);
 
+  .arrow {
+    flex: 1;
+    cursor: pointer;
+  }
+  .arrow i {
+    color: #999;
+    font-size: 24px;
+  }
+}
 </style>

@@ -36,7 +36,6 @@ import AddNavPopup from "~/components/AddNavPopup";
 
 import Affiche from "~/components/Affiche";
 
-import axios from "~/plugins/axios";
 import api from "~/api";
 export default {
   components: {
@@ -142,26 +141,6 @@ $sidebar-w: auto;
   }
   /deep/ .el-submenu__title i {
     color: #fff;
-  }
-
-  /deep/ .el-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    color: #333;
-    background: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0px 1px 6px rgba(142, 142, 142, 0.1);
-    .arrow {
-      flex: 1;
-      cursor: pointer;
-    }
-    .arrow i {
-      color: #999;
-      font-size: 24px;
-    }
   }
 
   .body {
