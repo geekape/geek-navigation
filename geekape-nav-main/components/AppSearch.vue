@@ -1,21 +1,12 @@
 <template>
   <div class="app-search">
-    <el-select
-      v-model="value"
-      filterable
-      remote
-      reserve-keyword
-      placeholder="站内搜索"
-      :remote-method="remoteMethod"
-      @change="onChange"
-      :loading="loading">
-      <el-option
-        v-for="item in options"
-        :key="item.href"
-        :label="item.name"
-        :value="item.href">
-      </el-option>
-    </el-select>
+    <el-autocomplete
+      v-model="state"
+      :fetch-suggestions="querySearchAsync"
+      placeholder="请输入内容"
+      @select="handleSelect"
+      suffix-icon="el-icon-search"
+    ></el-autocomplete>
   </div>
 </template>
 
@@ -27,25 +18,25 @@ export default {
   name: "AppSearch",
   data() {
     return {
-      options: [],
-      value: '',
-      list: [],
-      loading: false,
+      restaurants: [],
+      state: '',
+      timeout:  null
     }
   },
   methods: {
-    async remoteMethod(query) {
+    async querySearchAsync(query, cb) {
       if (query !== '') {
-        this.loading = true;
         const res = await axios.get(API_NAV + `?keyword=${query}`)
-        this.loading = false
-        this.options = res?.data
+        if (Array.isArray(res.data)) {
+          res.data = res.data.map(item=> (item.value = item.name, item))
+          cb(res.data)
+        }
       } else {
-        this.options = [];
+        cb([])
       }
     },
-    onChange(url) {
-      window.open(url)
+    handleSelect(item) {
+      window.open(item.href)
     }
   }
 }
