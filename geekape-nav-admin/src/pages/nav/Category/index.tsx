@@ -25,13 +25,16 @@ function transformCategoryList(list: any) {
 
 export default function NavAuditListPage() {
   const formProps = useGeekProTablePopup()
-  const tableRef = useRef<ActionType>(null);
+  const tableRef = useRef<ActionType>();
   const [categoryList, setCategoryList] = useState([]);
 
   async function onRequestData() {
     const res = await request({
       url: API_CATEGORY_LIST,
-      method: 'GET'
+      method: 'GET',
+      data: {
+        showInMenu: false
+      }
     })
     const data = transformCategoryList(res.data)
     setCategoryList(data)
@@ -56,7 +59,16 @@ export default function NavAuditListPage() {
     {
       title: '分类名',
       dataIndex: 'name'
-    }
+    },
+    {
+      title: '显示在菜单',
+      dataIndex: 'showInMenu',
+      valueType: 'select',
+      valueEnum: {
+        true: { text: '显示', status: 'Success' },
+        false: { text: '不显示', status: 'Error' },
+      }
+    },
   ]
   return (
       <div>

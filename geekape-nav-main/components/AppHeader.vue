@@ -1,10 +1,15 @@
 <template>
   <el-header>
     <AppSearch />
-    <div>
-      <el-tooltip content="意见反馈"><i class="el-icon-question" @click="onJumpFeedback"></i></el-tooltip>
-      <el-tooltip content="推荐网站"><i class="el-icon-circle-plus" @click="$emit('showPopup')"></i></el-tooltip>
-    </div>
+
+    <el-row type="flex">
+      <el-col>
+        <el-tooltip content="意见反馈"><i class="el-icon-question" @click="onJumpFeedback"></i></el-tooltip>
+      </el-col>
+      <el-col>
+        <el-tooltip content="推荐网站"><i class="el-icon-circle-plus" @click="$emit('showPopup')"></i></el-tooltip>
+      </el-col>
+    </el-row>
   </el-header>
 </template>
 
@@ -53,9 +58,24 @@ export default {
 
   i {
     font-size: 25px;
-    margin-left: 30px;
+    margin-left: 2rem;
     color: #999;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .app-search {
+    /deep/ .el-select {
+      display: none;
+    }
+  }
+}
+@media screen and (min-width: 569px) {
+  .app-search {
+    /deep/ .el-select {
+      display: block;
+    }
   }
 }
 </style>

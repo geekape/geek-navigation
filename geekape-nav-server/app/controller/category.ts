@@ -3,15 +3,15 @@ import Controller from './common';
 export default class CategoryController extends Controller {
   async list() {
     const { ctx } = this
+    const { showInMenu = true } = ctx.query
     try {
-      let data = await ctx.model.Category.find({}).limit(100000)
-      const stairCategory = data.filter(item=> !item.categoryId)
-      const secondCategory = data.filter(item=> item.categoryId)
+      const params: any = {}
+      if (showInMenu && showInMenu !== "false") {
+        params.showInMenu = { $in: [null, true] }
+      }
+      let data = await ctx.model.Category.find(params).limit(100000)
 
-      let newData = stairCategory.map(item=> {
-        item.children = [...secondCategory.filter(cate=> item._id == cate.categoryId)]
-        return item
-      })
+      const newData = ctx.service.category.formatCategoryList(data)
       this.success(newData)
     } catch (error) {
       this.error(error.message)

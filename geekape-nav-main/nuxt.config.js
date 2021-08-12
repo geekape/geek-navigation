@@ -1,3 +1,5 @@
+const nuxtPageCache = require('nuxt-page-cache')
+
 module.exports = {
   mode: "universal",
   telemetry: false,
@@ -86,5 +88,14 @@ module.exports = {
      */
     extend(config, ctx) {},
     vendor: ["axios"]
-  }
+  },
+
+  // serverMiddleware: [
+  //   nuxtPageCache.cacheSeconds(1, req => {
+  //     if (req.query && req.query.pageType) {
+  //       return req.query.pageType
+  //     }
+  //     return false
+  //   })
+  // ]
 }

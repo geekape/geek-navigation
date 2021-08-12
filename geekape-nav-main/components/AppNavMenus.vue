@@ -210,4 +210,16 @@ $sidebar-w: auto;
 }
 
 
+@media screen and (max-width: 568px) {
+  .app-search,
+  .sidebar-fix {
+    display: none;
+  }
+}
+@media screen and (min-width: 569px) {
+  .app-search,
+  .sidebar-fix {
+    display: block;
+  }
+}
 </style>

@@ -1,5 +1,5 @@
 import {
-  DrawerForm,
+  DrawerForm, ProFormDependency,
   ProFormText,
   ProFormTextArea,
   ProFormUploadButton,
@@ -14,14 +14,7 @@ import request from "@/utils/request";
 export default function NavListForm(props: any) {
   const formProps = useGeekProForm({
     ...props,
-    onInitialValues(values: any): object {
-      if (typeof values.logo === 'string') {
-        values.logo = [{url: values.logo}]
-      }
-      return values
-    },
     onFinish: async (values) => {
-      values.logo = values.logo[0]?.url
       const data = {
         id: props.isEdit ? props.selectedData?._id : undefined,
         ...values
@@ -36,7 +29,7 @@ export default function NavListForm(props: any) {
       props.tableRef?.reload()
     }
   })
-  const logoProps = useProFormItem<UploadProps>({
+  const logoProps = useProFormItem({
     name: 'logo',
     label: '网站LOGO',
     required: true,
@@ -66,7 +59,10 @@ export default function NavListForm(props: any) {
   })
   return (
     <DrawerForm {...props} {...formProps}>
-      <ProFormUploadButton {...logoProps} />
+      <ProFormDependency name={['logo']}>
+        {({ logo })=> <ProFormText {...logoProps} formItemProps={{extra: <img width={50} src={logo} />}} />}
+      </ProFormDependency>
+
       <ProFormText {...nameProps} />
       <ProFormTextArea {...descProps} />
       <ProFormText {...urlProps} />

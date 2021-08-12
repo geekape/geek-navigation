@@ -36,7 +36,19 @@ export default class NavController extends Controller {
       }
 
       const [resData, total] = await Promise.all([
-        model.Nav.find(findParam).skip(skipNumber).limit(pageSize).sort({_id: -1}),
+        model.Nav.aggregate([
+          {
+            $match: findParam
+          },
+          {
+            $lookup: {
+              from: 'category',
+              localField: 'categoryId',
+              foreignField: '_id',
+              as: 'category'
+            }
+          }
+        ]).skip(skipNumber).limit(pageSize).sort({_id: -1}),
         model.Nav.find(findParam).count(),
       ])
       this.success({
@@ -143,14 +155,14 @@ export default class NavController extends Controller {
 
   async get() {
     const { ctx } = this
-    const { id, keyword } = ctx.query
+    const { id, keyword, limit = 10 } = ctx.query
 
     let res
 
     if (id) {
       res = await ctx.service.common.get(ctx.query.id, 'Nav');
     } else if(keyword) {
-      res = await ctx.service.nav.findName(keyword);
+      res = await ctx.service.nav.find(keyword, limit);
     }
     this.success(res)
   }

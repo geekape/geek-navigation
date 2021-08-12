@@ -1,5 +1,5 @@
 <template>
-  <el-col :xs="24" :sm="8" :md="4" lg="4" class="website-item">
+  <el-col :xs="24" :sm="8" :md="6" :lg="4" class="website-item">
     <div class="wrap">
       <a class="link" target="_blank" :href="data.href">
         <el-tooltip content="链接直达" property="top">

@@ -66,12 +66,11 @@ export default {
   },
   methods: {
     async getCategoryList() {
-      const { data } = await this.$api.getCategoryList();
-      this.categorys = data.data;
+      const { data: categorys } = await this.$api.getCategoryList();
+      this.categorys = categorys;
 
-      if (this.categorys.length) {
-        const { children } = this.categorys.slice(0, 1)[0];
-        const categoryId = children[0]._id;
+      if (Array.isArray(categorys)) {
+        const categoryId = categorys[0]._id;
         this.findNav(categoryId);
       }
     },
@@ -107,22 +106,10 @@ export default {
       data
     };
   },
-  mounted() {
-    window.onresize = () => {
-      return (() => {
-        window.screenWidth = document.body.clientWidth;
-        if (window.screenWidth < 481) {
-          this.isLeftbar = false;
-        } else {
-          this.isLeftbar = true;
-        }
-      })();
-    };
-    window.onresize();
-  },
-  created() {
-    console.log(process.env.navUrl, "process.env");
-  }
+  // created() {
+  //   this.getCategoryList()
+  //   console.log(process.env.navUrl, "process.env");
+  // }
 };
 </script>
 
@@ -151,20 +138,6 @@ export default {
   }
 }
 
-@media screen and (max-width: 568px) {
-  .user-layout {
-    /deep/ .el-header .arrow {
-      display: none;
-    }
-  }
-}
-@media screen and (min-width: 569px) {
-  .user-layout {
-    /deep/ .el-header .arrow {
-      display: block;
-    }
-  }
-}
 
 /deep/ .el-menu--popup-right-start {
   height: 500px !important;

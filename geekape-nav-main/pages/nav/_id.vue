@@ -16,7 +16,7 @@
 
     <div class="container">
       <el-row :gutter="25" class="site-info">
-        <el-col span="6" xs="24">
+        <el-col :md="6" :xs="24">
           <div class="left">
             <div class="img-wrap">
               <el-image :src="detail.logo" />
@@ -40,7 +40,7 @@
             </div>
           </div>
         </el-col>
-        <el-col span="10" xs="24">
+        <el-col :md="10" :xs="24">
           <div class="content">
 <!--            <div class="category-bar">-->
 <!--              <span class="category">素材资源</span>-->
@@ -55,7 +55,7 @@
             </div>
           </div>
         </el-col>
-        <el-col span="8" xs="24">
+        <el-col :md="8" :xs="24">
           <div class="right">
             <div class="app-card">
               <div class="app-card-header">
@@ -126,7 +126,7 @@ export default {
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 3rem 0;
+  padding: 3rem 15px;
 }
 
 .placeholder {
@@ -456,6 +456,16 @@ export default {
     width: 20px;
     height: 20px;
     margin-right: 8px;
+  }
+}
+
+
+@media screen and (max-width: 568px) {
+  .site-info {
+    margin-top: 0;
+    .el-col {
+      margin-bottom: 40px;
+    }
   }
 }
 </style>

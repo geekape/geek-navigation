@@ -28,6 +28,9 @@ module.exports = app => {
       type: [ Object ],
       default: undefined,
     },
+    category: [{
+      name: String
+    }]
   }, { collection: 'nav' });
   return mongoose.model('Nav', NavSchema);
 };

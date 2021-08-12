@@ -29,6 +29,7 @@
     "https": "^1.0.0",
     "mongoose": "^5.9.24",
     "nuxt": "^2.0.0",
+    "nuxt-page-cache": "^0.0.5",
     "request": "^2.88.2",
     "vuex": "^3.6.2"
   },

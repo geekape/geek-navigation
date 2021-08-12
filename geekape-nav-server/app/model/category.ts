@@ -14,7 +14,12 @@ module.exports = app => {
       name: String,
       categoryId: String,
       createAt: Number,
+      showInMenu: Boolean,
     }],
+    showInMenu: {
+      type: Boolean,
+      default: true
+    },
   }, { collection: 'category' });
   return mongoose.model('Category', CategorySchema);
 };

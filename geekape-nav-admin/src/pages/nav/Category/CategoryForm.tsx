@@ -1,5 +1,5 @@
 import {
-  ModalForm, ProFormSelect, ProFormText,
+  ModalForm, ProFormDependency, ProFormSelect, ProFormSwitch, ProFormText,
   ProFormUploadButton,
 } from "@ant-design/pro-form";
 import useProFormItem from "@/hooks/useProFormItem";
@@ -31,6 +31,11 @@ export default function CategoryForm(props: any) {
     label: '分类图标',
     width: 'sm',
   })
+  const showMenuProps = useProFormItem({
+    name: 'showInMenu',
+    label: '显示到菜单',
+    width: 'sm',
+  })
 
   const icons = [
     'iconfont icon-qianduan',
@@ -47,7 +52,6 @@ export default function CategoryForm(props: any) {
         id: props.isEdit ? props.selectedData?._id : undefined,
         ...values,
       }
-      console.log(data, 'data')
       await request({
         url: API_CATEGORY,
         method: props.isEdit ? 'PUT' : 'POST',
@@ -59,13 +63,13 @@ export default function CategoryForm(props: any) {
   }
 
   return (
-    <ModalForm {...props} {...formProps} onFinish={onFinish} width={300}>
+    <ModalForm {...props} {...formProps} onFinish={onFinish} width={350}>
       <ProFormText {...nameProps} />
       <ProFormSelect {...categoryProps} options={props.categoryList.reduce((t, v) => [...t, {label: v.name, value: v._id}], [])}/>
-      <ProFormSelect
-        {...categoryIconProps}
-        options={icons.reduce((t, v) => [...t, {label: <i className={v}></i>, value: v}], [])}
-      />
+      <ProFormDependency name={['icon']}>
+        {({ icon })=> <ProFormText {...categoryIconProps} formItemProps={{extra: <i className={icon}></i>}} />}
+      </ProFormDependency>
+      <ProFormSwitch {...showMenuProps} />
     </ModalForm>
   )
 }
