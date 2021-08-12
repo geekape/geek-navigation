@@ -1,5 +1,3 @@
-import styles from './index.less'
-import {PageContainer} from "@ant-design/pro-layout";
 import {API_CATEGORY_LIST, API_NAV, API_NAV_LIST} from "@/services/api";
 import GeekProTable from "@/components/GeekProTable/GeekProTable";
 import {ProColumns} from "@ant-design/pro-table";
@@ -8,11 +6,12 @@ import NavListForm from "@/pages/nav/List/NavListForm";
 import {Popconfirm, Select} from "antd";
 import request from "@/utils/request";
 import {useRef, useState} from "react";
+import {Category} from "@/constants/api";
 
 export default function NavListPage() {
-  const tableRef = useRef({});
+  const tableRef = useRef();
   const formProps = useGeekProTablePopup()
-  const [categoryList, setCategoryList] = useState([]);
+  const [categoryList, setCategoryList] = useState<Category[]>([]);
 
   async function onChange() {
     if (categoryList.length) return
@@ -84,8 +83,7 @@ export default function NavListPage() {
             }}>
             <a>删除</a>
           </Popconfirm>,
-        ] : []}
-      />
+        ] : []}></GeekProTable>
       <NavListForm {...formProps} tableRef={tableRef.current} />
     </div>
   )

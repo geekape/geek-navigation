@@ -2,7 +2,6 @@
   <el-aside
     :style="{
       width: sideBarWidth,
-      overflow: !isCollapse ? 'auto' : 'hidden'
     }"
   >
     <nuxt-link class="title" to="/">
@@ -12,7 +11,7 @@
         width="180"
         src="/logo-nav.png"
       />
-      <img v-else class="icon-logo" width="45" src="/logo-nav-icon.png" />
+      <img v-else class="icon-logo" width="45" src="/logo-nav-icon.png"/>
 
       <!-- <span>猿梦极客导航后台</span> -->
     </nuxt-link>
@@ -57,6 +56,18 @@
         </el-col>
       </el-row>
     </slot>
+
+    <div class="sidebar-fix">
+      <ul>
+        <li class="item" @click="$emit('showMenus')">
+          <i
+            class="el-icon-s-fold"
+            v-if="!isCollapse"
+          ></i>
+          <i class="el-icon-s-unfold" v-else></i>
+        </li>
+      </ul>
+    </div>
   </el-aside>
 </template>
 
@@ -87,10 +98,10 @@ export default {
   },
   methods: {
     handleMenuItemClick(parentId, id) {
-      // if (this.selectedCategoryId === parentId) {
-      //   document.getElementById(id).scrollIntoView();
-      //   return;
-      // }
+      if (this.selectedCategoryId === parentId) {
+        document.getElementById(id).scrollIntoView();
+        return;
+      }
       this.selectedCategoryId = parentId;
       this.$emit("handleSubMenuClick", parentId, id);
     }
@@ -98,4 +109,105 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+$sidebar-w: auto;
+
+.sidebar-fix {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  ul {
+    padding: 0;
+  }
+
+  .item {
+    padding: 10px 15px;
+    text-align: left;
+    cursor: pointer;
+    background: #4700f1;
+
+    i {
+      font-size: 20px;
+      color: #fff;
+    }
+  }
+}
+
+.el-aside {
+  overflow: hidden;
+
+  .el-menu-vertical-demo.el-menu {
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 100px;
+  }
+
+  .el-menu--popup::-webkit-scrollbar,
+  .el-menu-vertical-demo.el-menu::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+  }
+
+  .el-menu--popup::-webkit-scrollbar-thumb,
+  .el-menu-vertical-demo.el-menu::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    background: #2740ee;
+  }
+
+  .el-menu--popup::-webkit-scrollbar-track,
+  .el-menu-vertical-demo.el-menu::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: #6d7def;
+  }
+
+  background-color: #4700f1;
+  color: #6b7386;
+  text-align: center;
+  transition: all 0.5s;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+
+
+
+  /deep/ .el-menu,
+  /deep/ .el-menu--collapse {
+    border: 0;
+  }
+
+  &.aside-hide {
+    transform: translateX(-$sidebar-w);
+  }
+
+  &.aside-show {
+    transform: translateX(0);
+  }
+
+  .title {
+    font-size: 16px;
+    padding: 20px 0;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .el-submenu__title,
+  .el-menu-item {
+    text-align: left;
+  }
+}
+
+
+</style>

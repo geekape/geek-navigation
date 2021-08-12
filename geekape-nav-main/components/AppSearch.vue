@@ -55,18 +55,13 @@ export default {
 .app-search {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
   .el-select {
-    width: 50%;
+    width: 300px;
   }
   .el-input__inner  {
     border: 1px solid #dfe1e5;
     box-shadow: none;
     background: #fff;
-
-  }
-  /deep/ .el-select .el-input .el-input__inner {
-    border-radius: 30px;
   }
 
   /deep/ .el-select .el-input.is-focus .el-input__inner {

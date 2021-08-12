@@ -4,15 +4,13 @@
       @handleSubMenuClick="handleSubMenuClick"
       :categorys="categorys"
       :isCollapse="isCollapse"
+      @showMenus="isCollapse = !isCollapse"
     />
     <el-container class="body" :style="{ marginLeft: sideBarWidth }">
       <app-header
-        @showMenus="isCollapse = !isCollapse"
         @showPopup="showPopup = true"
-        :isCollapse="isCollapse"
       />
       <affiche />
-      <app-search />
 
       <section class="main" v-loading="loading">
         <div class="website-wrapper" v-for="item in data" :key="item.name">
@@ -30,10 +28,10 @@
 </template>
 
 <script>
-import AppNavMenus from "~/components/AppNavMenus";
-import AppHeader from "~/components/AppHeader";
-import AppNavList from "~/components/AppNavList";
-import AddNavPopup from "~/components/AddNavPopup";
+import AppNavMenus from "../components/AppNavMenus";
+import AppHeader from "../components/AppHeader";
+import AppNavList from "../components/AppNavList";
+import AddNavPopup from "../components/AddNavPopup";
 
 import Affiche from "~/components/Affiche";
 
@@ -130,8 +128,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-$sidebar-w: auto;
 
+.el-container {
+  flex-direction: column;
+}
 .user-layout {
   position: relative;
   .footer {
@@ -148,78 +148,6 @@ $sidebar-w: auto;
 
   .body {
     margin-left: 70px;
-  }
-
-  .el-aside {
-    background-color: #4700f1;
-    color: #6b7386;
-    text-align: center;
-    height: 100vh;
-    transition: all 0.5s;
-    z-index: 99;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: visible;
-    bottom: 0;
-
-    .el-menu--popup::-webkit-scrollbar,
-    &::-webkit-scrollbar {
-      /*滚动条整体样式*/
-      width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
-      height: 1px;
-    }
-    .el-menu--popup::-webkit-scrollbar-thumb,
-    &::-webkit-scrollbar-thumb {
-      /*滚动条里面小方块*/
-      border-radius: 10px;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-      background: #2740ee;
-    }
-    .el-menu--popup::-webkit-scrollbar-track,
-    &::-webkit-scrollbar-track {
-      /*滚动条里面轨道*/
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      background: #6d7def;
-    }
-
-    /deep/ .el-menu,
-    /deep/ .el-menu--collapse {
-      border: 0;
-    }
-
-    &.aside-hide {
-      transform: translateX(-$sidebar-w);
-    }
-
-    &.aside-show {
-      transform: translateX(0);
-    }
-
-    .title {
-      font-size: 16px;
-      padding: 20px 0;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-  }
-
-  .el-submenu__title,
-  .el-menu-item {
-    text-align: left;
-  }
-
-  .icon-logo {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-  }
-  .el-container {
-    flex-direction: column;
   }
 }
 
@@ -257,6 +185,7 @@ body {
 
 .main {
   padding: 20px;
+  position: relative;
 }
 .website-wrapper {
   .website-title {

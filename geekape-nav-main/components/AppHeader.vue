@@ -1,32 +1,19 @@
 <template>
   <el-header>
-      <div class="arrow">
-        <i
-          @click="$emit('showMenus')"
-          class="el-icon-s-fold"
-          v-if="!isCollapse"
-        ></i>
-        <i @click="$emit('showMenus')" class="el-icon-s-unfold" v-else></i>
-      </div>
-      <div class="button-item">
-        <el-button icon="el-icon-question" @click="onJumpFeedback">意见反馈</el-button>
-      </div>
-      <div class="button-item">
-        <el-button icon="el-icon-plus" @click="$emit('showPopup')"
-        >添加网站</el-button
-        >
-      </div>
+    <AppSearch />
+    <div>
+      <el-tooltip content="意见反馈"><i class="el-icon-question" @click="onJumpFeedback"></i></el-tooltip>
+      <el-tooltip content="推荐网站"><i class="el-icon-circle-plus" @click="$emit('showPopup')"></i></el-tooltip>
+    </div>
   </el-header>
 </template>
 
 <script>
+import AppSearch from "./AppSearch";
 export default {
-  name: "",
+  name: "AppHeader",
+  components: {AppSearch},
   props: {
-    isCollapse: {
-      type: Boolean,
-      default: false
-    },
     dialogFormVisible: {
       type: Boolean,
       default: false
@@ -46,7 +33,7 @@ export default {
 }
 .el-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   color: #333;
   background: #fff;
@@ -62,6 +49,13 @@ export default {
   .arrow i {
     color: #999;
     font-size: 24px;
+  }
+
+  i {
+    font-size: 25px;
+    margin-left: 30px;
+    color: #999;
+    cursor: pointer;
   }
 }
 </style>
