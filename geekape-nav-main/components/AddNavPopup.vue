@@ -8,14 +8,10 @@
       @close="$emit('update:show', false)"
     >
       <el-form ref="ruleForm" label-width="100px" :model="form" :rules="rules">
-        <el-form-item label="网站名称" prop="name" v-if="isMoreForm">
-          <el-input placeholder="输入网站名称" v-model="form.name" />
-        </el-form-item>
-        <el-form-item label="网站描述" prop="desc" v-if="isMoreForm">
-          <el-input placeholder="输入网站描述" v-model="form.desc" />
-        </el-form-item>
+
         <el-form-item label="网站链接" prop="url">
-          <el-input placeholder="http://www.baidu.com/" v-model="form.url"  :disabled="type === 'update'" />
+          <el-input placeholder="http://www.baidu.com/" v-model="form.url"  :disabled="type === 'update'" @blur="getNavInfo" />
+          <span style="color: red">输入链接自动爬取信息</span>
         </el-form-item>
 
         <el-form-item label="网站分类" prop="categoryId">
@@ -33,6 +29,16 @@
               ></el-option>
             </el-option-group>
           </el-select>
+        </el-form-item>
+        <el-form-item label="网站名称" prop="name">
+          <el-input placeholder="输入网站名称" v-model="form.name" />
+        </el-form-item>
+        <el-form-item label="网站logo" prop="name">
+          <el-input placeholder="输入网站logo" v-model="form.logo" />
+          <img :src="form.logo" />
+        </el-form-item>
+        <el-form-item label="网站描述" prop="desc">
+          <el-input type="textarea" placeholder="输入网站描述" v-model="form.desc" />
         </el-form-item>
         <el-form-item label="作者名称" prop="authorName">
           <el-input placeholder="填写你推广的名称" v-model="form.authorName" />
@@ -52,6 +58,9 @@
 </template>
 
 <script>
+import axios from "../plugins/axios";
+import {API_NAV, API_NAV_RANDOM, API_NAV_REPTILE} from "../api";
+
 export default {
   props: {
     show: {
@@ -74,6 +83,7 @@ export default {
         url: '',
         categoryId: '',
         name: '',
+        logo: '',
         desc: '',
         authorName: '',
         authorUrl: ''
@@ -89,8 +99,9 @@ export default {
         categoryId: [
           { required: true, message: '请选择分类', trigger: 'blur' },
         ],
-        name: [],
-        desc: [],
+        name: [{ required: true, message: '请输入名称', trigger: 'blur' },],
+        desc: [{ required: true, message: '请输入描述', trigger: 'blur' },],
+        logo: [{ required: true, message: '请输入logo', trigger: 'blur' },],
         authorUrl: [
           {
             pattern: /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/,
@@ -143,6 +154,15 @@ export default {
         }
       })
     },
+    async getNavInfo() {
+      const { url } = this.form
+      if (!url) return
+      const { data } = await axios.get(API_NAV_REPTILE + `?url=${url}`)
+
+      this.form.logo = `${url}/favicon.ico`
+      this.form.name = data?.name
+      this.form.desc = data?.desc
+    }
   },
   watch: {
     item(ite) {

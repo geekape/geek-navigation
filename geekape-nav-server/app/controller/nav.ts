@@ -2,6 +2,12 @@ import Controller from './common';
 const request = require('request');
 const cheerio = require('cheerio');
 
+enum NAV_STATUS {
+  wait,
+  pass,
+  refuse,
+}
+
 export default class NavController extends Controller {
   async list() {
     const { ctx } = this
@@ -65,45 +71,38 @@ export default class NavController extends Controller {
     const { ctx } = this
     const { request: req, model } = ctx
     try {
-      const { url, name } = req.body
       req.body.status = 1
-      req.body.logo = `https://www.google.com/s2/favicons?domain=${url}`
-      req.body.href = url
-      req.body.submitTime = new Date()
+      req.body.createTime = new Date()
+      const res = model.Nav.create(req.body);
+      this.success(res)
+    } catch (error) {
+      this.error(error.message)
+    }
+  }
 
-      // if (req.isLogin) {
-      //   // 已经登录了，提交网站直接审核通过
-      //   req.body.status = 0
-      // }
-
-      // 手动输入
-      if (name) {
-        model.Nav.create(req.body, (_err, doc) => {
-          this.success(doc)
-        })
-        return
-      }
-
+  async reptile() {
+    const { ctx } = this
+    const { url } = ctx.query
+    const that = this
+    const res = await new Promise((resolve)=> {
       request(url, (error, requestData, body) => {
         if (!error && requestData.statusCode == 200) {
           const $ = cheerio.load(body)
           const name = $('title').text()
           const desc = $('meta[name="description"]').attr('content')
-          model.Nav.create({
-            ...req.body,
+
+          resolve({
             name,
             desc,
             href: url,
-          }, (_err, doc) => {
-            this.success(doc)
           })
         } else {
-          this.error('爬虫爬取失败')
+          that.error('爬虫爬取失败')
         }
       })
-    } catch (error) {
-      this.error(error.message)
-    }
+    })
+
+    this.success(res)
   }
 
   async del() {
@@ -114,6 +113,10 @@ export default class NavController extends Controller {
 
   async edit() {
     const { body } = this.ctx.request
+
+    if (body.status === NAV_STATUS.pass || body.status === NAV_STATUS.refuse) {
+      body.auditTime = new Date()
+    }
     const res = this.ctx.service.common.update(body, 'Nav')
     this.success(res);
   }

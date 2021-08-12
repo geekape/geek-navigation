@@ -10,7 +10,7 @@ module.exports = app => {
     logo: String,
     authorName: String,
     authorUrl: String,
-    submitTime: Date,
+    auditTime: Date,
     createTime: Date,
     view: {
       type: Number,
