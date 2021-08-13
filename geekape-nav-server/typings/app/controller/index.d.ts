@@ -3,15 +3,15 @@
 
 import 'egg';
 import ExportCategory from '../../../app/controller/category';
-import ExportCommon from '../../../app/controller/common';
 import ExportNav from '../../../app/controller/nav';
+import ExportTag from '../../../app/controller/tag';
 import ExportUser from '../../../app/controller/user';
 
 declare module 'egg' {
   interface IController {
     category: ExportCategory;
-    common: ExportCommon;
     nav: ExportNav;
+    tag: ExportTag;
     user: ExportUser;
   }
 }

@@ -1,6 +1,10 @@
-import Controller from './common';
+import Controller from '../core/base_controller';
 
 export default class CategoryController extends Controller {
+  tableName(): string {
+    return 'Category'
+  }
+
   async list() {
     const { ctx } = this
     const { showInMenu = true } = ctx.query
@@ -17,17 +21,13 @@ export default class CategoryController extends Controller {
       this.error(error.message)
     }
   }
+
   async add() {
-    const { ctx } = this
-    let data = await ctx.service.common.add(ctx.request.body, 'Category');
-    this.success(data)
+    await super.add()
   }
 
   async edit() {
-    const { ctx } = this
-    const { id } = ctx.request.body;
-    let data = await ctx.service.common.update(ctx.request.body, 'Category');
-    this.success(data)
+    await super.update()
   }
 
   async del() {

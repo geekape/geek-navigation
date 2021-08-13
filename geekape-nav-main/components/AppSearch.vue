@@ -26,10 +26,10 @@ export default {
   methods: {
     async querySearchAsync(query, cb) {
       if (query !== '') {
-        const res = await axios.get(API_NAV + `?keyword=${query}`)
-        if (Array.isArray(res.data)) {
-          res.data = res.data.map(item=> (item.value = item.name, item))
-          cb(res.data)
+        const { data } = await axios.get(API_NAV + `?keyword=${query}`)
+        if (Array.isArray(data.data)) {
+          const finalData = data.data.map(item=> (item.value = item.name, item))
+          cb(finalData)
         }
       } else {
         cb([])

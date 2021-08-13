@@ -1,4 +1,4 @@
-import Controller from './common'
+import Controller from '../core/base_controller'
 
 export default class UserController extends Controller {
   public async login() {

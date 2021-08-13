@@ -1,4 +1,4 @@
-import Controller from './common';
+import Controller from '../core/base_controller';
 const request = require('request');
 const cheerio = require('cheerio');
 
@@ -9,63 +9,45 @@ enum NAV_STATUS {
 }
 
 export default class NavController extends Controller {
+  tableName(): string {
+    return 'Nav'
+  }
+
   async list() {
     const { ctx } = this
     const { model } = ctx
-    try {
-      let { pageSize = 10, pageNumber = 1, status = 0, categoryId, name } = ctx.query
-      pageSize = Number(pageSize)
-      pageNumber = Number(pageNumber)
-      const skipNumber = pageSize * pageNumber - pageSize
+    let { status = 0, categoryId, name } = ctx.query
 
-      let findParam: any = {
-        status,
-      }
-      if (!status) {
-        findParam = {
-          $or: [
-            { status: { $exists: false } },
-            { status: 0 },
-          ]
-        }
-      }
-      if (categoryId) {
-        findParam.categoryId = {
-          $eq: categoryId
-        }
-      }
-      if (name) {
-        let reg = new RegExp(name,'i');
-        findParam.name = {
-          $regex: reg
-        }
-      }
-
-      const [resData, total] = await Promise.all([
-        model.Nav.find(findParam).skip(skipNumber).limit(pageSize).sort({_id: -1}),
-        model.Nav.find(findParam).count(),
-      ])
-      this.success({
-        data: resData,
-        total,
-        pageNumber: Math.ceil(total / pageSize),
-      })
-    } catch (error) {
-      this.error(error.message)
+    let findParam: any = {
+      status,
     }
+    if (!status) {
+      findParam = {
+        $or: [
+          { status: { $exists: false } },
+          { status: 0 },
+        ]
+      }
+    }
+    if (categoryId) {
+      findParam.categoryId = {
+        $eq: categoryId
+      }
+    }
+    if (name) {
+      let reg = new RegExp(name,'i');
+      findParam.name = {
+        $regex: reg
+      }
+    }
+
+    await super.getList(findParam);
   }
 
   async add() {
-    const { ctx } = this
-    const { request: req, model } = ctx
-    try {
-      req.body.status = NAV_STATUS.wait
-      req.body.createTime = new Date()
-      const res = await model.Nav.create(req.body);
-      this.success(res)
-    } catch (error) {
-      this.error(error.message)
-    }
+    this.ctx.request.body.status = NAV_STATUS.wait
+    this.ctx.request.body.createTime = new Date()
+    await super.add()
   }
 
   async reptile() {
@@ -94,23 +76,17 @@ export default class NavController extends Controller {
   }
 
   async del() {
-    const { id } = this.ctx.request.body
-    const res = await this.ctx.service.common.remove(id, 'Nav');
-    this.success(res)
+    await super.remove();
   }
 
   async edit() {
-    const { body } = this.ctx.request
-    body.updateTime = new Date()
-    const res = this.ctx.service.common.update(body, 'Nav')
-    this.success(res);
+    this.ctx.request.body.updateTime = new Date()
+    await super.update();
   }
 
   async audit() {
-    const { body } = this.ctx.request
-    body.auditTime = new Date()
-    const res = this.ctx.service.common.update(body, 'Nav')
-    this.success(res);
+    this.ctx.request.body.auditTime = new Date()
+    await super.update();
   }
 
   /**
@@ -150,21 +126,21 @@ export default class NavController extends Controller {
 
   async get() {
     const { ctx } = this
-    const { id, keyword, limit = 10 } = ctx.query
+    const { id, keyword } = ctx.query
 
     let res
 
     if (id) {
-      res = await ctx.service.common.get(ctx.query.id, 'Nav');
+      res = await super.get();
     } else if(keyword) {
-      res = await ctx.service.nav.find(keyword, limit);
+      let reg = new RegExp(keyword,'i');
+      await super.getList({
+        name: { $regex: reg },
+      }, (table)=> table.limit(10));
     }
-    this.success(res)
   }
 
   async random() {
-    const { ctx } = this
-    const res = await ctx.service.common.getRandomData(10, 'Nav');
-    this.success(res)
+    await super.getRandomList();
   }
 }
