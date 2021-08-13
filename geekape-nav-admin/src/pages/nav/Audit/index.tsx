@@ -1,8 +1,25 @@
 import GeekProTable from "@/components/GeekProTable/GeekProTable";
 import {API_NAV_AUDIT, API_NAV_LIST} from "@/services/api";
 import {ProColumns} from "@ant-design/pro-table";
-import {Popconfirm} from "antd";
+import {Popconfirm, Tag, Space} from "antd";
 import request from "@/utils/request";
+
+function RandomColorTag({ children }) {
+  const colors = [
+    'magenta',
+    'red',
+    'volcano',
+    'orange',
+    'gold',
+    'lime',
+    'green',
+    'cyan',
+    'blue',
+    'geekblue',
+    'purple',
+  ]
+  return <Tag color={colors[Math.floor(Math.random() * colors.length)]}>{children}</Tag>
+}
 
 export default function NavAuditListPage() {
   const columns: ProColumns[] = [
@@ -23,12 +40,21 @@ export default function NavAuditListPage() {
       search: false,
       width: 180,
     },
+    {
+      title: '网站标签',
+      dataIndex: 'tags',
+      search: false,
+      width: 250,
+      renderText: (text, record)=> (<Space>
+        {record.tags.map(item=> <RandomColorTag>{item}</RandomColorTag>)}
+      </Space>)
+    },
 
     {
       title: '网站描述',
       dataIndex: 'desc',
       search: false,
-      width: 500,
+      width: 300,
     },
     {
       title: '网站链接',

@@ -42,4 +42,6 @@ myAxios.interceptors.response.use(function (response) {
   return Promise.reject(error.response.data.message);
 });
 
+myAxios.defaults.timeout = 6000
+
 export default myAxios

@@ -43,7 +43,8 @@ export default (appInfo: EggAppInfo) => {
         "/api/nav/reptile",
         "/api/login",
         "/api/index",
-        "/api/category/list"
+        "/api/category/list",
+        "/api/tag/list"
     ];
 
     return {

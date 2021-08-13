@@ -75,6 +75,7 @@ export default class CommonController extends Controller {
   async getList(findObj = {}, otherCMD = (_table: any) => _table) {
     const { request, query } = this.ctx
     const tableName = this.tableName()
+
     try {
       let { pageSize = 10, pageNumber = 1 } = query
       pageSize = Number(pageSize)

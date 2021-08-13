@@ -85,7 +85,18 @@ export default class NavController extends Controller {
   }
 
   async audit() {
+    const { ctx } = this
     this.ctx.request.body.auditTime = new Date()
+
+    const { status, id } = this.ctx.request.body
+
+    const navItem = await this.ctx.model.Nav.findOne({ _id: id })
+    const { tags } = navItem
+
+    if (status === NAV_STATUS.pass) {
+      // 批量添加tag
+      await this.ctx.service.tag.addMultiTag(tags)
+    }
     await super.update();
   }
 

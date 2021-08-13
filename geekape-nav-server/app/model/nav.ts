@@ -13,6 +13,10 @@ module.exports = app => {
     authorUrl: String,
     auditTime: Date,
     createTime: Date,
+    tags: {
+      type: Array,
+      default: []
+    },
     view: {
       type: Number,
       default: 0,
