@@ -2,10 +2,8 @@
   <el-header>
     <AppSearch />
 
+
     <el-row type="flex">
-      <el-col>
-        <el-tooltip content="意见反馈"><i class="el-icon-question" @click="onJumpFeedback"></i></el-tooltip>
-      </el-col>
       <el-col>
         <el-tooltip content="推荐网站"><i class="el-icon-circle-plus" @click="$emit('showPopup')"></i></el-tooltip>
       </el-col>
@@ -24,11 +22,6 @@ export default {
       default: false
     }
   },
-  methods: {
-    onJumpFeedback() {
-      window.open('https://support.qq.com/product/330737')
-    }
-  }
 };
 </script>
 
@@ -63,6 +56,7 @@ export default {
     cursor: pointer;
   }
 }
+
 
 @media screen and (max-width: 568px) {
   .app-search {

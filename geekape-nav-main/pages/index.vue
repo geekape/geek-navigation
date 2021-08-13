@@ -1,5 +1,6 @@
 <template>
   <el-container class="user-layout">
+
     <app-nav-menus
       @handleSubMenuClick="handleSubMenuClick"
       :categorys="categorys"
@@ -23,7 +24,8 @@
 
     <AddNavPopup :show.sync="showPopup" />
     <Toolbar />
-
+    <CustomerServiceBtn @showLog="showLog = true" />
+    <AppLog :show="showLog" @closeLog="showLog = false" />
   </el-container>
 </template>
 
@@ -37,8 +39,12 @@ import Affiche from "~/components/Affiche";
 
 import api from "~/api";
 import AppSearch from "../components/AppSearch";
+import CustomerServiceBtn from "../components/CustomerServiceBtn";
+import AppLog from "../components/AppLog";
 export default {
   components: {
+    AppLog,
+    CustomerServiceBtn,
     AppSearch,
     Affiche,
     AppNavList,
@@ -49,6 +55,7 @@ export default {
   data(Affiche) {
     return {
       showPopup: false,
+      showLog: false,
       isCollapse: true,
 
       loading: false,
