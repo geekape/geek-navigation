@@ -3,6 +3,7 @@ import request from "@/utils/request";
 export const API_LOGIN = '/api/login'
 export const API_NAV_LIST = '/api/nav/list'
 export const API_NAV = '/api/nav'
+export const API_NAV_AUDIT = '/api/nav/audit'
 export const API_CATEGORY_LIST = '/api/category/list'
 export const API_CATEGORY = '/api/category'
 

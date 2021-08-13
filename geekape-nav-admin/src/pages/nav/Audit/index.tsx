@@ -1,5 +1,5 @@
 import GeekProTable from "@/components/GeekProTable/GeekProTable";
-import {API_NAV, API_NAV_LIST} from "@/services/api";
+import {API_NAV_AUDIT, API_NAV_LIST} from "@/services/api";
 import {ProColumns} from "@ant-design/pro-table";
 import {Popconfirm} from "antd";
 import request from "@/utils/request";
@@ -36,8 +36,8 @@ export default function NavAuditListPage() {
       search: false,
     },
     {
-      title: '提交时间',
-      dataIndex: 'submitTime',
+      title: '创建时间',
+      dataIndex: 'createTime',
       search: false,
       valueType: 'dateTime'
     },
@@ -45,7 +45,7 @@ export default function NavAuditListPage() {
 
   async function onActionClick(id: string, action: any, status = 0) {
     await request({
-      url: API_NAV,
+      url: API_NAV_AUDIT,
       method: 'PUT',
       data: {
         id,

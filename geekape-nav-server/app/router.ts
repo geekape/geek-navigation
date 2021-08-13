@@ -13,6 +13,7 @@ export default (app: Application) => {
   router.get("/api/nav/list", controller.nav.list)
   router.post("/api/nav", controller.nav.add)
   router.get("/api/nav", controller.nav.get)
+  router.put("/api/nav/audit", controller.nav.audit)
   router.get("/api/nav/reptile", controller.nav.reptile)
   router.get("/api/nav/random", controller.nav.random)
   router.delete("/api/nav", controller.nav.del)

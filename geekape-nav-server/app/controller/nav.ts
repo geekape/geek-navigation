@@ -3,17 +3,17 @@ const request = require('request');
 const cheerio = require('cheerio');
 
 enum NAV_STATUS {
-  wait,
   pass,
+  wait,
   refuse,
 }
 
 export default class NavController extends Controller {
   async list() {
     const { ctx } = this
-    const { request, model } = ctx
+    const { model } = ctx
     try {
-      let { pageSize = 10, pageNumber = 1, status = 0, categoryId, name } = request.query
+      let { pageSize = 10, pageNumber = 1, status = 0, categoryId, name } = ctx.query
       pageSize = Number(pageSize)
       pageNumber = Number(pageNumber)
       const skipNumber = pageSize * pageNumber - pageSize
@@ -42,19 +42,7 @@ export default class NavController extends Controller {
       }
 
       const [resData, total] = await Promise.all([
-        model.Nav.aggregate([
-          {
-            $match: findParam
-          },
-          {
-            $lookup: {
-              from: 'category',
-              localField: 'categoryId',
-              foreignField: '_id',
-              as: 'category'
-            }
-          }
-        ]).skip(skipNumber).limit(pageSize).sort({_id: -1}),
+        model.Nav.find(findParam).skip(skipNumber).limit(pageSize).sort({_id: -1}),
         model.Nav.find(findParam).count(),
       ])
       this.success({
@@ -71,9 +59,9 @@ export default class NavController extends Controller {
     const { ctx } = this
     const { request: req, model } = ctx
     try {
-      req.body.status = 1
+      req.body.status = NAV_STATUS.wait
       req.body.createTime = new Date()
-      const res = model.Nav.create(req.body);
+      const res = await model.Nav.create(req.body);
       this.success(res)
     } catch (error) {
       this.error(error.message)
@@ -113,10 +101,14 @@ export default class NavController extends Controller {
 
   async edit() {
     const { body } = this.ctx.request
+    body.updateTime = new Date()
+    const res = this.ctx.service.common.update(body, 'Nav')
+    this.success(res);
+  }
 
-    if (body.status === NAV_STATUS.pass || body.status === NAV_STATUS.refuse) {
-      body.auditTime = new Date()
-    }
+  async audit() {
+    const { body } = this.ctx.request
+    body.auditTime = new Date()
     const res = this.ctx.service.common.update(body, 'Nav')
     this.success(res);
   }

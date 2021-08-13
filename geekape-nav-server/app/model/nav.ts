@@ -5,6 +5,7 @@ module.exports = app => {
   const NavSchema = new Schema({
     categoryId: String,
     name: String,
+    //网站url
     href: String,
     desc: String,
     logo: String,
@@ -24,13 +25,6 @@ module.exports = app => {
       type: Number,
       default: 0,
     },
-    list: {
-      type: [ Object ],
-      default: undefined,
-    },
-    category: [{
-      name: String
-    }]
   }, { collection: 'nav' });
   return mongoose.model('Nav', NavSchema);
 };

@@ -10,7 +10,7 @@
       <el-form ref="ruleForm" label-width="100px" :model="form" :rules="rules">
 
         <el-form-item label="网站链接" prop="url">
-          <el-input placeholder="http://www.baidu.com/" v-model="form.url"  :disabled="type === 'update'" @blur="getNavInfo" />
+          <el-input placeholder="http://www.baidu.com/" v-model="form.href"  :disabled="type === 'update'" @blur="getNavInfo" />
           <span style="color: red">输入链接自动爬取信息</span>
         </el-form-item>
 
@@ -35,7 +35,7 @@
         </el-form-item>
         <el-form-item label="网站logo" prop="name">
           <el-input placeholder="输入网站logo" v-model="form.logo" />
-          <img :src="form.logo" />
+          <img style="max-width: 30px;" :src="form.logo" />
         </el-form-item>
         <el-form-item label="网站描述" prop="desc">
           <el-input type="textarea" placeholder="输入网站描述" v-model="form.desc" />
@@ -50,7 +50,6 @@
           <el-button type="primary" :loading="loading" @click="addNav('ruleForm')">
             提交
           </el-button>
-          <p v-if="type !== 'update'"><el-link @click="isMoreForm=!isMoreForm" type="primary">{{!isMoreForm ? '手动添加' : '爬虫自动添加'}}网站名称和描述</el-link></p>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -80,7 +79,7 @@ export default {
       loading: false,
       categorys: [],
       form: {
-        url: '',
+        href: '',
         categoryId: '',
         name: '',
         logo: '',
@@ -89,7 +88,7 @@ export default {
         authorUrl: ''
       },
       rules: {
-        url: [
+        href: [
           { required: true, message: '请输入url', trigger: 'blur' },
           {
             pattern: /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/,
@@ -138,15 +137,13 @@ export default {
             })
           } else {
             const res = await this.$api.addNav(this.form)
-            if (res.msg) {
-              this.$message.error(`${res.msg}，请手动输入！`)
-              this.isMoreForm = true
+            if (res.code === 0) {
+              this.$message.error(`${res.msg}`)
             } else {
               this.$message(`感谢您的提交，请等待后台审核通过！`)
             }
           }
           this.loading = false
-          this.form.url = ''
           this.$emit('update:show', false)
           this.$emit('submit')
         } else {
@@ -155,28 +152,13 @@ export default {
       })
     },
     async getNavInfo() {
-      const { url } = this.form
+      const { href: url } = this.form
       if (!url) return
       const { data } = await axios.get(API_NAV_REPTILE + `?url=${url}`)
 
-      this.form.logo = `${url}/favicon.ico`
+      this.form.logo = `https://www.google.com/s2/favicons?domain=${url}`
       this.form.name = data?.name
       this.form.desc = data?.desc
-    }
-  },
-  watch: {
-    item(ite) {
-      this.isMoreForm = true
-      this.form.name = ite.name
-      this.form.url = ite.href
-      this.form.desc = ite.desc
-      this.form.categoryId = ite.categoryId
-    },
-    isMoreForm(newVal) {
-      if (!newVal) {
-        this.form.name = ''
-        this.form.desc = ''
-      }
     }
   },
   created() {
