@@ -1,13 +1,16 @@
 <template>
   <el-header>
-    <AppSearch />
-
-
-    <el-row type="flex">
-      <el-col>
-        <el-tooltip content="推荐网站"><i class="el-icon-circle-plus" @click="$emit('showPopup')"></i></el-tooltip>
-      </el-col>
-    </el-row>
+      <div>
+        <img class="header-logo" src="/logo-nav.png" />
+      </div>
+      <el-row type="flex">
+        <el-col>
+          <el-tooltip content="推荐网站"><i class="el-icon-circle-plus" @click="$emit('handleShowPopup')"></i></el-tooltip>
+        </el-col>
+        <el-col class="menu-toggle-btn">
+          <i class="el-icon-menu" @click="$emit('handleShowMenu')"></i>
+        </el-col>
+      </el-row>
   </el-header>
 </template>
 
@@ -17,6 +20,7 @@ export default {
   name: "AppHeader",
   components: {AppSearch},
   props: {
+
     dialogFormVisible: {
       type: Boolean,
       default: false
@@ -55,6 +59,11 @@ export default {
     color: #999;
     cursor: pointer;
   }
+
+  .header-logo {
+    width: 150px;
+    filter: invert(1);
+  }
 }
 
 
@@ -64,12 +73,22 @@ export default {
       display: none;
     }
   }
+
+  .header-logo,
+  .menu-toggle-btn {
+    display: block;
+  }
 }
 @media screen and (min-width: 569px) {
   .app-search {
     /deep/ .el-select {
       display: block;
     }
+  }
+
+  .header-logo,
+  .menu-toggle-btn {
+    display: none;
   }
 }
 </style>

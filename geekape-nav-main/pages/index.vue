@@ -1,37 +1,33 @@
 <template>
   <el-container class="user-layout">
-
-    <app-nav-menus
+    <AppNavMenus
       @handleSubMenuClick="handleSubMenuClick"
-      :categorys="categorys"
-      :isCollapse="isCollapse"
-      @showMenus="isCollapse = !isCollapse"
+      :categorys="category"
+      :show-menu-type="showMenuType"
+      @showMenus="toggleMenu2"
     />
-    <el-container class="body" :style="{ marginLeft: sideBarWidth }">
-      <app-header
-        @showPopup="showPopup = true"
+    <el-container class="body" :style="{ marginLeft: contentMarginLeft }">
+      <AppHeader
+        @handleShowPopup="showPopup = true"
+        @handleShowMenu="toggleMenu"
       />
-      <affiche />
-
-      <section class="main" v-loading="loading">
-        <div class="website-wrapper" v-for="item in data" :key="item.name">
-          <p class="website-title" :id="item._id">{{ item.name }}</p>
-          <WebsiteList :list="item.list" />
-          <app-nav-list :list="item.list" />
-        </div>
-      </section>
+      <div class="main">
+          <affiche />
+          <div class="website-wrapper" v-for="item in data" :key="item.name">
+            <p class="website-title" :id="item._id">{{ item.name }}</p>
+            <WebsiteList :list="item.list" />
+            <app-nav-list :list="item.list" />
+          </div>
+      </div>
     </el-container>
 
     <AddNavPopup :show.sync="showPopup" />
-    <Toolbar />
     <CustomerServiceBtn @showLog="showLog = true" />
     <AppLog :show="showLog" @closeLog="showLog = false" />
   </el-container>
 </template>
 
 <script>
-import AppNavMenus from "../components/AppNavMenus";
-import AppHeader from "../components/AppHeader";
 import AppNavList from "../components/AppNavList";
 import AddNavPopup from "../components/AddNavPopup";
 
@@ -41,7 +37,9 @@ import api from "~/api";
 import AppSearch from "../components/AppSearch";
 import CustomerServiceBtn from "../components/CustomerServiceBtn";
 import AppLog from "../components/AppLog";
+import layoutMixin from "../mixins/layoutMixin";
 export default {
+  mixins: [layoutMixin],
   components: {
     AppLog,
     CustomerServiceBtn,
@@ -49,15 +47,9 @@ export default {
     Affiche,
     AppNavList,
     AddNavPopup,
-    AppHeader,
-    AppNavMenus
   },
-  data(Affiche) {
+  data() {
     return {
-      showPopup: false,
-      showLog: false,
-      isCollapse: true,
-
       loading: false,
       active: "［前端］热门推荐",
       data: [],
@@ -66,11 +58,7 @@ export default {
       isLeftbar: true
     };
   },
-  computed: {
-    sideBarWidth() {
-      return !this.isCollapse ? "220px" : "70px";
-    }
-  },
+
   methods: {
     async getCategoryList() {
       const { data: categorys } = await this.$api.getCategoryList();
@@ -92,16 +80,6 @@ export default {
         }
       }
     },
-    async findNav(id) {
-      this.loading = true;
-      const { data } = await this.$api.findNav(id);
-      this.data = data;
-      this.loading = false;
-    },
-    async handleSubMenuClick(parentId, id) {
-      await this.findNav(parentId);
-      document.getElementById(id).scrollIntoView();
-    }
   },
   mounted() {
     this.$store.commit('saveCategory', this.categorys)
@@ -116,15 +94,10 @@ export default {
       data
     };
   },
-  // created() {
-  //   this.getCategoryList()
-  //   console.log(process.env.navUrl, "process.env");
-  // }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="scss">
 
 .el-container {
   flex-direction: column;
@@ -144,7 +117,7 @@ export default {
   }
 
   .body {
-    margin-left: 70px;
+    margin-left: 0;
   }
 }
 
@@ -170,6 +143,8 @@ body {
   padding: 20px;
   position: relative;
 }
+
+
 .website-wrapper {
   .website-title {
     font-size: 14px;

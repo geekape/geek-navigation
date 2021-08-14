@@ -70,9 +70,7 @@ export default {
       views[id] = view + 1;
       this.$storage.set("VIEWS", views);
       // window.open(href, "_blank");
-      this.$router.push({
-        path: `/nav/${id}`
-      })
+      await this.$router.push(`/nav/${id}`)
     },
     async handleStar() {
       const stars = this.$storage.get("STARS") || {};
@@ -91,13 +89,7 @@ export default {
 </script>
 
 <style lang="scss">
-@mixin text-overflow($line) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: $line;
-}
+
 .website-item {
   font-size: 12px;
   margin-bottom: 20px;

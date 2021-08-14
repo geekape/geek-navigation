@@ -6,12 +6,12 @@
   >
     <nuxt-link class="title" to="/">
       <img
-        v-if="!isCollapse"
+        v-show="!isCollapse"
         class="icon-logo"
         width="180"
         src="/logo-nav.png"
       />
-      <img v-else class="icon-logo" width="45" src="/logo-nav-icon.png"/>
+      <img v-show="isCollapse" class="icon-logo" width="45" src="/logo-nav-icon.png"/>
 
       <!-- <span>猿梦极客导航后台</span> -->
     </nuxt-link>
@@ -75,13 +75,17 @@
 export default {
   name: "AppNavMenus",
   props: {
+    show: {
+      type: Boolean,
+      default: true,
+    },
     categorys: {
       type: Array,
       default: () => []
     },
-    isCollapse: {
-      type: Boolean,
-      default: false
+    showMenuType: {
+      type: String,
+      default: 'half'
     }
   },
   data() {
@@ -93,7 +97,16 @@ export default {
   },
   computed: {
     sideBarWidth() {
-      return !this.isCollapse ? "220px" : "70px";
+      if (this.showMenuType == 'half') {
+        return '70px'
+      } else if (this.showMenuType == 'all') {
+        return '220px'
+      } else {
+        return 0
+      }
+    },
+    isCollapse() {
+      return this.showMenuType === 'half'
     }
   },
   methods: {
@@ -147,7 +160,6 @@ $sidebar-w: auto;
 
 .el-aside {
   overflow: hidden;
-
   .el-menu-vertical-demo.el-menu {
     height: 100vh;
     overflow-y: auto;
@@ -221,14 +233,20 @@ $sidebar-w: auto;
   }
 }
 
-
 @media screen and (max-width: 568px) {
+  .el-aside {
+    width: 0;
+  }
+
   .app-search,
   .sidebar-fix {
     display: none;
   }
 }
 @media screen and (min-width: 569px) {
+  .el-aside {
+    width: 70px;
+  }
   .app-search,
   .sidebar-fix {
     display: block;

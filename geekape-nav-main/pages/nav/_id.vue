@@ -1,6 +1,14 @@
 <template>
   <div>
-    <AppNavMenus :categorys="category" :isCollapse="isCollapse" @showMenus="isCollapse = !isCollapse" />
+    <AppNavMenus
+      :categorys="category"
+       :show-menu-type="showMenuType"
+       @showMenus="toggleMenu2"
+    />
+    <AppHeader
+      @handleShowPopup="showPopup = true"
+      @handleShowMenu="toggleMenu"
+    />
     <div class="background-fx">
       <img src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-01.svg" class="shape-01"> <img
       src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-02.svg" class="shape-02"> <img
@@ -19,13 +27,13 @@
         <el-col :md="6" :xs="24">
           <div class="left">
             <div class="img-wrap">
-              <el-image :src="detail.logo" />
+              <nuxt-link to="/"><el-image :src="detail.logo"/></nuxt-link>
             </div>
             <div class="tool">
               <el-tooltip content="访问数" placement="top">
                 <div class="tool-item">
                   <i class="iconfont icon-attentionfill"></i>
-                  <p>{{detail.view}}</p>
+                  <p>{{ detail.view }}</p>
                 </div>
               </el-tooltip>
               <div style="width: 30px"></div>
@@ -33,7 +41,7 @@
               <el-tooltip content="点赞数" placement="top">
                 <div class="tool-item">
                   <i class="iconfont icon-appreciatefill"></i>
-                  <p>{{detail.star}}</p>
+                  <p>{{ detail.star }}</p>
                 </div>
               </el-tooltip>
 
@@ -42,16 +50,17 @@
         </el-col>
         <el-col :md="10" :xs="24">
           <div class="content">
-<!--            <div class="category-bar">-->
-<!--              <span class="category">素材资源</span>-->
-<!--              >-->
-<!--              <span class="category">LOGO设计</span>-->
-<!--            </div>-->
-            <h1 class="title">{{detail.name}}</h1>
-            <p class="desc">{{detail.desc}}</p>
+            <!--            <div class="category-bar">-->
+            <!--              <span class="category">素材资源</span>-->
+            <!--              >-->
+            <!--              <span class="category">LOGO设计</span>-->
+            <!--            </div>-->
+            <h1 class="title">{{ detail.name }}</h1>
+            <p class="desc">{{ detail.desc }}</p>
             <div class="btn-group">
-              <a :href="detail.href" target="_blank" class="btn-link btn-group-item">链接直达<i class="iconfont icon-Icons_ToolBar_ArrowRight"></i></a>
-<!--              <div class="btn-moblie btn-group-item">手机查看<i class="iconfont icon-QR-code"></i></div>-->
+              <a :href="detail.href" target="_blank" class="btn-link btn-group-item">链接直达<i
+                class="iconfont icon-Icons_ToolBar_ArrowRight"></i></a>
+              <!--              <div class="btn-moblie btn-group-item">手机查看<i class="iconfont icon-QR-code"></i></div>-->
             </div>
           </div>
         </el-col>
@@ -67,7 +76,7 @@
                   <el-col span="12" v-for="item in randomNavList" :key="item._id">
                     <a class="nav-block" :href="item.href" target="_blank">
                       <img :src="item.logo" alt="" class="nav-logo">
-                      <h4 class="nav-name">{{item.name}}</h4>
+                      <h4 class="nav-name">{{ item.name }}</h4>
                     </a>
                   </el-col>
                 </el-row>
@@ -79,7 +88,7 @@
 
       <el-row :gutter="20" class="site-detail">
         <el-col span="18">
-          <div class="detail">{{detail.detail || detail.desc}}}</div>
+          <div class="detail">{{ detail.detail || detail.desc }}}</div>
         </el-col>
         <el-col span="6">
           <aside></aside>
@@ -92,18 +101,20 @@
 <script>
 import axios from "@/plugins/axios";
 import {API_NAV, API_NAV_RANDOM} from "../../api";
-import AppNavMenus from "../../components/AppNavMenus";
+import layoutMixin from "../../mixins/layoutMixin";
 
 export default {
-  components: {AppNavMenus},
-  layout: "second",
+  mixins: [layoutMixin],
   name: "NavDetail",
+  head() {
+    return {
+      title: this.detail.name
+    }
+  },
   data() {
     return {
       detail: {},
       randomNavList: [],
-      category: this.$store.state.category,
-      isCollapse: true,
     }
   },
   methods: {
@@ -113,12 +124,11 @@ export default {
     }
   },
   mounted() {
-    if (this.category.length < 0) {
-      const category = localStorage.getItem('category') || []
-      this.category = category
-    }
+    debugger
+    const category = localStorage.getItem('category')
+    this.$store.commit('saveCategory', category ? JSON.parse(category) : [])
   },
-  async asyncData({ params }) {
+  async asyncData({params}) {
     const [detailRes, randomRes] = await Promise.all([
       axios.get(API_NAV + `?id=${params.id}`),
       axios.get(API_NAV_RANDOM)
@@ -147,6 +157,7 @@ export default {
 .site-info {
   font-size: 14px;
   margin-top: 50px;
+
   .left {
     padding: 30px 20px;
     background: #e6e8ed;
@@ -166,6 +177,7 @@ export default {
       width: 100px;
       height: 100px;
       object-fit: cover;
+
       img {
         width: 100%;
       }
@@ -203,6 +215,7 @@ export default {
     color: #fff;
     font-size: 10px;
     border-radius: 2px;
+
     &-bar {
       color: #f1404b;
     }
@@ -234,18 +247,22 @@ export default {
       border-radius: 5px;
       transition: all .3s;
       cursor: pointer;
+
       &:hover {
         background: #000;
+
         &,
         .iconfont {
           color: #fff;
         }
       }
     }
+
     &,
     .iconfont {
       color: #333;
     }
+
     .iconfont {
       font-size: 12px;
       margin-left: 10px;
@@ -433,24 +450,29 @@ export default {
 .app-card {
   border: 2px solid #eee;
   background: #f9f9f9;
+
   &-header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
   }
+
   &-content {
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
     padding-top: 0;
+
     .nav-block {
       margin-bottom: 10px;
     }
   }
+
   .iconfont {
     cursor: pointer;
   }
 }
+
 .nav-block {
   display: flex;
   align-items: center;
@@ -458,14 +480,20 @@ export default {
   background: #f1f3f6;
   border: 1px solid transparent;
   color: #666;
+
   &:hover {
-    border: 1px solid red;
-    color: #666;
+    opacity: .8;
   }
+
   img {
     width: 20px;
     height: 20px;
     margin-right: 8px;
+  }
+
+  .nav-name {
+    margin: 0;
+    @include text-overflow(1);
   }
 }
 
@@ -473,6 +501,7 @@ export default {
 @media screen and (max-width: 568px) {
   .site-info {
     margin-top: 0;
+
     .el-col {
       margin-bottom: 40px;
     }

@@ -83,6 +83,9 @@ module.exports = {
    */
   build: {
     transpile: [/^element-ui/],
+    styleResources: {
+      scss: './static/styles/mixin.scss',
+    },
     /*
      ** You can extend webpack config here
      */
