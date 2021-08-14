@@ -1,5 +1,6 @@
 <template>
   <div>
+    <AppNavMenus :categorys="category" :isCollapse="isCollapse" @showMenus="isCollapse = !isCollapse" />
     <div class="background-fx">
       <img src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-01.svg" class="shape-01"> <img
       src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-02.svg" class="shape-02"> <img
@@ -13,7 +14,6 @@
       src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-10.svg" class="shape-10"> <img
       src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-11.svg" class="shape-11">
     </div>
-
     <div class="container">
       <el-row :gutter="25" class="site-info">
         <el-col :md="6" :xs="24">
@@ -92,20 +92,30 @@
 <script>
 import axios from "@/plugins/axios";
 import {API_NAV, API_NAV_RANDOM} from "../../api";
+import AppNavMenus from "../../components/AppNavMenus";
 
 export default {
+  components: {AppNavMenus},
   layout: "second",
   name: "NavDetail",
   data() {
     return {
       detail: {},
-      randomNavList: []
+      randomNavList: [],
+      category: this.$store.state.category,
+      isCollapse: true,
     }
   },
   methods: {
     async getRandomNavList() {
       const res = await axios.get(API_NAV_RANDOM);
       this.randomNavList = res.data
+    }
+  },
+  mounted() {
+    if (this.category.length < 0) {
+      const category = localStorage.getItem('category') || []
+      this.category = category
     }
   },
   async asyncData({ params }) {

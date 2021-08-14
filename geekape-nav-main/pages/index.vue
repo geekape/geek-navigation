@@ -103,10 +103,13 @@ export default {
       document.getElementById(id).scrollIntoView();
     }
   },
-  async asyncData() {
+  mounted() {
+    this.$store.commit('saveCategory', this.categorys)
+  },
+  async asyncData({ store }) {
     const { data: categorys } = await api.getCategoryList();
 
-    const id = categorys[0]._id;
+    const id = store.state.seletedMenuParentId || categorys[0]._id;
     const { data } = await api.findNav(id);
     return {
       categorys,

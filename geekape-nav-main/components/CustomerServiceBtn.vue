@@ -29,7 +29,7 @@ export default {
       if (command === 'b') {
         window.open('https://support.qq.com/product/330737')
       } else if (command === 'c') {
-          window.open('geekape.net/about')
+          window.open('https://geekape.net/about')
       } else if (command === 'a') {
         this.$emit('showLog', true)
       }

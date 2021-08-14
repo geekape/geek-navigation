@@ -73,7 +73,7 @@
 
 <script>
 export default {
-  name: "",
+  name: "AppNavMenus",
   props: {
     categorys: {
       type: Array,
@@ -98,12 +98,22 @@ export default {
   },
   methods: {
     handleMenuItemClick(parentId, id) {
+      this.$store.commit('saveSeletedId', {
+        parentId,
+        id,
+      })
+
+      if (this.$route.path.includes('/nav')) {
+        this.$router.push('/')
+        return
+      }
       if (this.selectedCategoryId === parentId) {
         document.getElementById(id).scrollIntoView();
         return;
       }
       this.selectedCategoryId = parentId;
       this.$emit("handleSubMenuClick", parentId, id);
+
     }
   }
 };
@@ -177,7 +187,9 @@ $sidebar-w: auto;
   left: 0;
   bottom: 0;
   overflow: hidden;
-
+  .el-submenu__title i {
+    color: #fff;
+  }
 
 
   /deep/ .el-menu,
