@@ -6,6 +6,7 @@ config/mongodb.ts
 .idea/
 run/
 logs/
+typings/**/**
 .DS_Store
 .vscode
 *.swp
@@ -19,4 +20,3 @@ config/**/*.js
 app/**/*.map
 test/**/*.map
 config/**/*.map
-typings/
