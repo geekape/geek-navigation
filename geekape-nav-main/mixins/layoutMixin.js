@@ -1,7 +1,7 @@
 import {mapState} from "vuex";
 import AppHeader from "../components/AppHeader";
 import AppNavMenus from "../components/AppNavMenus";
-import {throttle} from "../utils/utils";
+import {isMobileSize, throttle} from "../utils/utils";
 
 const layoutMixin = {
   components: {AppHeader, AppNavMenus},
@@ -16,10 +16,7 @@ const layoutMixin = {
   },
   computed: {
     ...mapState(['category']),
-    isMobile() {
-      const width = window.innerWidth || document.body.clientWidth
-      return width < 568
-    },
+
     sideBarWidth() {
       if (this.showMenuType == 'half') {
         return '70px'
@@ -33,9 +30,7 @@ const layoutMixin = {
       if (this.showMenuType == 'half') {
         return '70px'
       } else if (this.showMenuType == 'all') {
-        const width = window.innerWidth || document.body.clientWidth
-
-        if (this.isMobile) {
+        if (isMobileSize()) {
           return 0
         } else {
           return '220px'
@@ -60,11 +55,22 @@ const layoutMixin = {
     },
     toggleMenu2() {
       this.showMenuType = this.showMenuType === 'all' ? 'half' : 'all'
+    },
+    handleResize: function (event) {
+      if (event) {
+        const { innerWidth } = event.target
+        if (innerWidth < 568) {
+          this.showMenuType = 'none'
+        } else {
+          this.showMenuType = 'half'
+        }
+      }
     }
   },
 
   mounted() {
-    this.showMenuType = this.isMobile ? 'none' : 'half'
+    this.handleResize()
+    window.onresize = throttle(this.handleResize.bind(this), 300)
   }
 }
 

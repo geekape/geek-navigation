@@ -1,4 +1,3 @@
-const nuxtPageCache = require('nuxt-page-cache')
 
 module.exports = {
   mode: "universal",
@@ -6,9 +5,7 @@ module.exports = {
   env: {
     baseUrl: process.env.root
   },
-  server: {
-
-  },
+  server: {},
   /*`
    ** Headers of the page
    */
@@ -84,7 +81,7 @@ module.exports = {
   build: {
     transpile: [/^element-ui/],
     styleResources: {
-      scss: './static/styles/mixin.scss',
+      scss: './static/styles/var.scss',
     },
     /*
      ** You can extend webpack config here
@@ -92,13 +89,4 @@ module.exports = {
     extend(config, ctx) {},
     vendor: ["axios"]
   },
-
-  // serverMiddleware: [
-  //   nuxtPageCache.cacheSeconds(1, req => {
-  //     if (req.query && req.query.pageType) {
-  //       return req.query.pageType
-  //     }
-  //     return false
-  //   })
-  // ]
 }

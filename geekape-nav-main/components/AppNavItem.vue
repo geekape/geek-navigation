@@ -70,7 +70,9 @@ export default {
       views[id] = view + 1;
       this.$storage.set("VIEWS", views);
       // window.open(href, "_blank");
-      await this.$router.push(`/nav/${id}`)
+      this.$router.push({
+        path: `/nav/${id}`,
+      })
     },
     async handleStar() {
       const stars = this.$storage.get("STARS") || {};

@@ -22,7 +22,7 @@
       src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-10.svg" class="shape-10"> <img
       src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-11.svg" class="shape-11">
     </div>
-    <div class="container">
+    <div class="container" v-loading="loading">
       <el-row :gutter="25" class="site-info">
         <el-col :md="6" :xs="24">
           <div class="left">
@@ -124,7 +124,6 @@ export default {
     }
   },
   mounted() {
-    debugger
     const category = localStorage.getItem('category')
     this.$store.commit('saveCategory', category ? JSON.parse(category) : [])
   },
@@ -188,6 +187,10 @@ export default {
       bottom: 20px;
       left: calc(50% - 65px);
       display: flex;
+
+      p {
+        margin: 0;
+      }
 
       .iconfont {
         padding-right: 0;

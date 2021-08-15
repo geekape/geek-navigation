@@ -1,3 +1,16 @@
+/*
+* var
+* --------------------------------------
+ */
+$color-primary: #4700f1;
+
+
+
+
+/*
+* mixins
+* --------------------------------------
+ */
 @mixin text-overflow($line) {
   overflow: hidden;
   text-overflow: ellipsis;

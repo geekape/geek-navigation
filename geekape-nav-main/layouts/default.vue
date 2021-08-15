@@ -1,13 +1,11 @@
 <template>
   <div>
-    <nuxt keep-alive />
+    <nuxt />
   </div>
 </template>
 
 <script>
-import AppNavMenus from "../components/AppNavMenus";
-import AppHeader from "../components/AppHeader";
-import { mapState } from "vuex";
+
 export default {
 
 }
@@ -33,5 +31,12 @@ html {
   margin: 0;
 }
 
+p {
+  margin: 0;
+}
+
+a[title="站长统计"] {
+  display: none;
+}
 
 </style>

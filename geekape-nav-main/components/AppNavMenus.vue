@@ -149,7 +149,7 @@ $sidebar-w: auto;
     padding: 10px 15px;
     text-align: left;
     cursor: pointer;
-    background: #4700f1;
+    background: $color-primary;
 
     i {
       font-size: 20px;
@@ -178,7 +178,7 @@ $sidebar-w: auto;
     /*滚动条里面小方块*/
     border-radius: 10px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-    background: #2740ee;
+    background: rgba($color-primary, .2);
   }
 
   .el-menu--popup::-webkit-scrollbar-track,
@@ -186,10 +186,10 @@ $sidebar-w: auto;
     /*滚动条里面轨道*/
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    background: #6d7def;
+    background: $color-primary;
   }
 
-  background-color: #4700f1;
+  background-color: $color-primary;
   color: #6b7386;
   text-align: center;
   transition: all 0.5s;

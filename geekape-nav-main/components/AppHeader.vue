@@ -1,7 +1,7 @@
 <template>
   <el-header>
       <div>
-        <img class="header-logo" src="/logo-nav.png" />
+        <nuxt-link to="/"><img class="header-logo" src="/logo-nav.png" /></nuxt-link>
       </div>
       <el-row type="flex">
         <el-col>

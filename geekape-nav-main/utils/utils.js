@@ -11,3 +11,8 @@ export function throttle(fn, delay) {
     }
   }
 }
+
+export function isMobileSize() {
+  const width = window.innerWidth || document.body.clientWidth
+  return width < 568
+}
