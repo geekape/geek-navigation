@@ -106,6 +106,7 @@ import layoutMixin from "../../mixins/layoutMixin";
 export default {
   mixins: [layoutMixin],
   name: "NavDetail",
+  layout: 'second',
   head() {
     return {
       title: this.detail.name
