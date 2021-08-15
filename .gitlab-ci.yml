@@ -15,6 +15,8 @@ clean1:
   script:
     - cd /home/wwwroot/nav.geekape.net/
     - rm -rf web server admin
+    - pm2 stop all
+    - pm2 delete all
     - echo "清空nav.geekape.net目录成功"
   allow_failure: true
 
@@ -51,6 +53,7 @@ build_server:
     - echo "server包安装完成"
     - rm -rf /home/wwwroot/nav.geekape.net/server/config/mongodb.ts
     - cp /home/wwwroot/nav.geekape.net/mongodb.ts /home/wwwroot/nav.geekape.net/server/config/
+    - pm2 start npm --name "geekape-nav-server" -- run server
     - echo "pm2 server启动成功"
   allow_failure: true
   
@@ -68,7 +71,7 @@ build_main:
     - echo "main包安装完成"
     - yarn build
     - echo "main打包完成，可以运行"
-    - pm2 restart all
+    - pm2 start npm --name "geekape-nav-main" -- run server
     - echo "pm2 main启动成功"
   allow_failure: true
 
