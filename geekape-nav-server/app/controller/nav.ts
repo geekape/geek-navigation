@@ -81,6 +81,10 @@ export default class NavController extends Controller {
 
   async edit() {
     this.ctx.request.body.updateTime = new Date()
+    const { tags } = this.ctx.request.body
+    if (Array.isArray(tags)) {
+      await this.ctx.service.tag.addMultiTag(tags)
+    }
     await super.update();
   }
 

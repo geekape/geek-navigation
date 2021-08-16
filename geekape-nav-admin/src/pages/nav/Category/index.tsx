@@ -7,6 +7,7 @@ import {PlusOutlined} from "@ant-design/icons";
 import useGeekProTablePopup from "@/components/GeekProTable/useGeekProTablePopup";
 import CategoryForm from "@/pages/nav/Category/CategoryForm";
 import {useRef, useState} from "react";
+import {CategoryModel} from "@/constants/api";
 
 
 function transformCategoryList(list: any) {
@@ -80,7 +81,7 @@ export default function NavAuditListPage() {
           }}
           search={false}
           request={onRequestData}
-          renderOptions={(text, record, _, action)=> ([
+          renderOptions={(text, record: CategoryModel, _, action)=> ([
             <a onClick={()=> formProps.show({type: 'edit', data: record, action})}>编辑</a>,
             <Popconfirm title={'确定删除吗？'} onConfirm={() => onDelete(record._id, action)}>
               <a>删除</a>

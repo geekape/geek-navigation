@@ -1,8 +1,8 @@
 import {Button, Popconfirm} from "antd";
 import request from "@/utils/request";
-import {API_CATEGORY, API_CATEGORY_LIST, API_TAG_list} from "@/services/api";
+import {API_TAG, API_TAG_list} from "@/services/api";
 import GeekProTable from "@/components/GeekProTable/GeekProTable";
-import {ActionType, ProColumns} from "@ant-design/pro-table";
+import type {ActionType, ProColumns} from "@ant-design/pro-table";
 import {PlusOutlined} from "@ant-design/icons";
 import useGeekProTablePopup from "@/components/GeekProTable/useGeekProTablePopup";
 import {useRef, useState} from "react";
@@ -29,7 +29,7 @@ export default function NavTagListPage() {
 
   async function onDelete(id: string, action: any) {
     await request({
-      url: API_CATEGORY,
+      url: API_TAG,
       method: 'DELETE',
       data: {
         id,

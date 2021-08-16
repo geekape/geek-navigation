@@ -1,5 +1,5 @@
 import {
-  ModalForm, ProFormSelect, ProFormText,
+  ModalForm, ProFormText,
 } from "@ant-design/pro-form";
 import useProFormItem from "@/hooks/useProFormItem";
 import useGeekProForm from "@/components/GeekProForm/useGeekProForm";

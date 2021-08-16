@@ -3,24 +3,14 @@ import GeekProTable from "@/components/GeekProTable/GeekProTable";
 import {ProColumns} from "@ant-design/pro-table";
 import useGeekProTablePopup from "@/components/GeekProTable/useGeekProTablePopup";
 import NavListForm from "@/pages/nav/List/NavListForm";
-import {Popconfirm, Select} from "antd";
+import {Form, Popconfirm, Select} from "antd";
 import request from "@/utils/request";
 import {useRef, useState} from "react";
-import {Category} from "@/constants/api";
+import CategorySelect from "@/pages/nav/Category/CategorySelect";
 
 export default function NavListPage() {
   const tableRef = useRef();
   const formProps = useGeekProTablePopup()
-  const [categoryList, setCategoryList] = useState<Category[]>([]);
-
-  async function onChange() {
-    if (categoryList.length) return
-    const res = await request({
-      url: API_CATEGORY_LIST,
-      method: 'GET'
-    })
-    setCategoryList(res.data)
-  }
 
   const columns: ProColumns[] = [
     {
@@ -33,13 +23,7 @@ export default function NavListPage() {
       dataIndex: 'categoryId',
       width: 500,
       hideInTable: true,
-      renderFormItem: () => (
-        <Select onClick={onChange} showSearch>
-          {categoryList.map(item => <Select.OptGroup label={item.name}>
-            {item.children.map(subItem => <Select.Option value={subItem._id}>{subItem.name}</Select.Option>)}
-          </Select.OptGroup>)}
-        </Select>
-      )
+      renderFormItem: (props) => <CategorySelect {...props} />
     },
     {
       title: '网站描述',
