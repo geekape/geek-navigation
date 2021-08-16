@@ -1,7 +1,9 @@
 <template>
-  <el-header>
+  <div>
+    <el-header>
       <div>
         <nuxt-link to="/"><img class="header-logo" src="/logo-nav.png" /></nuxt-link>
+        <AppSearch />
       </div>
       <el-row type="flex">
         <el-col>
@@ -11,7 +13,8 @@
           <i class="el-icon-menu" @click="$emit('handleShowMenu')"></i>
         </el-col>
       </el-row>
-  </el-header>
+    </el-header>
+  </div>
 </template>
 
 <script>
@@ -20,12 +23,16 @@ export default {
   name: "AppHeader",
   components: {AppSearch},
   props: {
-
     dialogFormVisible: {
       type: Boolean,
       default: false
     }
   },
+  data() {
+    return {
+      searchType: 'station'
+    }
+  }
 };
 </script>
 
@@ -68,27 +75,16 @@ export default {
 
 
 @media screen and (max-width: 568px) {
-  .app-search {
-    /deep/ .el-select {
-      display: none;
-    }
-  }
-
   .header-logo,
   .menu-toggle-btn {
     display: block;
   }
 }
 @media screen and (min-width: 569px) {
-  .app-search {
-    /deep/ .el-select {
-      display: block;
-    }
-  }
-
   .header-logo,
   .menu-toggle-btn {
     display: none;
   }
 }
+
 </style>

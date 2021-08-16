@@ -73,6 +73,13 @@ module.exports = {
         '^/api' : '/'
       }
     },
+    '/5a1Fazu8AA54nxGko9WTAnF6hhy': {
+      target: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy', // 目标接口域名
+      changeOrigin: true,
+      pathRewrite: {
+        '^/5a1Fazu8AA54nxGko9WTAnF6hhy' : '/'
+      }
+    },
   },
 
   /*

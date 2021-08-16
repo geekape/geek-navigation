@@ -15,7 +15,6 @@
           <affiche />
           <div class="website-wrapper" v-for="item in data" :key="item.name">
             <p class="website-title" :id="item._id">{{ item.name }}</p>
-            <WebsiteList :list="item.list" />
             <app-nav-list :list="item.list" />
           </div>
       </div>

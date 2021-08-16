@@ -64,6 +64,12 @@ const layoutMixin = {
         } else {
           this.showMenuType = 'half'
         }
+      } else {
+        if (isMobileSize()) {
+          this.showMenuType = 'none'
+        } else {
+          this.showMenuType = 'half'
+        }
       }
     }
   },

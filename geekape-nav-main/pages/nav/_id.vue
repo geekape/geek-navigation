@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="{ marginLeft: contentMarginLeft }">
     <AppNavMenus
       :categorys="category"
        :show-menu-type="showMenuType"

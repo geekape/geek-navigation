@@ -4,7 +4,6 @@
     height="30px"
     direction="vertical"
     indicator-position="none"
-    :setActiveItem="carouselActive"
   >
     <el-carousel-item>
       <p class="medium">

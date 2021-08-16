@@ -9,6 +9,7 @@
 <script>
 import AppNavItem from "./AppNavItem";
 export default {
+  name: 'AppNavList',
   components: {
     AppNavItem
   },

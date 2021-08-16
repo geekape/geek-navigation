@@ -16,3 +16,8 @@ export function isMobileSize() {
   const width = window.innerWidth || document.body.clientWidth
   return width < 568
 }
+
+export function titleCase(str) {
+  const newStr = str.slice(0,1).toUpperCase() +str.slice(1).toLowerCase();
+  return newStr;
+}

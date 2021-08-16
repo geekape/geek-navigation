@@ -1875,6 +1875,11 @@ aws4@^1.8.0:
   resolved "https://registry.npmjs.org/aws4/-/aws4-1.10.0.tgz#a17b3a8ea811060e74d47d306122400ad4497ae2"
   integrity sha512-3YDiu347mtVtjpyV3u5kVqQLP242c06zwDOgpeRnybmXlYYsLbtTrUBUm8i8srONt+FWobl5aibnU1030PeeuA==
 
+axios-jsonp@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npm.taobao.org/axios-jsonp/download/axios-jsonp-1.0.4.tgz#28878a48bbf38dbf07875fa283d9cf958c63b498"
+  integrity sha1-KIeKSLvzjb8Hh1+ig9nPlYxjtJg=
+
 axios-retry@^3.1.8:
   version "3.1.8"
   resolved "https://registry.npmjs.org/axios-retry/-/axios-retry-3.1.8.tgz#ffcfed757e1fab8cbf832f8505bb0e0af47c520c"
@@ -9468,6 +9473,11 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.npmjs.org/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
+
+vue-jsonp@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/vue-jsonp/download/vue-jsonp-2.0.0.tgz#3bfac56bb72941a2511c11e1a123b876f03427f7"
+  integrity sha1-O/rFa7cpQaJRHBHhoSO4dvA0J/c=
 
 vue-loader@^15.9.3:
   version "15.9.3"
