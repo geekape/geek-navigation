@@ -25,7 +25,7 @@ module.exports = {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href: "//at.alicdn.com/t/font_552690_njqotmfk5k.css"
+        href: "//at.alicdn.com/t/font_552690_7wjaeayfows.css"
       }
     ],
     script: [
