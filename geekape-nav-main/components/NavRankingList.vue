@@ -1,7 +1,7 @@
 <template>
   <div class="nav-ranking-list">
     <el-row :gutter="20">
-      <el-col :md="6">
+      <el-col :md="8" :sm="12">
         <el-card class="box-card" shadow="never">
           <div slot="header" class="clearfix">
             <span>最新导航</span>
@@ -11,7 +11,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :md="6">
+      <el-col :md="8" :sm="12">
         <el-card class="box-card" shadow="never">
           <div slot="header" class="clearfix">
             <span>点击最多导航</span>
@@ -21,7 +21,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :md="6">
+      <el-col :md="8" :sm="12">
         <el-card class="box-card" shadow="never">
           <div slot="header" class="clearfix">
             <span>点赞最多导航</span>

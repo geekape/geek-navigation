@@ -24,7 +24,7 @@
     </div>
     <div class="container" v-loading="loading">
       <el-row :gutter="25" class="site-info">
-        <el-col :md="6" :xs="24">
+        <el-col class="item" :md="6" :xs="24">
           <div class="left">
             <div class="img-wrap">
               <nuxt-link to="/"><el-image :src="detail.logo"/></nuxt-link>
@@ -39,7 +39,7 @@
               <div style="width: 30px"></div>
 
               <el-tooltip content="点赞数" placement="top">
-                <div class="tool-item">
+                <div :class="`tool-item`">
                   <i class="iconfont icon-appreciatefill"></i>
                   <p>{{ detail.star }}</p>
                 </div>
@@ -48,7 +48,7 @@
             </div>
           </div>
         </el-col>
-        <el-col :md="10" :xs="24">
+        <el-col class="item" :md="10" :xs="24">
           <div class="content">
             <!--            <div class="category-bar">-->
             <!--              <span class="category">素材资源</span>-->
@@ -64,7 +64,7 @@
             </div>
           </div>
         </el-col>
-        <el-col :md="8" :xs="24">
+        <el-col class="item" :md="8" :xs="24">
           <div class="right">
             <div class="app-card">
               <div class="app-card-header">
@@ -236,6 +236,7 @@ export default {
   .desc {
     font-size: 16px;
     margin-bottom: 20px;
+    @include text-overflow(3)
   }
 
   .btn-group {
@@ -506,7 +507,7 @@ export default {
   .site-info {
     margin-top: 0;
 
-    .el-col {
+    .item {
       margin-bottom: 40px;
     }
   }

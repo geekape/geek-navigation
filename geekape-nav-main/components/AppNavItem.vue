@@ -1,12 +1,12 @@
 <template>
   <el-col :xs="24" :sm="8" :md="6" :lg="4" class="website-item">
     <div class="wrap">
-      <a class="link" target="_blank" :href="data.href">
+      <div class="link" target="_blank" @click="handleClick">
         <el-tooltip content="链接直达" property="top">
           <i class="iconfont icon-tiaozhuan"></i>
         </el-tooltip>
-      </a>
-      <div class="info" @click="handleClick">
+      </div>
+      <nuxt-link :to="`/nav/${navData._id}`" class="info" >
         <div class="info-header">
           <el-image class="logo" :src="navData.logo" fit="cover" lazy />
           <div class="info-header-right">
@@ -18,7 +18,7 @@
         </div>
 
 
-      </div>
+      </nuxt-link>
       <div class="website-item__footer">
         <div class="left" v-if="navData.authorUrl">
           <a :href="navData.authorUrl" target="_blank">
@@ -69,10 +69,7 @@ export default {
       await this.$api.editNav({ id, view: view + 1 });
       views[id] = view + 1;
       this.$storage.set("VIEWS", views);
-      // window.open(href, "_blank");
-      this.$router.push({
-        path: `/nav/${id}`,
-      })
+      window.open(href, "_blank");
     },
     async handleStar() {
       const stars = this.$storage.get("STARS") || {};

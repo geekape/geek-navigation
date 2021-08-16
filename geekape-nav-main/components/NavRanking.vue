@@ -1,14 +1,16 @@
 <template>
-  <a :href="data.href" target="_blank" class="nav-ranking">
+  <nuxt-link :to="`/nav/${data._id}`" class="nav-ranking">
     <el-image class="logo" :src="data.logo" />
     <span class="name">{{ data.name }}</span>
-    <span class="widget"> {{ data[countType] }}</span>
+    <span class="widget"> {{ formatAttr(data[countType]) }}</span>
     <span class="iconfont icon-attentionfill" v-if="countType == 'view'"></span>
     <span class="iconfont icon-appreciatefill" v-if="countType == 'star'"></span>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>
+import dayjs from "dayjs";
+
 export default {
   name: "NavRanking",
   props: {
@@ -21,6 +23,14 @@ export default {
       default: 'createTime'
     }
   },
+  methods: {
+    formatAttr(value) {
+      if (this.countType === 'createTime') {
+        return dayjs(value).format('YYYY-MM-DD')
+      }
+      return value
+    }
+  }
 }
 </script>
 
