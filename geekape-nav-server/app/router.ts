@@ -19,6 +19,7 @@ export default (app: Application) => {
   router.delete("/api/nav", controller.nav.del)
   router.put("/api/nav", controller.nav.edit)
   router.get("/api/nav/find", controller.nav.info)
+  router.get("/api/nav/ranking", controller.nav.ranking)
 
   router.post("/api/tag", controller.tag.add)
   router.delete("/api/tag", controller.tag.remove)

@@ -158,4 +158,18 @@ export default class NavController extends Controller {
   async random() {
     await super.getRandomList();
   }
+
+  async ranking() {
+    const [view, star, news] = await Promise.all([
+        this.service.nav.findMaxValueList('view'),
+        this.service.nav.findMaxValueList('star'),
+        this.service.nav.findMaxValueList('createTime'),
+    ])
+
+    this.success({
+      view,
+      star,
+      news
+    })
+  }
 }

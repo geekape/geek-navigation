@@ -12,8 +12,10 @@
         @handleShowMenu="toggleMenu"
       />
       <div class="main" v-loading="loading">
-          <affiche />
-          <div class="website-wrapper" v-for="item in data" :key="item.name">
+        <affiche />
+        <nav-ranking-list :data="navRanking" />
+
+        <div class="website-wrapper" v-for="item in data" :key="item.name">
             <p class="website-title" :id="item._id">{{ item.name }}</p>
             <app-nav-list :list="item.list" />
           </div>
@@ -37,9 +39,15 @@ import AppSearch from "../components/AppSearch";
 import CustomerServiceBtn from "../components/CustomerServiceBtn";
 import AppLog from "../components/AppLog";
 import layoutMixin from "../mixins/layoutMixin";
+import NavRanking from "../components/NavRanking";
+import axios from "../plugins/axios";
+import {API_NAV_RANKING} from "../api";
+import NavRankingList from "../components/NavRankingList";
 export default {
   mixins: [layoutMixin],
   components: {
+    NavRankingList,
+    NavRanking,
     AppLog,
     CustomerServiceBtn,
     AppSearch,
@@ -53,6 +61,11 @@ export default {
       active: "［前端］热门推荐",
       data: [],
       categorys: [],
+      navRanking: {
+        view: [],
+        star: [],
+        news: []
+      },
       selfIndex: 0,
       isLeftbar: true
     };
@@ -84,12 +97,17 @@ export default {
     this.$store.commit('saveCategory', this.categorys)
   },
   async asyncData({ store }) {
-    const { data: categorys } = await api.getCategoryList();
+    const [{ data: categorys }, { data: navRanking }] = await Promise.all([
+      api.getCategoryList(),
+      axios.get(API_NAV_RANKING)
+    ])
+
 
     const id = store.state.seletedMenuParentId || categorys[0]._id;
     const { data } = await api.findNav(id);
     return {
       categorys,
+      navRanking,
       data
     };
   },
