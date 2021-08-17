@@ -4,6 +4,7 @@ export default () => {
   return (
     <DefaultFooter
       copyright={`2021 ${defaultMessage}`}
+      links={[]}
     />
   );
 };
