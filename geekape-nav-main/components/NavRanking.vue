@@ -57,7 +57,9 @@ export default {
     margin-left: 4px;
   }
   &:hover {
-   color: $color-primary;
+    .name {
+      color: $color-primary;
+    }
   }
 }
 </style>

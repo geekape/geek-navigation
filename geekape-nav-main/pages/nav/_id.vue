@@ -2,8 +2,8 @@
   <div :style="{ marginLeft: contentMarginLeft }">
     <AppNavMenus
       :categorys="category"
-       :show-menu-type="showMenuType"
-       @showMenus="toggleMenu2"
+      :show-menu-type="showMenuType"
+      @showMenus="toggleMenu2"
     />
     <AppHeader
       @handleShowPopup="showPopup = true"
@@ -27,7 +27,9 @@
         <el-col class="item" :md="6" :xs="24">
           <div class="left">
             <div class="img-wrap">
-              <nuxt-link to="/"><el-image :src="detail.logo"/></nuxt-link>
+              <nuxt-link to="/">
+                <el-image :src="detail.logo"/>
+              </nuxt-link>
             </div>
             <div class="tool">
               <el-tooltip content="访问数" placement="top">
@@ -39,12 +41,11 @@
               <div style="width: 30px"></div>
 
               <el-tooltip content="点赞数" placement="top">
-                <div :class="`tool-item`">
+                <div :class="`tool-item ${isStar && 'active'}`" @click="handleNavStarFn">
                   <i class="iconfont icon-appreciatefill"></i>
                   <p>{{ detail.star }}</p>
                 </div>
               </el-tooltip>
-
             </div>
           </div>
         </el-col>
@@ -57,9 +58,17 @@
             <!--            </div>-->
             <h1 class="title">{{ detail.name }}</h1>
             <p class="desc">{{ detail.desc }}</p>
+            <p class="tags" v-if="detail.tags.length">标签：
+              <span v-for="(tag, index) in detail.tags" :key="tag">{{index != 0 ? '，' : ''}}{{tag}}</span>
+            </p>
+            <p class="author" v-if="detail.authorName">
+              <span class="el-icon-user-solid"></span>
+              <span>推荐人：</span>
+              <a :href="detail.authorUrl">{{detail.authorName}}</a>
+            </p>
             <div class="btn-group">
-              <a :href="detail.href" target="_blank" class="btn-link btn-group-item">链接直达<i
-                class="iconfont icon-Icons_ToolBar_ArrowRight"></i></a>
+              <div @click="handleNavClick(detail)" target="_blank" class="btn-link btn-group-item">链接直达<i
+                class="iconfont icon-Icons_ToolBar_ArrowRight"></i></div>
               <!--              <div class="btn-moblie btn-group-item">手机查看<i class="iconfont icon-QR-code"></i></div>-->
             </div>
           </div>
@@ -74,10 +83,10 @@
               <div class="app-card-content">
                 <el-row :gutter="10">
                   <el-col span="12" v-for="item in randomNavList" :key="item._id">
-                    <a class="nav-block" :href="item.href" target="_blank">
+                    <nuxt-link class="nav-block" :to="`/nav/${item._id}`">
                       <img :src="item.logo" alt="" class="nav-logo">
                       <h4 class="nav-name">{{ item.name }}</h4>
-                    </a>
+                    </nuxt-link>
                   </el-col>
                 </el-row>
               </div>
@@ -102,14 +111,16 @@
 import axios from "@/plugins/axios";
 import {API_NAV, API_NAV_RANDOM} from "../../api";
 import layoutMixin from "../../mixins/layoutMixin";
+import navActionMixin from "../../mixins/navActionMixin";
 
 export default {
-  mixins: [layoutMixin],
+  mixins: [layoutMixin, navActionMixin],
   name: "NavDetail",
   layout: 'second',
   head() {
+    const { name, desc } = this.detail
     return {
-      title: this.detail.name
+      title: name + ` - ${desc.slice(0, 15)}`
     }
   },
   data() {
@@ -122,11 +133,13 @@ export default {
     async getRandomNavList() {
       const res = await axios.get(API_NAV_RANDOM);
       this.randomNavList = res.data
+    },
+    handleNavStarFn() {
+      this.handleNavStar(this.detail, ()=> {
+        this.isStar = true
+        this.detail.star += 1
+      })
     }
-  },
-  mounted() {
-    const category = localStorage.getItem('category')
-    this.$store.commit('saveCategory', category ? JSON.parse(category) : [])
   },
   async asyncData({params}) {
     const [detailRes, randomRes] = await Promise.all([
@@ -137,7 +150,7 @@ export default {
       detail: detailRes.data,
       randomNavList: randomRes.data
     }
-  }
+  },
 }
 </script>
 
@@ -209,6 +222,10 @@ export default {
         width: 50px;
         height: 50px;
         box-shadow: 0 0 20px rgba(#000, .12);
+        color: #999;
+        &.active {
+          color: $color-primary;
+        }
       }
     }
   }
@@ -295,7 +312,6 @@ export default {
   position: absolute;
   top: 11%;
   right: 42%;
-  -webkit-animation: animationFramesTwo 13s linear infinite;
   animation: animationFramesTwo 13s linear infinite
 }
 
@@ -303,7 +319,6 @@ export default {
   position: absolute;
   top: 27%;
   left: 17%;
-  -webkit-animation: animationFramesFour 25s linear infinite alternate;
   animation: animationFramesFour 25s linear infinite alternate
 }
 
@@ -311,7 +326,6 @@ export default {
   position: absolute;
   top: 30%;
   left: 50%;
-  -webkit-animation: animationFramesThree 35s linear infinite alternate;
   animation: animationFramesThree 35s linear infinite alternate
 }
 
@@ -319,7 +333,6 @@ export default {
   position: absolute;
   top: 40%;
   right: 23%;
-  -webkit-animation: animationFramesFour 20s linear infinite alternate;
   animation: animationFramesFour 20s linear infinite alternate
 }
 
@@ -327,7 +340,6 @@ export default {
   position: absolute;
   bottom: 62%;
   right: 28%;
-  -webkit-animation: animationFramesOne 15s linear infinite;
   animation: animationFramesOne 15s linear infinite
 }
 
@@ -335,7 +347,6 @@ export default {
   position: absolute;
   bottom: 73%;
   left: 38%;
-  -webkit-animation: animationFramesFour 20s linear infinite alternate;
   animation: animationFramesFour 20s linear infinite alternate
 }
 
@@ -343,7 +354,6 @@ export default {
   position: absolute;
   left: 14%;
   bottom: 54%;
-  -webkit-animation: animationFramesOne 17s linear infinite;
   animation: animationFramesOne 17s linear infinite
 }
 
@@ -351,7 +361,7 @@ export default {
   position: absolute;
   left: 14%;
   top: 60%;
-  -webkit-animation: animationFramesOne 20s linear infinite alternate;
+
   animation: animationFramesOne 20s linear infinite alternate
 }
 
@@ -359,7 +369,6 @@ export default {
   position: absolute;
   top: 22%;
   left: 41%;
-  -webkit-animation: animationFramesOne 15s linear infinite;
   animation: animationFramesOne 15s linear infinite
 }
 
@@ -367,7 +376,6 @@ export default {
   position: absolute;
   top: 8%;
   right: 6%;
-  -webkit-animation: animationFramesOne 15s linear infinite;
   animation: animationFramesOne 15s linear infinite
 }
 
@@ -375,7 +383,6 @@ export default {
   position: absolute;
   top: 10%;
   right: 8%;
-  -webkit-animation: animationFramesOne 12s linear infinite;
   animation: animationFramesOne 12s linear infinite
 }
 
@@ -460,6 +467,9 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 20px;
+  }
+  &-title {
+    margin: 0;
   }
 
   &-content {

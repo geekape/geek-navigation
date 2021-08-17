@@ -1185,6 +1185,13 @@
     consola "^2.15.0"
     defu "^3.1.0"
 
+"@nuxtjs/component-cache@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.npm.taobao.org/@nuxtjs/component-cache/download/@nuxtjs/component-cache-1.1.6.tgz#4a6a7b4b769631e9804774077365e44bc4537757"
+  integrity sha1-Smp7S3aWMemAR3QHc2XkS8RTd1c=
+  dependencies:
+    lru-cache "^6.0.0"
+
 "@nuxtjs/proxy@^2.0.1":
   version "2.0.1"
   resolved "https://registry.npmjs.org/@nuxtjs/proxy/-/proxy-2.0.1.tgz#2469b6e316311aa8c60d348502a54bfe6d5536aa"
@@ -1874,11 +1881,6 @@ aws4@^1.8.0:
   version "1.10.0"
   resolved "https://registry.npmjs.org/aws4/-/aws4-1.10.0.tgz#a17b3a8ea811060e74d47d306122400ad4497ae2"
   integrity sha512-3YDiu347mtVtjpyV3u5kVqQLP242c06zwDOgpeRnybmXlYYsLbtTrUBUm8i8srONt+FWobl5aibnU1030PeeuA==
-
-axios-jsonp@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/axios-jsonp/download/axios-jsonp-1.0.4.tgz#28878a48bbf38dbf07875fa283d9cf958c63b498"
-  integrity sha1-KIeKSLvzjb8Hh1+ig9nPlYxjtJg=
 
 axios-retry@^3.1.8:
   version "3.1.8"
@@ -5671,6 +5673,13 @@ lru-cache@^5.1.1:
   integrity sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
   dependencies:
     yallist "^3.0.2"
+
+lru-cache@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.nlark.com/lru-cache/download/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
+  integrity sha1-bW/mVw69lqr5D8rR2vo7JWbbOpQ=
+  dependencies:
+    yallist "^4.0.0"
 
 make-dir@^1.0.0:
   version "1.3.0"
@@ -9473,11 +9482,6 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.npmjs.org/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
-
-vue-jsonp@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npm.taobao.org/vue-jsonp/download/vue-jsonp-2.0.0.tgz#3bfac56bb72941a2511c11e1a123b876f03427f7"
-  integrity sha1-O/rFa7cpQaJRHBHhoSO4dvA0J/c=
 
 vue-loader@^15.9.3:
   version "15.9.3"

@@ -53,7 +53,7 @@ export default function NavListForm(props: any) {
     required: true
   })
   const authorProps = useProFormItem({
-    name: 'author',
+    name: 'authorName',
     label: '作者名称',
   })
   const authorUrlProps = useProFormItem({

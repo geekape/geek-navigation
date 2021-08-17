@@ -1,6 +1,8 @@
 // reset
 li{list-style: none;}
-a{text-decoration: none;}
+a{
+  text-decoration: none;
+}
 html,body {
     width: 100%;
     height: 100%;
@@ -16,6 +18,5 @@ body {
 }
 
 .iconfont {
-    color: #6b7386;
     padding-right: 4px;
 }

@@ -165,7 +165,6 @@ $sidebar-w: auto;
     overflow-y: auto;
     padding-bottom: 100px;
   }
-
   .el-menu--popup::-webkit-scrollbar,
   .el-menu-vertical-demo.el-menu::-webkit-scrollbar {
     /*滚动条整体样式*/

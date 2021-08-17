@@ -57,7 +57,14 @@ module.exports = {
    */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    [
+      '@nuxtjs/component-cache',
+      {
+        max: 10000,
+        maxAge: 1000 * 60 * 60
+      }
+    ]
   ],
 
   axios: {
@@ -96,4 +103,14 @@ module.exports = {
     extend(config, ctx) {},
     vendor: ["axios"]
   },
+
+  /*
+   ** 服务器端中间件--针对首页做缓存
+   */
+  serverMiddleware: [
+    {
+      path: '/',
+      handler: '~/plugins/pageCache.js',
+    },
+  ]
 }

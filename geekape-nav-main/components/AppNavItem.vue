@@ -1,7 +1,7 @@
 <template>
   <el-col :xs="24" :sm="8" :md="6" :lg="4" class="website-item">
     <div class="wrap">
-      <div class="link" target="_blank" @click="handleClick">
+      <div class="link" target="_blank" @click="$emit('handleNavClick', navData)">
         <el-tooltip content="链接直达" property="top">
           <i class="iconfont icon-tiaozhuan"></i>
         </el-tooltip>
@@ -34,7 +34,7 @@
           <span
             class="website-item__icon"
             :class="isStar && 'active'"
-            @click="handleStar"
+            @click="handleNavStar"
           >
             <span class="iconfont icon-appreciatefill"></span>
             {{ navData.star }}
@@ -63,25 +63,11 @@ export default {
     };
   },
   methods: {
-    async handleClick() {
-      const views = this.$storage.get("VIEWS") || {};
-      const { href, view, _id: id } = this.navData;
-      await this.$api.editNav({ id, view: view + 1 });
-      views[id] = view + 1;
-      this.$storage.set("VIEWS", views);
-      window.open(href, "_blank");
-    },
-    async handleStar() {
-      const stars = this.$storage.get("STARS") || {};
-      let { star, _id: id } = this.navData;
-      if (this.isStar || stars[id]) return;
-
-      star++;
-      await this.$api.editNav({ id, star });
-      stars[id] = star;
-      this.navData.star = star;
-      this.isStar = true;
-      this.$storage.set("STARS", stars);
+    handleNavStar(navData) {
+      this.$emit('handleNavStar', this.navData, ()=> {
+        this.navData.star += 1
+        this.isStar = true
+      })
     }
   }
 };

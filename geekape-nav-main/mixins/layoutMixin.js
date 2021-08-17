@@ -77,6 +77,10 @@ const layoutMixin = {
   mounted() {
     this.handleResize()
     window.onresize = throttle(this.handleResize.bind(this), 300)
+
+
+    const category = localStorage.getItem('category')
+    this.$store.commit('saveCategory', category ? JSON.parse(category) : [])
   }
 }
 

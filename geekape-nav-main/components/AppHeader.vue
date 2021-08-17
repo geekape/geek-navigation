@@ -7,7 +7,7 @@
       </div>
       <el-row type="flex">
         <el-col>
-          <el-tooltip content="推荐网站"><i class="el-icon-circle-plus" @click="$emit('handleShowPopup')"></i></el-tooltip>
+          <el-tooltip content="推荐网站"><nuxt-link to="/recommend"><i class="el-icon-circle-plus"></i></nuxt-link></el-tooltip>
         </el-col>
         <el-col class="menu-toggle-btn">
           <i class="el-icon-menu" @click="$emit('handleShowMenu')"></i>

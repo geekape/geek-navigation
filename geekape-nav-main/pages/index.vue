@@ -30,9 +30,7 @@
 
 <script>
 import AppNavList from "../components/AppNavList";
-import AddNavPopup from "../components/AddNavPopup";
 
-import Affiche from "~/components/Affiche";
 
 import api from "~/api";
 import AppSearch from "../components/AppSearch";
@@ -43,17 +41,17 @@ import NavRanking from "../components/NavRanking";
 import axios from "../plugins/axios";
 import {API_NAV_RANKING} from "../api";
 import NavRankingList from "../components/NavRankingList";
+import Affiche from "../components/Affiche";
 export default {
   mixins: [layoutMixin],
   components: {
+    Affiche,
     NavRankingList,
     NavRanking,
     AppLog,
     CustomerServiceBtn,
     AppSearch,
-    Affiche,
     AppNavList,
-    AddNavPopup,
   },
   data() {
     return {
