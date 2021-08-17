@@ -1,7 +1,6 @@
 <p align="center">
     <img src="http://ww1.sinaimg.cn/large/005tC3DKgy1gtjtpv1yzjj30bo0460t9.jpg" alt="极客猿, 极客猿导航, 独立开发者导航, 导航资源站">
 </p>
-<h1 align="center" style="display: none">极客猿梦导航</h1>
 
 <p align="center">
   独立开发者的导航站　<br>
