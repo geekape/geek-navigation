@@ -107,10 +107,10 @@ module.exports = {
   /*
    ** 服务器端中间件--针对首页做缓存
    */
-  serverMiddleware: [
-    {
-      path: '/',
-      handler: '~/plugins/pageCache.js',
-    },
-  ]
+  // serverMiddleware: [
+  //   {
+  //     path: '/',
+  //     handler: '~/plugins/pageCache.js',
+  //   },
+  // ]
 }

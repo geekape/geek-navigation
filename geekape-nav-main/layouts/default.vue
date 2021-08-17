@@ -1,13 +1,26 @@
 <template>
-  <div>
+
+  <div :style="{ marginLeft: contentMarginLeft }">
+    <AppNavMenus
+      :categorys="category"
+      :show-menu-type="showMenuType"
+      @showMenus="toggleMenu2"
+    />
+    <AppHeader
+      @handleShowPopup="showPopup = true"
+      @handleShowMenu="toggleMenu"
+    />
     <nuxt />
   </div>
 </template>
 
 <script>
 
-export default {
+import layoutMixin from "../mixins/layoutMixin";
+import navActionMixin from "../mixins/navActionMixin";
 
+export default {
+  mixins: [layoutMixin, navActionMixin],
 }
 </script>
 

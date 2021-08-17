@@ -1,17 +1,6 @@
 <template>
-  <div :style="{ marginLeft: contentMarginLeft }">
-    <AppNavMenus
-      :categorys="category"
-      :show-menu-type="showMenuType"
-      @showMenus="toggleMenu2"
-    />
-    <AppHeader
-      @handleShowPopup="showPopup = true"
-      @handleShowMenu="toggleMenu"
-    />
-
-    <div class="container">
-      <el-card>
+  <div class="container">
+    <el-card>
         <el-form ref="ruleForm" label-width="100px" :model="form" :rules="rules"  v-loading="formLoading">
 
           <el-form-item label="网站链接" prop="href">
@@ -79,18 +68,16 @@
           </el-form-item>
         </el-form>
       </el-card>
-    </div>
   </div>
 </template>
 
 <script>
 import layoutMixin from "../mixins/layoutMixin";
 import axios from "../plugins/axios";
-import {API_NAV_REPTILE, API_TAG_LIST} from "../api";
+import {API_NAV, API_NAV_REPTILE, API_TAG_LIST} from "../api";
 
 export default {
   name: "recommend",
-  mixins: [layoutMixin],
   data() {
     return {
       loading: false,
@@ -162,7 +149,7 @@ export default {
           this.loading = true
           // 判断编辑还是更新
 
-          const res = await this.$api.addNav(this.form)
+          const res = await axios.post(API_NAV, this.form)
           if (res.code === 0) {
             this.$message.error(`${res.msg}`)
           } else {

@@ -44,6 +44,7 @@ import NavRankingList from "../components/NavRankingList";
 import Affiche from "../components/Affiche";
 export default {
   mixins: [layoutMixin],
+  layout: 'second',
   components: {
     Affiche,
     NavRankingList,

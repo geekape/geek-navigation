@@ -1,14 +1,5 @@
 <template>
-  <div :style="{ marginLeft: contentMarginLeft }">
-    <AppNavMenus
-      :categorys="category"
-      :show-menu-type="showMenuType"
-      @showMenus="toggleMenu2"
-    />
-    <AppHeader
-      @handleShowPopup="showPopup = true"
-      @handleShowMenu="toggleMenu"
-    />
+  <div>
     <div class="background-fx">
       <img src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-01.svg" class="shape-01"> <img
       src="https://nav.iowen.cn/wp-content/themes/onenav/images/fx/shape-02.svg" class="shape-02"> <img
@@ -114,9 +105,8 @@ import layoutMixin from "../../mixins/layoutMixin";
 import navActionMixin from "../../mixins/navActionMixin";
 
 export default {
-  mixins: [layoutMixin, navActionMixin],
   name: "NavDetail",
-  layout: 'second',
+  mixins: [navActionMixin],
   head() {
     const { name, desc } = this.detail
     return {
