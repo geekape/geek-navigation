@@ -75,6 +75,15 @@ V3.0版本，最大的改动就是把项目**拆分为三个子项目**
 ![信息结构图](http://ww1.sinaimg.cn/large/005tC3DKgy1gtju0h2wd4j30m80ewab8.jpg)
 
 
+## 赞助
+![](http://cdn.geekape.net/wp-content/uploads/2021/06/weixin.jpg)
+
+开源不易, 有了您的赞助, 我们会做的更好~
+
+## 技术反馈和交流
+![](http://cdn.geekape.net/wp-content/uploads/2021/08/1629186749-7e302e188081838.jpg)
+
+
 ## 项目部署
 
 查看根目录下的 .gitlab-ci自动部署脚本，其它的部署方式后续再弄，大同小异。
