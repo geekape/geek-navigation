@@ -62,7 +62,7 @@
             <el-input type="textarea" placeholder="输入网站详情" v-model="form.detail" />
           </el-form-item>
           <el-form-item>
-            <el-button  @click="toggleMenu">
+            <el-button  @click="goHomePage">
               取消
             </el-button>
             <el-button type="primary" :loading="loading" @click="addNav('ruleForm')">
@@ -81,7 +81,6 @@ import {API_NAV, API_NAV_REPTILE, API_TAG_LIST} from "../api";
 
 export default {
   name: "recommend",
-  mixins: [layoutMixin],
   data() {
     return {
       loading: false,
@@ -182,6 +181,11 @@ export default {
         this.$emit('update:show', false)
       }
       this.formLoading = false
+    },
+    goHomePage() {
+      this.$router.push({
+          path: '/'
+      })
     }
   },
   created() {
