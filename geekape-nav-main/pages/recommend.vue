@@ -62,6 +62,9 @@
             <el-input type="textarea" placeholder="输入网站详情" v-model="form.detail" />
           </el-form-item>
           <el-form-item>
+            <el-button  @click="toggleMenu">
+              取消
+            </el-button>
             <el-button type="primary" :loading="loading" @click="addNav('ruleForm')">
               提交
             </el-button>
@@ -78,6 +81,7 @@ import {API_NAV, API_NAV_REPTILE, API_TAG_LIST} from "../api";
 
 export default {
   name: "recommend",
+  mixins: [layoutMixin],
   data() {
     return {
       loading: false,
