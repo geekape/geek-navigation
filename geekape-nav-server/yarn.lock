@@ -4725,9 +4725,9 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     is-extendable "^1.0.1"
 
 extend2@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npm.taobao.org/extend2/download/extend2-1.0.0.tgz#0425a989b4dac2a486a32257f5140103756a7a3c"
-  integrity sha1-BCWpibTawqSGoyJX9RQBA3Vqejw=
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/extend2/-/extend2-1.0.1.tgz#ba9eee03bd6608995990c309b8c285316671c221"
+  integrity sha512-ISoKeVhtewd5YHzMo+r9KC3Zx0fdpNBqoRzot+6BeEQ3bWQYQQOt0jkkY5gLveI2e7j+vdCJKeszHJIbg2Uceg==
 
 extend@^3.0.0, extend@^3.0.1, extend@~3.0.2:
   version "3.0.2"
