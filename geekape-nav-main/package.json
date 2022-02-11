@@ -38,7 +38,7 @@
     "@nuxtjs/proxy": "^2.0.1",
     "chalk": "^4.1.0",
     "css-loader": "^3.6.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.18.9",
     "ora": "^4.0.4",
     "postcss-loader": "^3.0.0",
