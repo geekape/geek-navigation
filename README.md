@@ -37,7 +37,7 @@
 3. 找到`nuxt.config.js`文件，配置mongodb链接
 ![](https://cdn.nlark.com/yuque/0/2020/png/225518/1604404593230-b3c18df0-3ff7-4fdd-9eac-de7c1e27b90b.png?x-oss-process=image%2Fresize%2Cw_1016)
 
-4. 运行`npm deploy`自动构建并打包到服务器上
+4. 运行`npm run deploy`自动构建并打包到服务器上
 ![](https://cdn.nlark.com/yuque/0/2020/png/225518/1604404738719-a521df02-230b-47e2-921b-db8017314adc.png)
 
 5. 配置下网站的nginx文件，替换掉server_name
