@@ -25,7 +25,7 @@
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.29",
     "element-ui": "^2.4.11",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-jwt": "5.3.1",
     "https": "^1.0.0",
     "lru-cache": "^6.0.0",
