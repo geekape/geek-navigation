@@ -1,0 +1,147 @@
+{% extends 'template/jhTemplateV4.html'%}
+
+{% block vueTemplate %}
+
+<script type="text/html" id="app-template">
+    <div>
+        <v-app mobile-breakpoint="sm">
+            <v-app-bar app>
+                <v-container fluid>
+                    <a>
+                        <h1 class="text-h6">极客猿导航</h1>
+                    </a>
+                </v-container>
+            </v-app-bar>
+            <v-main class="mt-5">
+                <div class="jh-page-body-container px-8">
+                    <div class="left-menu fixed" style="width: 200px">
+                        <div class="d-flex flex-col">
+                            <a
+                                    v-for="item in categoryList"
+                                    :key="item.categoryName"
+                                    link
+                                    class="menu-item py-3 rounded black--text d-inline-block"
+                                    :href="`#${item.categoryName}`"
+                            >
+
+                                    {{item.categoryName }}
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div style="margin-left: 220px">
+                        <v-card class="pa-4 mb-5" style="height: 350px">
+                            2
+                        </v-card>
+                        <div v-for="item in navData" :id="item.categoryName">
+                            <h2 class="text-h6 mb-4">{{item.categoryName}}</h2>
+                            <v-row class="mb-4">
+                                <v-col
+                                        v-for="nav in item.children"
+                                        :key="nav.navName"
+                                        cols="2"
+                                        md="3"
+                                        xl="2"
+                                        sm="12"
+                                >
+                                    <a :href="nav.navUrl" target="_blank">
+                                        <div
+                                                outlined
+                                                tile
+                                                @click="window.open(nav.navUrl)"
+                                                class="pa-2 nav-item rounded-lg white"
+                                        >
+                                            <div class="d-flex align-center">
+                                                <v-img
+                                                        :src="nav.navIcon"
+                                                        max-height="30"
+                                                        max-width="30"
+                                                        class="rounded"
+                                                ></v-img>
+                                                <v-card-title class="font-bold text-body-1">{{nav.navName}}
+                                                </v-card-title>
+                                            </div>
+                                            <div class="grey--text text-caption text-ellipsis overflow-hidden line-clamp-2">
+                                                {{nav.navDesc}}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </v-col>
+                            </v-row>
+                        </div>
+                    </div>
+                </div>
+            </v-main>
+        </v-app>
+
+        <jh-toast/>
+        <jh-mask/>
+        <jh-confirm-dialog/>
+    </div>
+</script>
+
+<div id="app">
+</div>
+
+{% endblock %}
+
+{% block vueScript %}
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script type="module">
+    new Vue({
+        el: '#app',
+        template: '#app-template',
+        vuetify: new Vuetify(),
+        data: () => ({
+            navData: [],
+        }),
+        computed: {
+            categoryList() {
+                return this.navData.map(item => {
+                    return {
+                        categoryName: item.categoryName,
+                        icon: item.icon
+                    }
+                })
+            }
+        },
+        watch: {},
+        async created() {
+            this.getHomePageData()
+        },
+        mounted() {
+        },
+        methods: {
+
+            async getHomePageData() {
+                const res = (await window.jianghuAxios({
+                    data: {
+                        appData: {
+                            pageId: 'home',
+                            actionId: 'getHomePageData',
+                        }
+                    }
+                })).data.appData.resultData;
+
+                this.navData = res
+            }
+        }
+    })
+</script>
+
+<style scoped>
+    .nav-item {
+        height: 120px;
+    }
+
+    .menu-item {
+        text-align: center;
+    }
+
+    .menu-item:hover {
+        background: white;
+    }
+</style>{% endblock %}

@@ -1,0 +1,131 @@
+<!--drawerForm.html start-->
+<template id="tableRecordHistory">
+  <div>
+      
+    <v-timeline dense clipped :loading="isRecordHistoryLoading">
+      <v-timeline-item
+        right
+        :color="constantObj.type[item.operation].color"
+        icon-color="grey lighten-2"
+        small
+        v-for="(item, index) in recordHistoryList" :key="index"
+      >
+        <v-row>
+          <v-col class="d-flex align-center"
+            cols="2"
+            style="width: 150px; min-width: 150px; max-width: 150px;"
+          >
+            {{item.operationAt}}
+          </v-col>
+          <v-col class="d-flex align-center" cols="4">
+            {{item.operationByUser}} 执行了
+            <span class="font-weight-bold">[{{ constantObj.type[item.operation].text }}]</span>
+          </v-col>
+        </v-row>
+      </v-timeline-item>
+    </v-timeline>
+
+    <v-skeleton-loader
+      v-if="isRecordHistoryLoading"
+      type="list-item-three-line"
+    ></v-skeleton-loader>
+    <div v-if="!isRecordHistoryLoading && !recordHistoryList.length" class="text-center mt-5">暂无记录</div>
+
+  </div>
+</template>
+<script>
+  // type：字段类型[textarea: 多行文本框，select：下拉框，input：输入框，date：时间选择, searchMultiple: 多选，searchOne: 单选]
+  Vue.component("table-record-history", {
+    template: '#tableRecordHistory',
+    vuetify: new Vuetify(),
+    name: 'table-record-history',
+    data: () => ({
+      requireRules: [v => !!v || 'This is required'],
+      constantObj: {
+        type: {
+          insert: {text: '新增', color: 'green'},
+          update: {text: '修改', color: 'blue'},
+          delete: {text: '删除', color: 'error'},
+          select: {text: '查询', color: 'default'},
+          jhInsert: {text: '新增', color: 'green'},
+          jhUpdate: {text: '修改', color: 'blue'},
+          jhDelete: {text: '删除', color: 'error'},
+        },
+      },
+      recordHistoryList: [],
+      isRecordHistoryLoading: false,
+    }),
+    props: {
+      table: {
+        type: String,
+        default: ''
+      },
+      pageId: {
+        type: String,
+        default: ''
+      },
+      id: {
+        type: String | Number,
+        default: ''
+      },
+    },
+    computed: {
+    },
+    watch: {
+      table: {
+        handler: function (val, oldVal) {
+          if (!val) return;
+          this.getRecordHistoryList();
+        },
+      },
+      id: {
+        handler: function (val, oldVal) {
+          if (!val) return;
+          this.getRecordHistoryList();
+        },
+        immediate: true
+      },
+    },
+    async created() {
+    },
+    methods: {
+      async getRecordHistoryList() {
+        const where = {table: this.table, recordId: this.id};
+        const whereLike = {};
+        this.isRecordHistoryLoading = true;
+        this.recordHistoryList = [];
+        const rows = (await window.jianghuAxios({
+          data: {
+            appData: {
+              pageId: this.pageId,
+              actionId: 'selectRecordHistory',
+              actionData: {},
+              where,
+              whereLike,
+              orderBy: [{column: 'operationAt', order: 'desc'}]
+            }
+          }
+        })).data.appData.resultData.rows;
+        rows.forEach(row => {
+          row.operationAt = row.operationAt ? dayjs(row.operationAt).format('YYYY-MM-DD HH:mm:ss') : '';
+        });
+        this.recordHistoryList = rows;
+        this.isRecordHistoryLoading = false;
+      },
+    },
+  })
+</script>
+<style>
+  .v-timeline:before {
+    top: 30px;
+    bottom: 30px;
+    height: calc(100% - 60px);
+  }
+  .v-application--is-ltr .v-timeline--dense:not(.v-timeline--reverse):before, .v-application--is-rtl .v-timeline--reverse.v-timeline--dense:before {
+    left: 65px;
+  }
+  .v-timeline-item__divider {
+    min-width: 60px;
+  }
+</style>
+<!--drawerForm.html end-->
