@@ -1,0 +1,2162 @@
+[
+    {
+        "navId": "DH1265",
+        "idSequence": 1265,
+        "categoryId": "FR1040",
+        "navName": "IconFont",
+        "navUrl": "https://www.iconfont.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-iconfont.jpg",
+        "navDesc": "国内最著名的图标搜索及管理平台，超2300万个图标下载"
+    },
+    {
+        "navId": "DH1266",
+        "idSequence": 1266,
+        "categoryId": "FR1040",
+        "navName": "AIGC工具导航",
+        "navUrl": "https://hao.uisdc.com/ai/",
+        "navIcon": "/nav/public/images/nav/hao-nav-ainav.jpg",
+        "navDesc": "推荐！200个全球知名AIGC网站！立即驾驭为你全面赋能的AI神器"
+    },
+    {
+        "navId": "DH1267",
+        "idSequence": 1267,
+        "categoryId": "FR1040",
+        "navName": "优设9图",
+        "navUrl": "https://www.uisdc.com/group",
+        "navIcon": "/nav/public/images/nav/hao-nav-9photo.png",
+        "navDesc": "推荐！每日入站必刷的爆火内容，图文并茂轻松涨知识"
+    },
+    {
+        "navId": "DH1268",
+        "idSequence": 1268,
+        "categoryId": "FR1040",
+        "navName": "摄图网",
+        "navUrl": "http://699pic.com/?from=54",
+        "navIcon": "/nav/public/images/nav/hao-nav-shetu.jpg",
+        "navDesc": "1000万+图片、插画、视频、模板，免费下载"
+    },
+    {
+        "navId": "DH1269",
+        "idSequence": 1269,
+        "categoryId": "FR1040",
+        "navName": "FreePik",
+        "navUrl": "https://www.freepik.com/?ref=uisdc.com",
+        "navIcon": "/nav/public/images/nav/hao-nav-freepik.jpg",
+        "navDesc": "知名设计素材站！PSD、矢量图、图库应有尽有"
+    },
+    {
+        "navId": "DH1270",
+        "idSequence": 1270,
+        "categoryId": "FR1040",
+        "navName": "AI自学网",
+        "navUrl": "https://ai.uisdc.com/",
+        "navIcon": "/nav/public/images/nav/nav-cs-aiuisdc.jpg",
+        "navDesc": "推荐！专业全面的AI人工智能学习平台，你关注的AI知识，都在这里"
+    },
+    {
+        "navId": "DH1271",
+        "idSequence": 1271,
+        "categoryId": "FR1040",
+        "navName": "堆友AI创作神器",
+        "navUrl": "https://d.design/ai?from=ysdh",
+        "navIcon": "/nav/public/images/nav/hao-nav-duiyou.jpg",
+        "navDesc": "推荐！Alibaba Design出品，AIGC行业大咖力荐的免费AI绘画神器和分享社区"
+    },
+    {
+        "navId": "DH1272",
+        "idSequence": 1272,
+        "categoryId": "FR1040",
+        "navName": "Dreamina AI作图",
+        "navUrl": "https://dreamina.jianying.com/s/iF8X2Gvt/",
+        "navIcon": "/nav/public/images/nav/hao-nav-Dreamina-2.jpg",
+        "navDesc": "免费国产AI作图工具！有prompt模板，扩图等功能"
+    },
+    {
+        "navId": "DH1273",
+        "idSequence": 1273,
+        "categoryId": "FR1040",
+        "navName": "包图网",
+        "navUrl": "https://ibaotu.com/?spm=uisdc",
+        "navIcon": "/nav/public/images/nav/20230920-bao.jpg",
+        "navDesc": "推荐！1.5亿+素材，PSD模板、AIGC素材、商用视频免费下载"
+    },
+    {
+        "navId": "DH1274",
+        "idSequence": 1274,
+        "categoryId": "FR1040",
+        "navName": "Dribbble",
+        "navUrl": "https://dribbble.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-dribbble.jpg",
+        "navDesc": "国际知名设计站点！资深设计师必备"
+    },
+    {
+        "navId": "DH1275",
+        "idSequence": 1275,
+        "categoryId": "FR1040",
+        "navName": "千图网",
+        "navUrl": "https://www.58pic.com/?tid=100034&utm_source=uisdc&utm_medium=sitelink&utm_campaign=uisdc&utm_content=uisdc&utm_term=sitelink",
+        "navIcon": "/nav/public/images/nav/hao-nav-qiantu.jpg",
+        "navDesc": "设计师必备！2亿+素材、PSD模板、图库视频、元素插画，免费下载"
+    },
+    {
+        "navId": "DH1276",
+        "idSequence": 1276,
+        "categoryId": "FR1040",
+        "navName": "花瓣网",
+        "navUrl": "https://huaban.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-huaban.jpg",
+        "navDesc": "设计师寻找灵感的必备站点，启发设计灵感"
+    },
+    {
+        "navId": "DH1277",
+        "idSequence": 1277,
+        "categoryId": "FR1041",
+        "navName": "WallHaven",
+        "navUrl": "https://wallhaven.cc/",
+        "navIcon": "/nav/public/images/nav/hao-nav-wallhaven.jpg",
+        "navDesc": "WallBase创办人失联后，前成员推出的网站"
+    },
+    {
+        "navId": "DH1278",
+        "idSequence": 1278,
+        "categoryId": "FR1041",
+        "navName": "拍信海量创意图片",
+        "navUrl": "https://www.paixin.com/?uisdc",
+        "navIcon": "/nav/public/images/nav/hao-nav-paixin.jpg",
+        "navDesc": "推荐！超1亿张全球精选潮流图片，有版权全网可商用"
+    },
+    {
+        "navId": "DH1279",
+        "idSequence": 1279,
+        "categoryId": "FR1041",
+        "navName": "Unsplash",
+        "navUrl": "https://unsplash.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-unsplash.jpg",
+        "navDesc": "知名免费图库，免费下载高分辨率照片，可商用"
+    },
+    {
+        "navId": "DH1280",
+        "idSequence": 1280,
+        "categoryId": "FR1041",
+        "navName": "PNG素材库",
+        "navUrl": "https://pngimg.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-pngimg.jpg",
+        "navDesc": "推荐！最知名的PNG优质素材库。透明的、感动的"
+    },
+    {
+        "navId": "DH1281",
+        "idSequence": 1281,
+        "categoryId": "FR1041",
+        "navName": "全历史",
+        "navUrl": "https://www.allhistory.com/painting",
+        "navIcon": "/nav/public/images/nav/hao-nav-allhistory.jpg",
+        "navDesc": "强烈推荐！几十万张超高分辨率艺术作品欣赏"
+    },
+    {
+        "navId": "DH1282",
+        "idSequence": 1282,
+        "categoryId": "FR1041",
+        "navName": "SplitShire",
+        "navUrl": "https://www.splitshire.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-splitShire.jpg",
+        "navDesc": "免费可商用的图片库，更有视频素材资源"
+    },
+    {
+        "navId": "DH1283",
+        "idSequence": 1283,
+        "categoryId": "FR1041",
+        "navName": "Pexels",
+        "navUrl": "https://www.pexels.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-pexels.jpg",
+        "navDesc": "推荐！提供高清尺寸且品质优良的免费照片网站"
+    },
+    {
+        "navId": "DH1284",
+        "idSequence": 1284,
+        "categoryId": "FR1041",
+        "navName": "微软Bing图库",
+        "navUrl": "https://cn.bing.com/images/trending",
+        "navIcon": "/nav/public/images/nav/hao-nav-bing.jpg",
+        "navDesc": "推荐！帮你探索收集那些精美的图像，可按色彩检索"
+    },
+    {
+        "navId": "DH1285",
+        "idSequence": 1285,
+        "categoryId": "FR1041",
+        "navName": "UTO IMAGE",
+        "navUrl": "https://www.utoimage.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-uto.png",
+        "navDesc": "韩国图片素材站点，风格偏可爱，在一众韩站图库中具有代表性"
+    },
+    {
+        "navId": "DH1286",
+        "idSequence": 1286,
+        "categoryId": "FR1041",
+        "navName": "StockSnap",
+        "navUrl": "https://stocksnap.io/",
+        "navIcon": "/nav/public/images/nav/hao-nav-stocksnap.jpg",
+        "navDesc": "推荐！专业的免费可商用照片图片素材资源库"
+    },
+    {
+        "navId": "DH1287",
+        "idSequence": 1287,
+        "categoryId": "FR1041",
+        "navName": "Pixabay",
+        "navUrl": "https://pixabay.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-pixabay.jpg",
+        "navDesc": "百万张免费高清图片，高质量可商用"
+    },
+    {
+        "navId": "DH1288",
+        "idSequence": 1288,
+        "categoryId": "FR1041",
+        "navName": "500px",
+        "navUrl": "https://500px.com.cn/community/discover?t=rating",
+        "navIcon": "/nav/public/images/nav/hao-nav-500px.jpg",
+        "navDesc": "致力于视觉摄影分享、发现的专业平台"
+    },
+    {
+        "navId": "DH1289",
+        "idSequence": 1289,
+        "categoryId": "FR1042",
+        "navName": "优设网",
+        "navUrl": "https://www.uisdc.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-uisdc.png",
+        "navDesc": "与大师零距离接触，一线设计师、总监的干货分享地"
+    },
+    {
+        "navId": "DH1290",
+        "idSequence": 1290,
+        "categoryId": "FR1042",
+        "navName": "PSDTuts+",
+        "navUrl": "https://design.tutsplus.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-PSDTuts.png",
+        "navDesc": "Photoshop教程，从初学者到高级进阶，应有尽有"
+    },
+    {
+        "navId": "DH1291",
+        "idSequence": 1291,
+        "categoryId": "FR1042",
+        "navName": "Adobe 设计探索",
+        "navUrl": "https://creativecloud.adobe.com/zh-Hans/discover",
+        "navIcon": "/nav/public/images/nav/hao-nav-adobe.png",
+        "navDesc": "Adobe官方站！大神们通过全家桶创作过程的经验总结"
+    },
+    {
+        "navId": "DH1292",
+        "idSequence": 1292,
+        "categoryId": "FR1042",
+        "navName": "PhotoshopVIP",
+        "navUrl": "https://photoshopvip.net/",
+        "navIcon": "/nav/public/images/nav/hao-nav-PhotoshopVIP.png",
+        "navDesc": "日本超人气设计站点，网站很多干货"
+    },
+    {
+        "navId": "DH1293",
+        "idSequence": 1293,
+        "categoryId": "FR1042",
+        "navName": "Smashing Magazine",
+        "navUrl": "https://www.smashingmagazine.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-pngimg.png",
+        "navDesc": "国外最著名的设计博客，许多高大上的设计文章"
+    },
+    {
+        "navId": "DH1294",
+        "idSequence": 1294,
+        "categoryId": "FR1042",
+        "navName": "Photoshop Lady",
+        "navUrl": "https://www.photoshoplady.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-photoshoplady.png",
+        "navDesc": "提供各种详细的photoshop教程，优设联盟站点"
+    },
+    {
+        "navId": "DH1295",
+        "idSequence": 1295,
+        "categoryId": "FR1042",
+        "navName": "优优教程网",
+        "navUrl": "https://uiiiuiii.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-uiiiuiii.png",
+        "navDesc": "超人气的优质中文教程网站，PS、AI、AE、C4D"
+    },
+    {
+        "navId": "DH1296",
+        "idSequence": 1296,
+        "categoryId": "FR1042",
+        "navName": "Vectornator",
+        "navUrl": "https://www.vectornator.io/blog/",
+        "navIcon": "/nav/public/images/nav/hao-nav-vectornator.png",
+        "navDesc": "教程都很棒！现在有数百万的下载量"
+    },
+    {
+        "navId": "DH1297",
+        "idSequence": 1297,
+        "categoryId": "FR1042",
+        "navName": "Notefolio",
+        "navUrl": "https://notefolio.net/",
+        "navIcon": "/nav/public/images/nav/hao-nav-notefolio.png",
+        "navDesc": "韩国知名设计师平台！众多专业设计师分享创作经验和心路历程"
+    },
+    {
+        "navId": "DH1298",
+        "idSequence": 1298,
+        "categoryId": "FR1042",
+        "navName": "站酷",
+        "navUrl": "https://www.zcool.com.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-zcool.png",
+        "navDesc": "综合性设计分享网站，原创设计交流平台"
+    },
+    {
+        "navId": "DH1299",
+        "idSequence": 1299,
+        "categoryId": "FR1042",
+        "navName": "Abduzeedo",
+        "navUrl": "https://abduzeedo.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-abduzeedo.png",
+        "navDesc": "汇集大量视觉灵感和酷炫PS教程的设计博客"
+    },
+    {
+        "navId": "DH1300",
+        "idSequence": 1300,
+        "categoryId": "FR1042",
+        "navName": "Coliss",
+        "navUrl": "https://coliss.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-Coliss.png",
+        "navDesc": "日本有名站点！大量网站制作相关的设计技巧和神器"
+    },
+    {
+        "navId": "DH1301",
+        "idSequence": 1301,
+        "categoryId": "FR1043",
+        "navName": "Dribbble",
+        "navUrl": "https://dribbble.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-dribbble.jpg",
+        "navDesc": "设计师必备站点，国内顶尖的设计师都在上面"
+    },
+    {
+        "navId": "DH1302",
+        "idSequence": 1302,
+        "categoryId": "FR1043",
+        "navName": "Behance",
+        "navUrl": "https://www.behance.net/",
+        "navIcon": "/nav/public/images/nav/hao-nav-behance.png",
+        "navDesc": "全球领先的创意设计类聚合平台"
+    },
+    {
+        "navId": "DH1303",
+        "idSequence": 1303,
+        "categoryId": "FR1043",
+        "navName": "UI8",
+        "navUrl": "https://ui8.net/",
+        "navIcon": "/nav/public/images/nav/hao-nav-ui8.png",
+        "navDesc": "聚集世界各地优秀设计师的界面源文件"
+    },
+    {
+        "navId": "DH1304",
+        "idSequence": 1304,
+        "categoryId": "FR1043",
+        "navName": "Flat UI",
+        "navUrl": "https://flatui.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-flatui.png",
+        "navDesc": "扁平化UI设计灵感，采集扁平化相关的App、网页等"
+    },
+    {
+        "navId": "DH1305",
+        "idSequence": 1305,
+        "categoryId": "FR1043",
+        "navName": "UI Movement",
+        "navUrl": "https://uimovement.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-UIMovement.png",
+        "navDesc": "展示世界最有才华设计师的界面动效设计作品"
+    },
+    {
+        "navId": "DH1306",
+        "idSequence": 1306,
+        "categoryId": "FR1043",
+        "navName": "Creative",
+        "navUrl": "https://creativemarket.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-creativemarket.png",
+        "navDesc": "超多高质量的图片、图形、字体和设计模板"
+    },
+    {
+        "navId": "DH1307",
+        "idSequence": 1307,
+        "categoryId": "FR1043",
+        "navName": "CollectUI",
+        "navUrl": "https://collectui.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-collectui.png",
+        "navDesc": "UI设计必备！100多个分类，不用发愁没灵感了"
+    },
+    {
+        "navId": "DH1308",
+        "idSequence": 1308,
+        "categoryId": "FR1043",
+        "navName": "UI 设计",
+        "navUrl": "https://uiiiuiii.com/inspirations/ui",
+        "navIcon": "/nav/public/images/nav/hao-nav-uidesign.png",
+        "navDesc": "超赞！为您精挑细选的界面设计频道"
+    },
+    {
+        "navId": "DH1309",
+        "idSequence": 1309,
+        "categoryId": "FR1043",
+        "navName": "Pixeden",
+        "navUrl": "https://www.pixeden.com/",
+        "navIcon": "/nav/public/images/nav/sdcnav-4-9.png",
+        "navDesc": "赞！免费优质界面设计源文件及有网站模板"
+    },
+    {
+        "navId": "DH1310",
+        "idSequence": 1310,
+        "categoryId": "FR1043",
+        "navName": "Site Inspire",
+        "navUrl": "https://www.siteinspire.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-SiteInspire.png",
+        "navDesc": "致力于分享推荐优秀网页及交互设计案例"
+    },
+    {
+        "navId": "DH1311",
+        "idSequence": 1311,
+        "categoryId": "FR1043",
+        "navName": "Designmodo",
+        "navUrl": "https://designmodo.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-Designmodo.png",
+        "navDesc": "所有高质量UI工具包都在这里可以找到，部分免费下载"
+    },
+    {
+        "navId": "DH1312",
+        "idSequence": 1312,
+        "categoryId": "FR1043",
+        "navName": "UI 设计文章精选",
+        "navUrl": "https://www.uisdc.com/category/uiicon",
+        "navIcon": "/nav/public/images/nav/hao-nav-uiarchives.png",
+        "navDesc": "推荐！前沿有料的UI设计文章在此集结"
+    },
+    {
+        "navId": "DH1313",
+        "idSequence": 1313,
+        "categoryId": "FR1044",
+        "navName": "Pinterest",
+        "navUrl": "https://www.pinterest.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-pinterest.png",
+        "navDesc": "一个受世界瞩目的，全球最大的创意灵感图片分享网站"
+    },
+    {
+        "navId": "DH1314",
+        "idSequence": 1314,
+        "categoryId": "FR1044",
+        "navName": "花瓣",
+        "navUrl": "https://huaban.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-huaban.jpg",
+        "navDesc": "采集你喜欢的美好事物，发现新知，启发设计灵感"
+    },
+    {
+        "navId": "DH1315",
+        "idSequence": 1315,
+        "categoryId": "FR1044",
+        "navName": "UiiiUiii 灵感频道",
+        "navUrl": "https://uiiiuiii.com/inspiration",
+        "navIcon": "/nav/public/images/nav/hao-nav-uuinspiration.png",
+        "navDesc": "推荐！超人气的灵感库，优优教程网旗下产品"
+    },
+    {
+        "navId": "DH1316",
+        "idSequence": 1316,
+        "categoryId": "FR1044",
+        "navName": "Designspiration",
+        "navUrl": "https://www.designspiration.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-designspiration.png",
+        "navDesc": "提供设计灵感、插画摄影、时尚以及艺术相关的一切"
+    },
+    {
+        "navId": "DH1317",
+        "idSequence": 1317,
+        "categoryId": "FR1044",
+        "navName": "Product Hunt",
+        "navUrl": "https://www.producthunt.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-producthunt.png",
+        "navDesc": "每天发现有趣的创新产品，离硅谷最近的眼睛"
+    },
+    {
+        "navId": "DH1318",
+        "idSequence": 1318,
+        "categoryId": "FR1044",
+        "navName": "Refero",
+        "navUrl": "https://refero.design/",
+        "navIcon": "/nav/public/images/nav/hao-nav-refero.png",
+        "navDesc": "推荐！国外知名产品海量网页截图"
+    },
+    {
+        "navId": "DH1319",
+        "idSequence": 1319,
+        "categoryId": "FR1044",
+        "navName": "ArtStation",
+        "navUrl": "https://www.artstation.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-artstation.png",
+        "navDesc": "强烈推荐！一个收录世界顶级插画作品的社区"
+    },
+    {
+        "navId": "DH1320",
+        "idSequence": 1320,
+        "categoryId": "FR1044",
+        "navName": "优设9图",
+        "navUrl": "https://www.uisdc.com/group",
+        "navIcon": "/nav/public/images/nav/hao-nav-9photo.png",
+        "navDesc": "优设入站必刷频道！图文并茂的设计短内容"
+    },
+    {
+        "navId": "DH1321",
+        "idSequence": 1321,
+        "categoryId": "FR1044",
+        "navName": "BOOOOOOOM",
+        "navUrl": "https://www.booooooom.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-booooooom.png",
+        "navDesc": "发人深省的创意图片，博客设计简约但内容丰富"
+    },
+    {
+        "navId": "DH1322",
+        "idSequence": 1322,
+        "categoryId": "FR1044",
+        "navName": "灵感网络",
+        "navUrl": "https://theinspirationgrid.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-theinspirationgrid.png",
+        "navDesc": "推荐！聚合来自世界各地的创意人才，每天汲取灵感"
+    },
+    {
+        "navId": "DH1323",
+        "idSequence": 1323,
+        "categoryId": "FR1044",
+        "navName": "Lapa网页灵感图库",
+        "navUrl": "https://www.lapa.ninja/",
+        "navIcon": "/nav/public/images/nav/hao-nav-lapa.png",
+        "navDesc": "设计网站前，推荐来这里找灵感，有贴心全屏预览图"
+    },
+    {
+        "navId": "DH1324",
+        "idSequence": 1324,
+        "categoryId": "FR1044",
+        "navName": "海报设计",
+        "navUrl": "https://www.typographicposters.com/archive",
+        "navIcon": "/nav/public/images/nav/hao-nav-typographicposter.png",
+        "navDesc": "推荐！分享令人眼前一亮的时尚海报网站"
+    },
+    {
+        "navId": "DH1325",
+        "idSequence": 1325,
+        "categoryId": "FR1045",
+        "navName": "优设AI工具导航",
+        "navUrl": "https://hao.uisdc.com/ai/",
+        "navIcon": "/nav/public/images/nav/hao-nav-ainav.jpg",
+        "navDesc": "推荐！知名好用的AI创作网站全收录"
+    },
+    {
+        "navId": "DH1326",
+        "idSequence": 1326,
+        "categoryId": "FR1045",
+        "navName": "ChatGPT",
+        "navUrl": "https://chat.openai.com",
+        "navIcon": "/nav/public/images/nav/nav-ai-ChatGPT.png",
+        "navDesc": "地表最强AI聊天机器人"
+    },
+    {
+        "navId": "DH1327",
+        "idSequence": 1327,
+        "categoryId": "FR1045",
+        "navName": "Midjourney",
+        "navUrl": "https://www.midjourney.com/",
+        "navIcon": "/nav/public/images/nav/nav-ai-Midjourney.png",
+        "navDesc": "目前最强的AI绘画工具"
+    },
+    {
+        "navId": "DH1328",
+        "idSequence": 1328,
+        "categoryId": "FR1045",
+        "navName": "Stable Diffusion",
+        "navUrl": "https://www.uisdc.com/stable-diffusion",
+        "navIcon": "/nav/public/images/nav/nav-ai-stable.png",
+        "navDesc": "最强开源AI绘画工具"
+    },
+    {
+        "navId": "DH1329",
+        "idSequence": 1329,
+        "categoryId": "FR1045",
+        "navName": "HuggingFace",
+        "navUrl": "https://huggingface.co/",
+        "navIcon": "/nav/public/images/nav/nav-ai-HuggingFace.png",
+        "navDesc": "下载开源的SD模型"
+    },
+    {
+        "navId": "DH1330",
+        "idSequence": 1330,
+        "categoryId": "FR1045",
+        "navName": "字语未来",
+        "navUrl": "https://getgetai.com/?from=youshe",
+        "navIcon": "/nav/public/images/nav/hao-nav-getai.png",
+        "navDesc": "用AI创造更有价值的信息，定义新一代智能办公平台"
+    },
+    {
+        "navId": "DH1331",
+        "idSequence": 1331,
+        "categoryId": "FR1045",
+        "navName": "AIGC频道",
+        "navUrl": "https://www.uisdc.com/tag/aigc",
+        "navIcon": "/nav/public/images/nav/hao-nav-aizt.png",
+        "navDesc": "推荐！为您精选AI绘画和AI创作有关的神器"
+    },
+    {
+        "navId": "DH1332",
+        "idSequence": 1332,
+        "categoryId": "FR1045",
+        "navName": "Sora",
+        "navUrl": "https://openai.com/sora",
+        "navIcon": "/nav/public/images/nav/nav-ai-ChatGPT.png",
+        "navDesc": "碾压级更新！颠覆性的文生视频大模型"
+    },
+    {
+        "navId": "DH1333",
+        "idSequence": 1333,
+        "categoryId": "FR1045",
+        "navName": "Leonardo",
+        "navUrl": "https://leonardo.ai/",
+        "navIcon": "/nav/public/images/nav/nav-ai-Leonardo.png",
+        "navDesc": "AI绘图社区！训练自己的游戏资产模型"
+    },
+    {
+        "navId": "DH1334",
+        "idSequence": 1334,
+        "categoryId": "FR1045",
+        "navName": "Runway",
+        "navUrl": "https://www.uisdc.com/runway",
+        "navIcon": "/nav/public/images/nav/nav-ai-Runway.jpg",
+        "navDesc": "最强的AI视频内容生成工具"
+    },
+    {
+        "navId": "DH1335",
+        "idSequence": 1335,
+        "categoryId": "FR1045",
+        "navName": "Tome",
+        "navUrl": "https://tome.app/",
+        "navIcon": "/nav/public/images/nav/nav-ai-Tome.jpg",
+        "navDesc": "先进的AI智能PPT制作工具"
+    },
+    {
+        "navId": "DH1336",
+        "idSequence": 1336,
+        "categoryId": "FR1045",
+        "navName": "酷表ChatExcel",
+        "navUrl": "https://chatexcel.com/",
+        "navIcon": "/nav/public/images/nav/nav-ai-kubiao.png",
+        "navDesc": "北大团队研发的通过聊天来操作表格的AI工具"
+    },
+    {
+        "navId": "DH1337",
+        "idSequence": 1337,
+        "categoryId": "FR1045",
+        "navName": "Upscayl",
+        "navUrl": "https://www.upscayl.org/",
+        "navIcon": "/nav/public/images/nav/nav-ai-upscayl.png",
+        "navDesc": "模糊图片秒变超清！开源免费 AI 图片无损放大工具"
+    },
+    {
+        "navId": "DH1338",
+        "idSequence": 1338,
+        "categoryId": "FR1045",
+        "navName": "MagicStudio",
+        "navUrl": "https://magicstudio.com/zh",
+        "navIcon": "/nav/public/images/nav/nav-ai-magicstudio.png",
+        "navDesc": "图片处理必备效率神器！为你的图片提供神奇魔法"
+    },
+    {
+        "navId": "DH1339",
+        "idSequence": 1339,
+        "categoryId": "FR1045",
+        "navName": "Notion AI",
+        "navUrl": "https://www.notion.so/product/ai",
+        "navIcon": "/nav/public/images/nav/nav-ai-notion.png",
+        "navDesc": "AI写作神器！比你想得更多！写得更快"
+    },
+    {
+        "navId": "DH1340",
+        "idSequence": 1340,
+        "categoryId": "FR1045",
+        "navName": "Img.Upscaler",
+        "navUrl": "https://imgupscaler.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-upscaler.png",
+        "navDesc": "一键变清晰！能将PNG/JPG图像分辨率升级2倍或4倍"
+    },
+    {
+        "navId": "DH1341",
+        "idSequence": 1341,
+        "categoryId": "FR1045",
+        "navName": "EXPERTE",
+        "navUrl": "https://www.experte.com/background-remover",
+        "navIcon": "/nav/public/images/nav/hao-nav-EXPERTE.png",
+        "navDesc": "免费在线抠图工具，去除图像背景边缘清晰"
+    },
+    {
+        "navId": "DH1342",
+        "idSequence": 1342,
+        "categoryId": "FR1045",
+        "navName": "Deepl翻译器",
+        "navUrl": "https://www.deepl.com/translator",
+        "navIcon": "/nav/public/images/nav/nav-ai-deeplfanyi.png",
+        "navDesc": "集合深度学习、神经网络算等先进技术的新一代AI翻译神器"
+    },
+    {
+        "navId": "DH1343",
+        "idSequence": 1343,
+        "categoryId": "FR1045",
+        "navName": "RestorePhotos",
+        "navUrl": "https://www.restorephotos.io/",
+        "navIcon": "/nav/public/images/nav/nav-ai-restorephotos.png",
+        "navDesc": "效果惊艳的AI修复面容模糊的照片"
+    },
+    {
+        "navId": "DH1344",
+        "idSequence": 1344,
+        "categoryId": "FR1045",
+        "navName": "据意查句",
+        "navUrl": "https://wantquotes.net/",
+        "navIcon": "/nav/public/images/nav/hao-nav-wantquotes.png",
+        "navDesc": "清华出品！AI 神器让你的文案立马变高级"
+    },
+    {
+        "navId": "DH1345",
+        "idSequence": 1345,
+        "categoryId": "FR1045",
+        "navName": "Huemint",
+        "navUrl": "https://www.uisdc.com/huemint",
+        "navIcon": "/nav/public/images/nav/hao-nav-huemint.png",
+        "navDesc": "一键生成多种和谐配色方案！配色效果可实时预览"
+    },
+    {
+        "navId": "DH1346",
+        "idSequence": 1346,
+        "categoryId": "FR1045",
+        "navName": "Relight",
+        "navUrl": "https://www.uisdc.com/relight",
+        "navIcon": "/nav/public/images/nav/hao-nav-Clipdrop.png",
+        "navDesc": "打光修图神器！呈现多姿多彩立体光影效果"
+    },
+    {
+        "navId": "DH1347",
+        "idSequence": 1347,
+        "categoryId": "FR1045",
+        "navName": "PromptHero",
+        "navUrl": "https://prompthero.com/",
+        "navIcon": "/nav/public/images/nav/nav-ai-PromptHero.png",
+        "navDesc": "推荐！最受欢迎的AI提示词网站"
+    },
+    {
+        "navId": "DH1348",
+        "idSequence": 1348,
+        "categoryId": "FR1045",
+        "navName": "Palette.fm",
+        "navUrl": "https://www.uisdc.com/palette-fm",
+        "navIcon": "/nav/public/images/nav/hao-nav-Palette.png",
+        "navDesc": "黑白图像转彩色！10秒内提供20种不同的上色效果"
+    },
+    {
+        "navId": "DH1349",
+        "idSequence": 1349,
+        "categoryId": "FR1046",
+        "navName": "千图网",
+        "navUrl": "https://www.58pic.com/?tid=100034&utm_source=uisdc&utm_medium=sitelink&utm_campaign=uisdc&utm_content=uisdc&utm_term=sitelink",
+        "navIcon": "/nav/public/images/nav/hao-nav-qiantu.jpg",
+        "navDesc": "设计师必备！2亿+素材、PSD模板、图库视频、元素插画，免费下载"
+    },
+    {
+        "navId": "DH1350",
+        "idSequence": 1350,
+        "categoryId": "FR1046",
+        "navName": "摄图网",
+        "navUrl": "http://699pic.com/?from=54",
+        "navIcon": "/nav/public/images/nav/hao-nav-shetu.jpg",
+        "navDesc": "1000万+图片、插画、视频、模板，免费下载"
+    },
+    {
+        "navId": "DH1351",
+        "idSequence": 1351,
+        "categoryId": "FR1046",
+        "navName": "包图网",
+        "navUrl": "https://ibaotu.com/?spm=uisdc",
+        "navIcon": "/nav/public/images/nav/20230920-bao.jpg",
+        "navDesc": "推荐！1.5亿+素材，PSD模板、AIGC素材、商用视频免费下载"
+    },
+    {
+        "navId": "DH1352",
+        "idSequence": 1352,
+        "categoryId": "FR1046",
+        "navName": "Blush",
+        "navUrl": "https://blush.design/zh-CN",
+        "navIcon": "/nav/public/images/nav/hao-nav-Blush.jpg",
+        "navDesc": "免费商用！自动生成免费可商用矢量插画"
+    },
+    {
+        "navId": "DH1353",
+        "idSequence": 1353,
+        "categoryId": "FR1046",
+        "navName": "StickPNG",
+        "navUrl": "https://www.stickpng.com/zh",
+        "navIcon": "/nav/public/images/nav/hao-nav-stickpng.jpg",
+        "navDesc": "适用电商！51530+透明png图片素材创意社区"
+    },
+    {
+        "navId": "DH1354",
+        "idSequence": 1354,
+        "categoryId": "FR1046",
+        "navName": "Texturelabs",
+        "navUrl": "https://texturelabs.org/",
+        "navIcon": "/nav/public/images/nav/hao-nav-texturelabs.jpg",
+        "navDesc": "超赞！超18种类型的超高清纹理素材站"
+    },
+    {
+        "navId": "DH1355",
+        "idSequence": 1355,
+        "categoryId": "FR1046",
+        "navName": "稿定设计",
+        "navUrl": "https://www.gaoding.com/utms/f10839263a60c1c447c75fcbe10183c2",
+        "navIcon": "/nav/public/images/nav/hao-nav-gaoding.png",
+        "navDesc": "提供海量免费素材，多场景商业视觉在线设计平台"
+    },
+    {
+        "navId": "DH1356",
+        "idSequence": 1356,
+        "categoryId": "FR1046",
+        "navName": "Yellowimages",
+        "navUrl": "https://yellowimages.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-yellowimages.png",
+        "navDesc": "3D素材！互联网上最大的 PSD 模型库"
+    },
+    {
+        "navId": "DH1357",
+        "idSequence": 1357,
+        "categoryId": "FR1046",
+        "navName": "freebiesbug",
+        "navUrl": "https://freebiesbug.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-freebiesbug.png",
+        "navDesc": "最新的免费设计资源"
+    },
+    {
+        "navId": "DH1358",
+        "idSequence": 1358,
+        "categoryId": "FR1046",
+        "navName": "LogoPond",
+        "navUrl": "https://logopond.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-LogoPond.png",
+        "navDesc": "高端logo集萃，设计前必须来池子里泡一泡"
+    },
+    {
+        "navId": "DH1359",
+        "idSequence": 1359,
+        "categoryId": "FR1046",
+        "navName": "矢量Logo下载",
+        "navUrl": "https://worldvectorlogo.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-worldvectorlogo.png",
+        "navDesc": "超赞！知名Logo矢量资源下载"
+    },
+    {
+        "navId": "DH1360",
+        "idSequence": 1360,
+        "categoryId": "FR1046",
+        "navName": "纹理王",
+        "navUrl": "https://www.textureking.com/category/all-textures/",
+        "navIcon": "/nav/public/images/nav/hao-nav-textureking.png",
+        "navDesc": "免费的高分辨率顶尖纹理，可以商用"
+    },
+    {
+        "navId": "DH1361",
+        "idSequence": 1361,
+        "categoryId": "FR1047",
+        "navName": "免费商用字体",
+        "navUrl": "https://uiiiuiii.com/tool/typeface",
+        "navIcon": "/nav/public/images/nav/nav-font-uushang.png",
+        "navDesc": "超全！免费可商用中文+英文字体，含应用场景"
+    },
+    {
+        "navId": "DH1362",
+        "idSequence": 1362,
+        "categoryId": "FR1047",
+        "navName": "DaFont",
+        "navUrl": "https://www.dafont.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-dafont.png",
+        "navDesc": "国际知名站点！提供大量的免费英文字体下载"
+    },
+    {
+        "navId": "DH1363",
+        "idSequence": 1363,
+        "categoryId": "FR1047",
+        "navName": "字体家",
+        "navUrl": "https://www.zitijia.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-zitijia.png",
+        "navDesc": "万款字体免费下载！专业提供正版授权字体下载"
+    },
+    {
+        "navId": "DH1364",
+        "idSequence": 1364,
+        "categoryId": "FR1047",
+        "navName": "字由",
+        "navUrl": "https://www.hellofont.cn/?from=UISDC:uisdc-w",
+        "navIcon": "/nav/public/images/nav/hao-nav-hellofont.png",
+        "navDesc": "设计师必备字体利器，国内外上千款精选字体"
+    },
+    {
+        "navId": "DH1365",
+        "idSequence": 1365,
+        "categoryId": "FR1047",
+        "navName": "字体宇宙",
+        "navUrl": "https://www.fontspace.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-fontspace.png",
+        "navDesc": "超过6万免费字体下载，网站体验不错"
+    },
+    {
+        "navId": "DH1366",
+        "idSequence": 1366,
+        "categoryId": "FR1047",
+        "navName": "Font Fabric",
+        "navUrl": "https://www.fontfabric.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-Font-Fabric.png",
+        "navDesc": "免费高品质字体打包下载"
+    },
+    {
+        "navId": "DH1367",
+        "idSequence": 1367,
+        "categoryId": "FR1047",
+        "navName": "求字体",
+        "navUrl": "https://www.qiuziti.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-qiufont.png",
+        "navDesc": "找字体神器，并提供中文和英文字体库下载"
+    },
+    {
+        "navId": "DH1368",
+        "idSequence": 1368,
+        "categoryId": "FR1047",
+        "navName": "字体天下",
+        "navUrl": "https://www.fonts.net.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-fonts.jpg",
+        "navDesc": "推荐！超过3万个中英文字体免费下载"
+    },
+    {
+        "navId": "DH1369",
+        "idSequence": 1369,
+        "categoryId": "FR1047",
+        "navName": "字体导航",
+        "navUrl": "https://hao.uisdc.com/font/",
+        "navIcon": "/nav/public/images/nav/nav-font-freedown.png",
+        "navDesc": "免费好字体！清新优雅一目了然，优设已为你分门别类"
+    },
+    {
+        "navId": "DH1370",
+        "idSequence": 1370,
+        "categoryId": "FR1047",
+        "navName": "字体传奇",
+        "navUrl": "http://www.ziticq.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-zititx.png",
+        "navDesc": "字体品牌设计师交流网，字体相关的教程、讲座等"
+    },
+    {
+        "navId": "DH1371",
+        "idSequence": 1371,
+        "categoryId": "FR1047",
+        "navName": "Lost Type",
+        "navUrl": "http://www.losttype.com/browse/",
+        "navIcon": "/nav/public/images/nav/hao-nav-losttype.png",
+        "navDesc": "推荐！字体都非常漂亮，展示方式悦目清新"
+    },
+    {
+        "navId": "DH1372",
+        "idSequence": 1372,
+        "categoryId": "FR1047",
+        "navName": "字体松鼠",
+        "navUrl": "https://www.fontsquirrel.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-fontsquirrel.png",
+        "navDesc": "100%免费下载可商用！专为设计师精心挑选"
+    },
+    {
+        "navId": "DH1373",
+        "idSequence": 1373,
+        "categoryId": "FR1048",
+        "navName": "神器推荐专栏",
+        "navUrl": "https://www.uisdc.com/category/hot-download/tools-download",
+        "navIcon": "/nav/public/images/nav/hao-nav-uisdc.png",
+        "navDesc": "优设网神器推荐专栏，全球设计工具全收录"
+    },
+    {
+        "navId": "DH1374",
+        "idSequence": 1374,
+        "categoryId": "FR1048",
+        "navName": "MasterGo莫高设计",
+        "navUrl": "https://mastergo.com?utm_source=youshe&utm_medium=wangzhidaohang&utm_campaign=shejigongju&utm_term=&utm_content=",
+        "navIcon": "/nav/public/images/nav/mastergo-mg.jpg",
+        "navDesc": "推荐！海量免费资源，更专业的云端UI设计工具"
+    },
+    {
+        "navId": "DH1375",
+        "idSequence": 1375,
+        "categoryId": "FR1048",
+        "navName": "阿里云建站神器",
+        "navUrl": "https://ac.aliyun.com/application/webdesign/sumei?source=5176.11533457&userCode=itzns7ko",
+        "navIcon": "/nav/public/images/nav/hao-nav-aliyun.png",
+        "navDesc": "1034套PC+手机站网站模板！会打字就会建网站"
+    },
+    {
+        "navId": "DH1376",
+        "idSequence": 1376,
+        "categoryId": "FR1048",
+        "navName": "PPT神器 iSlide",
+        "navUrl": "https://www.uisdc.com/ppt-artifact-islide",
+        "navIcon": "/nav/public/images/nav/hao-nav-islide.png",
+        "navDesc": "一键优化！你和PPT高手之间就差这个插件了"
+    },
+    {
+        "navId": "DH1377",
+        "idSequence": 1377,
+        "categoryId": "FR1048",
+        "navName": "京东JDR Design",
+        "navUrl": "https://jdrd.jd.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-jdrd.png",
+        "navDesc": "推荐！京东设计团队的设计神器都在这里了"
+    },
+    {
+        "navId": "DH1378",
+        "idSequence": 1378,
+        "categoryId": "FR1048",
+        "navName": "Adobe全家桶",
+        "navUrl": "https://uiiiuiii.com/software/5103.html",
+        "navIcon": "/nav/public/images/nav/hao-nav-adobe.png",
+        "navDesc": "官方试用版下载链接，PS AI AE全都有，你懂得"
+    },
+    {
+        "navId": "DH1379",
+        "idSequence": 1379,
+        "categoryId": "FR1048",
+        "navName": "建站之星 SiteStar",
+        "navUrl": "https://www.sitestar.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-sitestar.png",
+        "navDesc": "国内著名建站品牌，PC+手机+小程序网站快速生成"
+    },
+    {
+        "navId": "DH1380",
+        "idSequence": 1380,
+        "categoryId": "FR1048",
+        "navName": "在线抠图",
+        "navUrl": "https://www.uisdc.com/fococlipping",
+        "navIcon": "/nav/public/images/nav/hao-nav-fococlipping.png",
+        "navDesc": "强大的在线抠图神器！3秒出图全自动超方便"
+    },
+    {
+        "navId": "DH1381",
+        "idSequence": 1381,
+        "categoryId": "FR1048",
+        "navName": "H5制作神器",
+        "navUrl": "https://www.epub360.com/?markcode=6vt2su",
+        "navIcon": "/nav/public/images/nav/hao-nav-epub360.png",
+        "navDesc": "推荐！专业级H5制作神器，在线设计，无需编程"
+    },
+    {
+        "navId": "DH1382",
+        "idSequence": 1382,
+        "categoryId": "FR1048",
+        "navName": "设计师神器",
+        "navUrl": "https://www.uisdc.com/u/165152/publish/all",
+        "navIcon": "/nav/public/images/nav/hao-nav-shenqi.png",
+        "navDesc": "推荐！优设主编整理的设计师神器栏目"
+    },
+    {
+        "navId": "DH1383",
+        "idSequence": 1383,
+        "categoryId": "FR1048",
+        "navName": "PS拉框助手",
+        "navUrl": "https://www.pslkzs.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-NBcharts.png",
+        "navDesc": "一款人气PS插件！可快速生成各类图表及UI控件"
+    },
+    {
+        "navId": "DH1384",
+        "idSequence": 1384,
+        "categoryId": "FR1048",
+        "navName": "Vector Magic",
+        "navUrl": "https://vectormagic.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-vectormagic.png",
+        "navDesc": "1秒钟在线位图转矢量！好用的转矢量神器"
+    },
+    {
+        "navId": "DH1385",
+        "idSequence": 1385,
+        "categoryId": "FR1049",
+        "navName": "BURST",
+        "navUrl": "https://burst.shopify.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-burst.png",
+        "navDesc": "知名Shopify旗下摄影图库！每周更新优质照片素材"
+    },
+    {
+        "navId": "DH1386",
+        "idSequence": 1386,
+        "categoryId": "FR1049",
+        "navName": "POCO摄影图片社区",
+        "navUrl": "https://www.poco.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-poco.png",
+        "navDesc": "领先的时尚摄影平台，分享作品和技巧首选"
+    },
+    {
+        "navId": "DH1387",
+        "idSequence": 1387,
+        "categoryId": "FR1049",
+        "navName": "新浪图片",
+        "navUrl": "http://photo.sina.com.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-sinaphoto.png",
+        "navDesc": "有温度的视觉，摄影师成长平台，影像记录中国"
+    },
+    {
+        "navId": "DH1388",
+        "idSequence": 1388,
+        "categoryId": "FR1049",
+        "navName": "LFI徕卡镜界",
+        "navUrl": "https://photosharing.leica-camera.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-lfi.png",
+        "navDesc": "推荐！徕卡为摄影师精心提供的分享交流平台"
+    },
+    {
+        "navId": "DH1389",
+        "idSequence": 1389,
+        "categoryId": "FR1049",
+        "navName": "中国国家地理网",
+        "navUrl": "http://www.dili360.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-dili360.png",
+        "navDesc": "最专业的深度旅游体验平台，最具特色的互动社区"
+    },
+    {
+        "navId": "DH1390",
+        "idSequence": 1390,
+        "categoryId": "FR1049",
+        "navName": "Foodies Feed",
+        "navUrl": "https://www.foodiesfeed.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-foodiesfeed.png",
+        "navDesc": "秀色可餐！免费高清食物照片"
+    },
+    {
+        "navId": "DH1391",
+        "idSequence": 1391,
+        "categoryId": "FR1049",
+        "navName": "图虫网",
+        "navUrl": "https://tuchong.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-tuchong.png",
+        "navDesc": "图虫网，中国最专业的web2.0摄影社区"
+    },
+    {
+        "navId": "DH1392",
+        "idSequence": 1392,
+        "categoryId": "FR1049",
+        "navName": "Style-Arena",
+        "navUrl": "https://www.style-arena.jp/ch/",
+        "navIcon": "/nav/public/images/nav/hao-nav-stylearena.png",
+        "navDesc": "日本街拍帅哥美女一览无余！东京街头时尚网"
+    },
+    {
+        "navId": "DH1393",
+        "idSequence": 1393,
+        "categoryId": "FR1049",
+        "navName": "Chiphell",
+        "navUrl": "https://www.chiphell.com/portal.php?mod=list&catid=3",
+        "navIcon": "/nav/public/images/nav/sdcnav-chiphell.png",
+        "navDesc": "专业的发烧友社区，里面的摄影专区也不错"
+    },
+    {
+        "navId": "DH1394",
+        "idSequence": 1394,
+        "categoryId": "FR1049",
+        "navName": "网易图片",
+        "navUrl": "http://news.163.com/photo",
+        "navIcon": "/nav/public/images/nav/hao-nav-wangyiphoto.png",
+        "navDesc": "网易新闻中心图片频道，24小时热图实时推送"
+    },
+    {
+        "navId": "DH1395",
+        "idSequence": 1395,
+        "categoryId": "FR1049",
+        "navName": "Photography Served",
+        "navUrl": "https://www.behance.net/galleries/Photography",
+        "navIcon": "/nav/public/images/nav/hao-nav-behance.png",
+        "navDesc": "全球顶尖创意平台Behance旗下的摄影服务栏目"
+    },
+    {
+        "navId": "DH1396",
+        "idSequence": 1396,
+        "categoryId": "FR1049",
+        "navName": "无忌视界",
+        "navUrl": "https://vision.xitek.com/sight/",
+        "navIcon": "/nav/public/images/nav/hao-nav-lifeofpix.png",
+        "navDesc": "国内外优秀摄影师的线上展览平台，开阔眼界"
+    },
+    {
+        "navId": "DH1397",
+        "idSequence": 1397,
+        "categoryId": "FR1050",
+        "navName": "B站",
+        "navUrl": "https://www.bilibili.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-bilibili.png",
+        "navDesc": "国内知名视频弹幕网站，有最及时的动漫新番"
+    },
+    {
+        "navId": "DH1398",
+        "idSequence": 1398,
+        "categoryId": "FR1050",
+        "navName": "A站",
+        "navUrl": "https://www.acfun.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-acfun.png",
+        "navDesc": "AcFun作为弹幕视频网站，国内二次元文化的开创者"
+    },
+    {
+        "navId": "DH1399",
+        "idSequence": 1399,
+        "categoryId": "FR1050",
+        "navName": "半次元",
+        "navUrl": "https://bcy.net/",
+        "navIcon": "/nav/public/images/nav/hao-nav-bcy.png",
+        "navDesc": "ACG爱好者社区"
+    },
+    {
+        "navId": "DH1400",
+        "idSequence": 1400,
+        "categoryId": "FR1050",
+        "navName": "腾讯动漫",
+        "navUrl": "https://ac.qq.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-acqq.png",
+        "navDesc": "中国最大最权威的正版动漫网站"
+    },
+    {
+        "navId": "DH1401",
+        "idSequence": 1401,
+        "categoryId": "FR1050",
+        "navName": "动漫之家",
+        "navUrl": "https://www.dmzj.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-dmzj.png",
+        "navDesc": "国内最全最专业的在线漫画"
+    },
+    {
+        "navId": "DH1402",
+        "idSequence": 1402,
+        "categoryId": "FR1050",
+        "navName": "萌娘百科",
+        "navUrl": "https://zh.moegirl.org/Mainpage",
+        "navIcon": "/nav/public/images/nav/hao-nav-moegirl.png",
+        "navDesc": "万物皆可萌的百科全书"
+    },
+    {
+        "navId": "DH1403",
+        "idSequence": 1403,
+        "categoryId": "FR1050",
+        "navName": "B站漫画",
+        "navUrl": "https://manga.bilibili.com/?from=bill_top_mnav&spm_id_from=333.1073.0.0",
+        "navIcon": "/nav/public/images/nav/hao-nav-bzmh.png",
+        "navDesc": "二次元动漫迷的追漫神器"
+    },
+    {
+        "navId": "DH1404",
+        "idSequence": 1404,
+        "categoryId": "FR1050",
+        "navName": "不可能的世界",
+        "navUrl": "https://www.8kana.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-bknsj.png",
+        "navDesc": "中国最大的二次元小说平台"
+    },
+    {
+        "navId": "DH1405",
+        "idSequence": 1405,
+        "categoryId": "FR1050",
+        "navName": "斗鱼",
+        "navUrl": "https://www.douyu.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-douyu.png",
+        "navDesc": "知名弹幕式直播平台"
+    },
+    {
+        "navId": "DH1406",
+        "idSequence": 1406,
+        "categoryId": "FR1050",
+        "navName": "虎牙",
+        "navUrl": "https://www.huya.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-hy.png",
+        "navDesc": "弹幕式互动直播平台"
+    },
+    {
+        "navId": "DH1407",
+        "idSequence": 1407,
+        "categoryId": "FR1050",
+        "navName": "Steam",
+        "navUrl": "https://store.steampowered.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-steam.png",
+        "navDesc": "全球综合性数字游戏社交平台，请勿沉迷"
+    },
+    {
+        "navId": "DH1408",
+        "idSequence": 1408,
+        "categoryId": "FR1050",
+        "navName": "P站",
+        "navUrl": "https://www.pixiv.net/",
+        "navIcon": "/nav/public/images/nav/hao-nav-pixiv.png",
+        "navDesc": "全球知名的插画作品分享站"
+    },
+    {
+        "navId": "DH1409",
+        "idSequence": 1409,
+        "categoryId": "FR1051",
+        "navName": "腾讯CDC",
+        "navUrl": "https://cdc.tencent.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-mastergo.png",
+        "navDesc": "腾讯用户研究与体验设计中心，腾讯的核心部门之一"
+    },
+    {
+        "navId": "DH1410",
+        "idSequence": 1410,
+        "categoryId": "FR1051",
+        "navName": "虎嗅网",
+        "navUrl": "https://www.huxiu.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-hx.png",
+        "navDesc": "一个有视角的、个性化商业资讯与交流平台"
+    },
+    {
+        "navId": "DH1411",
+        "idSequence": 1411,
+        "categoryId": "FR1051",
+        "navName": "36氪",
+        "navUrl": "https://36kr.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-36kr.png",
+        "navDesc": "互联网领先新商业媒体，让一部分人先看到未来"
+    },
+    {
+        "navId": "DH1412",
+        "idSequence": 1412,
+        "categoryId": "FR1051",
+        "navName": "W3C官网",
+        "navUrl": "https://www.w3.org/",
+        "navIcon": "/nav/public/images/nav/hao-nav-w3c.png",
+        "navDesc": "这是互联网的基础，推荐及时了解前端最新资讯"
+    },
+    {
+        "navId": "DH1413",
+        "idSequence": 1413,
+        "categoryId": "FR1051",
+        "navName": "极客公园",
+        "navUrl": "https://www.geekpark.net/",
+        "navIcon": "/nav/public/images/nav/hao-nav-geek.png",
+        "navDesc": "报道互联网热门趋势、热点产品的深度分析"
+    },
+    {
+        "navId": "DH1414",
+        "idSequence": 1414,
+        "categoryId": "FR1051",
+        "navName": "爱范儿",
+        "navUrl": "https://www.ifanr.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-ifan.png",
+        "navDesc": "发现创新价值的科技媒体，全景关注移动互联网"
+    },
+    {
+        "navId": "DH1415",
+        "idSequence": 1415,
+        "categoryId": "FR1051",
+        "navName": "优设读报",
+        "navUrl": "https://www.uisdc.com/news",
+        "navIcon": "/nav/public/images/nav/hao-nav-uisdc.png",
+        "navDesc": "极具影响力的设计师新闻频道，行业资讯一站知晓"
+    },
+    {
+        "navId": "DH1416",
+        "idSequence": 1416,
+        "categoryId": "FR1051",
+        "navName": "设计师图书导航",
+        "navUrl": "https://hao.uisdc.com/book/",
+        "navIcon": "/nav/public/images/nav/hao-nav-booknav.png",
+        "navDesc": "设计师入门必读书单！2023最新设计师书籍推荐"
+    },
+    {
+        "navId": "DH1417",
+        "idSequence": 1417,
+        "categoryId": "FR1051",
+        "navName": "雷锋网",
+        "navUrl": "https://www.leiphone.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-leiphone.png",
+        "navDesc": "专注于移动互联网创业及创新的人气科技博客"
+    },
+    {
+        "navId": "DH1418",
+        "idSequence": 1418,
+        "categoryId": "FR1051",
+        "navName": "网易科技",
+        "navUrl": "https://tech.163.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-wangyiphoto.png",
+        "navDesc": "有态度！以独特视角呈现科技圈内大事小事"
+    },
+    {
+        "navId": "DH1419",
+        "idSequence": 1419,
+        "categoryId": "FR1051",
+        "navName": "牛华网",
+        "navUrl": "http://www.newhua.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-newhua.png",
+        "navDesc": "华军软件园旗下网站，第一时间提供最具价值IT资讯"
+    },
+    {
+        "navId": "DH1420",
+        "idSequence": 1420,
+        "categoryId": "FR1051",
+        "navName": "DoNews",
+        "navUrl": "https://www.donews.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-donews.png",
+        "navDesc": "中国互联网从业人士交流最权威的平台"
+    },
+    {
+        "navId": "DH1421",
+        "idSequence": 1421,
+        "categoryId": "FR1052",
+        "navName": "Adobe Color",
+        "navUrl": "https://color.adobe.com/zh/",
+        "navIcon": "/nav/public/images/nav/hao-nav-adobecolor.png",
+        "navDesc": "网页设计师配色的最佳之选"
+    },
+    {
+        "navId": "DH1422",
+        "idSequence": 1422,
+        "categoryId": "FR1052",
+        "navName": "COLOURlovers",
+        "navUrl": "https://www.colourlovers.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-colourlovers.png",
+        "navDesc": "交流颜色、色彩趋势和配色方案的超人气社区"
+    },
+    {
+        "navId": "DH1423",
+        "idSequence": 1423,
+        "categoryId": "FR1052",
+        "navName": "Coolors",
+        "navUrl": "https://coolors.co/browser/latest/1",
+        "navIcon": "/nav/public/images/nav/hao-nav-coolors.png",
+        "navDesc": "实用！成千上万的配色方案"
+    },
+    {
+        "navId": "DH1424",
+        "idSequence": 1424,
+        "categoryId": "FR1052",
+        "navName": "漂亮的渐变颜色",
+        "navUrl": "https://uigradients.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-uigradients.png",
+        "navDesc": "今年流行的渐变！点击屏幕两侧按钮可选更多色彩"
+    },
+    {
+        "navId": "DH1425",
+        "idSequence": 1425,
+        "categoryId": "FR1052",
+        "navName": "CssWinner网页色彩分类",
+        "navUrl": "https://www.csswinner.com/colorsearch/blue",
+        "navIcon": "/nav/public/images/nav/hao-nav-csswinner.png",
+        "navDesc": "CSS画廊，可根据右侧颜色块展现最流行的网页"
+    },
+    {
+        "navId": "DH1426",
+        "idSequence": 1426,
+        "categoryId": "FR1052",
+        "navName": "色彩猎人",
+        "navUrl": "https://colorhunt.co/",
+        "navIcon": "/nav/public/images/nav/hao-nav-colorhunt.png",
+        "navDesc": "每天收集并策划发布美丽的配色方案"
+    },
+    {
+        "navId": "DH1427",
+        "idSequence": 1427,
+        "categoryId": "FR1052",
+        "navName": "中国色彩大辞典",
+        "navUrl": "https://hao.uisdc.com/color/",
+        "navIcon": "/nav/public/images/nav/hao-nav-china.png",
+        "navDesc": "中国/日本传统色彩命名，点击色彩可直接吸取色值"
+    },
+    {
+        "navId": "DH1428",
+        "idSequence": 1428,
+        "categoryId": "FR1052",
+        "navName": "配色导航",
+        "navUrl": "https://hao.uisdc.com/color/pick/",
+        "navIcon": "/nav/public/images/nav/hao-nav-ainav.png",
+        "navDesc": "推荐！流行配色方案，可一键复制喜欢的颜色"
+    },
+    {
+        "navId": "DH1429",
+        "idSequence": 1429,
+        "categoryId": "FR1052",
+        "navName": "DopelyColors",
+        "navUrl": "https://colors.dopely.top/",
+        "navIcon": "/nav/public/images/nav/hao-nav-DopelyColors.png",
+        "navDesc": "一款实用的获取漂亮渐变方案的工具"
+    },
+    {
+        "navId": "DH1430",
+        "idSequence": 1430,
+        "categoryId": "FR1052",
+        "navName": "MaterialUI",
+        "navUrl": "https://www.materialui.co/",
+        "navIcon": "/nav/public/images/nav/hao-nav-materialui.png",
+        "navDesc": "推荐！帮助设计师们快速选到自己喜爱的配色方案"
+    },
+    {
+        "navId": "DH1431",
+        "idSequence": 1431,
+        "categoryId": "FR1052",
+        "navName": "ColorDrop",
+        "navUrl": "https://colordrop.io/",
+        "navIcon": "/nav/public/images/nav/hao-nav-colordrop.png",
+        "navDesc": "让寻找配色方案成为信手拈来的事情"
+    },
+    {
+        "navId": "DH1432",
+        "idSequence": 1432,
+        "categoryId": "FR1052",
+        "navName": "Fashion Trendsetter",
+        "navUrl": "https://www.fashiontrendsetter.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-fashiontrendsetter.png",
+        "navDesc": "帮你关注每年最流行的颜色搭配"
+    },
+    {
+        "navId": "DH1433",
+        "idSequence": 1433,
+        "categoryId": "FR1053",
+        "navName": "Awwwards",
+        "navUrl": "https://www.awwwards.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-awwwards.png",
+        "navDesc": "精挑细选世界各地的最佳网站！并对其打分颁奖"
+    },
+    {
+        "navId": "DH1434",
+        "idSequence": 1434,
+        "categoryId": "FR1053",
+        "navName": "日本 4db",
+        "navUrl": "http://4db.cc/",
+        "navIcon": "/nav/public/images/nav/hao-nav-4db.png",
+        "navDesc": "推荐！搜集日本各行各业、各地区的优秀网站"
+    },
+    {
+        "navId": "DH1435",
+        "idSequence": 1435,
+        "categoryId": "FR1053",
+        "navName": "网页模版巨人",
+        "navUrl": "https://www.templatemonster.com/cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-templatemonster.png",
+        "navDesc": "著名的网页模版库，借鉴和学习网页趋势的宝地"
+    },
+    {
+        "navId": "DH1436",
+        "idSequence": 1436,
+        "categoryId": "FR1053",
+        "navName": "酷站剪报",
+        "navUrl": "https://www.webdesignclip.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-webdesignclip.png",
+        "navDesc": "强烈推荐！用心收集日本酷站，右侧二级栏目非常棒"
+    },
+    {
+        "navId": "DH1437",
+        "idSequence": 1437,
+        "categoryId": "FR1053",
+        "navName": "onepagelove",
+        "navUrl": "https://onepagelove.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-onepagelove-1.png",
+        "navDesc": "推荐！提供海量单页模版展示和素材资源的网站"
+    },
+    {
+        "navId": "DH1438",
+        "idSequence": 1438,
+        "categoryId": "FR1053",
+        "navName": "梦幻模板",
+        "navUrl": "http://www.dreamtemplate.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-mhmb.png",
+        "navDesc": "超过7000个梦幻般的网站模板及Flash模板下载"
+    },
+    {
+        "navId": "DH1439",
+        "idSequence": 1439,
+        "categoryId": "FR1053",
+        "navName": "优质登录页模版网",
+        "navUrl": "https://www.landingfolio.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-landingfolio.png",
+        "navDesc": "推荐！整合了各个行业的网站登录页面模版资源"
+    },
+    {
+        "navId": "DH1440",
+        "idSequence": 1440,
+        "categoryId": "FR1053",
+        "navName": "享誉全球的 WIX",
+        "navUrl": "https://www.wix.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-wix.png",
+        "navDesc": "超赞！该站全球排名378！可以帮你免费定制网站"
+    },
+    {
+        "navId": "DH1441",
+        "idSequence": 1441,
+        "categoryId": "FR1053",
+        "navName": "网页设计画廊",
+        "navUrl": "https://io3000.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-io3000.png",
+        "navDesc": "精选了富有创意的网页设计作品"
+    },
+    {
+        "navId": "DH1442",
+        "idSequence": 1442,
+        "categoryId": "FR1053",
+        "navName": "Figcomponents",
+        "navUrl": "https://www.figcomponents.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-figcomponents.png",
+        "navDesc": "超过 1000+ 完全免费的 UI 组件助力效率提升"
+    },
+    {
+        "navId": "DH1443",
+        "idSequence": 1443,
+        "categoryId": "FR1053",
+        "navName": "The FWA",
+        "navUrl": "https://thefwa.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-fwa.png",
+        "navDesc": "强烈推荐！超高水准的互动网站设计案例"
+    },
+    {
+        "navId": "DH1444",
+        "idSequence": 1444,
+        "categoryId": "FR1053",
+        "navName": "81 web",
+        "navUrl": "https://81-web.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-81web.png",
+        "navDesc": "推荐！日本优秀出色的站点大集合"
+    },
+    {
+        "navId": "DH1445",
+        "idSequence": 1445,
+        "categoryId": "FR1054",
+        "navName": "剪映",
+        "navUrl": "https://lv.ulikecam.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-capcut.png",
+        "navDesc": "强悍的手机短视频制作神器！由抖音官方推出"
+    },
+    {
+        "navId": "DH1446",
+        "idSequence": 1446,
+        "categoryId": "FR1054",
+        "navName": "万兴喵影",
+        "navUrl": "https://miao.wondershare.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-miao.png",
+        "navDesc": "好用易上手的国产剪辑神器，功能强大"
+    },
+    {
+        "navId": "DH1447",
+        "idSequence": 1447,
+        "categoryId": "FR1054",
+        "navName": "蝉妈妈",
+        "navUrl": "https://www.chanmama.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-chanmama.png",
+        "navDesc": "推荐！为短视频内容创作团队提供竞品分析和爆款研究"
+    },
+    {
+        "navId": "DH1448",
+        "idSequence": 1448,
+        "categoryId": "FR1054",
+        "navName": "西瓜视频",
+        "navUrl": "https://www.ixigua.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-ixigua.png",
+        "navDesc": "字节跳动旗下视频平台！给你新鲜好看"
+    },
+    {
+        "navId": "DH1449",
+        "idSequence": 1449,
+        "categoryId": "FR1054",
+        "navName": "小红书",
+        "navUrl": "https://www.xiaohongshu.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-xiaohongshu.png",
+        "navDesc": "标记生活，一起分享和发现世界的精彩"
+    },
+    {
+        "navId": "DH1450",
+        "idSequence": 1450,
+        "categoryId": "FR1054",
+        "navName": "Videezy",
+        "navUrl": "https://www.videezy.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-Videezy.png",
+        "navDesc": "推荐！提供大量免费高画质HD、4K影片素材"
+    },
+    {
+        "navId": "DH1451",
+        "idSequence": 1451,
+        "categoryId": "FR1054",
+        "navName": "Jamendo Music",
+        "navUrl": "https://www.jamendo.com/start",
+        "navIcon": "/nav/public/images/nav/hao-nav-jamendo.png",
+        "navDesc": "质量很高的免费音乐素材下载平台"
+    },
+    {
+        "navId": "DH1452",
+        "idSequence": 1452,
+        "categoryId": "FR1054",
+        "navName": "Bensound",
+        "navUrl": "https://www.bensound.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-besound.png",
+        "navDesc": "独特有质感的免费背景音乐素材站点"
+    },
+    {
+        "navId": "DH1453",
+        "idSequence": 1453,
+        "categoryId": "FR1054",
+        "navName": "TooBigData",
+        "navUrl": "https://toobigdata.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-tbp.png",
+        "navDesc": "短视频网红排行，KOL一网打尽"
+    },
+    {
+        "navId": "DH1454",
+        "idSequence": 1454,
+        "categoryId": "FR1054",
+        "navName": "PremiumBeat",
+        "navUrl": "https://www.premiumbeat.com/zh/",
+        "navIcon": "/nav/public/images/nav/hao-nav-premiumbeat.png",
+        "navDesc": "创意人士的短视频配乐佳选，有可商用音乐库"
+    },
+    {
+        "navId": "DH1455",
+        "idSequence": 1455,
+        "categoryId": "FR1054",
+        "navName": "抖音",
+        "navUrl": "https://www.douyin.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-dy.png",
+        "navDesc": "音乐创意短视频社交软件，记录美好生活"
+    },
+    {
+        "navId": "DH1456",
+        "idSequence": 1456,
+        "categoryId": "FR1054",
+        "navName": "快手",
+        "navUrl": "https://www.kuaishou.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-ks.png",
+        "navDesc": "国民短视频社区，记录世界记录你"
+    },
+    {
+        "navId": "DH1457",
+        "idSequence": 1457,
+        "categoryId": "FR1055",
+        "navName": "字语未来",
+        "navUrl": "https://getgetai.com/workstation?from=youshe",
+        "navIcon": "/nav/public/images/nav/nav-ai-getgetai.png",
+        "navDesc": "用AI创造更有价值的信息，定义新一代智能办公平台"
+    },
+    {
+        "navId": "DH1458",
+        "idSequence": 1458,
+        "categoryId": "FR1055",
+        "navName": "AI论文帮",
+        "navUrl": "https://lunwenbang.cc/",
+        "navIcon": "/nav/public/images/nav/hao-nav-lunwenbang.jpg",
+        "navDesc": "5分钟生成万字优质原创论文！"
+    },
+    {
+        "navId": "DH1459",
+        "idSequence": 1459,
+        "categoryId": "FR1055",
+        "navName": "Notion AI",
+        "navUrl": "https://www.notion.so/product/ai",
+        "navIcon": "/nav/public/images/nav/nav-ai-notion.png",
+        "navDesc": "AI写作神器！比你想得更多！写得更快"
+    },
+    {
+        "navId": "DH1460",
+        "idSequence": 1460,
+        "categoryId": "FR1055",
+        "navName": "秘塔写作猫",
+        "navUrl": "https://www.xiezuocat.com/",
+        "navIcon": "/nav/public/images/nav/nav-ai-xiezuocat.png",
+        "navDesc": "基于GPT的中文写作工具"
+    },
+    {
+        "navId": "DH1461",
+        "idSequence": 1461,
+        "categoryId": "FR1055",
+        "navName": "Tome",
+        "navUrl": "https://beta.tome.app/",
+        "navIcon": "/nav/public/images/nav/nav-ai-Tome.png",
+        "navDesc": "先进的AI智能PPT制作工具"
+    },
+    {
+        "navId": "DH1462",
+        "idSequence": 1462,
+        "categoryId": "FR1055",
+        "navName": "Glimmer Ai",
+        "navUrl": "https://glimmerai.tech/",
+        "navIcon": "/nav/public/images/nav/nav-ai-glimmerai.png",
+        "navDesc": "热门！基于GPT-3和DALL·E2的AI PPT知名工具"
+    },
+    {
+        "navId": "DH1463",
+        "idSequence": 1463,
+        "categoryId": "FR1055",
+        "navName": "PandaGPT",
+        "navUrl": "https://www.pandagpt.io/",
+        "navIcon": "/nav/public/images/nav/nav-ai-pandagpt.png",
+        "navDesc": "上传文档！即可用对话的方式让 AI 总结文档重点"
+    },
+    {
+        "navId": "DH1464",
+        "idSequence": 1464,
+        "categoryId": "FR1055",
+        "navName": "Microsoft 365 Copilot",
+        "navUrl": "https://blogs.microsoft.com/blog/2023/03/16/introducing-microsoft-365-copilot-your-copilot-for-work/",
+        "navIcon": "/nav/public/images/nav/nav-ai-Copilot.png",
+        "navDesc": "暂未开放！内置GPT-4的微软Office"
+    },
+    {
+        "navId": "DH1465",
+        "idSequence": 1465,
+        "categoryId": "FR1055",
+        "navName": "Effidit写作助手",
+        "navUrl": "https://effidit.qq.com/",
+        "navIcon": "/nav/public/images/nav/nav-ai-effidit.png",
+        "navDesc": "腾讯AI Lab开发的AI写作助手，轻松高效完成写作"
+    },
+    {
+        "navId": "DH1466",
+        "idSequence": 1466,
+        "categoryId": "FR1055",
+        "navName": "WordAi",
+        "navUrl": "https://wordai.com/",
+        "navIcon": "/nav/public/images/nav/nav-ai-wordai.png",
+        "navDesc": "10倍速AI内容输出！创建读者喜爱的优质内容"
+    },
+    {
+        "navId": "DH1467",
+        "idSequence": 1467,
+        "categoryId": "FR1055",
+        "navName": "Timely",
+        "navUrl": "https://timelyapp.com/",
+        "navIcon": "/nav/public/images/nav/nav-ai-timelyapp.png",
+        "navDesc": "一款AI时间管理工具！可以帮助你更有效地管理时间"
+    },
+    {
+        "navId": "DH1468",
+        "idSequence": 1468,
+        "categoryId": "FR1055",
+        "navName": "Novelist AI",
+        "navUrl": "https://novelistai.com/",
+        "navIcon": "/nav/public/images/nav/nav-ai-Novelistai.png",
+        "navDesc": "AI辅助你创建自己的小说"
+    },
+    {
+        "navId": "DH1469",
+        "idSequence": 1469,
+        "categoryId": "FR1056",
+        "navName": "优设自学好课",
+        "navUrl": "https://pro.uisdc.com/",
+        "navIcon": "/nav/public/images/nav/sdcnav-px-5.png",
+        "navDesc": "每周更新！好课风向标，学什么看这里"
+    },
+    {
+        "navId": "DH1470",
+        "idSequence": 1470,
+        "categoryId": "FR1056",
+        "navName": "自媒体实战必修课",
+        "navUrl": "https://pro.uisdc.com/p/t_pc/goods_pc_detail/goods_detail/p_64d5eafee4b007b201b0314b",
+        "navIcon": "/nav/public/images/nav/hao-nav-uisdc.png",
+        "navDesc": "小红书微博涨粉必修！教会你个人IP涨粉及内容打造，助力副业收入翻倍"
+    },
+    {
+        "navId": "DH1471",
+        "idSequence": 1471,
+        "categoryId": "FR1056",
+        "navName": "AI绘画入门完全指南",
+        "navUrl": "https://pro.uisdc.com/p/t_pc/goods_pc_detail/goods_detail/p_64e47290e4b0b0bc2c11c898",
+        "navIcon": "/nav/public/images/nav/nav-kc-5.png",
+        "navDesc": "🔥新课特惠！千万人气的AIGC达人亲授，教你轻轻松松驾驭AI"
+    },
+    {
+        "navId": "DH1472",
+        "idSequence": 1472,
+        "categoryId": "FR1056",
+        "navName": "动效实战课",
+        "navUrl": "https://pro.uisdc.com/p/t_pc/goods_pc_detail/goods_detail/p_64db8d82e4b007b201b185ee",
+        "navIcon": "/nav/public/images/nav/nav-kc-1.jpg",
+        "navDesc": "上手即用！应用AI新工具结合商业案例，提高综合实力和效率"
+    },
+    {
+        "navId": "DH1473",
+        "idSequence": 1473,
+        "categoryId": "FR1056",
+        "navName": "小光AI创意绘画课",
+        "navUrl": "https://pro.uisdc.com/p/t_pc/goods_pc_detail/goods_detail/p_648d3668e4b0cf39e6d97f4f",
+        "navIcon": "/nav/public/images/nav/nav-kc-3.jpg",
+        "navDesc": "快人一步！将AI工具应用在实际工作场景中，实操案例提效200%"
+    },
+    {
+        "navId": "DH1474",
+        "idSequence": 1474,
+        "categoryId": "FR1056",
+        "navName": "视觉与版式海报设计班",
+        "navUrl": "https://pro.uisdc.com/p/t_pc/goods_pc_detail/goods_detail/p_6549dd49e4b0694cd8eb8615",
+        "navIcon": "/nav/public/images/nav/20231110-pm-nav.jpg",
+        "navDesc": "双名师课程！平面设计师必修课，优设网设计总监及科研组长亲授"
+    },
+    {
+        "navId": "DH1475",
+        "idSequence": 1475,
+        "categoryId": "FR1056",
+        "navName": "AIGC创意视觉提升班",
+        "navUrl": "https://pro.uisdc.com/p/t_pc/goods_pc_detail/goods_detail/p_64ca126ee4b0b0bc2c06e236",
+        "navIcon": "/nav/public/images/nav/nav-kc-2.jpg",
+        "navDesc": "将AI生成无缝融入到视觉设计中！结合实战案例，全方位加速提升综合能力"
+    },
+    {
+        "navId": "DH1476",
+        "idSequence": 1476,
+        "categoryId": "FR1056",
+        "navName": "零基础C4D特训营",
+        "navUrl": "https://xue.uisdc.com/detail?id=5d133ad1d8071825ebce60c1&c=train-6",
+        "navIcon": "/nav/public/images/nav/sdcnav-px-8.png",
+        "navDesc": "升职加薪筹码，让晋升之路畅通无阻"
+    },
+    {
+        "navId": "DH1477",
+        "idSequence": 1477,
+        "categoryId": "FR1056",
+        "navName": "全能剪辑师入门班",
+        "navUrl": "https://pro.uisdc.com/p/t_pc/goods_pc_detail/goods_detail/p_64f0c360e4b064a82f81494d",
+        "navIcon": "/nav/public/images/nav/20231110-pr-nav.jpg",
+        "navDesc": "一次教三门，效率翻三倍！PR+AU+AE，B站百万Up主教你解锁剪辑套路"
+    },
+    {
+        "navId": "DH1478",
+        "idSequence": 1478,
+        "categoryId": "FR1056",
+        "navName": "B端设计入门必修课",
+        "navUrl": "https://pro.uisdc.com/p/t_pc/goods_pc_detail/goods_detail/p_63ff2d17e4b06159f7435d56",
+        "navIcon": "/nav/public/images/nav/20231110-tob-nav.jpg",
+        "navDesc": "字节跳动资深设计师出品，12个章节18个小时超详细干货，帮你快速入门B端设计"
+    },
+    {
+        "navId": "DH1479",
+        "idSequence": 1479,
+        "categoryId": "FR1056",
+        "navName": "动效设计特训营",
+        "navUrl": "https://xue.uisdc.com/detail?id=5cc55404bdc6da1b2b9c932e&c=train-8",
+        "navIcon": "/nav/public/images/nav/sdcnav-px-10.png",
+        "navDesc": "火热报名！优设官方开展的动效设计视觉培训课程"
+    },
+    {
+        "navId": "DH1480",
+        "idSequence": 1480,
+        "categoryId": "FR1056",
+        "navName": "零基础手绘就业班",
+        "navUrl": "https://xue.uisdc.com/detail?id=5cb700d30f29d0571d4fb7ea",
+        "navIcon": "/nav/public/images/nav/sdcnav-px-3.png",
+        "navDesc": "超人气课程！设计师必备基础课，从入门到专业"
+    },
+    {
+        "navId": "DH1481",
+        "idSequence": 1481,
+        "categoryId": "FR1057",
+        "navName": "代码笔",
+        "navUrl": "https://codepen.io/",
+        "navIcon": "/nav/public/images/nav/hao-nav-codepen.png",
+        "navDesc": "超赞！面向前端设计人员的圣地"
+    },
+    {
+        "navId": "DH1482",
+        "idSequence": 1482,
+        "categoryId": "FR1057",
+        "navName": "w3school在线教程",
+        "navUrl": "https://www.w3school.com.cn/",
+        "navIcon": "/nav/public/images/nav/hao-nav-w3school.png",
+        "navDesc": "必备！全球最大的中文Web技术教程"
+    },
+    {
+        "navId": "DH1483",
+        "idSequence": 1483,
+        "categoryId": "FR1057",
+        "navName": "CSDN",
+        "navUrl": "https://www.csdn.net/ ",
+        "navIcon": "/nav/public/images/nav/hao-nav-csdn.png",
+        "navDesc": "全球知名中文IT技术交流平台"
+    },
+    {
+        "navId": "DH1484",
+        "idSequence": 1484,
+        "categoryId": "FR1057",
+        "navName": "Cocos引擎",
+        "navUrl": "https://www.cocos.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-cocos.png",
+        "navDesc": "全球领先的2D&3D引擎，拥有强大的跨平台开发能力"
+    },
+    {
+        "navId": "DH1485",
+        "idSequence": 1485,
+        "categoryId": "FR1057",
+        "navName": "w3ctech",
+        "navUrl": "https://www.w3ctech.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-w3ctech.png",
+        "navDesc": "推荐！中国最大的前端技术社区"
+    },
+    {
+        "navId": "DH1486",
+        "idSequence": 1486,
+        "categoryId": "FR1057",
+        "navName": "Bootstrap中文网",
+        "navUrl": "https://www.bootcss.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-bootcss.png",
+        "navDesc": "简洁、直观、强悍的响应式前端开发框架"
+    },
+    {
+        "navId": "DH1487",
+        "idSequence": 1487,
+        "categoryId": "FR1058",
+        "navName": "Houzz",
+        "navUrl": "https://www.houzz.com",
+        "navIcon": "/nav/public/images/nav/hao-nav-houzz.png",
+        "navDesc": "全球最著名的装修和室内设计平台"
+    },
+    {
+        "navId": "DH1488",
+        "idSequence": 1488,
+        "categoryId": "FR1058",
+        "navName": "AD",
+        "navUrl": "https://www.architecturaldigest.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-ad.png",
+        "navDesc": "AD在室内设计领域具有不可估量的影响力"
+    },
+    {
+        "navId": "DH1489",
+        "idSequence": 1489,
+        "categoryId": "FR1058",
+        "navName": "躺平设计家",
+        "navUrl": "https://www.shejijia.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-designhome.png",
+        "navDesc": "国内一流的室内设计平台"
+    },
+    {
+        "navId": "DH1490",
+        "idSequence": 1490,
+        "categoryId": "FR1058",
+        "navName": "美国家园频道",
+        "navUrl": "https://www.hgtv.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-HGTV.png",
+        "navDesc": "致力于家庭装修、园艺、手工艺和家庭改造方案"
+    },
+    {
+        "navId": "DH1491",
+        "idSequence": 1491,
+        "categoryId": "FR1058",
+        "navName": "ArchDaily",
+        "navUrl": "https://www.archdaily.com",
+        "navIcon": "/nav/public/images/nav/hao-nav-archdaily.png",
+        "navDesc": "世界最受欢迎的建筑网站"
+    },
+    {
+        "navId": "DH1492",
+        "idSequence": 1492,
+        "categoryId": "FR1058",
+        "navName": "设计牛奶",
+        "navUrl": "https://design-milk.com/",
+        "navIcon": "/nav/public/images/nav/hao-nav-designmilk.png",
+        "navDesc": "一本致力于现代设计的在线灵感杂志"
+    },
+    {
+        "navId": "DH1493",
+        "idSequence": 1493,
+        "categoryId": "FR1059",
+        "navName": "优设",
+        "navUrl": "https://weibo.com/uisdc2012",
+        "navIcon": "/nav/public/images/nav/hao-nav-houzz-1.png",
+        "navDesc": "这是我们优设的官方品牌微博，强烈推荐"
+    },
+    {
+        "navId": "DH1494",
+        "idSequence": 1494,
+        "categoryId": "FR1059",
+        "navName": "优设基础训练营",
+        "navUrl": "https://weibo.com/uisdcjichuying",
+        "navIcon": "/nav/public/images/nav/hao-nav-xly.png",
+        "navDesc": "每日推荐优质Ps Ai Ae教程，优优网官博"
+    },
+    {
+        "navId": "DH1495",
+        "idSequence": 1495,
+        "categoryId": "FR1059",
+        "navName": "优优教程网",
+        "navUrl": "https://weibo.com/uiiiuiii",
+        "navIcon": "/nav/public/images/nav/hao-nav-uiiiuiii.png",
+        "navDesc": "优设旗下网站，优优教程网官方微博"
+    },
+    {
+        "navId": "DH1496",
+        "idSequence": 1496,
+        "categoryId": "FR1059",
+        "navName": "设计师的百宝箱",
+        "navUrl": "https://weibo.com/edddesign",
+        "navIcon": "/nav/public/images/nav/hao-nav-baibaoxiang.png",
+        "navDesc": "精挑细选受设计师欢迎的网站，都是奇珍异宝"
+    },
+    {
+        "navId": "DH1497",
+        "idSequence": 1497,
+        "categoryId": "FR1059",
+        "navName": "你丫才美工",
+        "navUrl": "https://weibo.com/honghaier555",
+        "navIcon": "/nav/public/images/nav/hao-nav-meiya.png",
+        "navDesc": "严格意义来讲，打水印和打码一样，都是下流的凑性"
+    },
+    {
+        "navId": "DH1498",
+        "idSequence": 1498,
+        "categoryId": "FR1059",
+        "navName": "意匠id",
+        "navUrl": "https://weibo.com/mdabao",
+        "navIcon": "/nav/public/images/nav/hao-nav-yj.png",
+        "navDesc": "最精致的微博拥有最好的粉丝，分享美好，分享生活"
+    },
+    {
+        "navId": "DH1499",
+        "idSequence": 1499,
+        "categoryId": "FR1059",
+        "navName": "优设AIGC",
+        "navUrl": "https://weibo.com/uidesign",
+        "navIcon": "/nav/public/images/nav/hao-nav-uisdc.png",
+        "navDesc": "国内知名AIGC内容微博！每日更新及时，专业全面"
+    },
+    {
+        "navId": "DH1500",
+        "idSequence": 1500,
+        "categoryId": "FR1059",
+        "navName": "优设大课堂",
+        "navUrl": "https://weibo.com/u/6021844857",
+        "navIcon": "/nav/public/images/nav/nav-dkt-0209.png",
+        "navDesc": "跟对老师学知识，优设大课堂官方微博"
+    },
+    {
+        "navId": "DH1501",
+        "idSequence": 1501,
+        "categoryId": "FR1059",
+        "navName": "设计目录",
+        "navUrl": "https://weibo.com/u/2173291530  ",
+        "navIcon": "/nav/public/images/nav/hao-nav-sjml.png",
+        "navDesc": "知名设计美学博主，前沿的平面版式设计灵感"
+    },
+    {
+        "navId": "DH1502",
+        "idSequence": 1502,
+        "categoryId": "FR1059",
+        "navName": "手绘插画设计",
+        "navUrl": "https://weibo.com/u/3123287587",
+        "navIcon": "/nav/public/images/nav/hao-nav-sh.png",
+        "navDesc": "知名设计美学博主"
+    },
+    {
+        "navId": "DH1503",
+        "idSequence": 1503,
+        "categoryId": "FR1059",
+        "navName": "Photoshop大师",
+        "navUrl": "https://weibo.com/psdashi",
+        "navIcon": "/nav/public/images/nav/hao-nav-psds.png",
+        "navDesc": "微博知名设计美学博主"
+    },
+    {
+        "navId": "DH1504",
+        "idSequence": 1504,
+        "categoryId": "FR1059",
+        "navName": "招聘设计师",
+        "navUrl": "https://weibo.com/desginjob",
+        "navIcon": "/nav/public/images/nav/hao-nav-zpsjs.png",
+        "navDesc": "可以帮你找工作的微博，准备好简历@她即可"
+    }
+]

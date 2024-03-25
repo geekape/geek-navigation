@@ -7,40 +7,86 @@
         <v-app mobile-breakpoint="sm">
             <v-app-bar app>
                 <v-container fluid>
-                    <a>
-                        <h1 class="text-h6">极客猿导航</h1>
+                    <a href="/" class="d-inline-block">
+                        <h1 class="text-h5 black--text font-bold">极客猿导航</h1>
                     </a>
                 </v-container>
             </v-app-bar>
             <v-main class="mt-5">
                 <div class="jh-page-body-container px-8">
-                    <div class="left-menu fixed" style="width: 200px">
+                    <div class="left-menu fixed" v-if="!isMobile" style="width: 150px">
+                        <v-menu
+                                top
+                                offset-x
+                                offset-y
+                        >
+                            <template v-slot:activator="{ on, attrs }">
+                                <div v-bind="attrs"
+                                     v-on="on" class="pl-2 bg-white cursor-pointer font-bold py-3 rounded mb-4">
+                                    <span class="primary white--text pa-1 rounded">
+                                        <i class="icon-home ico"></i>
+                                    </span>
+                                    全部网址导航
+                                    <v-icon size="14">mdi-arrow-right</v-icon>
+                                </div>
+
+                            </template>
+
+                            <v-card class="pa-4 rounded h-full overflow-y-auto" style="width: 300px">
+                                <v-row>
+                                    <v-col v-for="item in parentCategoryList" class="text-center rounded pa-2 hover:bg-gray-200" cols="4">
+                                        <a :href="`/<$ ctx.app.config.appId $>/page/home?id=${item.categoryId}`">
+
+                                            {{item.categoryName}}
+                                        </a>
+                                    </v-col>
+                                </v-row>
+                            </v-card>
+                        </v-menu>
+
+
                         <div class="d-flex flex-col">
                             <a
                                     v-for="item in categoryList"
                                     :key="item.categoryName"
                                     link
-                                    class="menu-item py-3 rounded black--text d-inline-block"
+                                    :class="`text-body-2  text-left pl-2 menu-item py-3 rounded-md black--text d-inline-block hover:bg-white ${selectedMenu === item.categoryName ? 'primary white--text' : ''}`"
                                     :href="`#${item.categoryName}`"
+                                    @click="selectedMenu = item.categoryName"
                             >
-
-                                    {{item.categoryName }}
+                                <i :class="`${item.categoryIcon}`"></i>
+                                <span>{{item.categoryName }}</span>
                             </a>
                         </div>
 
                     </div>
 
-                    <div style="margin-left: 220px">
-                        <v-card class="pa-4 mb-5" style="height: 350px">
-                            2
-                        </v-card>
-                        <div v-for="item in navData" :id="item.categoryName">
+                    <div :style="`margin-left: ${!isMobile ? '170px' : '0'}`">
+                        <div class="pa-4 mb-5 py-10 bg-gray-400 white--text" style="height: 300px">
+                            <h2 class="text-h4 text-center mb-10">百万网络人都在用的导航</h2>
+
+                            <div class="s-titles d-flex m-auto align-center justify-center">
+                                <div v-for="item in searchEngineList"
+                                     :class="`cursor-pointer item rounded-t-md py-1 px-6 ${searchEngine===item ? 'bg-white black--text' : ''}`"
+                                     @click="searchEngine=item">{{item}}
+                                </div>
+                            </div>
+                            <div class="max-w-xl m-auto d-flex bg-white align-center rounded-l rounded-r"
+                                 style="height: 45px">
+                                <input v-model="searchWord" class="px-4 flex-1 outline-none h-full black--text"
+                                       placeholder="搜索" type="text"/>
+                                <button class="h-full w-2/12 text-center primary rounded-r" @click="search">
+                                    {{searchEngine}}一下
+                                </button>
+                            </div>
+                        </div>
+                        <div class="px-2 px-md-0" v-for="item in navData" :id="item.categoryName">
                             <h2 class="text-h6 mb-4">{{item.categoryName}}</h2>
                             <v-row class="mb-4">
                                 <v-col
                                         v-for="nav in item.children"
                                         :key="nav.navName"
-                                        cols="2"
+                                        cols="12"
                                         md="3"
                                         xl="2"
                                         sm="12"
@@ -50,7 +96,7 @@
                                                 outlined
                                                 tile
                                                 @click="window.open(nav.navUrl)"
-                                                class="pa-2 nav-item rounded-lg white"
+                                                class="pa-2 nav-item rounded-lg white hover:-translate-y-1 hover:shadow-lg transition-all"
                                         >
                                             <div class="d-flex align-center">
                                                 <v-img
@@ -72,6 +118,13 @@
                         </div>
                     </div>
                 </div>
+
+<!--                返回顶部-->
+                <div class="fixed bottom-1 right-0 mr-4 mb-4">
+                    <v-btn small fab dark color="primary" @click="window.scrollTo({top: 0, behavior: 'smooth'})">
+                        <i class="icon-top2"></i>
+                    </v-btn>
+                </div>
             </v-main>
         </v-app>
 
@@ -87,7 +140,7 @@
 {% endblock %}
 
 {% block vueScript %}
-
+<link href="/<$ ctx.app.config.appId $>/public/css/fontello.css" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
 <script type="module">
@@ -97,36 +150,84 @@
         vuetify: new Vuetify(),
         data: () => ({
             navData: [],
+            isMobile: window.innerWidth < 768,
+
+            selectedMenu: null,
+
+            // 搜索词
+            searchWord: '',
+            //选中的搜索引擎
+            searchEngine: '百度',
+            //搜索引擎列表
+            searchEngineList: ['百度', 'Google', '360', '必应'],
+
+            parentCategoryList: [],
         }),
         computed: {
             categoryList() {
-                return this.navData.map(item => {
-                    return {
-                        categoryName: item.categoryName,
-                        icon: item.icon
-                    }
-                })
+                return this.navData.map(item => item)
             }
         },
         watch: {},
         async created() {
+            //获取url参数
+            const url = new URL(window.location.href)
+            this.categoryId = url.searchParams.get('id') || 'ai'
             this.getHomePageData()
+            this.getParentCategoryList()
+
         },
         mounted() {
+            // 响应式监听窗口大小
+            window.addEventListener('resize', () => {
+                this.isMobile = window.innerWidth < 768
+            })
         },
         methods: {
-
             async getHomePageData() {
                 const res = (await window.jianghuAxios({
                     data: {
                         appData: {
                             pageId: 'home',
                             actionId: 'getHomePageData',
+                            actionData: {
+                                categoryId: this.categoryId
+                            }
                         }
                     }
                 })).data.appData.resultData;
 
                 this.navData = res
+            },
+            async getParentCategoryList() {
+                const rows = (await window.jianghuAxios({
+                    data: {
+                        appData: {
+                            pageId: 'allPage',
+                            actionId: 'getCategoryList',
+                            where: {
+                                parentId: '',
+                            }
+                        }
+                    }
+                })).data.appData.resultData.rows;
+
+                this.parentCategoryList = rows
+            },
+
+            async search() {
+                // 定义搜索引擎对应的搜索链接
+                const searchEngineUrl = {
+                    '百度': 'https://www.baidu.com/s?wd=',
+                    'Google': 'https://www.google.com/search?q=',
+                    '360': 'https://www.so.com/s?q=',
+                    '必应': 'https://cn.bing.com/search?q=',
+                }
+
+                const searchUrl = searchEngineUrl[this.searchEngine]
+
+                // 打开新窗口搜索
+                window.open(searchUrl + this.searchWord, '_blank')
             }
         }
     })
@@ -141,7 +242,5 @@
         text-align: center;
     }
 
-    .menu-item:hover {
-        background: white;
-    }
+
 </style>{% endblock %}

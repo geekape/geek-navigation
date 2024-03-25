@@ -1,0 +1,128 @@
+[
+    {
+        "idSequence": 1040,
+        "parentId": "sheji",
+        "categoryId": "FR1040",
+        "categoryName": "热门推荐"
+    },
+    {
+        "idSequence": 1041,
+        "parentId": "sheji",
+        "categoryId": "FR1041",
+        "categoryName": "高清图库"
+    },
+    {
+        "idSequence": 1042,
+        "parentId": "sheji",
+        "categoryId": "FR1042",
+        "categoryName": "设计教程"
+    },
+    {
+        "idSequence": 1043,
+        "parentId": "sheji",
+        "categoryId": "FR1043",
+        "categoryName": "界面设计"
+    },
+    {
+        "idSequence": 1044,
+        "parentId": "sheji",
+        "categoryId": "FR1044",
+        "categoryName": "灵感创意"
+    },
+    {
+        "idSequence": 1045,
+        "parentId": "sheji",
+        "categoryId": "FR1045",
+        "categoryName": "AIGC工具"
+    },
+    {
+        "idSequence": 1046,
+        "parentId": "sheji",
+        "categoryId": "FR1046",
+        "categoryName": "设计素材"
+    },
+    {
+        "idSequence": 1047,
+        "parentId": "sheji",
+        "categoryId": "FR1047",
+        "categoryName": "字体下载"
+    },
+    {
+        "idSequence": 1048,
+        "parentId": "sheji",
+        "categoryId": "FR1048",
+        "categoryName": "设计工具"
+    },
+    {
+        "idSequence": 1049,
+        "parentId": "sheji",
+        "categoryId": "FR1049",
+        "categoryName": "摄影美图"
+    },
+    {
+        "idSequence": 1050,
+        "parentId": "sheji",
+        "categoryId": "FR1050",
+        "categoryName": "二次元"
+    },
+    {
+        "idSequence": 1051,
+        "parentId": "sheji",
+        "categoryId": "FR1051",
+        "categoryName": "行业视野"
+    },
+    {
+        "idSequence": 1052,
+        "parentId": "sheji",
+        "categoryId": "FR1052",
+        "categoryName": "配色方案"
+    },
+    {
+        "idSequence": 1053,
+        "parentId": "sheji",
+        "categoryId": "FR1053",
+        "categoryName": "酷站模版"
+    },
+    {
+        "idSequence": 1054,
+        "parentId": "sheji",
+        "categoryId": "FR1054",
+        "categoryName": "短视频"
+    },
+    {
+        "idSequence": 1055,
+        "parentId": "sheji",
+        "categoryId": "FR1055",
+        "categoryName": "高效办公"
+    },
+    {
+        "idSequence": 1056,
+        "parentId": "sheji",
+        "categoryId": "FR1056",
+        "categoryName": "设计培训"
+    },
+    {
+        "idSequence": 1057,
+        "parentId": "sheji",
+        "categoryId": "FR1057",
+        "categoryName": "前端开发"
+    },
+    {
+        "idSequence": 1058,
+        "parentId": "sheji",
+        "categoryId": "FR1058",
+        "categoryName": "室内设计"
+    },
+    {
+        "idSequence": 1059,
+        "parentId": "sheji",
+        "categoryId": "FR1059",
+        "categoryName": "设计媒体"
+    },
+    {
+        "idSequence": 1060,
+        "parentId": "sheji",
+        "categoryId": "FR1060",
+        "categoryName": "商务合作"
+    }
+]

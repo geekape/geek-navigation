@@ -12,7 +12,7 @@ class NavService extends Service {
     // 返回首页导航分类和导航的数据
     async getHomePageData(actionData) {
         const { knex, jianghuKnex } = this.ctx.app
-        const { categoryId ="FR1001" } = actionData
+        const { categoryId ="ai" } = actionData
 
         // 查分类数据，以parentId为categoryId
         const categoryList = await jianghuKnex('category').where({ parentId: categoryId }).select('*')
