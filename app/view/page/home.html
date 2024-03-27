@@ -1,16 +1,26 @@
 {% extends 'template/jhTemplateV4.html'%}
-
+<script src="<$ static $>/tailwindcss/tailwindcss.js"></script>
+<style>
+    .v-application a {
+        color: black;
+    }
+</style>
 {% block vueTemplate %}
-
 <script type="text/html" id="app-template">
-    <div>
         <v-app mobile-breakpoint="sm">
-            <v-app-bar app>
-                <v-container fluid>
+            <v-app-bar app elevation="4" class="px-10 bg-white">
+                <div class="d-flex items-center">
                     <a href="/" class="d-inline-block">
                         <h1 class="text-h5 black--text font-bold">极客猿导航</h1>
                     </a>
-                </v-container>
+
+                    <div class="ml-4">
+                        <div class="bg-gray-100 px-3 py-1 text-base">
+<!--                            转大写-->
+                            <span class="uppercase">{{categoryId}}导航</span>
+                        </div>
+                    </div>
+                </div>
             </v-app-bar>
             <v-main class="mt-5">
                 <div class="jh-page-body-container px-8">
@@ -33,14 +43,20 @@
                             </template>
 
                             <v-card class="pa-4 rounded h-full overflow-y-auto" style="width: 300px">
-                                <v-row>
-                                    <v-col v-for="item in parentCategoryList" class="text-center rounded pa-2 hover:bg-gray-200" cols="4">
-                                        <a :href="`/<$ ctx.app.config.appId $>/page/home?id=${item.categoryId}`">
-
-                                            {{item.categoryName}}
+                                <h3 class="text-center text-lg mb-4 font-bold">极客猿旗下导航</h3>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <div v-for="item in parentCategoryList">
+                                        <a class="rounded text-black hover:text-green-500 d-flex items-center justify-center flex-col hover:bg-gray-100 py-3"
+                                           :href="`/<$ ctx.app.config.appId $>/page/home?id=${item.categoryId}`">
+<!--                                            随机背景颜色-->
+                                            <i class="ico w-10 h-10 bg-green-500 d-flex items-center justify-center text-white"><i
+                                                    :class="`${item.categoryIcon} text-xl`"></i></i>
+                                            <div class="mt-2">
+                                                {{item.categoryName}}
+                                            </div>
                                         </a>
-                                    </v-col>
-                                </v-row>
+                                    </div>
+                                </div>
                             </v-card>
                         </v-menu>
 
@@ -62,7 +78,8 @@
                     </div>
 
                     <div :style="`margin-left: ${!isMobile ? '170px' : '0'}`">
-                        <div class="pa-4 mb-5 py-10 bg-gray-400 white--text" style="height: 300px">
+                        <div class="pa-4 mb-5 py-10 bg-gradient-to-b from-green-500 to-green-600 white--text"
+                             style="height: 300px">
                             <h2 class="text-h4 text-center mb-10">百万网络人都在用的导航</h2>
 
                             <div class="s-titles d-flex m-auto align-center justify-center">
@@ -75,7 +92,8 @@
                                  style="height: 45px">
                                 <input v-model="searchWord" class="px-4 flex-1 outline-none h-full black--text"
                                        placeholder="搜索" type="text"/>
-                                <button class="h-full w-2/12 text-center primary rounded-r" @click="search">
+                                <button class="h-full w-2/12 text-center bg-orange-500 font-medium rounded-r"
+                                        @click="search">
                                     {{searchEngine}}一下
                                 </button>
                             </div>
@@ -96,7 +114,7 @@
                                                 outlined
                                                 tile
                                                 @click="window.open(nav.navUrl)"
-                                                class="pa-2 nav-item rounded-lg white hover:-translate-y-1 hover:shadow-lg transition-all"
+                                                class="pa-2 h-28 nav-item rounded-lg white hover:-translate-y-1 hover:shadow-lg transition-all"
                                         >
                                             <div class="d-flex align-center">
                                                 <v-img
@@ -119,10 +137,10 @@
                     </div>
                 </div>
 
-<!--                返回顶部-->
-                <div class="fixed bottom-1 right-0 mr-4 mb-4">
-                    <v-btn small fab dark color="primary" @click="window.scrollTo({top: 0, behavior: 'smooth'})">
-                        <i class="icon-top2"></i>
+                <!--                返回顶部-->
+                <div class="fixed bottom-1 right-0 mr-4 mb-4" v-if="showBackTop">
+                    <v-btn fab color="primary" @click="window.scrollTo({top: 0, behavior: 'smooth'})">
+                        <i class="icon-top2 text-xl"></i>
                     </v-btn>
                 </div>
             </v-main>
@@ -162,6 +180,11 @@
             searchEngineList: ['百度', 'Google', '360', '必应'],
 
             parentCategoryList: [],
+
+            //返回顶部按钮
+            showBackTop: false,
+
+            categoryId: 'ai'
         }),
         computed: {
             categoryList() {
@@ -181,6 +204,10 @@
             // 响应式监听窗口大小
             window.addEventListener('resize', () => {
                 this.isMobile = window.innerWidth < 768
+            })
+            //监听滚动事件
+            window.addEventListener('scroll', () => {
+                this.showBackTop = window.scrollY > 300
             })
         },
         methods: {
@@ -234,13 +261,6 @@
 </script>
 
 <style scoped>
-    .nav-item {
-        height: 120px;
-    }
-
-    .menu-item {
-        text-align: center;
-    }
 
 
 </style>{% endblock %}
