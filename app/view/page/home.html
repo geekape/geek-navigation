@@ -7,148 +7,167 @@
 </style>
 {% block vueTemplate %}
 <script type="text/html" id="app-template">
-        <v-app mobile-breakpoint="sm">
-            <v-app-bar app elevation="4" class="px-10 bg-white">
-                <div class="d-flex items-center">
-                    <a href="/" class="d-inline-block">
-                        <h1 class="text-h5 black--text font-bold">极客猿导航</h1>
-                    </a>
+    <v-app mobile-breakpoint="sm">
+        <v-app-bar app elevation="4" class="px-10 bg-white">
+            <div class="d-flex items-center">
+                <a href="/" class="d-inline-block">
+                    <h1 class="text-h5 black--text font-bold">极客猿导航</h1>
+                </a>
 
-                    <div class="ml-4">
-                        <div class="bg-gray-100 px-3 py-1 text-base">
-<!--                            转大写-->
-                            <span class="uppercase">{{categoryId}}导航</span>
-                        </div>
+                <div class="ml-4">
+                    <div class="bg-gray-100 px-3 py-1 text-base">
+                        <!--                            转大写-->
+                        <span class="uppercase">{{categoryId}}导航</span>
                     </div>
                 </div>
-            </v-app-bar>
-            <v-main class="mt-5">
-                <div class="jh-page-body-container px-8">
-                    <div class="left-menu fixed" v-if="!isMobile" style="width: 150px">
-                        <v-menu
-                                top
-                                offset-x
-                                offset-y
-                        >
-                            <template v-slot:activator="{ on, attrs }">
-                                <div v-bind="attrs"
-                                     v-on="on" class="pl-2 bg-white cursor-pointer font-bold py-3 rounded mb-4">
+            </div>
+        </v-app-bar>
+        <v-main class="mt-5">
+            <div class="jh-page-body-container px-8">
+
+                <div class="left-menu fixed" v-if="!isMobile" style="width: 150px">
+                    <v-menu
+                            top
+                            offset-x
+                            offset-y
+                    >
+                        <template v-slot:activator="{ on, attrs }">
+                            <div v-bind="attrs"
+                                 v-on="on" class="pl-2 bg-white cursor-pointer font-bold py-3 rounded mb-4">
                                     <span class="primary white--text pa-1 rounded">
                                         <i class="icon-home ico"></i>
                                     </span>
-                                    全部网址导航
-                                    <v-icon size="14">mdi-arrow-right</v-icon>
-                                </div>
-
-                            </template>
-
-                            <v-card class="pa-4 rounded h-full overflow-y-auto" style="width: 300px">
-                                <h3 class="text-center text-lg mb-4 font-bold">极客猿旗下导航</h3>
-                                <div class="grid grid-cols-3 gap-3">
-                                    <div v-for="item in parentCategoryList">
-                                        <a class="rounded text-black hover:text-green-500 d-flex items-center justify-center flex-col hover:bg-gray-100 py-3"
-                                           :href="`/<$ ctx.app.config.appId $>/page/home?id=${item.categoryId}`">
-<!--                                            随机背景颜色-->
-                                            <i class="ico w-10 h-10 bg-green-500 d-flex items-center justify-center text-white"><i
-                                                    :class="`${item.categoryIcon} text-xl`"></i></i>
-                                            <div class="mt-2">
-                                                {{item.categoryName}}
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </v-card>
-                        </v-menu>
-
-
-                        <div class="d-flex flex-col">
-                            <a
-                                    v-for="item in categoryList"
-                                    :key="item.categoryName"
-                                    link
-                                    :class="`text-body-2  text-left pl-2 menu-item py-3 rounded-md black--text d-inline-block hover:bg-white ${selectedMenu === item.categoryName ? 'primary white--text' : ''}`"
-                                    :href="`#${item.categoryName}`"
-                                    @click="selectedMenu = item.categoryName"
-                            >
-                                <i :class="`${item.categoryIcon}`"></i>
-                                <span>{{item.categoryName }}</span>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div :style="`margin-left: ${!isMobile ? '170px' : '0'}`">
-                        <div class="pa-4 mb-5 py-10 bg-gradient-to-b from-green-500 to-green-600 white--text"
-                             style="height: 300px">
-                            <h2 class="text-h4 text-center mb-10">百万网络人都在用的导航</h2>
-
-                            <div class="s-titles d-flex m-auto align-center justify-center">
-                                <div v-for="item in searchEngineList"
-                                     :class="`cursor-pointer item rounded-t-md py-1 px-6 ${searchEngine===item ? 'bg-white black--text' : ''}`"
-                                     @click="searchEngine=item">{{item}}
-                                </div>
+                                全部网址导航
+                                <v-icon size="14">mdi-arrow-right</v-icon>
                             </div>
-                            <div class="max-w-xl m-auto d-flex bg-white align-center rounded-l rounded-r"
-                                 style="height: 45px">
-                                <input v-model="searchWord" class="px-4 flex-1 outline-none h-full black--text"
-                                       placeholder="搜索" type="text"/>
-                                <button class="h-full w-2/12 text-center bg-orange-500 font-medium rounded-r"
-                                        @click="search">
-                                    {{searchEngine}}一下
-                                </button>
-                            </div>
-                        </div>
-                        <div class="px-2 px-md-0" v-for="item in navData" :id="item.categoryName">
-                            <h2 class="text-h6 mb-4">{{item.categoryName}}</h2>
-                            <v-row class="mb-4">
-                                <v-col
-                                        v-for="nav in item.children"
-                                        :key="nav.navName"
-                                        cols="12"
-                                        md="3"
-                                        xl="2"
-                                        sm="12"
-                                >
-                                    <a :href="nav.navUrl" target="_blank">
-                                        <div
-                                                outlined
-                                                tile
-                                                @click="window.open(nav.navUrl)"
-                                                class="pa-2 h-28 nav-item rounded-lg white hover:-translate-y-1 hover:shadow-lg transition-all"
-                                        >
-                                            <div class="d-flex align-center">
-                                                <v-img
-                                                        :src="nav.navIcon"
-                                                        max-height="30"
-                                                        max-width="30"
-                                                        class="rounded"
-                                                ></v-img>
-                                                <v-card-title class="font-bold text-body-1">{{nav.navName}}
-                                                </v-card-title>
-                                            </div>
-                                            <div class="grey--text text-caption text-ellipsis overflow-hidden line-clamp-2">
-                                                {{nav.navDesc}}
-                                            </div>
+
+                        </template>
+
+                        <v-card class="pa-4 rounded h-full overflow-y-auto" style="width: 300px">
+                            <h3 class="text-center text-lg mb-4 font-bold">极客猿旗下导航</h3>
+                            <div class="grid grid-cols-3 gap-3">
+                                <div v-for="item in parentCategoryList">
+                                    <a class="rounded text-black hover:text-green-500 d-flex items-center justify-center flex-col hover:bg-gray-100 py-3"
+                                       :href="`/<$ ctx.app.config.appId $>/page/home?id=${item.categoryId}`">
+                                        <!--                                            随机背景颜色-->
+                                        <i class="ico w-10 h-10 bg-green-500 d-flex items-center justify-center text-white"><i
+                                                :class="`${item.categoryIcon} text-xl`"></i></i>
+                                        <div class="mt-2">
+                                            {{item.categoryName}}
                                         </div>
                                     </a>
-                                </v-col>
-                            </v-row>
+                                </div>
+                            </div>
+                        </v-card>
+                    </v-menu>
+
+
+                    <div class="d-flex flex-col">
+
+                        <div v-if="isLoading">
+                            <v-skeleton-loader type="list-item"></v-skeleton-loader>
+                            <v-skeleton-loader type="list-item"></v-skeleton-loader>
+                            <v-skeleton-loader type="list-item"></v-skeleton-loader>
+                        </div>
+                        <a
+                                v-for="item in categoryList"
+                                :key="item.categoryName"
+                                link
+                                :class="`text-body-2  text-left pl-2 menu-item py-3 rounded-md black--text d-inline-block hover:bg-white ${selectedMenu === item.categoryName ? 'primary white--text' : ''}`"
+                                :href="`#${item.categoryName}`"
+                                @click="selectedMenu = item.categoryName"
+                        >
+                            <i :class="`${item.categoryIcon}`"></i>
+                            <span>{{item.categoryName }}</span>
+                        </a>
+                    </div>
+
+                </div>
+                <div :style="`margin-left: ${!isMobile ? '170px' : '0'}`">
+
+
+                    <div class="pa-4 mb-5 py-10 bg-gradient-to-b from-green-500 to-green-600 white--text"
+                         style="height: 300px">
+                        <h2 class="text-h4 text-center mb-10">百万网络人都在用的导航</h2>
+
+                        <div class="s-titles d-flex m-auto align-center justify-center">
+                            <div v-for="item in searchEngineList"
+                                 :class="`cursor-pointer item rounded-t-md py-1 px-6 ${searchEngine===item ? 'bg-white black--text' : ''}`"
+                                 @click="searchEngine=item">{{item}}
+                            </div>
+                        </div>
+                        <div class="max-w-xl m-auto d-flex bg-white align-center rounded-l rounded-r"
+                             style="height: 45px">
+                            <input v-model="searchWord" class="px-4 flex-1 outline-none h-full black--text"
+                                   placeholder="搜索" type="text"/>
+                            <button class="h-full w-2/12 text-center bg-orange-500 font-medium rounded-r"
+                                    @click="search">
+                                {{searchEngine}}一下
+                            </button>
                         </div>
                     </div>
+                    <div v-if="isLoading" class="grid grid-cols-6 gap-3">
+                        <v-skeleton-loader type="card-heading"></v-skeleton-loader>
+                        <v-skeleton-loader type="card-heading"></v-skeleton-loader>
+                        <v-skeleton-loader type="card-heading"></v-skeleton-loader>
+                        <v-skeleton-loader type="card-heading"></v-skeleton-loader>
+                        <v-skeleton-loader type="card-heading"></v-skeleton-loader>
+                        <v-skeleton-loader type="card-heading"></v-skeleton-loader>
+                        <v-skeleton-loader type="card-heading"></v-skeleton-loader>
+                        <v-skeleton-loader type="card-heading"></v-skeleton-loader>
+                        <v-skeleton-loader type="card-heading"></v-skeleton-loader>
+                    </div>
+                    <div class="px-2 px-md-0" v-for="item in navData" :id="item.categoryName">
+                        <h2 class="text-h6 mb-4">{{item.categoryName}}</h2>
+                        <v-row class="mb-4">
+                            <v-col
+                                    v-for="nav in item.children"
+                                    :key="nav.navName"
+                                    cols="12"
+                                    md="3"
+                                    xl="2"
+                                    sm="12"
+                            >
+                                <a :href="nav.navUrl" target="_blank">
+                                    <div
+                                            outlined
+                                            tile
+                                            @click="window.open(nav.navUrl)"
+                                            class="pa-2 h-28 nav-item rounded-lg white hover:-translate-y-1 hover:shadow-lg transition-all"
+                                    >
+                                        <div class="d-flex align-center">
+                                            <v-img
+                                                    :src="nav.navIcon"
+                                                    max-height="30"
+                                                    max-width="30"
+                                                    class="rounded"
+                                            ></v-img>
+                                            <v-card-title class="font-bold text-body-1">{{nav.navName}}
+                                            </v-card-title>
+                                        </div>
+                                        <div class="grey--text text-caption text-ellipsis overflow-hidden line-clamp-2">
+                                            {{nav.navDesc}}
+                                        </div>
+                                    </div>
+                                </a>
+                            </v-col>
+                        </v-row>
+                    </div>
                 </div>
+            </div>
 
-                <!--                返回顶部-->
-                <div class="fixed bottom-1 right-0 mr-4 mb-4" v-if="showBackTop">
-                    <v-btn fab color="primary" @click="window.scrollTo({top: 0, behavior: 'smooth'})">
-                        <i class="icon-top2 text-xl"></i>
-                    </v-btn>
-                </div>
-            </v-main>
-        </v-app>
+            <!--                返回顶部-->
+            <div class="fixed bottom-1 right-0 mr-4 mb-4" v-if="showBackTop">
+                <v-btn fab color="primary" @click="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <i class="icon-top2 text-xl"></i>
+                </v-btn>
+            </div>
+        </v-main>
+    </v-app>
 
-        <jh-toast/>
-        <jh-mask/>
-        <jh-confirm-dialog/>
+    <jh-toast/>
+    <jh-mask/>
+    <jh-confirm-dialog/>
     </div>
 </script>
 
@@ -184,7 +203,8 @@
             //返回顶部按钮
             showBackTop: false,
 
-            categoryId: 'ai'
+            categoryId: 'ai',
+            isLoading: false,
         }),
         computed: {
             categoryList() {
@@ -212,6 +232,7 @@
         },
         methods: {
             async getHomePageData() {
+                this.isLoading = true
                 const res = (await window.jianghuAxios({
                     data: {
                         appData: {
@@ -223,6 +244,7 @@
                         }
                     }
                 })).data.appData.resultData;
+                this.isLoading = false
 
                 this.navData = res
             },
