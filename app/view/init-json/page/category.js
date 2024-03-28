@@ -88,6 +88,8 @@ const content = {
         { text: "分类id", value: "categoryId", type: "v-text-field", width: 80, sortable: true },
         { text: "分类名称", value: "categoryName", type: "v-text-field", width: 80, sortable: true },
         { text: "分类图标", value: "categoryIcon", type: "v-text-field", width: 80, sortable: true },
+        { text: "分类排序", value: "sort", width: 80, formatter: [{tag: 'v-text-field', attrs: {'v-model': 'item.sort', 'class': 'jh-v-input', 'filled': true, 'single-line': true, 'dense': true}}] },
+        { text: "分类状态", value: "status", width: 80, formatter: [{tag: 'v-switch', attrs: {'v-model': 'item.status', 'true-value': 1, 'false-value': 0}}] },
         { text: "创建时间", value: "createAt", type: "v-text-field", width: 80, sortable: true },
         { text: "操作", value: "operation", type: "v-text-field", width: 80, sortable: true },
         { text: "操作者用户名", value: "operationByUser", type: "v-text-field", width: 80, sortable: true },

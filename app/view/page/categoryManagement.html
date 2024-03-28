@@ -15,7 +15,7 @@
                 <div class="jh-page-second-bar px-8">
                     <v-row class="align-center" dense>
                         <v-col cols="12" xs="12" sm="12" md="4" xl="3" :cols="12" :sm="6" :md="4">
-                            <div class="py-4 text-body-1 font-weight-bold d-flex align-center">分类管理
+                            <div class="py-4 text-body-1 font-weight-bold d-flex align-center">category
                                 <!-- 帮助页按钮 -->
                                 <span role="button" class="success--text font-weight-regular jh-font-size-13 ml-2"
                                       @click="isHelpPageDrawerShown = true">
@@ -23,7 +23,19 @@
             </span>
                             </div>
                         </v-col>
-
+                        <v-col cols="12" xs="12" sm="12" md="8" xl="9" :cols="12" :sm="6" :md="8">
+                            <v-row class="jh-backend-form-container justify-end ma-0 py-3">
+                                <v-col cols="12" sm="4" md="3" xl="2" class="pa-0 pr-0 pl-md-2 ">
+                                    <v-autocomplete :items="parentCategoryList"
+                                                    item-text="categoryName" item-value="categoryId" class="jh-v-input"
+                                                    dense single-line filled
+                                                    v-model="serverSearchWhereLike.parentId"></v-autocomplete>
+                                </v-col>
+                                <div class="jh-backend-search-btn ml-2">
+                                    <v-btn color="primary" small @click="doUiAction('getTableData')">查询</v-btn>
+                                </div>
+                            </v-row>
+                        </v-col>
                     </v-row>
                 </div>
                 <!-- <<<<<<<<<<<<< 头部内容 -->
@@ -42,22 +54,84 @@
                             </v-col>
                         </v-row>
                         <!-- 表格 -->
-                        <v-treeview :active.sync="active" :search="searchInput" :filter="filter" :items="items"
-                                    activatable hoverable
-                                    open-all dense
-                                    transition
-                                    return-object>
-                            <template v-slot:label="{ item }">
-                                <draggable @start="checkStart" @end="checkEnd" :list="items" group="node" :id="item.id"
-                                           :data-parent="item.parentId">
-                                    <label>
-                                        <i class="fas fa-user mr-3"/>
-                                        <span id="item.categoryId">{{item.name}}</span>
-                                    </label>
-                                </draggable>
-
+                        <v-data-table
+                                :headers="headers"
+                                :items="tableDataComputed"
+                                :search="searchInput"
+                                :footer-props="{ itemsPerPageOptions: [20, 50, 200, -1], itemsPerPageText: '每页', itemsPerPageAllText: '所有'}"
+                                :items-per-page="-1"
+                                mobile-breakpoint="0"
+                                :loading="isTableLoading"
+                                checkbox-color="success"
+                                :class="{'zebraLine': true }"
+                                fixed-header
+                                class="jh-fixed-table-height elevation-0 mt-0 mb-xs-4"
+                        >
+                            <template v-slot:item.categoryName="{item, index}">
+                                <v-text-field v-model="item.categoryName" class="jh-v-input" filled single-line dense
+                                              @blur="doUiAction('updateCategory', {id: item.id, data: {categoryName: item.categoryName}})"></v-text-field>
                             </template>
-                        </v-treeview>
+                            <template v-slot:item.categoryIcon="{item, index}">
+                                <v-text-field v-model="item.categoryIcon" class="jh-v-input" filled single-line dense
+                                              @blur="doUiAction('updateCategory', {id: item.id, data: {categoryIcon: item.categoryIcon}})"></v-text-field>
+                            </template>
+
+                            <template v-slot:item.sort="{item, index}">
+                                <v-text-field v-model="item.sort" class="jh-v-input" filled single-line dense
+                                              @blur="doUiAction('updateCategory', {id: item.id, data: {sort: item.sort}})"></v-text-field>
+                            </template>
+                            <template v-slot:item.status="{item, index}">
+                                <v-switch v-model="item.status" :true-value="1" :false-value="0"
+                                          @change="doUiAction('updateCategory', {id: item.id, data: {status: item.status}})"></v-switch>
+                            </template>
+
+                            <!-- 表格操作按钮 -->
+                            <template v-slot:item.action="{ item }">
+                                <!-- pc端 -->
+                                <template v-if="!isMobile">
+              <span role="button" class="success--text font-weight-medium font-size-2 mr-2"
+                    @click="doUiAction('startUpdateItem', item)">
+                <v-icon size="16" class="success--text">mdi-note-edit-outline</v-icon>编辑
+              </span>
+                                    <span role="button" class="error--text font-weight-medium font-size-2 mr-2"
+                                          @click="doUiAction('deleteItem', item)">
+                <v-icon size="16" class="error--text">mdi-trash-can-outline</v-icon>删除
+              </span>
+                                </template>
+                                <!-- 手机端 -->
+                                <v-menu offset-y v-if="isMobile">
+                                    <template v-slot:activator="{ on, attrs }">
+                <span role="button" class="success--text font-weight-medium font-size-2"
+                      v-bind="attrs" v-on="on">
+                  操作<v-icon size="14" class="success--text">mdi-chevron-down</v-icon>
+                </span>
+                                    </template>
+                                    <v-list dense>
+                                        <v-list-item @click="doUiAction('startUpdateItem', item)">
+                                            <v-list-item-title>编辑</v-list-item-title>
+                                        </v-list-item>
+                                        <v-list-item @click="doUiAction('deleteItem', item)">
+                                            <v-list-item-title>删除</v-list-item-title>
+                                        </v-list-item>
+                                    </v-list>
+                                </v-menu>
+                            </template>
+                            <!-- 没有数据 -->
+                            <template v-slot:loading>
+                                <div class="jh-no-data">数据加载中</div>
+                            </template>
+                            <template v-slot:no-data>
+                                <div class="jh-no-data">暂无数据</div>
+                            </template>
+                            <template v-slot:no-results>
+                                <div class="jh-no-data">暂无数据</div>
+                            </template>
+                            <!-- 表格分页 -->
+                            <template v-slot:footer.page-text="pagination">
+                                <span>{{pagination.pageStart}}-{{pagination.pageStop}}</span>
+                                <span class="ml-1">共{{pagination.itemsLength}}条</span>
+                            </template>
+                        </v-data-table>
                     </v-card>
                 </div>
                 <!-- <<<<<<<<<<<<< 页面内容 -->
@@ -242,8 +316,7 @@
 {% block vueScript %}
 {% include 'common/jianghuJs/fixedTableHeightV4.html' %}
 {% include 'component/tableRecordHistory.html' %}
-<script src="https://cdn.bootcdn.net/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/Vue.Draggable/2.24.3/vuedraggable.umd.min.js"></script>
+
 <script type="module">
     new Vue({
         el: '#app',
@@ -257,6 +330,8 @@
                 {text: "分类id", value: "categoryId", type: "v-text-field", width: 80, sortable: true},
                 {text: "分类名称", value: "categoryName", type: "v-text-field", width: 80, sortable: true},
                 {text: "分类图标", value: "categoryIcon", type: "v-text-field", width: 80, sortable: true},
+                {text: "分类排序", value: "sort", width: 80},
+                {text: "分类状态", value: "status", width: 80},
                 {text: "创建时间", value: "createAt", type: "v-text-field", width: 80, sortable: true},
                 {text: "操作", value: "operation", type: "v-text-field", width: 80, sortable: true},
                 {text: "操作者用户名", value: "operationByUser", type: "v-text-field", width: 80, sortable: true},
@@ -296,13 +371,13 @@
             },
             testString: '测试字符串',
             serverSearchWhereLike: {
-                className: ""
+                parentId: null
             },
             isMobile: window.innerWidth < 500,
 
             // ================================ 其他抽屉列表 ================================
-            items: [],
-            active: [],
+            parentCategoryList: [],
+
         }),
         watch: {
             isHelpPageDrawerShown(val) {
@@ -312,9 +387,20 @@
             },
         },
         computed: {
-            filter() {
-                return (item, search, textKey) => item[textKey].indexOf(search) > -1
-            },
+            tableDataComputed() {
+                if (this.filterMap) {
+                    return this.tableData.filter(row => {
+                        for (const key in this.filterMap) {
+                            if (this.filterMap[key] && row[key] !== this.filterMap[key]) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    });
+                } else {
+                    return this.tableData;
+                }
+            }
         },
         async created() {
             this.doUiAction('getTableData');
@@ -326,7 +412,6 @@
                     switch (uiActionId) {
                         case 'getTableData':
                             await this.getTableData(uiActionData);
-                            await this.buildTreeData();
                             break;
                         case 'startCreateItem':
                             await this.prepareCreateFormData(uiActionData);
@@ -359,8 +444,9 @@
                             await this.doDeleteItem(uiActionData);
                             await this.getTableData(uiActionData);
                             break;
-
-
+                        case 'updateCategory':
+                            await this.updateCategory(uiActionData);
+                            break;
                         default:
                             console.error("[doUiAction] uiActionId not find", {uiActionId});
                             break;
@@ -374,7 +460,8 @@
             // ---------- 获取表格数据 uiAction >>>>>>>>>> --------
             async getTableData() {
                 this.isTableLoading = true;
-                const where = {};
+                // loadsh过滤掉空值
+                const where = _.pickBy(this.serverSearchWhereLike, _.identity);
                 const whereLike = {};
 
                 const rows = (await window.jianghuAxios({
@@ -390,32 +477,11 @@
                     }
                 })).data.appData.resultData.rows;
                 this.tableData = this.formatTableData(rows);
+
+                if (this.parentCategoryList.length === 0) {
+                    this.parentCategoryList = this.tableData.filter(item => !item.parentId);
+                }
                 this.isTableLoading = false;
-            },
-            // 将tableData封装成treeview需要的格式
-            async buildTreeData() {
-                const treeData = [];
-                this.tableData.forEach(item => {
-                    if (!item.parentId) {
-                        treeData.push({
-                            ...item,
-                            id: item.categoryId,
-                            name: item.categoryName,
-                            children: []
-                        });
-                    } else {
-                        const parent = treeData.find(treeItem => treeItem.id === item.parentId);
-                        if (parent) {
-                            parent.children.push({
-                                ...item,
-                                id: item.categoryId,
-                                name: item.categoryName,
-                                children: []
-                            });
-                        }
-                    }
-                });
-                this.items = treeData
             },
             formatTableData(rows) {
                 rows.forEach(row => {
@@ -426,7 +492,9 @@
             // ---------- <<<<<<<<<<< 获取表格数据 uiAction ---------
             // ---------- 新增数据 uiAction >>>>>>>>>> --------
             async prepareCreateFormData() {
-                this.createItem = {};
+                this.createItem = {
+                    parentId: this.serverSearchWhereLike.parentId
+                };
             },
             async openCreateDrawer() {
                 this.isCreateDrawerShown = true;
@@ -537,6 +605,18 @@
                 this.updateDrawerTab = 0;
             },
             // ---------- <<<<<<<<<<< 修改数据 uiAction ---------
+            async updateCategory({id, data}) {
+                await window.jianghuAxios({
+                    data: {
+                        appData: {
+                            pageId: 'categoryManagement',
+                            actionId: 'updateItem',
+                            actionData: data,
+                            where: {id}
+                        }
+                    }
+                })
+            },
             // ---------- 删除数据 uiAction >>>>>>>>>>>> --------
             async prepareDeleteFormData(funObj) {
                 this.deleteItem = _.cloneDeep(funObj);
@@ -573,49 +653,6 @@
             // ---------- <<<<<<<<<<< Custom uiAction ---------
 
             // ---------- 抽屉列表 uiAction >>>>>>>>>>>> --------
-            findTreeItem(items, id) {
-                if (!items) {
-                    return;
-                }
-                for (var i = 0; i < items.length; i++) {
-                    var item = items[i];
-                    // Test current object
-                    if (item.id === id) {
-                        return item;
-                    }
-                    // Test children recursively
-                    const child = this.findTreeItem(item.children, id);
-                    if (child) {
-                        return child;
-                    }
-                }
-            },
-            checkStart(evt) {
-                var self = this;
-                self.active = [];
-                self.active.push(self.findTreeItem(self.items, evt.from.id))
-            },
-            checkEnd(evt) {
-                var self = this;
-                var itemSelected = self.active[0];
-
-                // 互换位置，不是移动到另一个分类
-                var fromParent = itemSelected.parentId ? self.findTreeItem(self.items, itemSelected.parentId) : null;
-                var toParent = self.findTreeItem(self.items, evt.to.id);
-                var objFrom = fromParent ? fromParent.children : self.items;
-                objFrom.splice(objFrom.indexOf(itemSelected), 1);
-
-                if (toParent.id === itemSelected.id) {
-                    itemSelected.parentId = null;
-                    self.items.push(itemSelected);
-                } else {
-                    itemSelected.parentId = toParent.id;
-                    toParent.children.push(itemSelected);
-                }
-                // self.saveUser(itemSelected);
-                //   self.active = [];
-                return false;
-            },
         }
     })
 </script>
