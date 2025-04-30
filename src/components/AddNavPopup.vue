@@ -90,7 +90,17 @@ export default {
   methods: {
     async getCategorys() {
       const { data } = await this.$api.getCategoryList()
-      this.categorys = data
+      // 过滤掉没有children的分类，或将没有children的分类直接作为选项
+      this.categorys = data.filter(item => {
+        // 如果没有children属性或children为空数组，直接作为选项
+        if (!item.children || item.children.length === 0) {
+          item.children = [{
+            _id: item._id,
+            name: item.name
+          }]
+        }
+        return true
+      })
     },
     async addNav(formName) {
       this.$refs[formName].validate(async (valid) => {
